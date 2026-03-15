@@ -32,6 +32,7 @@ theme:
 plugins:
   - search
   - include-markdown
+  - literate-nav
   - schema_reader:
       include:
         - "schemas"
@@ -51,6 +52,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Schema: schema/
   - Contributing: contributing.md
   - Code of Conduct: code-of-conduct.md
   - License: license.md
