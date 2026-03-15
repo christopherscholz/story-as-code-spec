@@ -42,7 +42,7 @@ jobs:
 
       - if: github.event.action != 'closed'
         name: Build site
-        run: mkdocs build
+        run: mkdocs build --site-url "https://christopherscholz.github.io/story-as-code-spec/pr-preview/pr-${{ github.event.number }}/"
 
       - uses: rossjrw/pr-preview-action@v1
         with:
