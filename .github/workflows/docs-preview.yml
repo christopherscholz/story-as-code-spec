@@ -42,7 +42,12 @@ jobs:
 
       - if: github.event.action != 'closed'
         name: Build site
-        run: mkdocs build --site-url "https://christopherscholz.github.io/story-as-code-spec/pr-preview/pr-${{ github.event.number }}/"
+        run: |
+          cat > mkdocs-preview.yml <<EOF
+          INHERIT: mkdocs.yml
+          site_url: https://christopherscholz.github.io/story-as-code-spec/pr-preview/pr-${{ github.event.number }}/
+          EOF
+          mkdocs build -f mkdocs-preview.yml
 
       - uses: rossjrw/pr-preview-action@v1
         with:
