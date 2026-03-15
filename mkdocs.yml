@@ -3,7 +3,7 @@ site_description: Declarative YAML specification for defining fictional worlds a
 site_url: https://christopherscholz.github.io/story-as-code-spec/
 repo_url: https://github.com/christopherscholz/story-as-code-spec
 repo_name: christopherscholz/story-as-code-spec
-edit_uri: edit/main/docs/
+edit_uri: edit/main/
 
 theme:
   name: material
@@ -31,6 +31,10 @@ theme:
 
 plugins:
   - search
+  - include-markdown
+  - schema_reader:
+      include:
+        - "schemas"
 
 markdown_extensions:
   - tables
@@ -49,6 +53,8 @@ nav:
   - Home: index.md
   - Specification: spec.md
   - Contributing: contributing.md
+  - Code of Conduct: code-of-conduct.md
+  - License: license.md
 
 extra:
   social:
