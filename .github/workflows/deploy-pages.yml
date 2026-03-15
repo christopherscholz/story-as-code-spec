@@ -7,6 +7,11 @@ on:
     paths:
       - "docs/**"
       - "mkdocs.yml"
+      - "README.md"
+      - "CONTRIBUTING.md"
+      - "CODE_OF_CONDUCT.md"
+      - "LICENSE"
+      - "schemas/**"
   workflow_dispatch:
 
 permissions:
@@ -28,8 +33,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install MkDocs Material
-        run: pip install mkdocs-material
+      - name: Install MkDocs Material and plugins
+        run: pip install mkdocs-material mkdocs-include-markdown-plugin mkdocs-schema-reader
 
       - name: Build site
         run: mkdocs build

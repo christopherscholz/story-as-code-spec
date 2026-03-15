@@ -4,6 +4,7 @@
 [![Spec Version](https://img.shields.io/badge/Spec-v0.1.0_Draft-orange.svg)](docs/spec.md)
 [![GitHub Pages](https://img.shields.io/badge/Docs-GitHub_Pages-brightgreen.svg)](https://christopherscholz.github.io/story-as-code-spec/)
 
+<!-- content-start -->
 > Declarative YAML specification for defining fictional worlds as temporal graphs and deriving narratives from them.
 
 ## What is Story as Code?
@@ -88,13 +89,14 @@ formats/                     # Output format definitions
 derivations/                 # Generated narrative content
 ```
 
-## Specification
-
-Read the full specification: **[docs/spec.md](docs/spec.md)** | **[Online Documentation](https://christopherscholz.github.io/story-as-code-spec/)**
-
 ## Status
 
 This specification is in **Draft v0.1.0**. The core concepts are defined but subject to change. Feedback and contributions are welcome.
+<!-- content-end -->
+
+## Documentation
+
+Read the full documentation at **[christopherscholz.github.io/story-as-code-spec](https://christopherscholz.github.io/story-as-code-spec/)**.
 
 ## Contributing
 
@@ -102,4 +104,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for how to participate in the development
 
 ## License
 
-This project is licensed under the Apache License 2.0 — see the [LICENSE](LICENSE) file for details.
+Apache License 2.0 — see [LICENSE](LICENSE).

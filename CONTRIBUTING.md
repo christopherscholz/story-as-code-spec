@@ -1,5 +1,6 @@
 # Contributing to Story as Code Spec
 
+<!-- contributing-start -->
 Thank you for your interest in contributing to the Story as Code specification! This document explains how to participate.
 
 ## How to Contribute
@@ -60,3 +61,4 @@ Changes to the core specification (`docs/spec.md`) require:
 ## Code of Conduct
 
 This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). By participating, you agree to uphold this code.
+<!-- contributing-end -->
