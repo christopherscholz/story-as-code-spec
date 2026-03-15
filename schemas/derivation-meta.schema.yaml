@@ -6,7 +6,6 @@ $schema: "https://story-as-code.dev/schemas/derivation-meta/v0.1.0"
 type: object
 required:
   - id
-  - derived_from_commit
   - derived_at
   - lens
   - format
@@ -17,9 +16,9 @@ properties:
     type: string
     description: "Derivation identifier"
 
-  derived_from_commit:
+  source_version:
     type: string
-    description: "Git commit hash of the graph state used"
+    description: "Version or identifier of the graph state used for this derivation"
 
   derived_at:
     type: string
@@ -87,7 +86,8 @@ properties:
           - BROKEN
       last_checked:
         type: string
-        description: "Commit hash of last validation"
+        format: date-time
+        description: "Timestamp of last validation"
       issues:
         type: array
         items:

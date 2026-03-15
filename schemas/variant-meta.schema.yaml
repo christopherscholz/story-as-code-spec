@@ -1,8 +1,8 @@
-# Story as Code – Git Branch Metadata Schema
-# Defines the structure of .gitbranchmeta/*.yaml files
+# Story as Code – Variant Metadata Schema
+# Defines the structure of variant metadata files for parallel world versions
 # Spec Version: 0.1.0
 
-$schema: "https://story-as-code.dev/schemas/git-branch-meta/v0.1.0"
+$schema: "https://story-as-code.dev/schemas/variant-meta/v0.1.0"
 type: object
 required:
   - type
@@ -17,26 +17,26 @@ properties:
       - FORK
       - COLLAB
     description: >
-      CANON: Main branch, the accepted truth.
+      CANON: Primary version, the accepted truth.
       SPECULATIVE: "What if" exploration.
       RETCON: Retroactive change to established canon.
       FORK: Independent version by another author.
       COLLAB: Collaborator working on a section.
 
-  branch_point:
+  parent_variant:
     type: string
-    description: "Git commit hash where this branch diverged"
+    description: "Identifier of the variant this one diverged from"
 
   description:
     type: string
-    description: "Human-readable description of the branch's purpose"
+    description: "Human-readable description of this variant's purpose"
 
   affects_frames:
     type: array
     items:
       type: string
       pattern: "^frame_"
-    description: "Temporal frames affected by this branch"
+    description: "Temporal frames affected by this variant"
 
   author:
     type: string

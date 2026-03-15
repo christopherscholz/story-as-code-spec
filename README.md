@@ -5,21 +5,20 @@
 [![GitHub Pages](https://img.shields.io/badge/Docs-GitHub_Pages-brightgreen.svg)](https://christopherscholz.github.io/story-as-code-spec/)
 
 <!-- content-start -->
-> Declarative YAML specification for defining fictional worlds as temporal graphs and deriving narratives from them.
+> Declarative YAML specification for defining worlds as temporal graphs and deriving outputs from them.
 
 ## What is Story as Code?
 
-Story as Code treats fictional worlds as **source code** — structured, versioned, and compilable. Instead of writing narratives directly, you declare a world graph of characters, locations, events, and their relationships. Narratives are then **derived** from this graph through lenses, arcs, and formats.
+Story as Code treats worlds as **source code** — structured, versioned, and compilable. Instead of writing stories directly, you declare a world graph of characters, locations, events, and their relationships. Outputs are then **derived** from this graph through lenses, arcs, and output formats — e.g. tweets, short stories, comic panels, books, screenplays, and more.
 
-Think of it like a compiler: the world graph is your source, the narrative is your compiled output.
+Think of it like a compiler: the world graph is your source, the output is your compiled result.
 
 ### Core Principles
 
-- **Git-native** — Worlds are Git repositories with semantic commit conventions
-- **Declarative** — The graph declares what exists and when; narratives are derived, never primary
+- **Declarative** — The graph declares what exists and when; outputs are derived, never primary
 - **Temporally rich** — Time is graph topology, supporting branches, loops, and retrocausality
 - **Schema-flexible** — The type system is extensible for custom world rules
-- **Format-agnostic** — Same world can produce prose, screenplays, comics, audio, or interactive narratives
+- **Format-agnostic** — Same world can produce tweets, prose, screenplays, comics, audio, or interactive experiences
 
 ## Key Concepts
 
@@ -30,8 +29,8 @@ Think of it like a compiler: the world graph is your source, the narrative is yo
 | **Frames** | Temporal contexts with different topologies (linear, branching, cyclical) |
 | **Lenses** | Narrative perspective configurations — who tells the story, how, and what they know |
 | **Arcs** | Dramatic structure definitions with milestones and conditions |
-| **Formats** | Output structure (novel, screenplay, comic) with pacing rules |
-| **Derivations** | Compiled narrative outputs linked back to the graph |
+| **Formats** | Output format definitions (tweet, short story, comic panel, book, screenplay, ...) with pacing rules |
+| **Derivations** | Compiled outputs linked back to the graph |
 
 ## Quick Start
 
@@ -86,7 +85,7 @@ constraints/                 # World rules
 lenses/                      # Narrative perspective configs
 arcs/                        # Story arc definitions
 formats/                     # Output format definitions
-derivations/                 # Generated narrative content
+derivations/                 # Generated output content
 ```
 
 ## Status

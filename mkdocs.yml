@@ -1,5 +1,5 @@
 site_name: Story as Code Spec
-site_description: Declarative YAML specification for defining fictional worlds as temporal graphs and deriving narratives from them
+site_description: Declarative YAML specification for defining worlds as temporal graphs and deriving outputs from them
 site_url: https://christopherscholz.github.io/story-as-code-spec/
 repo_url: https://github.com/christopherscholz/story-as-code-spec
 repo_name: christopherscholz/story-as-code-spec
@@ -52,7 +52,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Schema: schema/
+  - Schemas: schemas/
   - Contributing: contributing.md
   - Code of Conduct: code-of-conduct.md
   - License: license.md
