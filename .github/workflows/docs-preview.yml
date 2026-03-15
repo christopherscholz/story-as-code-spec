@@ -1,0 +1,49 @@
+name: Docs PR Preview
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+      - "README.md"
+      - "CONTRIBUTING.md"
+      - "CODE_OF_CONDUCT.md"
+      - "LICENSE"
+      - "schemas/**"
+      - "requirements.txt"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: preview-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - if: github.event.action != 'closed'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - if: github.event.action != 'closed'
+        name: Install MkDocs Material and plugins
+        run: pip install -r requirements.txt
+
+      - if: github.event.action != 'closed'
+        name: Build site
+        run: mkdocs build
+
+      - uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./site/
