@@ -1,0 +1,4 @@
+# Default owner for everything in the repo.
+# Activate "Require review from Code Owners" in branch protection
+# once a second maintainer joins the project.
+* @christopherscholz
