@@ -1,0 +1,112 @@
+# Story as Code – Story Arc Schema
+# Defines the structure of story arc files
+# Spec Version: 0.1.0
+
+$schema: "https://story-as-code.dev/schemas/arc/v0.1.0"
+type: object
+required:
+  - id
+  - name
+  - milestones
+
+properties:
+  id:
+    type: string
+    pattern: "^arc_"
+    description: "Unique arc identifier"
+
+  name:
+    type: string
+    description: "Human-readable arc name"
+
+  milestones:
+    type: array
+    items:
+      $ref: "#/$defs/Milestone"
+
+  interleaves_with:
+    type: array
+    items:
+      type: string
+      pattern: "^arc_"
+    description: "Other arcs running simultaneously"
+
+  conflict_points:
+    type: array
+    items:
+      type: object
+      properties:
+        at:
+          type: string
+          pattern: "^ms_"
+        with:
+          type: string
+          description: "arc_id.milestone_id"
+        tension_type:
+          type: string
+          enum:
+            - OPPOSED_GOALS
+            - SHARED_RESOURCE
+            - MUTUAL_DEPENDENCY
+            - IRONIC_PARALLEL
+
+$defs:
+  Milestone:
+    type: object
+    required:
+      - id
+      - position
+      - name
+      - graph_conditions
+    properties:
+      id:
+        type: string
+        pattern: "^ms_"
+        description: "Unique milestone identifier within the arc"
+      position:
+        type: string
+        description: "Range within the story (0.0-1.0), e.g., '0.15-0.30'"
+      name:
+        type: string
+        description: "Human-readable milestone name"
+      graph_conditions:
+        type: array
+        items:
+          $ref: "#/$defs/GraphCondition"
+      emotional_target:
+        type: object
+        properties:
+          valence:
+            type: number
+            minimum: -1.0
+            maximum: 1.0
+          arousal:
+            type: number
+            minimum: 0.0
+            maximum: 1.0
+      tension:
+        type: string
+        enum:
+          - LOW
+          - RISING
+          - HIGH
+          - MAXIMUM
+          - FALLING
+          - RESOLVED
+      depends_on:
+        type: array
+        items:
+          type: string
+          pattern: "^ms_"
+      generates:
+        type: array
+        items:
+          type: object
+          description: "New graph elements this milestone introduces"
+
+  GraphCondition:
+    type: object
+    description: >
+      Declarative assertion about graph state.
+      Supported condition types: edge_exists, edge_not_exists, node_state, OR, AND, NOT
+    additionalProperties: true

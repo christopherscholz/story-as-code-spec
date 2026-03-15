@@ -51,7 +51,6 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Specification: spec.md
   - Contributing: contributing.md
   - Code of Conduct: code-of-conduct.md
   - License: license.md

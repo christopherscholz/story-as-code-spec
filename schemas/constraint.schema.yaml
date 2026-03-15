@@ -1,0 +1,48 @@
+# Story as Code – Constraint Schema
+# Defines the structure of constraint (world rule) files
+# Spec Version: 0.1.0
+
+$schema: "https://story-as-code.dev/schemas/constraint/v0.1.0"
+type: object
+required:
+  - id
+  - name
+  - rule
+  - severity
+
+properties:
+  id:
+    type: string
+    pattern: "^constraint_"
+    description: "Unique constraint identifier"
+
+  name:
+    type: string
+    description: "Human-readable rule name"
+
+  schema:
+    type: string
+    pattern: "^schema_"
+    description: "Schema this constraint belongs to"
+
+  rule:
+    type: string
+    description: >
+      Constraint expression using the declarative query language.
+      Syntax: FOR node IN nodes WHERE condition: assertion
+      Supports: COUNT, edges, nodes, GROUP BY, comparison operators
+
+  severity:
+    type: string
+    enum:
+      - ERROR
+      - WARNING
+      - INFO
+    description: >
+      ERROR: blocks commit.
+      WARNING: flags issue but allows commit.
+      INFO: suggestion only.
+
+  on_violation:
+    type: string
+    description: "Human-readable message template for violations. Supports {node.name}, {count} placeholders."

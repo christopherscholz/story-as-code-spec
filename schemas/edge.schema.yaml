@@ -1,0 +1,115 @@
+# Story as Code – Edge Schema
+# Defines the structure of edge files (relationships between nodes)
+# Spec Version: 0.1.0
+
+$schema: "https://story-as-code.dev/schemas/edge/v0.1.0"
+type: object
+required:
+  - id
+  - type
+  - source
+  - target
+  - valid_in
+
+properties:
+  id:
+    type: string
+    pattern: "^edge_[a-z0-9_]+$"
+    description: "Unique identifier. Convention: edge_{short_hash}"
+
+  type:
+    type: string
+    enum:
+      - RELATIONSHIP
+      - ACTION
+      - SPATIAL
+      - KNOWLEDGE
+      - MEMBERSHIP
+    description: "Edge type. Can be extended by custom schemas."
+
+  subtype:
+    type: string
+    description: >
+      Specific relationship subtype. Built-in subtypes include:
+      RELATIONSHIP: LOVES, HATES, TRUSTS, FEARS, SERVES, MENTORS, RIVALS
+      ACTION: CREATED, DESTROYED, VISITED, STOLE, GAVE, KILLED, SAVED
+      SPATIAL: LOCATED_AT, PART_OF, CONTAINS, ADJACENT_TO
+      KNOWLEDGE: KNOWS, KNOWS_ABOUT, LEARNED, DISCOVERED, FORGOT
+      MEMBERSHIP: MEMBER_OF, LEADS, FOUNDED, EXPELLED_FROM
+
+  source:
+    type: string
+    description: "Source node ID"
+
+  target:
+    type: string
+    description: "Target node ID"
+
+  valid_in:
+    type: array
+    items:
+      $ref: "#/$defs/TemporalScope"
+    description: "When this edge exists (frame + time range)"
+
+  properties:
+    type: object
+    description: "Weight, emotional valence, cause, etc."
+    additionalProperties: true
+    properties:
+      weight:
+        type: number
+        minimum: 0.0
+        maximum: 1.0
+      emotional:
+        type: object
+        properties:
+          valence:
+            type: number
+            minimum: -1.0
+            maximum: 1.0
+          arousal:
+            type: number
+            minimum: 0.0
+            maximum: 1.0
+      cause:
+        type: string
+        description: "Node ID of the event that caused this edge"
+
+  known_by:
+    type: array
+    items:
+      type: string
+    description: "Character node IDs that know about this edge. Empty = public knowledge"
+
+  referenced_in:
+    type: array
+    items:
+      $ref: "#/$defs/Reference"
+    description: "Derivations that reference this edge (auto-populated)"
+
+$defs:
+  TemporalScope:
+    type: object
+    required:
+      - frame
+    properties:
+      frame:
+        type: string
+        pattern: "^frame_"
+        description: "Temporal frame ID"
+      from:
+        type: string
+        pattern: "^T\\d+$"
+        description: "Start time point. null = since the beginning of the frame"
+      to:
+        type: string
+        pattern: "^T\\d+$"
+        description: "End time point. null = still active / ongoing"
+
+  Reference:
+    type: object
+    properties:
+      derivation_id:
+        type: string
+      file:
+        type: string
