@@ -20,4 +20,8 @@ jobs:
         run: pip install yamllint
 
       - name: Lint YAML files
-        run: yamllint -d relaxed schemas/ mkdocs.yml .github/
+        run: |
+          FILES=$(find . -name "*.yml" -o -name "*.yaml" | grep -v "^./.git/" | grep -v "^./site/")
+          if [ -n "$FILES" ]; then
+            echo "$FILES" | xargs yamllint -d relaxed
+          fi
