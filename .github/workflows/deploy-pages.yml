@@ -2,21 +2,12 @@ name: Deploy Docs to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - "docs/**"
-      - "mkdocs.yml"
-      - "README.md"
-      - "CONTRIBUTING.md"
-      - "CODE_OF_CONDUCT.md"
-      - "LICENSE"
-      - "schemas/**"
-      - "requirements.txt"
+    tags: ['v*']
+    branches: [main]
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -25,33 +16,88 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Install MkDocs Material and plugins
-        run: pip install -r requirements.txt
-
-      - name: Build site
-        run: mkdocs build
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: site/
-
   deploy:
-    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Configure git for mike
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Determine version
+        id: version
+        run: |
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+            VERSION="${GITHUB_REF#refs/tags/v}"
+            echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+            echo "alias=latest" >> "$GITHUB_OUTPUT"
+            echo "is_tag=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=dev" >> "$GITHUB_OUTPUT"
+            echo "alias=" >> "$GITHUB_OUTPUT"
+            echo "is_tag=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # mike deploys versioned docs to the gh-pages branch
+      - name: Deploy versioned docs with mike
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          ALIAS="${{ steps.version.outputs.alias }}"
+
+          if [ -n "$ALIAS" ]; then
+            mike deploy --push --update-aliases "$VERSION" "$ALIAS"
+            mike set-default latest --push
+          else
+            mike deploy --push "$VERSION"
+          fi
+
+      # For tagged releases: add raw schema files to gh-pages
+      - name: Add schemas to gh-pages
+        if: steps.version.outputs.is_tag == 'true'
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+
+          # Save schemas from main before switching branches
+          mkdir -p /tmp/schemas
+          cp schemas/*.schema.yaml /tmp/schemas/
+
+          # Switch to gh-pages to add schema files
+          git checkout gh-pages
+
+          mkdir -p "schemas/v${VERSION}"
+          cp /tmp/schemas/*.schema.yaml "schemas/v${VERSION}/"
+
+          git add "schemas/v${VERSION}/"
+          git commit -m "Add raw schemas for v${VERSION}"
+          git push origin gh-pages
+
+      # Checkout gh-pages content and deploy via GitHub Actions Pages
+      - name: Prepare pages artifact
+        run: |
+          git checkout gh-pages
+          mkdir -p _site
+          # Copy everything except git metadata
+          rsync -a --exclude='.git' --exclude='_site' . _site/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site/
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

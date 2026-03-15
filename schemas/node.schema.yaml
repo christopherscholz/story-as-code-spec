@@ -2,7 +2,7 @@
 # Defines the structure of node files (characters, locations, objects, events, concepts)
 # Spec Version: 0.1.0
 
-$schema: "https://story-as-code.dev/schemas/node/v0.1.0"
+$schema: "https://story-as-code.dev/schemas/v0.1.0/node.schema.yaml"
 type: object
 required:
   - id

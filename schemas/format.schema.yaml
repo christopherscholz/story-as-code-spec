@@ -2,7 +2,7 @@
 # Defines the structure of output format files
 # Spec Version: 0.1.0
 
-$schema: "https://story-as-code.dev/schemas/format/v0.1.0"
+$schema: "https://story-as-code.dev/schemas/v0.1.0/format.schema.yaml"
 type: object
 required:
   - id
