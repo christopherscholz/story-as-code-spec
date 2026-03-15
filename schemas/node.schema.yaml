@@ -54,9 +54,10 @@ properties:
       type: string
     description: "Free-form tags for filtering and organization"
 
-  created_at_commit:
+  created_at:
     type: string
-    description: "Git commit hash when this node was first created (auto-populated)"
+    format: date-time
+    description: "Timestamp when this node was first created (auto-populated)"
 
 $defs:
   NodeState:
