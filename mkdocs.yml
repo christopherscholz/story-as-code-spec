@@ -32,6 +32,7 @@ theme:
 plugins:
   - search
   - include-markdown
+  - literate-nav
   - schema_reader:
       include:
         - "schemas"
@@ -51,19 +52,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Schema:
-      - Core: schema/schema_core.md
-      - Meta Schema: schema/schema.md
-      - World: schema/world.md
-      - Node: schema/node.md
-      - Edge: schema/edge.md
-      - Frame: schema/frame.md
-      - Arc: schema/arc.md
-      - Lens: schema/lens.md
-      - Format: schema/format.md
-      - Constraint: schema/constraint.md
-      - Derivation Meta: schema/derivation-meta.md
-      - Git Branch Meta: schema/git-branch-meta.md
+  - Schema: schema/
   - Contributing: contributing.md
   - Code of Conduct: code-of-conduct.md
   - License: license.md
