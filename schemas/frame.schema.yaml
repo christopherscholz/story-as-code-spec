@@ -1,0 +1,109 @@
+# Story as Code – Temporal Frame Schema
+# Defines the structure of temporal frame files
+# Spec Version: 0.1.0
+
+$schema: "https://story-as-code.dev/schemas/frame/v0.1.0"
+type: object
+required:
+  - id
+  - topology
+
+properties:
+  id:
+    type: string
+    pattern: "^frame_"
+    description: "Unique frame identifier"
+
+  topology:
+    type: string
+    enum:
+      - LINEAR
+      - BRANCHING
+      - CYCLICAL
+      - RETROCAUSAL
+      - SUBJECTIVE
+      - ENTROPIC
+    description: >
+      LINEAR: Standard sequential time.
+      BRANCHING: Diverged from another frame.
+      CYCLICAL: Time loop with iterations.
+      RETROCAUSAL: Effects in the past of another frame.
+      SUBJECTIVE: Time as experienced by a specific character.
+      ENTROPIC: Degrading time allowing contradictions.
+
+  parent_frame:
+    type: string
+    pattern: "^frame_"
+    description: "Parent frame ID for nested time contexts"
+
+  branch_origin:
+    type: string
+    description: "Event node ID where this frame branched from another"
+
+  loop_count:
+    type: integer
+    minimum: 1
+    description: "For CYCLICAL frames: which iteration"
+
+  observer:
+    type: string
+    pattern: "^char_"
+    description: "For SUBJECTIVE frames: character node experiencing this time"
+
+  entropy_factor:
+    type: number
+    minimum: 0.0
+    maximum: 1.0
+    description: "High values allow intentional inconsistencies"
+
+  time_mapping:
+    type: object
+    description: "Maps T-values to narrative time descriptions"
+    additionalProperties:
+      type: string
+
+  connections:
+    type: array
+    items:
+      $ref: "#/$defs/FrameConnection"
+
+$defs:
+  FrameConnection:
+    type: object
+    required:
+      - type
+    properties:
+      type:
+        type: string
+        enum:
+          - BRANCHES_INTO
+          - BRANCHES_FROM
+          - RECEIVES_RETROCAUSAL
+          - SENDS_RETROCAUSAL
+          - LOOPS_BACK
+          - SUBJECTIVE_OF
+      target:
+        type: string
+        pattern: "^frame_"
+      source:
+        type: string
+        pattern: "^frame_"
+      at:
+        type: string
+        pattern: "^T\\d+$"
+      cause:
+        type: string
+        description: "Event node ID that triggered this connection"
+      affects_range:
+        type: array
+        items:
+          type: string
+          pattern: "^T\\d+$"
+        minItems: 2
+        maxItems: 2
+      status:
+        type: string
+        enum:
+          - PENDING
+          - ARRIVED
+          - RESOLVED

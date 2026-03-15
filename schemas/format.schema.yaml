@@ -1,0 +1,151 @@
+# Story as Code – Format Schema
+# Defines the structure of output format files
+# Spec Version: 0.1.0
+
+$schema: "https://story-as-code.dev/schemas/format/v0.1.0"
+type: object
+required:
+  - id
+  - output_type
+  - structure
+
+properties:
+  id:
+    type: string
+    pattern: "^fmt_"
+    description: "Unique format identifier"
+
+  name:
+    type: string
+    description: "Human-readable format name"
+
+  output_type:
+    type: string
+    enum:
+      - TEXT
+      - SCREENPLAY
+      - COMIC
+      - AUDIO
+      - INTERACTIVE
+    description: >
+      TEXT: Prose fiction, articles, poetry.
+      SCREENPLAY: Film/TV script format.
+      COMIC: Panel descriptions with visual direction.
+      AUDIO: Narration with TTS markup.
+      INTERACTIVE: Branching narrative with choice points.
+
+  structure:
+    $ref: "#/$defs/Structure"
+
+  pacing:
+    type: object
+    description: "Pacing rules per structural level"
+    additionalProperties:
+      type: object
+      properties:
+        tension_shape:
+          type: string
+          enum:
+            - RISE_CLIMAX_RESOLVE
+            - MINI_ARC
+            - FLAT
+            - ESCALATING
+        cliffhanger_at_end:
+          type: boolean
+        end_hook:
+          type: string
+          enum:
+            - ALWAYS
+            - USUALLY
+            - SOMETIMES
+            - NEVER
+        min_graph_events:
+          type: integer
+          minimum: 0
+        max_new_nodes_introduced:
+          type: integer
+          minimum: 0
+
+  # --- Output-type-specific fields ---
+  comic:
+    type: object
+    description: "COMIC-specific settings"
+    properties:
+      panels_per_page:
+        type: integer
+      art_style_reference:
+        type: string
+      color_palette:
+        type: array
+        items:
+          type: string
+
+  audio:
+    type: object
+    description: "AUDIO-specific settings"
+    properties:
+      voice_profiles:
+        type: object
+        additionalProperties:
+          type: object
+          properties:
+            voice_id:
+              type: string
+            pitch:
+              type: string
+            speed:
+              type: number
+
+  interactive:
+    type: object
+    description: "INTERACTIVE-specific settings"
+    properties:
+      choice_points:
+        type: array
+        items:
+          type: object
+          properties:
+            at:
+              type: string
+            options:
+              type: array
+              items:
+                type: object
+                properties:
+                  label:
+                    type: string
+                  graph_effects:
+                    type: array
+                    items:
+                      type: object
+
+$defs:
+  Structure:
+    type: object
+    required:
+      - type
+    properties:
+      type:
+        type: string
+        enum:
+          - SERIES
+          - BOOK
+          - PART
+          - CHAPTER
+          - SCENE
+          - POST
+          - PANEL
+          - SEGMENT
+      count:
+        type: string
+        description: "Fixed number or range (e.g., '3' or '8-15')"
+      target_words:
+        type: string
+        description: "Word count target or range (e.g., '3000-5000')"
+      target_characters:
+        type: integer
+        description: "Character limit (e.g., 280 for tweets)"
+      children:
+        type: array
+        items:
+          $ref: "#/$defs/Structure"

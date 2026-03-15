@@ -1,0 +1,52 @@
+# Story as Code – Git Branch Metadata Schema
+# Defines the structure of .gitbranchmeta/*.yaml files
+# Spec Version: 0.1.0
+
+$schema: "https://story-as-code.dev/schemas/git-branch-meta/v0.1.0"
+type: object
+required:
+  - type
+
+properties:
+  type:
+    type: string
+    enum:
+      - CANON
+      - SPECULATIVE
+      - RETCON
+      - FORK
+      - COLLAB
+    description: >
+      CANON: Main branch, the accepted truth.
+      SPECULATIVE: "What if" exploration.
+      RETCON: Retroactive change to established canon.
+      FORK: Independent version by another author.
+      COLLAB: Collaborator working on a section.
+
+  branch_point:
+    type: string
+    description: "Git commit hash where this branch diverged"
+
+  description:
+    type: string
+    description: "Human-readable description of the branch's purpose"
+
+  affects_frames:
+    type: array
+    items:
+      type: string
+      pattern: "^frame_"
+    description: "Temporal frames affected by this branch"
+
+  author:
+    type: string
+    description: "Author or collaborator name"
+
+  merge_strategy:
+    type: string
+    enum:
+      - PICK_A
+      - PICK_B
+      - FORK_FRAME
+      - MANUAL
+    description: "Preferred conflict resolution strategy"

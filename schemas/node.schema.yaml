@@ -1,0 +1,80 @@
+# Story as Code – Node Schema
+# Defines the structure of node files (characters, locations, objects, events, concepts)
+# Spec Version: 0.1.0
+
+$schema: "https://story-as-code.dev/schemas/node/v0.1.0"
+type: object
+required:
+  - id
+  - type
+
+properties:
+  id:
+    type: string
+    pattern: "^(char|loc|obj|evt|con)_[a-z0-9_]+$"
+    description: "Unique identifier. Convention: {type_prefix}_{name}"
+
+  type:
+    type: string
+    enum:
+      - CHARACTER
+      - LOCATION
+      - OBJECT
+      - EVENT
+      - CONCEPT
+    description: "Node type. Can be extended by custom schemas."
+
+  schema:
+    type: string
+    pattern: "^schema_"
+    description: "Schema ID if type comes from a custom schema"
+
+  static:
+    type: object
+    description: "Properties that rarely change"
+    properties:
+      name_variants:
+        type: array
+        items:
+          type: string
+        description: "All names, aliases, pronouns for tagging resolution"
+      category:
+        type: string
+        description: "Free-form categorization (e.g., protagonist, antagonist)"
+
+  states:
+    type: array
+    items:
+      $ref: "#/$defs/NodeState"
+    description: "Temporal states of this node"
+
+  tags:
+    type: array
+    items:
+      type: string
+    description: "Free-form tags for filtering and organization"
+
+  created_at_commit:
+    type: string
+    description: "Git commit hash when this node was first created (auto-populated)"
+
+$defs:
+  NodeState:
+    type: object
+    required:
+      - frame
+      - at
+      - properties
+    properties:
+      frame:
+        type: string
+        pattern: "^frame_"
+        description: "ID of the temporal frame this state belongs to"
+      at:
+        type: string
+        pattern: "^T\\d+$"
+        description: "Time point identifier (e.g., T0, T12, T100)"
+      properties:
+        type: object
+        description: "Key-value pairs. Keys are free-form or schema-defined"
+        additionalProperties: true

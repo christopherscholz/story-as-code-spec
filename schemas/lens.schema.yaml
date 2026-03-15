@@ -1,0 +1,221 @@
+# Story as Code – Lens Schema
+# Defines the structure of lens (narrative perspective) files
+# Spec Version: 0.1.0
+
+$schema: "https://story-as-code.dev/schemas/lens/v0.1.0"
+type: object
+required:
+  - id
+  - perspective
+
+properties:
+  id:
+    type: string
+    pattern: "^lens_"
+    description: "Unique lens identifier"
+
+  type:
+    type: string
+    enum:
+      - SIMPLE
+      - COMPOSITE
+    default: SIMPLE
+
+  # --- Perspective (§5.1) ---
+  perspective:
+    type: object
+    required:
+      - type
+    properties:
+      type:
+        type: string
+        enum:
+          - CHARACTER_BOUND
+          - OMNISCIENT
+          - OBJECTIVE
+          - CUSTOM
+      anchor:
+        type: string
+        description: "Node ID for CHARACTER_BOUND perspective"
+      person:
+        type: string
+        enum:
+          - FIRST
+          - SECOND
+          - THIRD
+
+  # --- Knowledge Filter (§5.2) ---
+  knowledge:
+    type: object
+    properties:
+      mode:
+        type: string
+        enum:
+          - OMNISCIENT
+          - CHARACTER_KNOWLEDGE
+          - PUBLIC_ONLY
+      source:
+        type: string
+        description: "Path to character's knowledge array"
+      include_subconscious:
+        type: boolean
+        default: false
+      include_wrong_beliefs:
+        type: boolean
+        default: false
+
+  # --- Temporal Position (§5.3) ---
+  temporal_position:
+    type: object
+    properties:
+      type:
+        type: string
+        enum:
+          - IN_MOMENT
+          - RETROSPECTIVE
+          - PROPHETIC
+      narrating_from:
+        type: string
+        pattern: "^T\\d+$"
+        description: "For RETROSPECTIVE: time point from which the narrator looks back"
+      knows_future_until:
+        type: string
+        pattern: "^T\\d+$"
+
+  # --- Emotional Filter (§5.4) ---
+  emotional:
+    type: object
+    properties:
+      source:
+        type: string
+        enum:
+          - NEUTRAL
+          - CHARACTER_STATE
+          - CUSTOM
+      bias:
+        type: object
+        properties:
+          toward:
+            type: array
+            items:
+              type: string
+            description: "Node IDs whose relationships color the narrative"
+          bias_strength:
+            type: number
+            minimum: 0.0
+            maximum: 1.0
+
+  # --- Voice (§5.5) ---
+  voice:
+    type: object
+    properties:
+      vocabulary_level:
+        type: string
+        enum:
+          - LITERARY
+          - FORMAL
+          - COLLOQUIAL
+          - ARCHAIC
+          - MINIMAL
+      sentence_tendency:
+        type: string
+        enum:
+          - FLOWING
+          - SHORT_STACCATO
+          - COMPLEX_NESTED
+      inner_monologue:
+        type: boolean
+        default: true
+      metaphor_density:
+        type: string
+        enum:
+          - NONE
+          - LOW
+          - MEDIUM
+          - HIGH
+      verbal_tics:
+        type: array
+        items:
+          type: string
+      language_rendering:
+        type: object
+        properties:
+          mode:
+            type: string
+            enum:
+              - NATURALISTIC
+              - TRANSLATED_WITH_MARKERS
+              - INLINE_CONSTRUCTED
+              - FULL_CONLANG
+
+  # --- Reliability (§5.6) ---
+  reliability:
+    type: object
+    properties:
+      level:
+        type: string
+        enum:
+          - RELIABLE
+          - SELECTIVE
+          - UNRELIABLE
+          - LYING
+      omits:
+        type: array
+        items:
+          type: string
+        description: "Event IDs that this narrator skips or downplays"
+      distorts:
+        type: array
+        items:
+          type: object
+          properties:
+            node:
+              type: string
+            direction:
+              type: string
+              enum:
+                - POSITIVE
+                - NEGATIVE
+
+  # --- Composite Lens (§5.7) ---
+  layers:
+    type: array
+    description: "For COMPOSITE lenses: layered lens configuration"
+    items:
+      type: object
+      required:
+        - lens
+        - role
+      properties:
+        lens:
+          type: string
+          pattern: "^lens_"
+        role:
+          type: string
+          enum:
+            - BASE
+            - DIP
+            - OVERRIDE
+        trigger:
+          type: object
+          properties:
+            when:
+              type: string
+            node:
+              type: string
+
+  alternation:
+    type: object
+    description: "For COMPOSITE lenses: alternation configuration"
+    properties:
+      mode:
+        type: string
+        enum:
+          - PER_SCENE
+          - PER_CHAPTER
+          - FLUID
+      sequence:
+        type: array
+        items:
+          type: string
+          pattern: "^lens_"

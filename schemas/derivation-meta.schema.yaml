@@ -1,0 +1,154 @@
+# Story as Code – Derivation Meta Schema
+# Defines the structure of .meta.yaml files (validation contracts)
+# Spec Version: 0.1.0
+
+$schema: "https://story-as-code.dev/schemas/derivation-meta/v0.1.0"
+type: object
+required:
+  - id
+  - derived_from_commit
+  - derived_at
+  - lens
+  - format
+  - dependencies
+
+properties:
+  id:
+    type: string
+    description: "Derivation identifier"
+
+  derived_from_commit:
+    type: string
+    description: "Git commit hash of the graph state used"
+
+  derived_at:
+    type: string
+    format: date-time
+    description: "Timestamp of generation"
+
+  lens:
+    type: string
+    pattern: "^lens_"
+    description: "Lens ID used"
+
+  format:
+    type: string
+    pattern: "^fmt_"
+    description: "Format ID used"
+
+  arc_position:
+    type: object
+    properties:
+      arc:
+        type: string
+        pattern: "^arc_"
+      milestone:
+        type: string
+        pattern: "^ms_"
+      progress:
+        type: number
+        minimum: 0.0
+        maximum: 1.0
+
+  dependencies:
+    type: object
+    properties:
+      nodes:
+        type: array
+        items:
+          $ref: "#/$defs/NodeDependency"
+      edges:
+        type: array
+        items:
+          $ref: "#/$defs/EdgeDependency"
+      reveals:
+        type: array
+        items:
+          $ref: "#/$defs/RevealDependency"
+
+  continuity:
+    type: object
+    properties:
+      previous:
+        type: string
+        description: "ID of the previous scene's derivation"
+      next:
+        type: string
+        description: "ID of the next scene's derivation"
+
+  validation:
+    type: object
+    properties:
+      status:
+        type: string
+        enum:
+          - VALID
+          - DRIFT
+          - BROKEN
+      last_checked:
+        type: string
+        description: "Commit hash of last validation"
+      issues:
+        type: array
+        items:
+          type: object
+          properties:
+            type:
+              type: string
+            severity:
+              type: string
+              enum: [ERROR, WARNING, INFO]
+            message:
+              type: string
+            affected_node:
+              type: string
+
+$defs:
+  NodeDependency:
+    type: object
+    required:
+      - id
+      - must_exist
+    properties:
+      id:
+        type: string
+      must_exist:
+        type: boolean
+      required_state:
+        type: object
+        properties:
+          at:
+            type: object
+            properties:
+              frame:
+                type: string
+              T:
+                type: integer
+          properties:
+            type: object
+            additionalProperties: true
+
+  EdgeDependency:
+    type: object
+    required:
+      - id
+      - must_exist
+    properties:
+      id:
+        type: string
+      must_exist:
+        type: boolean
+      required:
+        type: object
+        additionalProperties: true
+
+  RevealDependency:
+    type: object
+    properties:
+      node:
+        type: string
+      revealed_to:
+        type: string
+      at:
+        type: string
+        pattern: "^T\\d+$"
