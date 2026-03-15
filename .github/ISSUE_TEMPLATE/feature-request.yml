@@ -1,0 +1,18 @@
+name: Feature Request
+description: Suggest a new feature or schema extension
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use Case
+      description: Describe the story or world you are trying to model and what is currently not possible.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Feature Proposal
+      description: What should be added to the spec or schema system?
+    validations:
+      required: true

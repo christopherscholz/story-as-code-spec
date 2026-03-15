@@ -1,0 +1,40 @@
+name: Spec Change Proposal
+description: Propose a change or addition to the specification
+labels: ["spec-change"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to propose changes to the Story as Code specification.
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: What problem does this change solve? What use case does it address?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed Change
+      description: Describe the change you are proposing. Include YAML examples if applicable.
+      render: yaml
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: What other approaches did you consider?
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Affected Areas
+      options:
+        - label: Core types (node, edge, frame)
+        - label: Schema system
+        - label: Lens / perspective
+        - label: Arc / dramatic structure
+        - label: Format / output
+        - label: Derivation / tagging
+        - label: Git conventions
