@@ -196,6 +196,10 @@ properties:
             - BASE
             - DIP
             - OVERRIDE
+        priority:
+          type: integer
+          minimum: 1
+          description: "Precedence order — higher value takes priority on conflict"
         trigger:
           type: object
           properties:
@@ -219,3 +223,69 @@ properties:
         items:
           type: string
         description: "Lens IDs to alternate between"
+      trigger:
+        type: string
+        enum:
+          - SCENE_BREAK
+          - POV_TAG
+          - TIME_SHIFT
+        description: "Event that causes a lens switch in FLUID mode"
+
+  # --- Composition Rules (§5.8) ---
+  composition:
+    type: object
+    description: "For COMPOSITE lenses: defines how conflicts between sub-lenses are resolved"
+    properties:
+      mode:
+        type: string
+        enum:
+          - LAYERED
+          - ALTERNATING
+          - BLENDED
+        description: "Overall composition strategy"
+      conflict_resolution:
+        type: object
+        description: "Per-dimension rules for resolving contradictions between sub-lenses"
+        properties:
+          knowledge:
+            type: string
+            enum:
+              - UNION
+              - INTERSECTION
+              - PRIORITY_WINS
+            default: PRIORITY_WINS
+            description: >
+              UNION — narrator knows everything any sub-lens knows.
+              INTERSECTION — narrator knows only what all sub-lenses share.
+              PRIORITY_WINS — higher-priority lens decides visibility.
+          emotion:
+            type: string
+            enum:
+              - BLEND
+              - PRIORITY_WINS
+              - DOMINANT
+            default: BLEND
+            description: >
+              BLEND — emotional filters are averaged/mixed.
+              PRIORITY_WINS — higher-priority lens sets the emotional tone.
+              DOMINANT — the strongest emotional state wins regardless of priority.
+          voice:
+            type: string
+            enum:
+              - PRIORITY_WINS
+              - ALTERNATING
+            default: PRIORITY_WINS
+            description: >
+              PRIORITY_WINS — higher-priority lens dictates voice.
+              ALTERNATING — voice switches with the active sub-lens.
+          reliability:
+            type: string
+            enum:
+              - LEAST_RELIABLE
+              - MOST_RELIABLE
+              - PRIORITY_WINS
+            default: PRIORITY_WINS
+            description: >
+              LEAST_RELIABLE — composite inherits the least reliable sub-lens level.
+              MOST_RELIABLE — composite inherits the most reliable sub-lens level.
+              PRIORITY_WINS — higher-priority lens sets reliability.
