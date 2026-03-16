@@ -5,7 +5,11 @@
 
 $schema: "https://story-as-code.dev/schemas/v0.4.0/constraint.schema.yaml"
 type: object
-description: "A world rule — a scoped assertion with severity that validates the world graph."
+description: >
+  A world rule — a scoped assertion with severity that validates the world graph.
+  A constraint has two parts: scope (what the rule applies to — filter by types, IDs, frames,
+  time range) and rule (the assertion that must hold for every matched element).
+  Without a scope, the rule applies globally to all elements.
 required:
   - id
   - name
@@ -41,7 +45,9 @@ properties:
 
   scope:
     type: object
-    description: "Filters which parts of the world graph this constraint applies to. Omit = applies globally"
+    description: >
+      Filters which parts of the world graph this constraint applies to.
+      Omit = applies globally to all elements.
     properties:
       node_types:
         type: array
@@ -77,3 +83,25 @@ properties:
           to:
             type: string
             description: "End time point"
+
+examples:
+  - id: no-orphan-characters
+    name: "Characters must have at least one relationship"
+    rule: "COUNT(edges) >= 1"
+    severity: WARNING
+    scope:
+      node_types: [CHARACTER]
+  - id: magic-limit
+    name: "Magic users can hold at most 3 spells"
+    rule: "COUNT(edges(type='POSSESSES', target.type='SPELL')) <= 3"
+    severity: ERROR
+    scope:
+      frames: [main]
+  - id: no-undead-before-war
+    name: "Undead cannot exist before the Great War"
+    rule: "properties.race != 'undead'"
+    severity: ERROR
+    scope:
+      node_types: [CHARACTER]
+      time_range:
+        to: "T50"

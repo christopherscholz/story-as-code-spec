@@ -47,3 +47,12 @@ properties:
       - FORK_FRAME
       - MANUAL
     description: "Preferred conflict resolution strategy"
+
+examples:
+  - type: CANON
+    description: "The primary accepted version of events"
+  - type: SPECULATIVE
+    description: "What if the hero had refused the call?"
+    parent_variant: canon
+    affects_frames: [alt-timeline]
+    merge_strategy: FORK_FRAME

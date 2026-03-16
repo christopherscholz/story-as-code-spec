@@ -1,7 +1,7 @@
 # Variant Meta Schema
 
-Defines the structure of variant metadata files for parallel world versions.
+Metadata for parallel world versions — canon, speculative, retcon, fork, or collaboration.
 
-```yaml
-{% include "../../schemas/variant-meta.schema.yaml" %}
-```
+{%
+  include-markdown "./generated/variant-meta.md"
+%}

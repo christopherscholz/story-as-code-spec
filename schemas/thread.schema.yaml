@@ -28,7 +28,10 @@ properties:
     enum:
       - THEME
       - MOTIF
-    description: "Whether this is an abstract theme or a recurring motif"
+    description: >
+      Whether this is an abstract theme or a recurring motif.
+      THEME — an abstract idea (e.g. "love conquers death", "choice vs. destiny").
+      MOTIF — a recurring symbolic element (e.g. "mirror imagery", "the number three").
 
   name:
     type: string
@@ -58,3 +61,16 @@ properties:
     items:
       type: string
     description: "Free-form tags for filtering and organization"
+
+examples:
+  - id: isolation-and-connection
+    type: THEME
+    name: "Isolation vs. Connection"
+    description: "The tension between solitude and the need for human connection."
+    appearances:
+      - beat_id: isolation
+        description: "Mara's daily solitude — isolation as comfort"
+      - beat_id: stranger-arrives
+        description: "Elara's arrival — connection as threat"
+      - beat_id: truth-revealed
+        description: "Trust replaces fear — connection as resolution"

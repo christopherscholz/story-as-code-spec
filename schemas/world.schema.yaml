@@ -42,3 +42,20 @@ properties:
     items:
       $ref: "constraint.schema.yaml"
     description: "World rules and validation constraints"
+
+examples:
+  - time_system:
+      id: earth-time
+      type: LINEAR
+      epoch: "Year 0"
+    nodes:
+      - id: hero
+        type: CHARACTER
+        static:
+          name_variants: ["The Hero"]
+    edges:
+      - id: hero-in-village
+        type: SPATIAL
+        name: located-in
+        source: hero
+        target: village

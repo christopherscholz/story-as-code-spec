@@ -1,6 +1,10 @@
 # MkDocs build output
 site/
 
+# Generated docs (build artifacts)
+docs/schemas/generated/
+docs/examples/generated/
+
 # Python
 __pycache__/
 *.pyc

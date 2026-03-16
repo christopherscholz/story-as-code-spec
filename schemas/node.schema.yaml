@@ -14,10 +14,14 @@ properties:
   id:
     type: string
     description: "Unique node identifier"
+    examples: ["hero", "village", "magic-sword"]
 
   type:
     type: string
-    description: "Node type (e.g., CHARACTER, LOCATION)"
+    description: >
+      Node type — free-form; type-specific constraints are applied by tooling
+      via type masks.
+    examples: ["CHARACTER", "LOCATION", "OBJECT", "EVENT", "CONCEPT"]
 
   static:
     type: object
@@ -28,34 +32,63 @@ properties:
         items:
           type: string
         description: "All names, aliases, pronouns for tagging resolution"
+        examples: [["Aria", "The Chosen One", "she"]]
       category:
         type: string
         description: "Free-form categorization (e.g., protagonist, antagonist)"
+        examples: ["protagonist", "antagonist", "mentor"]
 
   states:
     type: array
     items:
       $ref: "#/$defs/NodeState"
-    description: "Temporal states of this node"
+    description: >
+      Temporal states of this node. States express how a node changes over time
+      and across frames. Omit frame/at for a state that applies everywhere.
 
   tags:
     type: array
     items:
       type: string
     description: "Free-form tags for filtering and organization"
+    examples: [["magic", "royal", "quest-giver"]]
 
 $defs:
   NodeState:
     type: object
+    description: >
+      A temporal snapshot of a node's properties. Scoping rules:
+      no frame or at — applies everywhere (all frames, all times);
+      only at — applies at that time point in all frames;
+      frame + at — applies only in the specified frame at that time point.
     required:
       - properties
     properties:
       frame:
         type: string
         description: "Frame ID. Omit = applies to all frames"
+        examples: ["main", "alt-timeline"]
       at:
         type: string
         description: "Time point. Format depends on the world's time_system. Omit = always valid"
+        examples: ["T5", "2024-03-15", "Cycle-3:Phase-2"]
       properties:
         type: object
         description: "Key-value pairs. Keys are free-form or schema-defined"
+
+examples:
+  - id: hero
+    type: CHARACTER
+    static:
+      name_variants: ["Aria"]
+    states:
+      - properties:
+          mood: happy
+      - at: "T5"
+        properties:
+          mood: determined
+      - frame: alt-timeline
+        at: "T5"
+        properties:
+          mood: fearful
+    tags: ["protagonist"]

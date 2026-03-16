@@ -5,7 +5,13 @@
 
 $schema: "https://story-as-code.dev/schemas/v0.4.0/time-system.schema.yaml"
 type: object
-description: "Defines how time works in this world — its structure, epoch, and calendar."
+description: >
+  Defines how time works in this world — its structure, epoch, and calendar.
+  The spec distinguishes three time concepts: (1) the time system — the general concept of how
+  time works; (2) time points — concrete identifiers for moments in time, attached to nodes and
+  edges, whose format depends on the time system (e.g. "T0", "2024-03-15", "Cycle-3:Phase-2");
+  (3) frames — alternative timelines or branches where different nodes, edges, and constraints
+  can be valid at the same time point.
 required:
   - id
 
@@ -13,10 +19,12 @@ properties:
   id:
     type: string
     description: "Unique time system identifier"
+    examples: ["linear", "earth-calendar", "dreamworld"]
 
   name:
     type: string
     description: "Human-readable name (e.g., 'Galactic Calendar', 'Earth Time')"
+    examples: ["Galactic Calendar", "Earth Time", "Dream Sequence"]
 
   type:
     type: string
@@ -26,11 +34,18 @@ properties:
     description: >
       The fundamental nature of time points in this world.
       LINEAR — time points have a natural order; "earlier" and "later" are defined.
-      ABSTRACT — time points are labels without inherent ordering; relationships between moments are defined through the graph.
+      Suitable for real-world calendars, ISO timestamps, ordinal T-values.
+      ABSTRACT — time points are labels without inherent ordering; relationships
+      between moments are defined through the graph. Useful for worlds where
+      time is not a meaningful linear concept.
+      Cyclical time and branching timelines are expressed through frames
+      (loops via LOOPS_BACK relations, branches via parent + branches_at),
+      not through the time system type.
 
   epoch:
     type: string
     description: "Label for the origin/starting point of time (e.g., 'Year 0', 'The Founding')"
+    examples: ["Year 0", "2024-01-01", "The Founding"]
 
   calendar:
     type: object
@@ -39,3 +54,18 @@ properties:
   properties:
     type: object
     description: "Additional world-specific time properties"
+
+examples:
+  - id: linear
+    type: LINEAR
+    epoch: "Year 0"
+  - id: earth-calendar
+    type: LINEAR
+    epoch: "2024-01-01"
+    calendar:
+      months: 12
+      days_per_year: 365
+  - id: dreamworld
+    type: ABSTRACT
+    properties:
+      note: "Time has no direction here; connections define sequence"

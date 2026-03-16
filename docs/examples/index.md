@@ -1,7 +1,5 @@
 # Examples
 
-Complete, working projects that show how all schema pieces fit together end-to-end.
+Complete, working projects that show how all schema pieces fit together.
 
-| Example | Description | Concepts covered |
-|---------|-------------|-----------------|
-| [The Lighthouse Keeper's Secret](lighthouse-keepers-secret.md) | A short story with 3 characters, 3 locations, and an alternate timeline | All core schemas, `$ref` composition, temporal states, frames, lenses, arcs, formats, constraints, derivation meta |
+- [The Lighthouse Keeper's Secret](generated/the-lighthouse-keepers-secret.md) — A complete example project for the **Story as Code** specification (v0.4.0).

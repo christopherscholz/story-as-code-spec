@@ -51,8 +51,9 @@ nav:
   - Home: index.md
   - Scope & Boundaries: scope.md
   - Schemas:
-    - schemas/index.md
-    - Story (Root): schemas/story.md
+    - Overview: schemas/index.md
+    - Root Document:
+      - Story: schemas/story.md
     - World Layer:
       - World: schemas/world.md
       - Time System: schemas/time-system.md
@@ -70,8 +71,8 @@ nav:
     - Supporting:
       - Derivation Meta: schemas/derivation-meta.md
   - Examples:
-    - examples/index.md
-    - "Lighthouse Keeper\u2019s Secret": examples/lighthouse-keepers-secret.md
+    - Overview: examples/index.md
+    - "Lighthouse Keeper\u2019s Secret": examples/generated/the-lighthouse-keepers-secret.md
   - Contributing: contributing.md
   - Code of Conduct: code-of-conduct.md
   - License: license.md

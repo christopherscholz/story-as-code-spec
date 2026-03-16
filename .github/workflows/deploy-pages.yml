@@ -28,6 +28,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Generate docs
+        run: |
+          bash scripts/generate-schema-docs.sh
+          python scripts/generate-example-docs.py
+
       - name: Configure git for mike
         run: |
           git config user.name "github-actions[bot]"

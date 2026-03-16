@@ -1,7 +1,7 @@
 # Derivation Meta Schema
 
-Defines the structure of `.meta.yaml` files (validation contracts).
+Validation contracts for compiled outputs — links lens, format, and beat back to the world graph state.
 
-```yaml
-{% include "../../schemas/derivation-meta.schema.yaml" %}
-```
+{%
+  include-markdown "./generated/derivation-meta.md"
+%}
