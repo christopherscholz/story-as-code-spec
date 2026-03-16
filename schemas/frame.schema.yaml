@@ -3,9 +3,9 @@
 # Frames form a graph via parent references and relations.
 # An implicit default frame always exists and does not need to be defined.
 # Can be embedded inline in story.yaml or referenced via $ref.
-# Spec Version: 0.2.0
+# Spec Version: 0.3.0
 
-$schema: "https://story-as-code.dev/schemas/v0.2.0/frame.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.3.0/frame.schema.yaml"
 type: object
 description: "An alternative timeline or branch. Frames form a graph via parent references and relations."
 required:

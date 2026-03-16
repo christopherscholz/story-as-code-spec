@@ -4,9 +4,9 @@
 # The narrative layer never creates its own truth — it only selects, filters, and presents
 # content from the world layer.
 # Contains lenses (perspective), formats (output container), arcs (graph selection), and variants.
-# Spec Version: 0.2.0
+# Spec Version: 0.3.0
 
-$schema: "https://story-as-code.dev/schemas/v0.2.0/narrative.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.3.0/narrative.schema.yaml"
 type: object
 description: >
   The narrative layer — defines how the world is told: perspective, selection, and presentation.
