@@ -51,8 +51,9 @@ nav:
   - Home: index.md
   - Scope & Boundaries: scope.md
   - Schemas:
-    - schemas/index.md
-    - Story (Root): schemas/story.md
+    - Overview: schemas/index.md
+    - Root Document:
+      - Story: schemas/story.md
     - World Layer:
       - World: schemas/world.md
       - Time System: schemas/time-system.md
