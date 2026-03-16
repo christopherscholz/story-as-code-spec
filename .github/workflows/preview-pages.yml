@@ -48,6 +48,7 @@ jobs:
           cp -r /tmp/preview "pr-${{ github.event.number }}"
 
           git add "pr-${{ github.event.number }}"
+          git diff --cached --quiet && echo "No docs changes to preview" && exit 0
           git commit -m "Deploy preview for PR #${{ github.event.number }}"
           git push origin gh-pages
 
