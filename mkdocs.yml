@@ -52,16 +52,21 @@ nav:
   - Scope & Boundaries: scope.md
   - Schemas:
     - schemas/index.md
-    - World: schemas/world.md
-    - Node: schemas/node.md
-    - Edge: schemas/edge.md
-    - Frame: schemas/frame.md
-    - Lens: schemas/lens.md
-    - Format: schemas/format.md
-    - Arc: schemas/arc.md
-    - Constraint: schemas/constraint.md
-    - Derivation Meta: schemas/derivation-meta.md
-    - Variant Meta: schemas/variant-meta.md
+    - Story (Root): schemas/story.md
+    - World Layer:
+      - World: schemas/world.md
+      - Time System: schemas/time-system.md
+      - Node: schemas/node.md
+      - Edge: schemas/edge.md
+      - Frame: schemas/frame.md
+      - Constraint: schemas/constraint.md
+    - Narrative Layer:
+      - Lens: schemas/lens.md
+      - Format: schemas/format.md
+      - Arc: schemas/arc.md
+      - Variant Meta: schemas/variant-meta.md
+    - Supporting:
+      - Derivation Meta: schemas/derivation-meta.md
   - Contributing: contributing.md
   - Code of Conduct: code-of-conduct.md
   - License: license.md

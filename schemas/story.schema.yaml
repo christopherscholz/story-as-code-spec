@@ -1,0 +1,45 @@
+# Story as Code – Story Schema
+# Root document schema. A story.yaml is the composable root of a Story as Code project.
+# It separates into two layers: world (graph structure) and narrative (storytelling).
+# Items can be defined inline or referenced via $ref (like OpenAPI).
+# Spec Version: 0.2.0
+
+$schema: "https://story-as-code.dev/schemas/v0.2.0/story.schema.yaml"
+type: object
+description: "Root document of a Story as Code project. Composes world (what exists) and narrative (how it is told)."
+required:
+  - spec_version
+  - name
+  - world
+
+properties:
+  spec_version:
+    type: string
+    pattern: "^\\d+\\.\\d+\\.\\d+$"
+    description: "Semantic version of the Story as Code spec this story conforms to"
+
+  name:
+    type: string
+    description: "Human-readable name of the story"
+
+  settings:
+    type: object
+    properties:
+      default_language:
+        type: string
+        description: "ISO 639-1 language code"
+      embedding_model:
+        type: string
+        description: "Model identifier for semantic embeddings"
+      embedding_dimensions:
+        type: integer
+        minimum: 1
+        description: "Dimensionality of embedding vectors"
+
+  # --- World Layer ---
+  world:
+    $ref: "world.schema.yaml"
+
+  # --- Narrative Layer ---
+  narrative:
+    $ref: "narrative.schema.yaml"

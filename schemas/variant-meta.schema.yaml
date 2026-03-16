@@ -1,10 +1,11 @@
 # Story as Code – Variant Metadata Schema
-# Item schema for world.variants[] — defines parallel world version metadata.
-# Can be embedded inline in world.yaml or referenced via $ref.
-# Spec Version: 0.1.0
+# Item schema for narrative.variants[] — defines parallel world version metadata.
+# Can be embedded inline in story.yaml or referenced via $ref.
+# Spec Version: 0.2.0
 
-$schema: "https://story-as-code.dev/schemas/v0.1.0/variant-meta.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.2.0/variant-meta.schema.yaml"
 type: object
+description: "Metadata for a parallel world version — canon, speculative, retcon, fork, or collaboration."
 required:
   - type
 
