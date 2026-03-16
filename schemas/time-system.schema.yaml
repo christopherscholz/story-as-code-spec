@@ -5,7 +5,13 @@
 
 $schema: "https://story-as-code.dev/schemas/v0.4.0/time-system.schema.yaml"
 type: object
-description: "Defines how time works in this world — its structure, epoch, and calendar."
+description: >
+  Defines how time works in this world — its structure, epoch, and calendar.
+  The spec distinguishes three time concepts: (1) the time system — the general concept of how
+  time works; (2) time points — concrete identifiers for moments in time, attached to nodes and
+  edges, whose format depends on the time system (e.g. "T0", "2024-03-15", "Cycle-3:Phase-2");
+  (3) frames — alternative timelines or branches where different nodes, edges, and constraints
+  can be valid at the same time point.
 required:
   - id
 

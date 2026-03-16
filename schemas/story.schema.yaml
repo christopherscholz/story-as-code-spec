@@ -10,6 +10,9 @@ description: >
   Root document of a Story as Code project.
   Composes world (the ground truth — what exists) and narrative (the storytelling perspective — how it is told).
   The narrative layer never defines its own truth; it only selects, filters, and presents world layer content.
+  All collection properties accept arrays of items that can be defined inline or referenced via $ref
+  from external files (analogous to OpenAPI component composition).
+  The spec does not prescribe a directory layout — file organization is a tooling concern.
 required:
   - spec_version
   - name

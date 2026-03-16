@@ -23,6 +23,13 @@ properties:
     type: string
     description: "Unique format identifier"
 
+  type:
+    type: string
+    description: >
+      Output medium type (e.g. NOVEL, SCREENPLAY, COMIC, AUDIO, INTERACTIVE).
+      Free-form — not prescribed by the schema.
+    examples: ["NOVEL", "SCREENPLAY", "COMIC", "AUDIO", "INTERACTIVE"]
+
   name:
     type: string
     description: "Human-readable format name"

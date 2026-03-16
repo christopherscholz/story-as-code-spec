@@ -5,7 +5,11 @@
 
 $schema: "https://story-as-code.dev/schemas/v0.4.0/constraint.schema.yaml"
 type: object
-description: "A world rule — a scoped assertion with severity that validates the world graph."
+description: >
+  A world rule — a scoped assertion with severity that validates the world graph.
+  A constraint has two parts: scope (what the rule applies to — filter by types, IDs, frames,
+  time range) and rule (the assertion that must hold for every matched element).
+  Without a scope, the rule applies globally to all elements.
 required:
   - id
   - name

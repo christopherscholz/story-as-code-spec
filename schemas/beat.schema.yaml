@@ -67,7 +67,10 @@ properties:
       - RESOLUTION
       - DENOUEMENT
       - CUSTOM
-    description: "Dramaturgical function of this beat"
+    description: >
+      Dramaturgical function of this beat. All dramaturgical properties (function,
+      reveals, tension, emotional_target, transition) are optional — a beat with
+      only id, name, and world references is valid.
 
   reveals:
     type: array

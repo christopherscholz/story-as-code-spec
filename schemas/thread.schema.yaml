@@ -28,7 +28,10 @@ properties:
     enum:
       - THEME
       - MOTIF
-    description: "Whether this is an abstract theme or a recurring motif"
+    description: >
+      Whether this is an abstract theme or a recurring motif.
+      THEME — an abstract idea (e.g. "love conquers death", "choice vs. destiny").
+      MOTIF — a recurring symbolic element (e.g. "mirror imagery", "the number three").
 
   name:
     type: string
