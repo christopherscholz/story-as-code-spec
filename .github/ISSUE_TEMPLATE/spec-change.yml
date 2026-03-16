@@ -34,7 +34,9 @@ body:
         - label: Core types (node, edge, frame)
         - label: Schema system
         - label: Lens / perspective
-        - label: Arc / dramatic structure
+        - label: Beat / dramaturgy
+        - label: Device / narrative techniques
+        - label: Thread / thematic connections
         - label: Format / output
         - label: Derivation / tagging
         - label: Git conventions

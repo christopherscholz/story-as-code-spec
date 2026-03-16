@@ -1,0 +1,7 @@
+id: elara-red-herring
+type: RED_HERRING
+description: "Elara is presented as a threat — Mara's fear misdirects the reader into suspecting danger, when Elara actually holds a benign secret."
+setup:
+  - stranger-arrives
+payoff:
+  - truth-revealed

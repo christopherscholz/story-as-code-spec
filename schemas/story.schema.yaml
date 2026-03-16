@@ -2,9 +2,9 @@
 # Root document schema. A story.yaml is the composable root of a Story as Code project.
 # It separates into two layers: world (graph structure) and narrative (storytelling).
 # Items can be defined inline or referenced via $ref (like OpenAPI).
-# Spec Version: 0.3.0
+# Spec Version: 0.4.0
 
-$schema: "https://story-as-code.dev/schemas/v0.3.0/story.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.4.0/story.schema.yaml"
 type: object
 description: >
   Root document of a Story as Code project.

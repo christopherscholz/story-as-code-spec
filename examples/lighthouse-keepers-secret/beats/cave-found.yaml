@@ -1,0 +1,21 @@
+id: cave-found
+name: "Into the Cave"
+description: "Mara explores the revealed cave and discovers an old journal inside."
+parent: main-storyline
+order: 3
+
+node_ids: [mara, hidden-cave, old-journal, discovery]
+edge_ids: [mara-finds-journal, mara-learns-cave]
+
+function: FIRST_THRESHOLD
+tension: 0.6
+emotional_target: 0.3
+
+reveals:
+  - target: hidden-cave
+    degree: FULL
+  - target: old-journal
+    degree: FULL
+
+transition:
+  type: CUT

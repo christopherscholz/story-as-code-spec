@@ -1,9 +1,9 @@
 # Story as Code – Constraint Schema
 # Item schema for world.constraints[] — defines world rules and validation.
 # Can be embedded inline in story.yaml or referenced via $ref.
-# Spec Version: 0.3.0
+# Spec Version: 0.4.0
 
-$schema: "https://story-as-code.dev/schemas/v0.3.0/constraint.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.4.0/constraint.schema.yaml"
 type: object
 description: "A world rule — a scoped assertion with severity that validates the world graph."
 required:
@@ -63,11 +63,6 @@ properties:
         items:
           type: string
         description: "Specific edge IDs"
-      tags:
-        type: array
-        items:
-          type: string
-        description: "Only apply to nodes/edges with these tags"
       frames:
         type: array
         items:
@@ -82,7 +77,3 @@ properties:
           to:
             type: string
             description: "End time point"
-
-  on_violation:
-    type: string
-    description: "Human-readable message template for violations. Supports {node.name}, {count} placeholders."

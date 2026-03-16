@@ -3,18 +3,19 @@
 # Formats are purely about presentation: medium, structure hierarchy, and delivery settings.
 # They have NO content relevance — what is told is determined by arcs and lenses, not formats.
 # Can be embedded inline in story.yaml or referenced via $ref.
-# Spec Version: 0.3.0
+# Spec Version: 0.4.0
 
-$schema: "https://story-as-code.dev/schemas/v0.3.0/format.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.4.0/format.schema.yaml"
 type: object
 description: >
-  Output format definition — determines ONLY how content is structured and delivered
-  (medium, hierarchy, word counts, medium-specific settings).
+  Output format definition — determines ONLY how content is structured and delivered.
   Formats have no content relevance. They do not influence what is told,
   only the structural container in which it appears.
+  The schema defines the shape — concrete output types, structure levels,
+  and their constraints are defined by the user, not prescribed by the schema.
 required:
   - id
-  - output_type
+  - type
   - structure
 
 properties:
@@ -26,133 +27,34 @@ properties:
     type: string
     description: "Human-readable format name"
 
-  output_type:
-    type: string
-    enum:
-      - TEXT
-      - SCREENPLAY
-      - COMIC
-      - AUDIO
-      - INTERACTIVE
-    description: >
-      TEXT: Prose fiction, articles, poetry.
-      SCREENPLAY: Film/TV script format.
-      COMIC: Panel descriptions with visual direction.
-      AUDIO: Narration with TTS markup.
-      INTERACTIVE: Branching narrative with choice points.
-
   structure:
     $ref: "#/$defs/Structure"
 
-  pacing:
+  settings:
     type: object
-    description: "Pacing rules per structural level"
-    additionalProperties:
-      type: object
-      properties:
-        tension_shape:
-          type: string
-          enum:
-            - RISE_CLIMAX_RESOLVE
-            - MINI_ARC
-            - FLAT
-            - ESCALATING
-        cliffhanger_at_end:
-          type: boolean
-        end_hook:
-          type: string
-          enum:
-            - ALWAYS
-            - USUALLY
-            - SOMETIMES
-            - NEVER
-        min_graph_events:
-          type: integer
-          minimum: 0
-        max_new_nodes_introduced:
-          type: integer
-          minimum: 0
-
-  # --- Output-type-specific fields ---
-  comic:
-    type: object
-    description: "COMIC-specific settings"
-    properties:
-      panels_per_page:
-        type: integer
-      art_style_reference:
-        type: string
-      color_palette:
-        type: array
-        items:
-          type: string
-
-  audio:
-    type: object
-    description: "AUDIO-specific settings"
-    properties:
-      voice_profiles:
-        type: object
-        additionalProperties:
-          type: object
-          properties:
-            voice_id:
-              type: string
-            pitch:
-              type: string
-            speed:
-              type: number
-
-  interactive:
-    type: object
-    description: "INTERACTIVE-specific settings"
-    properties:
-      choice_points:
-        type: array
-        items:
-          type: object
-          properties:
-            at:
-              type: string
-            options:
-              type: array
-              items:
-                type: object
-                properties:
-                  label:
-                    type: string
-                  graph_effects:
-                    type: array
-                    items:
-                      type: object
+    description: >
+      Type-specific settings as free-form key-value pairs.
+      The schema does not prescribe which keys are valid —
+      that depends on the output type and tooling.
 
 $defs:
   Structure:
     type: object
+    description: >
+      Recursive structural level. Hierarchy is expressed via children
+      (e.g. book → chapter → scene, or issue → page → panel).
     required:
       - type
     properties:
       type:
         type: string
-        enum:
-          - SERIES
-          - BOOK
-          - PART
-          - CHAPTER
-          - SCENE
-          - POST
-          - PANEL
-          - SEGMENT
-      count:
-        type: string
-        description: "Fixed number or range (e.g., '3' or '8-15')"
-      target_words:
-        type: string
-        description: "Word count target or range (e.g., '3000-5000')"
-      target_characters:
-        type: integer
-        description: "Character limit (e.g., 280 for tweets)"
+        description: >
+          Structural level identifier (e.g. 'book', 'chapter', 'scene',
+          'page', 'panel', 'segment'). Free-form — not prescribed by the schema.
+      constraints:
+        type: object
+        description: >
+          Free-form constraints for this level (e.g. word count ranges,
+          panel counts, duration limits).
       children:
-        type: array
-        items:
-          $ref: "#/$defs/Structure"
+        $ref: "#/$defs/Structure"

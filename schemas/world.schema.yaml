@@ -3,9 +3,9 @@
 # Everything that exists — entities, relationships, timelines, rules — is defined here.
 # The world layer is the single source of truth. The narrative layer only references it.
 # Contains nodes, edges, frames, constraints, and the time system.
-# Spec Version: 0.3.0
+# Spec Version: 0.4.0
 
-$schema: "https://story-as-code.dev/schemas/v0.3.0/world.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.4.0/world.schema.yaml"
 type: object
 description: >
   The world graph — the ground truth of the story universe.

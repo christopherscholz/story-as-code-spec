@@ -1,6 +1,6 @@
 # The Lighthouse Keeper's Secret
 
-A complete example project for the **Story as Code** specification (v0.3.0).
+A complete example project for the **Story as Code** specification (v0.4.0).
 
 ## Synopsis
 
@@ -20,7 +20,9 @@ Mara, a solitary lighthouse keeper, discovers a hidden sea cave exposed by a vio
 | Frames             | Two frames: canonical timeline + "what-if" branch       |
 | Constraints        | Single-location rule, journal-possession rule           |
 | Lenses             | `lenses/mara-pov.yaml` (1st-person), `lenses/omniscient.yaml` (3rd-person) |
-| Arc + beats        | `arcs/main-arc.yaml` — five beats from isolation → revelation |
+| Beats              | `beats/` — hierarchical storyline with dramaturgical functions |
+| Devices            | `devices/` — setup/payoff, red herring                  |
+| Threads            | `threads/` — "Isolation vs. Connection" theme           |
 | Format             | `formats/short-story.yaml` — literary short story structure |
 | Variants           | CANON + SPECULATIVE variant metadata                    |
 | Derivation meta    | `derivation-meta.yaml` — compiled-output contract       |
@@ -48,8 +50,18 @@ lighthouse-keepers-secret/
 ├── lenses/
 │   ├── mara-pov.yaml
 │   └── omniscient.yaml
-├── arcs/
-│   └── main-arc.yaml
+├── beats/
+│   ├── main-storyline.yaml
+│   ├── isolation.yaml
+│   ├── storm-hits.yaml
+│   ├── cave-found.yaml
+│   ├── stranger-arrives.yaml
+│   └── truth-revealed.yaml
+├── devices/
+│   ├── journal-setup-payoff.yaml
+│   └── elara-red-herring.yaml
+├── threads/
+│   └── isolation-and-connection.yaml
 └── formats/
     └── short-story.yaml
 ```

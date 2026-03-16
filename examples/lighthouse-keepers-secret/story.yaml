@@ -1,4 +1,4 @@
-spec_version: "0.3.0"
+spec_version: "0.4.0"
 name: "The Lighthouse Keeper's Secret"
 
 settings:
@@ -177,8 +177,20 @@ narrative:
     - $ref: "./lenses/mara-pov.yaml"
     - $ref: "./lenses/omniscient.yaml"
 
-  arcs:
-    - $ref: "./arcs/main-arc.yaml"
+  beats:
+    - $ref: "./beats/main-storyline.yaml"
+    - $ref: "./beats/isolation.yaml"
+    - $ref: "./beats/storm-hits.yaml"
+    - $ref: "./beats/cave-found.yaml"
+    - $ref: "./beats/stranger-arrives.yaml"
+    - $ref: "./beats/truth-revealed.yaml"
+
+  devices:
+    - $ref: "./devices/journal-setup-payoff.yaml"
+    - $ref: "./devices/elara-red-herring.yaml"
+
+  threads:
+    - $ref: "./threads/isolation-and-connection.yaml"
 
   formats:
     - $ref: "./formats/short-story.yaml"
