@@ -1,0 +1,35 @@
+id: mara-pov
+type: SIMPLE
+perspective:
+  type: CHARACTER_BOUND
+  anchor: mara
+  person: FIRST
+
+knowledge:
+  mode: CHARACTER_KNOWLEDGE
+  source: mara.properties.knowledge
+  include_subconscious: false
+  include_wrong_beliefs: true
+
+temporal_position:
+  type: IN_MOMENT
+
+emotional:
+  source: CHARACTER_STATE
+  bias:
+    toward: [finn, elara]
+    bias_strength: 0.6
+
+voice:
+  vocabulary_level: LITERARY
+  sentence_tendency: FLOWING
+  inner_monologue: true
+  metaphor_density: MEDIUM
+  verbal_tics: ["I suppose", "the light reminds me"]
+
+reliability:
+  level: SELECTIVE
+  omits: []
+  distorts:
+    - node: elara
+      direction: NEGATIVE

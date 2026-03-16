@@ -1,0 +1,25 @@
+id: short-story
+name: "Literary Short Story"
+output_type: TEXT
+structure:
+  type: BOOK
+  count: "1"
+  target_words: "4000-6000"
+  children:
+    - type: CHAPTER
+      count: "5"
+      target_words: "800-1200"
+      children:
+        - type: SCENE
+          count: "1-3"
+          target_words: "300-500"
+
+pacing:
+  CHAPTER:
+    tension_shape: MINI_ARC
+    end_hook: USUALLY
+    min_graph_events: 1
+    max_new_nodes_introduced: 2
+  SCENE:
+    tension_shape: RISE_CLIMAX_RESOLVE
+    cliffhanger_at_end: false

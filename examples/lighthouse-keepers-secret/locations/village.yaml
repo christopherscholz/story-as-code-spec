@@ -1,0 +1,10 @@
+id: village
+type: LOCATION
+static:
+  name_variants: ["Harrow's End", "the village"]
+  population: 200
+  climate: maritime
+tags: [coastal, settlement]
+states:
+  - properties:
+      mood: quiet

@@ -1,0 +1,20 @@
+id: the-storm
+type: EVENT
+static:
+  name_variants: ["the great storm", "the storm of Day 3"]
+  severity: 0.7
+  participants: [mara, finn]
+  location: lighthouse
+tags: [inciting-incident, weather]
+states:
+  - frame: main-timeline
+    at: "Day 3"
+    properties:
+      intensity: severe
+      duration_hours: 18
+
+  - frame: what-if-no-storm
+    at: "Day 3"
+    properties:
+      intensity: none
+      cancelled: true
