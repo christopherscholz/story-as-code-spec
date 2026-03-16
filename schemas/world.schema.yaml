@@ -46,7 +46,7 @@ properties:
     type: array
     items:
       $ref: "node.schema.yaml"
-    description: "All nodes (characters, locations, objects, events, concepts) in this world"
+    description: "All nodes in this world"
 
   edges:
     type: array
@@ -83,12 +83,6 @@ properties:
     items:
       $ref: "constraint.schema.yaml"
     description: "World rules and validation constraints"
-
-  schemas:
-    type: array
-    items:
-      $ref: "schema.schema.yaml"
-    description: "User/community schema extensions"
 
   variants:
     type: array
