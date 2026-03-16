@@ -46,7 +46,7 @@ properties:
     type: array
     items:
       $ref: "node.schema.yaml"
-    description: "All nodes (characters, locations, objects, events, concepts) in this world"
+    description: "All nodes in this world. Node types are defined by registered schemas"
 
   edges:
     type: array

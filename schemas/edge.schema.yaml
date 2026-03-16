@@ -19,23 +19,11 @@ properties:
 
   type:
     type: string
-    enum:
-      - RELATIONSHIP
-      - ACTION
-      - SPATIAL
-      - KNOWLEDGE
-      - MEMBERSHIP
-    description: "Edge type. Can be extended by custom schemas."
+    description: "Edge type. Must match an edge_type defined in a registered schema (world.schemas[])"
 
   subtype:
     type: string
-    description: >
-      Specific relationship subtype. Built-in subtypes include:
-      RELATIONSHIP: LOVES, HATES, TRUSTS, FEARS, SERVES, MENTORS, RIVALS
-      ACTION: CREATED, DESTROYED, VISITED, STOLE, GAVE, KILLED, SAVED
-      SPATIAL: LOCATED_AT, PART_OF, CONTAINS, ADJACENT_TO
-      KNOWLEDGE: KNOWS, KNOWS_ABOUT, LEARNED, DISCOVERED, FORGOT
-      MEMBERSHIP: MEMBER_OF, LEADS, FOUNDED, EXPELLED_FROM
+    description: "Specific relationship subtype. Subtypes are defined by the edge_type's schema"
 
   source:
     type: string

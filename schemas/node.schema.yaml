@@ -1,5 +1,5 @@
 # Story as Code – Node Schema
-# Item schema for world.nodes[] — defines characters, locations, objects, events, concepts.
+# Item schema for world.nodes[] — defines entities in a story world.
 # Can be embedded inline in world.yaml or referenced via $ref.
 # Spec Version: 0.1.0
 
@@ -16,13 +16,7 @@ properties:
 
   type:
     type: string
-    enum:
-      - CHARACTER
-      - LOCATION
-      - OBJECT
-      - EVENT
-      - CONCEPT
-    description: "Node type. Can be extended by custom schemas."
+    description: "Node type. Must match a node_type defined in a registered schema (world.schemas[])"
 
   schema:
     type: string

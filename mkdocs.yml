@@ -61,7 +61,6 @@ nav:
     - Arc: schemas/arc.md
     - Constraint: schemas/constraint.md
     - Schema: schemas/schema.md
-    - Core Types: schemas/core-types.md
     - Derivation Meta: schemas/derivation-meta.md
     - Variant Meta: schemas/variant-meta.md
   - Contributing: contributing.md
