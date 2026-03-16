@@ -54,11 +54,6 @@ properties:
       type: string
     description: "Free-form tags for filtering and organization"
 
-  created_at:
-    type: string
-    format: date-time
-    description: "Timestamp when this node was first created (auto-populated)"
-
 $defs:
   NodeState:
     type: object

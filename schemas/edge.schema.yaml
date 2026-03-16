@@ -81,12 +81,6 @@ properties:
       type: string
     description: "Character node IDs that know about this edge. Empty = public knowledge"
 
-  referenced_in:
-    type: array
-    items:
-      $ref: "#/$defs/Reference"
-    description: "Derivations that reference this edge (auto-populated)"
-
 $defs:
   TemporalScope:
     type: object
@@ -106,10 +100,3 @@ $defs:
         pattern: "^T\\d+$"
         description: "End time point. null = still active / ongoing"
 
-  Reference:
-    type: object
-    properties:
-      derivation_id:
-        type: string
-      file:
-        type: string
