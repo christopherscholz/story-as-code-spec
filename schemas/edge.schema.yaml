@@ -1,9 +1,9 @@
 # Story as Code – Edge Schema
 # Item schema for world.edges[] — defines relationships between nodes.
 # Can be embedded inline in story.yaml or referenced via $ref.
-# Spec Version: 0.3.0
+# Spec Version: 0.4.0
 
-$schema: "https://story-as-code.dev/schemas/v0.3.0/edge.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.4.0/edge.schema.yaml"
 type: object
 description: "A relationship between two nodes — with optional temporal validity and knowledge restrictions."
 required:
