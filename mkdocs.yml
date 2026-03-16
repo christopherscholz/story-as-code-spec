@@ -63,7 +63,9 @@ nav:
     - Narrative Layer:
       - Lens: schemas/lens.md
       - Format: schemas/format.md
-      - Arc: schemas/arc.md
+      - Beat: schemas/beat.md
+      - Device: schemas/device.md
+      - Thread: schemas/thread.md
       - Variant Meta: schemas/variant-meta.md
     - Supporting:
       - Derivation Meta: schemas/derivation-meta.md

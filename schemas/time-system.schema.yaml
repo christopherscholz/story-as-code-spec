@@ -1,9 +1,9 @@
 # Story as Code – Time System Schema
 # Item schema for world.time_system — defines how time works in this world.
 # Can be embedded inline in story.yaml or referenced via $ref.
-# Spec Version: 0.3.0
+# Spec Version: 0.4.0
 
-$schema: "https://story-as-code.dev/schemas/v0.3.0/time-system.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.4.0/time-system.schema.yaml"
 type: object
 description: "Defines how time works in this world — its structure, epoch, and calendar."
 required:
@@ -35,9 +35,7 @@ properties:
   calendar:
     type: object
     description: "Calendar structure — freely definable (months, cycles, seasons, etc.)"
-    additionalProperties: true
 
   properties:
     type: object
     description: "Additional world-specific time properties"
-    additionalProperties: true

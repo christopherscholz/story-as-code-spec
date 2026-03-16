@@ -27,8 +27,18 @@ examples/lighthouse-keepers-secret/
 ├── lenses/
 │   ├── mara-pov.yaml       # 1st-person, character-bound
 │   └── omniscient.yaml     # 3rd-person, retrospective
-├── arcs/
-│   └── main-arc.yaml       # 5 beats
+├── beats/
+│   ├── main-storyline.yaml  # top-level storyline beat
+│   ├── isolation.yaml       # HOOK
+│   ├── storm-hits.yaml      # INCITING_INCIDENT
+│   ├── cave-found.yaml      # FIRST_THRESHOLD
+│   ├── stranger-arrives.yaml # RISING_ACTION
+│   └── truth-revealed.yaml  # CLIMAX
+├── devices/
+│   ├── journal-setup-payoff.yaml
+│   └── elara-red-herring.yaml
+├── threads/
+│   └── isolation-and-connection.yaml
 └── formats/
     └── short-story.yaml    # book > chapters > scenes
 ```
@@ -117,12 +127,36 @@ A third-person narrator looking back from Day 7, with full knowledge and high me
 {% include "../../examples/lighthouse-keepers-secret/lenses/omniscient.yaml" %}
 ```
 
-## Arc
+## Beats
 
-The main arc selects the nodes and edges that belong to this storyline and structures them into five beats — from isolation to revelation:
+Beats replace the former "arc" concept. A top-level beat acts as the storyline container, with child beats representing individual story moments. Each beat carries dramaturgical metadata — function, tension, reveals, and transitions:
+
+### Storyline container
 
 ```yaml
-{% include "../../examples/lighthouse-keepers-secret/arcs/main-arc.yaml" %}
+{% include "../../examples/lighthouse-keepers-secret/beats/main-storyline.yaml" %}
+```
+
+### Example beat with dramaturgy
+
+```yaml
+{% include "../../examples/lighthouse-keepers-secret/beats/storm-hits.yaml" %}
+```
+
+## Devices
+
+Narrative devices describe rhetorical techniques connecting beats — foreshadowing, red herrings, setup/payoff:
+
+```yaml
+{% include "../../examples/lighthouse-keepers-secret/devices/journal-setup-payoff.yaml" %}
+```
+
+## Threads
+
+Threads provide horizontal chaining — connecting beats across the storyline hierarchy through shared thematic meaning:
+
+```yaml
+{% include "../../examples/lighthouse-keepers-secret/threads/isolation-and-connection.yaml" %}
 ```
 
 ## Format

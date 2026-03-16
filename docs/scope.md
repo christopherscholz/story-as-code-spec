@@ -51,7 +51,7 @@ These are concerns of a **story linter** or **world analyzer** — tooling that 
 
 ### Derivation & Compilation
 
-The spec defines **what** a derivation is ([Derivation Meta](schemas/derivation-meta.md)) and **what** it requires (lens + arc + format + graph state), but not **how** the derivation is produced. The compilation process — selecting nodes, resolving knowledge filters, applying pacing rules, generating prose or panels or audio — is a tooling concern.
+The spec defines **what** a derivation is ([Derivation Meta](schemas/derivation-meta.md)) and **what** it requires (lens + beats + format + graph state), but not **how** the derivation is produced. The compilation process — selecting nodes, resolving knowledge filters, applying pacing rules, generating prose or panels or audio — is a tooling concern.
 
 Different implementations may use LLMs, template engines, procedural generation, or manual authoring to produce derivations. The spec only requires that the result is accompanied by valid derivation metadata linking it back to its source graph.
 

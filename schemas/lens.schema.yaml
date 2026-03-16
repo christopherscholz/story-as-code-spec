@@ -3,9 +3,9 @@
 # Lenses interpret and filter world content — they do not create their own truth.
 # A lens determines who tells the story, what they know, how they speak, and how reliable they are.
 # Can be embedded inline in story.yaml or referenced via $ref.
-# Spec Version: 0.3.0
+# Spec Version: 0.4.0
 
-$schema: "https://story-as-code.dev/schemas/v0.3.0/lens.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.4.0/lens.schema.yaml"
 type: object
 description: >
   A narrative perspective — controls who tells the story, what they know, how they speak,

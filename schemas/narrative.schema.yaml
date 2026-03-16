@@ -3,10 +3,11 @@
 # Defines how the world is told, not what is true.
 # The narrative layer never creates its own truth — it only selects, filters, and presents
 # content from the world layer.
-# Contains lenses (perspective), formats (output container), arcs (graph selection), and variants.
-# Spec Version: 0.3.0
+# Contains lenses (perspective), formats (output container), beats (dramaturgical structure),
+# devices (narrative techniques), threads (thematic connections), and variants.
+# Spec Version: 0.4.0
 
-$schema: "https://story-as-code.dev/schemas/v0.3.0/narrative.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.4.0/narrative.schema.yaml"
 type: object
 description: >
   The narrative layer — defines how the world is told: perspective, selection, and presentation.
@@ -26,11 +27,28 @@ properties:
       $ref: "format.schema.yaml"
     description: "Output format definitions — purely about presentation, no content relevance"
 
-  arcs:
+  beats:
     type: array
     items:
-      $ref: "arc.schema.yaml"
-    description: "Story arcs — group related world graph elements of a storyline"
+      $ref: "beat.schema.yaml"
+    description: >
+      Story beats — hierarchical narrative building blocks. Beats select world graph elements
+      and add dramaturgical structure. Vertical chaining via parent groups beats within a
+      storyline; horizontal chaining via threads connects beats across storylines.
+
+  devices:
+    type: array
+    items:
+      $ref: "device.schema.yaml"
+    description: "Narrative devices — rhetorical connections between beats (foreshadowing, red herrings, etc.)"
+
+  threads:
+    type: array
+    items:
+      $ref: "thread.schema.yaml"
+    description: >
+      Thematic threads and motifs — horizontal chaining of beats across the storyline hierarchy.
+      Connect beats from different storylines through shared thematic meaning.
 
   variants:
     type: array

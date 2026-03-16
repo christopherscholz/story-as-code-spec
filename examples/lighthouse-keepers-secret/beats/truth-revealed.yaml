@@ -1,0 +1,21 @@
+id: truth-revealed
+name: "The Revelation"
+description: "Mara confronts Elara with the journal, and the truth comes out."
+parent: main-storyline
+order: 5
+
+node_ids: [mara, elara, old-journal, revelation]
+edge_ids: [mara-learns-truth, mara-gives-journal, mara-trusts-elara]
+
+function: CLIMAX
+tension: 0.9
+emotional_target: 0.6
+
+reveals:
+  - target: mara-learns-truth
+    degree: FULL
+  - target: elara
+    degree: FULL
+
+transition:
+  type: FADE

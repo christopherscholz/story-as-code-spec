@@ -3,8 +3,7 @@ lens: mara-pov
 format: short-story
 source_version: "0.2.0"
 
-arc_position:
-  arc: main-arc
+beat_position:
   beat: truth-revealed
 
 dependencies:

@@ -33,7 +33,9 @@ This project uses semantic commit messages with the following scopes:
 | `schema` | Schema definitions and type changes |
 | `constraint` | World rule changes |
 | `lens` | Narrative perspective changes |
-| `arc` | Story arc changes |
+| `beat` | Story beat / dramaturgy changes |
+| `device` | Narrative device changes |
+| `thread` | Thematic thread changes |
 | `format` | Output format changes |
 | `derive` | Derivation-related changes |
 | `meta` | Repository metadata, CI, docs |

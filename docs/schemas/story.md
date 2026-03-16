@@ -3,14 +3,14 @@
 The story schema defines the **root document** of a Story as Code project. A `story.yaml` serves as the composable entry point — it separates into two layers:
 
 - **World** — the ground truth: what exists (entities, relationships, timelines, rules)
-- **Narrative** — the storytelling perspective: how the world is told (perspective, selection, output format)
+- **Narrative** — the storytelling perspective: how the world is told (perspective, selection, dramaturgical structure, output format)
 
 The narrative layer **does not define its own truth**. All facts live in the world layer. Narrative schemas only select, filter, and arrange world content for storytelling.
 
 ## Two-Layer Structure
 
 ```yaml
-spec_version: "0.3.0"
+spec_version: "0.4.0"
 name: "My Story"
 
 # Ground truth — what exists
@@ -40,8 +40,13 @@ narrative:
     - $ref: "./lenses/omniscient.yaml"
   formats:
     - $ref: "./formats/novel.yaml"
-  arcs:
-    - $ref: "./arcs/main.yaml"
+  beats:
+    - $ref: "./beats/main-storyline.yaml"
+    - $ref: "./beats/the-call.yaml"
+  devices:
+    - $ref: "./devices/foreshadowing.yaml"
+  threads:
+    - $ref: "./threads/courage.yaml"
 ```
 
 ## Composition
@@ -50,7 +55,7 @@ Each collection property accepts an array of items that can be defined **inline*
 
 ```yaml
 # Multi-file story (with $ref)
-spec_version: "0.3.0"
+spec_version: "0.4.0"
 name: "An Epic Saga"
 
 world:
@@ -69,8 +74,8 @@ world:
 narrative:
   lenses:
     - $ref: "./lenses/hero-pov.yaml"
-  arcs:
-    - $ref: "./arcs/main.yaml"
+  beats:
+    - $ref: "./beats/main-storyline.yaml"
   formats:
     - $ref: "./formats/novel.yaml"
 ```

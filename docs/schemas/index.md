@@ -1,13 +1,20 @@
 # Schemas
 
-The Story as Code specification defines the following YAML schemas (v0.3.0).
+The Story as Code specification defines the following YAML schemas (v0.4.0).
 
 ## Two-Layer Architecture
 
 A story is structured into two layers:
 
 - **World Layer** — the ground truth of the story universe. Everything that exists — entities, relationships, timelines, rules — is defined here. The world layer is the single source of truth.
-- **Narrative Layer** — the storytelling perspective. Defines how the world is told: from which perspective, in which selection, in which output format. The narrative layer **does not define its own truth** — it only selects, filters, and presents content from the world layer.
+- **Narrative Layer** — the storytelling perspective. Defines how the world is told: from which perspective, in which selection, in which output format, with which dramaturgical structure. The narrative layer **does not define its own truth** — it only selects, filters, and presents content from the world layer.
+
+## Vertical and Horizontal Chaining
+
+The narrative layer structures beats in two dimensions:
+
+- **Vertical chaining** — `parent` references group beats within a storyline hierarchy (main plot > subplots > scenes)
+- **Horizontal chaining** — threads connect beats from different storylines through shared thematic meaning
 
 ## Composition Model
 
@@ -38,7 +45,9 @@ The spec does **not** prescribe a directory layout. A single-file story and a mu
 |--------|--------------|-------------|
 | [Lens](lens.md) | `narrative.lenses[]` | Narrative perspective — filters and interprets world content |
 | [Format](format.md) | `narrative.formats[]` | Output format — purely about presentation |
-| [Arc](arc.md) | `narrative.arcs[]` | Story arcs — group related world graph elements of a storyline |
+| [Beat](beat.md) | `narrative.beats[]` | Story beats — hierarchical narrative building blocks with dramaturgical structure |
+| [Device](device.md) | `narrative.devices[]` | Narrative devices — rhetorical connections between beats |
+| [Thread](thread.md) | `narrative.threads[]` | Thematic threads and motifs — horizontal chaining across storylines |
 | [Variant Meta](variant-meta.md) | `narrative.variants[]` | Parallel world version metadata |
 
 ## Supporting Schemas

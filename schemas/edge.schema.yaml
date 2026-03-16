@@ -1,14 +1,15 @@
 # Story as Code – Edge Schema
 # Item schema for world.edges[] — defines relationships between nodes.
 # Can be embedded inline in story.yaml or referenced via $ref.
-# Spec Version: 0.3.0
+# Spec Version: 0.4.0
 
-$schema: "https://story-as-code.dev/schemas/v0.3.0/edge.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.4.0/edge.schema.yaml"
 type: object
 description: "A relationship between two nodes — with optional temporal validity and knowledge restrictions."
 required:
   - id
   - type
+  - name
   - source
   - target
 
@@ -19,11 +20,15 @@ properties:
 
   type:
     type: string
-    description: "Edge type (e.g., RELATIONSHIP, ACTION). Free-form; constrained by type masks at tooling level"
+    description: "Category (e.g., SPATIAL, KINSHIP, CONFLICT)"
 
-  subtype:
+  name:
     type: string
-    description: "Specific relationship subtype. Subtypes are defined by the edge_type's schema"
+    description: "Verb describing the relationship (e.g., mentors, owns, borders)"
+
+  description:
+    type: string
+    description: "Optional prose summary (e.g., 'Elena mentors Kai in secret')"
 
   source:
     type: string
@@ -35,56 +40,27 @@ properties:
 
   directed:
     type: boolean
-    default: true
-    description: "Whether the edge is directed. When false, the edge is symmetric — traversable equally in both directions (e.g., adjacency, friendship, kinship)"
+    default: false
+    description: "Whether Edge is directed"
 
   valid_in:
     type: array
+    description: "When and where this edge exists. Omit = always valid"
     items:
-      $ref: "#/$defs/TemporalScope"
-    description: "When this edge exists. Omit entirely = always valid in all frames"
+      type: object
+      properties:
+        frame:
+          type: string
+          description: "Frame ID. Omit = all frames"
+        from:
+          type: string
+          description: "Start time point. Omit = since the beginning"
+        to:
+          type: string
+          description: "End time point. Omit = still active"
 
-  properties:
-    type: object
-    description: "Weight, emotional valence, cause, etc."
-    additionalProperties: true
-    properties:
-      weight:
-        type: number
-        minimum: 0.0
-        maximum: 1.0
-      emotional:
-        type: object
-        properties:
-          valence:
-            type: number
-            minimum: -1.0
-            maximum: 1.0
-          arousal:
-            type: number
-            minimum: 0.0
-            maximum: 1.0
-      cause:
-        type: string
-        description: "Node ID of the event that caused this edge"
-
-  known_by:
-    type: array
-    items:
-      type: string
-    description: "Character node IDs that know about this edge. Empty = public knowledge"
-
-$defs:
-  TemporalScope:
-    type: object
-    properties:
-      frame:
-        type: string
-        description: "Frame ID. Omit = all frames"
-      from:
-        type: string
-        description: "Start time point. Omit = since the beginning"
-      to:
-        type: string
-        description: "End time point. Omit = still active / ongoing"
-
+  weight:
+    type: number
+    minimum: 0
+    maximum: 5
+    description: "Strength of the relationship"

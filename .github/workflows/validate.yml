@@ -24,7 +24,7 @@ jobs:
         run: |
           FILES=$(find . -name "*.yml" -o -name "*.yaml" | grep -v "^./.git/" | grep -v "^./site/")
           if [ -n "$FILES" ]; then
-            echo "$FILES" | xargs yamllint -d relaxed
+            echo "$FILES" | xargs yamllint
           fi
 
   version-sync:
