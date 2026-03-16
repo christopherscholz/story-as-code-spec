@@ -19,6 +19,8 @@ for schema_file in "$SCHEMA_DIR"/*.schema.yaml; do
     --config template_name=md \
     --config show_toc=false \
     --config show_breadcrumbs=false \
+    --config examples_as_yaml=true \
+    --config with_footer=false \
     2>/dev/null
 
   echo "✓ ${name}.md"
