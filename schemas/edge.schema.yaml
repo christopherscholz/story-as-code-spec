@@ -33,6 +33,11 @@ properties:
     type: string
     description: "Target node ID"
 
+  directed:
+    type: boolean
+    default: true
+    description: "Whether the edge is directed. When false, the edge is symmetric — traversable equally in both directions (e.g., adjacency, friendship, kinship)"
+
   valid_in:
     type: array
     items:

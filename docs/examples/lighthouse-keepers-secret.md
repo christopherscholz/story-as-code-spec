@@ -77,6 +77,7 @@ The storm event has different states per frame. In the "what-if" timeline, it ne
 
 All edges are defined inline in `story.yaml`. Key patterns demonstrated:
 
+- **Undirected edges** — `cave-adjacent-lighthouse` uses `directed: false` because adjacency is symmetric
 - **Unconditional edges** — `finn-at-village` has no `valid_in`, so it applies everywhere
 - **Time-scoped edges** — `mara-finds-journal` is valid from Day 4 onward in the main timeline
 - **Bounded edges** — `mara-fears-elara` is valid from Day 4 to Day 5 (the fear resolves)

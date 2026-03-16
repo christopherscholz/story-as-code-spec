@@ -2,6 +2,22 @@
 
 Defines the structure of edge files (relationships between nodes).
 
+## Directionality
+
+By default, edges are **directed** — they go from `source` to `target`. Set `directed: false` for symmetric relationships where direction is meaningless (adjacency, friendship, kinship, mutual knowledge):
+
+```yaml
+edges:
+  - id: cave-adjacent-lighthouse
+    type: SPATIAL
+    subtype: ADJACENT_TO
+    source: hidden-cave
+    target: lighthouse
+    directed: false  # symmetric — traversable in both directions
+```
+
+When `directed` is omitted or `true`, the edge is one-way from `source` to `target`. Tooling treats undirected edges as bidirectional during graph traversal — a single edge replaces what would otherwise require two mirrored directed edges.
+
 ## Temporal Validity
 
 The `valid_in` field is optional. When omitted, the edge is valid everywhere (all frames, all times). Within each temporal scope entry:

@@ -54,6 +54,7 @@ world:
       subtype: ADJACENT_TO
       source: hidden-cave
       target: lighthouse
+      directed: false
 
     # --- Relationships ---
     - id: mara-trusts-finn
