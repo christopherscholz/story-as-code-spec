@@ -1,9 +1,9 @@
 # Story as Code – Node Schema
 # Item schema for world.nodes[] — defines entities in a story world.
 # Can be embedded inline in story.yaml or referenced via $ref.
-# Spec Version: 0.3.0
+# Spec Version: 0.4.0
 
-$schema: "https://story-as-code.dev/schemas/v0.3.0/node.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.4.0/node.schema.yaml"
 type: object
 description: "An entity in the world graph — characters, locations, objects, events, or any custom type."
 required:
@@ -17,7 +17,7 @@ properties:
 
   type:
     type: string
-    description: "Node type (e.g., CHARACTER, LOCATION). Free-form; constrained by type masks at tooling level"
+    description: "Node type (e.g., CHARACTER, LOCATION)"
 
   static:
     type: object
@@ -59,4 +59,3 @@ $defs:
       properties:
         type: object
         description: "Key-value pairs. Keys are free-form or schema-defined"
-        additionalProperties: true
