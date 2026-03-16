@@ -52,14 +52,16 @@ jobs:
           VERSION="${{ steps.version.outputs.version }}"
           ALIAS="${{ steps.version.outputs.alias }}"
 
+          MIKE_OPTS="--push --ignore-remote-status"
+
           if [ -n "$ALIAS" ]; then
-            mike deploy --push --update-aliases "$VERSION" "$ALIAS"
-            mike set-default --push --ignore-remote-status latest
+            mike deploy $MIKE_OPTS --update-aliases "$VERSION" "$ALIAS"
+            mike set-default $MIKE_OPTS latest
           else
-            mike deploy --push "$VERSION"
+            mike deploy $MIKE_OPTS "$VERSION"
             # Set dev as default if no latest version exists yet
             if ! mike list | grep -q '\[latest\]'; then
-              mike set-default --push --ignore-remote-status dev
+              mike set-default $MIKE_OPTS dev
             fi
           fi
 
