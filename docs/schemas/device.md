@@ -31,8 +31,8 @@ payoff:
   - truth-revealed
 ```
 
-## Schema Definition
+## Schema Reference
 
-```yaml
-{% include "../../schemas/device.schema.yaml" %}
-```
+{%
+  include-markdown "./generated/device.md"
+%}

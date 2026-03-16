@@ -4,6 +4,8 @@ Formats define **only** how content is structured and delivered. They determine 
 
 **Formats have no content relevance.** They do not influence what is told — only the structural container in which it appears. What is told is determined by arcs (which graph elements) and lenses (from which perspective). Formats are purely about presentation.
 
-```yaml
-{% include "../../schemas/format.schema.yaml" %}
-```
+## Schema Reference
+
+{%
+  include-markdown "./generated/format.md"
+%}

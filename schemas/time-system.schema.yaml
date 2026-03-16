@@ -13,10 +13,12 @@ properties:
   id:
     type: string
     description: "Unique time system identifier"
+    examples: ["linear", "earth-calendar", "dreamworld"]
 
   name:
     type: string
     description: "Human-readable name (e.g., 'Galactic Calendar', 'Earth Time')"
+    examples: ["Galactic Calendar", "Earth Time", "Dream Sequence"]
 
   type:
     type: string
@@ -26,11 +28,18 @@ properties:
     description: >
       The fundamental nature of time points in this world.
       LINEAR — time points have a natural order; "earlier" and "later" are defined.
-      ABSTRACT — time points are labels without inherent ordering; relationships between moments are defined through the graph.
+      Suitable for real-world calendars, ISO timestamps, ordinal T-values.
+      ABSTRACT — time points are labels without inherent ordering; relationships
+      between moments are defined through the graph. Useful for worlds where
+      time is not a meaningful linear concept.
+      Cyclical time and branching timelines are expressed through frames
+      (loops via LOOPS_BACK relations, branches via parent + branches_at),
+      not through the time system type.
 
   epoch:
     type: string
     description: "Label for the origin/starting point of time (e.g., 'Year 0', 'The Founding')"
+    examples: ["Year 0", "2024-01-01", "The Founding"]
 
   calendar:
     type: object
@@ -39,3 +48,18 @@ properties:
   properties:
     type: object
     description: "Additional world-specific time properties"
+
+examples:
+  - id: linear
+    type: LINEAR
+    epoch: "Year 0"
+  - id: earth-calendar
+    type: LINEAR
+    epoch: "2024-01-01"
+    calendar:
+      months: 12
+      days_per_year: 365
+  - id: dreamworld
+    type: ABSTRACT
+    properties:
+      note: "Time has no direction here; connections define sequence"

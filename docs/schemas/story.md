@@ -82,8 +82,8 @@ narrative:
 
 The spec does not prescribe a directory layout — file organization is a tooling concern.
 
-## Schema Definition
+## Schema Reference
 
-```yaml
-{% include "../../schemas/story.schema.yaml" %}
-```
+{%
+  include-markdown "./generated/story.md"
+%}

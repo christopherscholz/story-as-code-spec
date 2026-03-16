@@ -51,8 +51,8 @@ edges:
         from: "T5"           # only in alt-timeline from T5 onwards
 ```
 
-## Schema Definition
+## Schema Reference
 
-```yaml
-{% include "../../schemas/edge.schema.yaml" %}
-```
+{%
+  include-markdown "./generated/edge.md"
+%}

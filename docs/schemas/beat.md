@@ -46,8 +46,8 @@ transition:
   type: CLIFFHANGER
 ```
 
-## Schema Definition
+## Schema Reference
 
-```yaml
-{% include "../../schemas/beat.schema.yaml" %}
-```
+{%
+  include-markdown "./generated/beat.md"
+%}

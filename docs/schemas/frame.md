@@ -38,8 +38,8 @@ frames:
       observer: char-hero
 ```
 
-## Schema Definition
+## Schema Reference
 
-```yaml
-{% include "../../schemas/frame.schema.yaml" %}
-```
+{%
+  include-markdown "./generated/frame.md"
+%}

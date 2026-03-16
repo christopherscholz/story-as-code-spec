@@ -10,8 +10,8 @@ The world is a sub-object of the root [Story](story.md) document.
 
 A world always has an **implicit default frame** that does not need to be defined. If no `frames` are specified, all temporal data belongs to the default frame. When a node state or edge omits the `frame` field, it applies to **all frames** (including the default).
 
-## Schema Definition
+## Schema Reference
 
-```yaml
-{% include "../../schemas/world.schema.yaml" %}
-```
+{%
+  include-markdown "./generated/world.md"
+%}

@@ -24,8 +24,8 @@ nodes:
         properties: { mood: fearful }                        # at T5, only in alt-timeline
 ```
 
-## Schema Definition
+## Schema Reference
 
-```yaml
-{% include "../../schemas/node.schema.yaml" %}
-```
+{%
+  include-markdown "./generated/node.md"
+%}

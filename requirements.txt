@@ -3,3 +3,4 @@ mkdocs-material>=9,<10
 mkdocs-include-markdown-plugin
 mkdocs-literate-nav
 mike>=2.0,<3.0
+json-schema-for-humans>=1.5,<2.0

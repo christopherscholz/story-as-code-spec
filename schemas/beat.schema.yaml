@@ -108,3 +108,21 @@ properties:
       to_beat:
         type: string
         description: "Beat ID this transitions to (if cross-hierarchy)"
+
+examples:
+  - id: main-storyline
+    name: "The Hero's Journey"
+    node_ids: [hero, mentor, villain, kingdom]
+    edge_ids: [hero-meets-mentor, hero-defeats-villain]
+  - id: the-call
+    name: "The Call to Adventure"
+    parent: main-storyline
+    node_ids: [hero, mentor]
+    edge_ids: [hero-meets-mentor]
+    function: INCITING_INCIDENT
+    tension: 0.4
+    reveals:
+      - target: mentor
+        degree: PARTIAL
+    transition:
+      type: CLIFFHANGER

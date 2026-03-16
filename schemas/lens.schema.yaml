@@ -18,6 +18,7 @@ properties:
   id:
     type: string
     description: "Unique lens identifier"
+    examples: ["hero-pov", "omniscient", "unreliable-narrator"]
 
   type:
     type: string
@@ -293,3 +294,28 @@ properties:
               LEAST_RELIABLE — composite inherits the least reliable sub-lens level.
               MOST_RELIABLE — composite inherits the most reliable sub-lens level.
               PRIORITY_WINS — higher-priority lens sets reliability.
+
+examples:
+  - id: hero-pov
+    perspective:
+      type: CHARACTER_BOUND
+      anchor: hero
+      person: FIRST
+    knowledge:
+      mode: CHARACTER_KNOWLEDGE
+      source: hero
+    voice:
+      vocabulary_level: COLLOQUIAL
+      sentence_tendency: SHORT_STACCATO
+    reliability:
+      level: SELECTIVE
+      omits: [secret-meeting]
+  - id: omniscient
+    perspective:
+      type: OMNISCIENT
+      person: THIRD
+    knowledge:
+      mode: OMNISCIENT
+    voice:
+      vocabulary_level: LITERARY
+      metaphor_density: HIGH

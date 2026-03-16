@@ -15,8 +15,8 @@ Composite lenses (`type: COMPOSITE`) combine multiple sub-lenses via **layering*
 
 Each layer can declare a `priority` (higher wins). When `PRIORITY_WINS` is selected for a dimension, the sub-lens with the highest priority value determines the outcome for that dimension.
 
-## Schema Definition
+## Schema Reference
 
-```yaml
-{% include "../../schemas/lens.schema.yaml" %}
-```
+{%
+  include-markdown "./generated/lens.md"
+%}

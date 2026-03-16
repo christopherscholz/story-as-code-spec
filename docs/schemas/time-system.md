@@ -41,8 +41,8 @@ time_system:
     note: "Time has no direction here; connections define sequence"
 ```
 
-## Schema Definition
+## Schema Reference
 
-```yaml
-{% include "../../schemas/time-system.schema.yaml" %}
-```
+{%
+  include-markdown "./generated/time-system.md"
+%}

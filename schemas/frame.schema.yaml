@@ -48,6 +48,29 @@ properties:
     type: object
     description: "Additional frame metadata (e.g., loop_count, observer, entropy_factor)"
 
+examples:
+  - id: main
+    name: "Main Timeline"
+  - id: alt-timeline
+    name: "What if the hero refused?"
+    parent: main
+    branches_at: "T42"
+    relations:
+      - target: main
+        type: BRANCHES_INTO
+        at: "T42"
+        description: "Hero refuses the call"
+  - id: time-loop
+    name: "Groundhog Day Loop"
+    parent: main
+    relations:
+      - target: main
+        type: LOOPS_BACK
+        at: "T100"
+    properties:
+      loop_count: 3
+      observer: char-hero
+
 $defs:
   FrameRelation:
     type: object

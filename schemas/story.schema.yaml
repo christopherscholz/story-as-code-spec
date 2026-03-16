@@ -20,10 +20,12 @@ properties:
     type: string
     pattern: "^\\d+\\.\\d+\\.\\d+$"
     description: "Semantic version of the Story as Code spec this story conforms to"
+    examples: ["0.4.0"]
 
   name:
     type: string
     description: "Human-readable name of the story"
+    examples: ["My Story", "An Epic Saga"]
 
   settings:
     type: object
@@ -31,6 +33,7 @@ properties:
       default_language:
         type: string
         description: "ISO 639-1 language code"
+        examples: ["en", "de"]
 
   # --- World Layer (ground truth: what exists) ---
   world:
@@ -39,3 +42,31 @@ properties:
   # --- Narrative Layer (storytelling perspective: how the world is told — defines no own truth) ---
   narrative:
     $ref: "narrative.schema.yaml"
+
+examples:
+  - spec_version: "0.4.0"
+    name: "My Story"
+    world:
+      time_system:
+        id: earth-time
+        type: LINEAR
+        epoch: "Year 0"
+      nodes:
+        - id: hero
+          type: CHARACTER
+          static:
+            name_variants: ["The Hero"]
+      edges:
+        - id: hero-in-village
+          type: SPATIAL
+          name: located-in
+          source: hero
+          target: village
+    narrative:
+      lenses:
+        - id: omniscient
+          perspective:
+            type: OMNISCIENT
+      beats:
+        - id: main-storyline
+          name: "The Hero's Journey"

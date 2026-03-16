@@ -41,7 +41,9 @@ properties:
 
   scope:
     type: object
-    description: "Filters which parts of the world graph this constraint applies to. Omit = applies globally"
+    description: >
+      Filters which parts of the world graph this constraint applies to.
+      Omit = applies globally to all elements.
     properties:
       node_types:
         type: array
@@ -77,3 +79,25 @@ properties:
           to:
             type: string
             description: "End time point"
+
+examples:
+  - id: no-orphan-characters
+    name: "Characters must have at least one relationship"
+    rule: "COUNT(edges) >= 1"
+    severity: WARNING
+    scope:
+      node_types: [CHARACTER]
+  - id: magic-limit
+    name: "Magic users can hold at most 3 spells"
+    rule: "COUNT(edges(type='POSSESSES', target.type='SPELL')) <= 3"
+    severity: ERROR
+    scope:
+      frames: [main]
+  - id: no-undead-before-war
+    name: "Undead cannot exist before the Great War"
+    rule: "properties.race != 'undead'"
+    severity: ERROR
+    scope:
+      node_types: [CHARACTER]
+      time_range:
+        to: "T50"

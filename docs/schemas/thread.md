@@ -30,8 +30,8 @@ appearances:
     description: "Trust replaces fear — connection as resolution"
 ```
 
-## Schema Definition
+## Schema Reference
 
-```yaml
-{% include "../../schemas/thread.schema.yaml" %}
-```
+{%
+  include-markdown "./generated/thread.md"
+%}

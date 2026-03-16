@@ -101,3 +101,22 @@ $defs:
       at:
         type: string
         description: "Time point of the reveal"
+
+examples:
+  - id: chapter-1-output
+    lens: hero-pov
+    format: novel-format
+    beat_position:
+      beat: the-call
+    dependencies:
+      nodes:
+        - id: hero
+          must_exist: true
+          required_state:
+            at:
+              time: "T1"
+            properties:
+              mood: determined
+      edges:
+        - id: hero-meets-mentor
+          must_exist: true

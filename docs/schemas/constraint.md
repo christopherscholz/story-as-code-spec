@@ -41,8 +41,8 @@ constraints:
         to: "T50"
 ```
 
-## Schema Definition
+## Schema Reference
 
-```yaml
-{% include "../../schemas/constraint.schema.yaml" %}
-```
+{%
+  include-markdown "./generated/constraint.md"
+%}

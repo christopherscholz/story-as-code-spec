@@ -58,3 +58,19 @@ properties:
     items:
       type: string
     description: "Free-form tags for filtering and organization"
+
+examples:
+  - id: journal-setup-payoff
+    type: SETUP_PAYOFF
+    description: "The journal found in the cave pays off when used to confront Elara."
+    setup:
+      - cave-found
+    payoff:
+      - truth-revealed
+  - id: elara-red-herring
+    type: RED_HERRING
+    description: "Elara's mysterious behavior suggests danger but is actually protectiveness."
+    setup:
+      - stranger-arrives
+    payoff:
+      - truth-revealed

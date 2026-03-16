@@ -37,6 +37,31 @@ properties:
       The schema does not prescribe which keys are valid —
       that depends on the output type and tooling.
 
+examples:
+  - id: novel-format
+    type: NOVEL
+    name: "Standard Novel"
+    structure:
+      type: book
+      children:
+        type: chapter
+        constraints:
+          word_count_min: 3000
+          word_count_max: 8000
+        children:
+          type: scene
+  - id: comic-format
+    type: COMIC
+    name: "Comic Issue"
+    structure:
+      type: issue
+      children:
+        type: page
+        constraints:
+          panel_count_max: 9
+        children:
+          type: panel
+
 $defs:
   Structure:
     type: object
@@ -51,6 +76,7 @@ $defs:
         description: >
           Structural level identifier (e.g. 'book', 'chapter', 'scene',
           'page', 'panel', 'segment'). Free-form — not prescribed by the schema.
+        examples: ["book", "chapter", "scene", "page", "panel", "segment"]
       constraints:
         type: object
         description: >
