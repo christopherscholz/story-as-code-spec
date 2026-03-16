@@ -15,8 +15,7 @@ required:
 properties:
   id:
     type: string
-    pattern: "^edge_[a-z0-9_]+$"
-    description: "Unique identifier. Convention: edge_{short_hash}"
+    description: "Unique edge identifier"
 
   type:
     type: string
@@ -90,7 +89,6 @@ $defs:
     properties:
       frame:
         type: string
-        pattern: "^frame_"
         description: "Temporal frame ID"
       from:
         type: string

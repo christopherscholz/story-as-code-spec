@@ -23,7 +23,6 @@ properties:
 
   default_frame:
     type: string
-    pattern: "^frame_"
     description: "ID of the default temporal frame"
 
   settings:

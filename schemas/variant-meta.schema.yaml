@@ -36,8 +36,7 @@ properties:
     type: array
     items:
       type: string
-      pattern: "^frame_"
-    description: "Temporal frames affected by this variant"
+    description: "Frame IDs affected by this variant"
 
   merge_strategy:
     type: string

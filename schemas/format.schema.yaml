@@ -13,7 +13,6 @@ required:
 properties:
   id:
     type: string
-    pattern: "^fmt_"
     description: "Unique format identifier"
 
   name:

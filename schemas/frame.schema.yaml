@@ -12,7 +12,6 @@ required:
 properties:
   id:
     type: string
-    pattern: "^frame_"
     description: "Unique frame identifier"
 
   topology:
@@ -34,7 +33,6 @@ properties:
 
   parent_frame:
     type: string
-    pattern: "^frame_"
     description: "Parent frame ID for nested time contexts"
 
   branch_origin:
@@ -48,8 +46,7 @@ properties:
 
   observer:
     type: string
-    pattern: "^char_"
-    description: "For SUBJECTIVE frames: character node experiencing this time"
+    description: "For SUBJECTIVE frames: character node ID experiencing this time"
 
   entropy_factor:
     type: number
@@ -85,10 +82,10 @@ $defs:
           - SUBJECTIVE_OF
       target:
         type: string
-        pattern: "^frame_"
+        description: "Target frame ID"
       source:
         type: string
-        pattern: "^frame_"
+        description: "Source frame ID"
       at:
         type: string
         pattern: "^T\\d+$"

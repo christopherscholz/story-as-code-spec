@@ -13,7 +13,6 @@ required:
 properties:
   id:
     type: string
-    pattern: "^arc_"
     description: "Unique arc identifier"
 
   name:
@@ -29,8 +28,7 @@ properties:
     type: array
     items:
       type: string
-      pattern: "^arc_"
-    description: "Other arcs running simultaneously"
+    description: "Other arc IDs running simultaneously"
 
   conflict_points:
     type: array
@@ -39,7 +37,7 @@ properties:
       properties:
         at:
           type: string
-          pattern: "^ms_"
+          description: "Milestone ID"
         with:
           type: string
           description: "arc_id.milestone_id"
@@ -62,7 +60,6 @@ $defs:
     properties:
       id:
         type: string
-        pattern: "^ms_"
         description: "Unique milestone identifier within the arc"
       position:
         type: string
@@ -98,7 +95,6 @@ $defs:
         type: array
         items:
           type: string
-          pattern: "^ms_"
       generates:
         type: array
         items:

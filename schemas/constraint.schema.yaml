@@ -14,7 +14,6 @@ required:
 properties:
   id:
     type: string
-    pattern: "^constraint_"
     description: "Unique constraint identifier"
 
   name:
@@ -23,8 +22,7 @@ properties:
 
   schema:
     type: string
-    pattern: "^schema_"
-    description: "Schema this constraint belongs to"
+    description: "Schema ID this constraint belongs to"
 
   rule:
     type: string

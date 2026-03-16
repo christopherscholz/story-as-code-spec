@@ -12,8 +12,7 @@ required:
 properties:
   id:
     type: string
-    pattern: "^(char|loc|obj|evt|con)_[a-z0-9_]+$"
-    description: "Unique identifier. Convention: {type_prefix}_{name}"
+    description: "Unique node identifier"
 
   type:
     type: string
@@ -27,7 +26,6 @@ properties:
 
   schema:
     type: string
-    pattern: "^schema_"
     description: "Schema ID if type comes from a custom schema"
 
   static:
@@ -65,7 +63,6 @@ $defs:
     properties:
       frame:
         type: string
-        pattern: "^frame_"
         description: "ID of the temporal frame this state belongs to"
       at:
         type: string

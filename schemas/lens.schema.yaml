@@ -12,7 +12,6 @@ required:
 properties:
   id:
     type: string
-    pattern: "^lens_"
     description: "Unique lens identifier"
 
   type:
@@ -190,7 +189,7 @@ properties:
       properties:
         lens:
           type: string
-          pattern: "^lens_"
+          description: "Lens ID to layer"
         role:
           type: string
           enum:
@@ -219,4 +218,4 @@ properties:
         type: array
         items:
           type: string
-          pattern: "^lens_"
+        description: "Lens IDs to alternate between"

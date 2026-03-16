@@ -10,15 +10,15 @@ Each collection property (`nodes`, `edges`, `frames`, etc.) accepts an array of 
 # Single-file world (everything inline)
 spec_version: "0.1.0"
 name: "A Simple Fairy Tale"
-default_frame: "frame_main"
+default_frame: "main"
 
 nodes:
-  - id: char_hero
+  - id: hero
     type: CHARACTER
     static: { name_variants: ["The Hero"] }
 
 frames:
-  - id: frame_main
+  - id: main
     topology: LINEAR
     time_points: [T0, T1, T2]
 ```
@@ -27,12 +27,12 @@ frames:
 # Multi-file world (with $ref)
 spec_version: "0.1.0"
 name: "An Epic Saga"
-default_frame: "frame_main"
+default_frame: "main"
 
 nodes:
   - $ref: "./characters/hero.yaml"
   - $ref: "./characters/villain.yaml"
-  - id: loc_village          # inline and $ref can be mixed
+  - id: village              # inline and $ref can be mixed
     type: LOCATION
 
 edges:

@@ -14,7 +14,6 @@ required:
 properties:
   id:
     type: string
-    pattern: "^schema_"
     description: "Unique schema identifier"
 
   name:
@@ -48,8 +47,7 @@ properties:
     type: array
     items:
       type: string
-      pattern: "^schema_"
-    description: "Other schemas this one requires"
+    description: "Other schema IDs this one requires"
 
   node_types:
     type: object

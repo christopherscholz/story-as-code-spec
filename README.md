@@ -40,35 +40,35 @@ A minimal world is a single `world.yaml`:
 # world.yaml — everything in one file
 spec_version: "0.1.0"
 name: "A Simple Fairy Tale"
-default_frame: "frame_main"
+default_frame: "main"
 
 nodes:
-  - id: char_hero
+  - id: hero
     type: CHARACTER
     static: { name_variants: ["The Hero"] }
     states:
-      - frame: frame_main
+      - frame: main
         at: T0
         properties:
           age: 18
-          location: loc_village
+          location: village
           trait_courage: 0.8
 
-  - id: loc_village
+  - id: village
     type: LOCATION
 
 edges:
-  - id: edge_quest
+  - id: quest_begins
     type: ACTION
     subtype: INITIATES
-    source: char_hero
-    target: evt_quest_start
+    source: hero
+    target: quest_start
     valid_in:
-      - frame: frame_main
+      - frame: main
         from: T1
 
 frames:
-  - id: frame_main
+  - id: main
     topology: LINEAR
     time_points: [T0, T1, T2]
 ```
@@ -79,7 +79,7 @@ As projects grow, split items into separate files and reference them:
 # world.yaml — with $ref
 spec_version: "0.1.0"
 name: "A Simple Fairy Tale"
-default_frame: "frame_main"
+default_frame: "main"
 
 nodes:
   - $ref: "./characters/hero.yaml"

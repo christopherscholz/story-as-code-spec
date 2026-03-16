@@ -22,12 +22,10 @@ properties:
 
   lens:
     type: string
-    pattern: "^lens_"
     description: "Lens ID used"
 
   format:
     type: string
-    pattern: "^fmt_"
     description: "Format ID used"
 
   arc_position:
@@ -35,10 +33,10 @@ properties:
     properties:
       arc:
         type: string
-        pattern: "^arc_"
+        description: "Arc ID"
       milestone:
         type: string
-        pattern: "^ms_"
+        description: "Milestone ID"
       progress:
         type: number
         minimum: 0.0
