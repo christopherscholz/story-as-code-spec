@@ -20,9 +20,13 @@ The specification defines a **declarative schema language** for describing world
 
 The following concerns are **intentionally out of scope**. They belong to tooling, implementations, or ecosystem layers built on top of the specification.
 
+### File System Layout
+
+The spec defines **what** is valid (schemas), not **where** files are stored. A conforming world can be a single `world.yaml` with everything inline, or a multi-file project with `$ref` references pointing to any directory structure. How files are organized on disk is a tooling and user-preference concern — the spec is layout-agnostic.
+
 ### Storage & Persistence
 
-The spec defines file structure conventions (see [Repository Structure](index.md#repository-structure)) but does not prescribe how or where files are stored. Git is a natural fit — YAML files version well, diffs are readable, and branching maps to world variants — but the spec is storage-agnostic. A conforming implementation could use a database, an object store, or any other backend.
+The spec does not prescribe how or where files are stored. Git is a natural fit — YAML files version well, diffs are readable, and branching maps to world variants — but the spec is storage-agnostic. A conforming implementation could use a database, an object store, or any other backend.
 
 ### Error Analysis & Story Validation
 

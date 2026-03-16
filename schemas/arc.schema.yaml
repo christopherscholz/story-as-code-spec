@@ -1,5 +1,6 @@
 # Story as Code – Story Arc Schema
-# Defines the structure of story arc files
+# Item schema for world.arcs[] — defines dramatic structure with milestones.
+# Can be embedded inline in world.yaml or referenced via $ref.
 # Spec Version: 0.1.0
 
 $schema: "https://story-as-code.dev/schemas/v0.1.0/arc.schema.yaml"
@@ -12,7 +13,6 @@ required:
 properties:
   id:
     type: string
-    pattern: "^arc_"
     description: "Unique arc identifier"
 
   name:
@@ -28,8 +28,7 @@ properties:
     type: array
     items:
       type: string
-      pattern: "^arc_"
-    description: "Other arcs running simultaneously"
+    description: "Other arc IDs running simultaneously"
 
   conflict_points:
     type: array
@@ -38,7 +37,7 @@ properties:
       properties:
         at:
           type: string
-          pattern: "^ms_"
+          description: "Milestone ID"
         with:
           type: string
           description: "arc_id.milestone_id"
@@ -61,7 +60,6 @@ $defs:
     properties:
       id:
         type: string
-        pattern: "^ms_"
         description: "Unique milestone identifier within the arc"
       position:
         type: string
@@ -97,7 +95,6 @@ $defs:
         type: array
         items:
           type: string
-          pattern: "^ms_"
       generates:
         type: array
         items:

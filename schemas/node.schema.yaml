@@ -1,5 +1,6 @@
 # Story as Code – Node Schema
-# Defines the structure of node files (characters, locations, objects, events, concepts)
+# Item schema for world.nodes[] — defines characters, locations, objects, events, concepts.
+# Can be embedded inline in world.yaml or referenced via $ref.
 # Spec Version: 0.1.0
 
 $schema: "https://story-as-code.dev/schemas/v0.1.0/node.schema.yaml"
@@ -11,8 +12,7 @@ required:
 properties:
   id:
     type: string
-    pattern: "^(char|loc|obj|evt|con)_[a-z0-9_]+$"
-    description: "Unique identifier. Convention: {type_prefix}_{name}"
+    description: "Unique node identifier"
 
   type:
     type: string
@@ -26,7 +26,6 @@ properties:
 
   schema:
     type: string
-    pattern: "^schema_"
     description: "Schema ID if type comes from a custom schema"
 
   static:
@@ -64,7 +63,6 @@ $defs:
     properties:
       frame:
         type: string
-        pattern: "^frame_"
         description: "ID of the temporal frame this state belongs to"
       at:
         type: string
