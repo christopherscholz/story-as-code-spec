@@ -57,6 +57,10 @@ jobs:
             mike set-default latest --push
           else
             mike deploy --push "$VERSION"
+            # Set dev as default if no latest version exists yet
+            if ! mike list | grep -q '\[latest\]'; then
+              mike set-default dev --push
+            fi
           fi
 
       - name: Add schemas to gh-pages
