@@ -6,14 +6,14 @@ Defines world rules and validation constraints.
 
 A constraint has two parts:
 
-- **`scope`** — *worauf* die Regel angewandt wird (Filterung nach Typen, Tags, Frames, Zeitraum)
-- **`rule`** — die **Assertion**, die für jedes gefilterte Element gelten muss
+- **`scope`** — *what* the rule applies to (filter by types, tags, frames, time range)
+- **`rule`** — the **assertion** that must hold for every matched element
 
-Ohne `scope` gilt die Regel global auf alle Elemente.
+Without a `scope`, the rule applies globally to all elements.
 
 ```yaml
 constraints:
-  # Global — alle Characters müssen mindestens eine Beziehung haben
+  # Global — all characters must have at least one relationship
   - id: no-orphan-characters
     name: "Characters must have at least one relationship"
     rule: "COUNT(edges) >= 1"
