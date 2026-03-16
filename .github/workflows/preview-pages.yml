@@ -1,0 +1,78 @@
+name: PR Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: preview-${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-preview:
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Build and deploy preview
+        run: |
+          mkdocs build -d /tmp/preview
+
+          git fetch origin gh-pages:gh-pages || git checkout --orphan gh-pages
+          git checkout gh-pages
+
+          rm -rf "pr-${{ github.event.number }}"
+          cp -r /tmp/preview "pr-${{ github.event.number }}"
+
+          git add "pr-${{ github.event.number }}"
+          git commit -m "Deploy preview for PR #${{ github.event.number }}"
+          git push origin gh-pages
+
+      - name: Comment preview URL
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: |
+            📖 Docs preview: https://story-as-code.dev/pr-${{ github.event.number }}/
+
+  cleanup-preview:
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Remove preview
+        run: |
+          git fetch origin gh-pages:gh-pages
+          git checkout gh-pages
+
+          if [ -d "pr-${{ github.event.number }}" ]; then
+            git rm -rf "pr-${{ github.event.number }}"
+            git commit -m "Remove preview for PR #${{ github.event.number }}"
+            git push origin gh-pages
+          fi
