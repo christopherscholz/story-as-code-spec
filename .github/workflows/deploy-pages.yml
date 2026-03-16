@@ -51,7 +51,6 @@ jobs:
         run: |
           VERSION="${{ steps.version.outputs.version }}"
           ALIAS="${{ steps.version.outputs.alias }}"
-
           MIKE_OPTS="--push --ignore-remote-status"
 
           if [ -n "$ALIAS" ]; then
@@ -70,14 +69,14 @@ jobs:
         run: |
           VERSION="${{ steps.version.outputs.version }}"
 
-          mkdir -p /tmp/schemas
-          cp schemas/*.schema.yaml /tmp/schemas/
+          # Use a worktree so we don't disturb the main checkout
+          git fetch origin gh-pages
+          git worktree add /tmp/gh-pages origin/gh-pages
 
-          git checkout gh-pages
+          mkdir -p "/tmp/gh-pages/schemas/v${VERSION}"
+          cp schemas/*.schema.yaml "/tmp/gh-pages/schemas/v${VERSION}/"
 
-          mkdir -p "schemas/v${VERSION}"
-          cp /tmp/schemas/*.schema.yaml "schemas/v${VERSION}/"
-
+          cd /tmp/gh-pages
           git add "schemas/v${VERSION}/"
           git commit -m "Add raw schemas for v${VERSION}"
-          git push origin gh-pages
+          git push origin HEAD:gh-pages
