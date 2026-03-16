@@ -38,10 +38,6 @@ properties:
       pattern: "^frame_"
     description: "Temporal frames affected by this variant"
 
-  author:
-    type: string
-    description: "Author or collaborator name"
-
   merge_strategy:
     type: string
     enum:

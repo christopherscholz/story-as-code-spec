@@ -101,9 +101,3 @@ $defs:
           pattern: "^T\\d+$"
         minItems: 2
         maxItems: 2
-      status:
-        type: string
-        enum:
-          - PENDING
-          - ARRIVED
-          - RESOLVED
