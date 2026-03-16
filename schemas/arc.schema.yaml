@@ -1,10 +1,11 @@
 # Story as Code – Story Arc Schema
-# Item schema for world.arcs[] — defines dramatic structure with milestones.
-# Can be embedded inline in world.yaml or referenced via $ref.
-# Spec Version: 0.1.0
+# Item schema for narrative.arcs[] — defines dramatic structure with milestones.
+# Can be embedded inline in story.yaml or referenced via $ref.
+# Spec Version: 0.2.0
 
-$schema: "https://story-as-code.dev/schemas/v0.1.0/arc.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.2.0/arc.schema.yaml"
 type: object
+description: "A story arc — dramatic structure with milestones, graph conditions, and emotional targets."
 required:
   - id
   - name

@@ -1,16 +1,16 @@
 # Story as Code – Edge Schema
 # Item schema for world.edges[] — defines relationships between nodes.
-# Can be embedded inline in world.yaml or referenced via $ref.
-# Spec Version: 0.1.0
+# Can be embedded inline in story.yaml or referenced via $ref.
+# Spec Version: 0.2.0
 
-$schema: "https://story-as-code.dev/schemas/v0.1.0/edge.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.2.0/edge.schema.yaml"
 type: object
+description: "A relationship between two nodes — with optional temporal validity and knowledge restrictions."
 required:
   - id
   - type
   - source
   - target
-  - valid_in
 
 properties:
   id:
@@ -37,7 +37,7 @@ properties:
     type: array
     items:
       $ref: "#/$defs/TemporalScope"
-    description: "When this edge exists (frame + time range)"
+    description: "When this edge exists. Omit entirely = always valid in all frames"
 
   properties:
     type: object
@@ -72,18 +72,14 @@ properties:
 $defs:
   TemporalScope:
     type: object
-    required:
-      - frame
     properties:
       frame:
         type: string
-        description: "Temporal frame ID"
+        description: "Frame ID. Omit = all frames"
       from:
         type: string
-        pattern: "^T\\d+$"
-        description: "Start time point. null = since the beginning of the frame"
+        description: "Start time point. Omit = since the beginning"
       to:
         type: string
-        pattern: "^T\\d+$"
-        description: "End time point. null = still active / ongoing"
+        description: "End time point. Omit = still active / ongoing"
 

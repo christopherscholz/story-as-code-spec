@@ -1,46 +1,15 @@
 # Story as Code – World Schema
-# Root document schema. A world.yaml is the composable root of a Story as Code project.
-# All other schemas (node, edge, frame, …) are item schemas for the collections below.
-# Items can be defined inline or referenced via $ref (like OpenAPI).
-# Spec Version: 0.1.0
+# Sub-object schema for story.world — defines the world graph structure.
+# Contains nodes, edges, frames, constraints, and the time system.
+# Spec Version: 0.2.0
 
-$schema: "https://story-as-code.dev/schemas/v0.1.0/world.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.2.0/world.schema.yaml"
 type: object
-required:
-  - spec_version
-  - name
-  - default_frame
+description: "The world graph — defines what exists: entities, relationships, timelines, rules, and the time system."
 
 properties:
-  spec_version:
-    type: string
-    pattern: "^\\d+\\.\\d+\\.\\d+$"
-    description: "Semantic version of the Story as Code spec this world conforms to"
-
-  name:
-    type: string
-    description: "Human-readable name of the world"
-
-  default_frame:
-    type: string
-    description: "ID of the default temporal frame"
-
-  settings:
-    type: object
-    properties:
-      default_language:
-        type: string
-        description: "ISO 639-1 language code"
-      embedding_model:
-        type: string
-        description: "Model identifier for semantic embeddings"
-      embedding_dimensions:
-        type: integer
-        minimum: 1
-        description: "Dimensionality of embedding vectors"
-
-  # --- Collections ---
-  # Each collection accepts an array of inline objects or $ref pointers to external files.
+  time_system:
+    $ref: "time-system.schema.yaml"
 
   nodes:
     type: array
@@ -58,34 +27,12 @@ properties:
     type: array
     items:
       $ref: "frame.schema.yaml"
-    description: "Temporal frame definitions"
-
-  arcs:
-    type: array
-    items:
-      $ref: "arc.schema.yaml"
-    description: "Story arc definitions"
-
-  lenses:
-    type: array
-    items:
-      $ref: "lens.schema.yaml"
-    description: "Narrative perspective configurations"
-
-  formats:
-    type: array
-    items:
-      $ref: "format.schema.yaml"
-    description: "Output format definitions"
+    description: >
+      Temporal frame definitions. An implicit default frame always exists.
+      If no frames are defined, all temporal data belongs to the default frame.
 
   constraints:
     type: array
     items:
       $ref: "constraint.schema.yaml"
     description: "World rules and validation constraints"
-
-  variants:
-    type: array
-    items:
-      $ref: "variant-meta.schema.yaml"
-    description: "Parallel world version metadata"

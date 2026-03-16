@@ -1,10 +1,11 @@
 # Story as Code – Lens Schema
-# Item schema for world.lenses[] — defines narrative perspective and filters.
-# Can be embedded inline in world.yaml or referenced via $ref.
-# Spec Version: 0.1.0
+# Item schema for narrative.lenses[] — defines narrative perspective and filters.
+# Can be embedded inline in story.yaml or referenced via $ref.
+# Spec Version: 0.2.0
 
-$schema: "https://story-as-code.dev/schemas/v0.1.0/lens.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.2.0/lens.schema.yaml"
 type: object
+description: "A narrative perspective — controls who tells the story, what they know, how they speak, and how reliable they are."
 required:
   - id
   - perspective
@@ -76,11 +77,10 @@ properties:
           - PROPHETIC
       narrating_from:
         type: string
-        pattern: "^T\\d+$"
         description: "For RETROSPECTIVE: time point from which the narrator looks back"
       knows_future_until:
         type: string
-        pattern: "^T\\d+$"
+        description: "Time point up to which the narrator knows the future"
 
   # --- Emotional Filter (§5.4) ---
   emotional:

@@ -1,10 +1,11 @@
 # Story as Code – Constraint Schema
 # Item schema for world.constraints[] — defines world rules and validation.
-# Can be embedded inline in world.yaml or referenced via $ref.
-# Spec Version: 0.1.0
+# Can be embedded inline in story.yaml or referenced via $ref.
+# Spec Version: 0.2.0
 
-$schema: "https://story-as-code.dev/schemas/v0.1.0/constraint.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.2.0/constraint.schema.yaml"
 type: object
+description: "A world rule — a scoped assertion with severity that validates the world graph."
 required:
   - id
   - name
@@ -20,16 +21,12 @@ properties:
     type: string
     description: "Human-readable rule name"
 
-  schema:
-    type: string
-    description: "Schema ID this constraint belongs to"
-
   rule:
     type: string
     description: >
-      Constraint expression using the declarative query language.
-      Syntax: FOR node IN nodes WHERE condition: assertion
-      Supports: COUNT, edges, nodes, GROUP BY, comparison operators
+      The rule to enforce. Can be a formal expression (e.g., "COUNT(edges) >= 1")
+      or a human-readable description (e.g., "Characters must not appear in two locations at once").
+      Interpretation is a tooling concern.
 
   severity:
     type: string
@@ -38,9 +35,53 @@ properties:
       - WARNING
       - INFO
     description: >
-      ERROR: blocks commit.
-      WARNING: flags issue but allows commit.
+      ERROR: violation must be resolved.
+      WARNING: flags issue but does not block.
       INFO: suggestion only.
+
+  scope:
+    type: object
+    description: "Filters which parts of the world graph this constraint applies to. Omit = applies globally"
+    properties:
+      node_types:
+        type: array
+        items:
+          type: string
+        description: "Only apply to nodes of these types (e.g., CHARACTER, LOCATION)"
+      edge_types:
+        type: array
+        items:
+          type: string
+        description: "Only apply to edges of these types"
+      nodes:
+        type: array
+        items:
+          type: string
+        description: "Specific node IDs"
+      edges:
+        type: array
+        items:
+          type: string
+        description: "Specific edge IDs"
+      tags:
+        type: array
+        items:
+          type: string
+        description: "Only apply to nodes/edges with these tags"
+      frames:
+        type: array
+        items:
+          type: string
+        description: "Only apply within these frames. Omit = all frames"
+      time_range:
+        type: object
+        properties:
+          from:
+            type: string
+            description: "Start time point"
+          to:
+            type: string
+            description: "End time point"
 
   on_violation:
     type: string

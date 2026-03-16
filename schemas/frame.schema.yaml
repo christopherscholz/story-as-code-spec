@@ -1,101 +1,72 @@
 # Story as Code – Temporal Frame Schema
-# Item schema for world.frames[] — defines temporal contexts and topologies.
-# Can be embedded inline in world.yaml or referenced via $ref.
-# Spec Version: 0.1.0
+# Item schema for world.frames[] — defines alternative timelines and branches.
+# Frames form a graph via parent references and relations.
+# An implicit default frame always exists and does not need to be defined.
+# Can be embedded inline in story.yaml or referenced via $ref.
+# Spec Version: 0.2.0
 
-$schema: "https://story-as-code.dev/schemas/v0.1.0/frame.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.2.0/frame.schema.yaml"
 type: object
+description: "An alternative timeline or branch. Frames form a graph via parent references and relations."
 required:
   - id
-  - topology
 
 properties:
   id:
     type: string
     description: "Unique frame identifier"
 
-  topology:
+  name:
     type: string
-    enum:
-      - LINEAR
-      - BRANCHING
-      - CYCLICAL
-      - RETROCAUSAL
-      - SUBJECTIVE
-      - ENTROPIC
-    description: >
-      LINEAR: Standard sequential time.
-      BRANCHING: Diverged from another frame.
-      CYCLICAL: Time loop with iterations.
-      RETROCAUSAL: Effects in the past of another frame.
-      SUBJECTIVE: Time as experienced by a specific character.
-      ENTROPIC: Degrading time allowing contradictions.
+    description: "Human-readable frame name"
 
-  parent_frame:
+  description:
     type: string
-    description: "Parent frame ID for nested time contexts"
+    description: "Purpose or context of this frame"
 
-  branch_origin:
+  parent:
     type: string
-    description: "Event node ID where this frame branched from another"
+    description: "Frame ID this one branched from"
 
-  loop_count:
-    type: integer
-    minimum: 1
-    description: "For CYCLICAL frames: which iteration"
-
-  observer:
+  branches_at:
     type: string
-    description: "For SUBJECTIVE frames: character node ID experiencing this time"
+    description: "Time point where this frame diverges from its parent"
 
-  entropy_factor:
-    type: number
-    minimum: 0.0
-    maximum: 1.0
-    description: "High values allow intentional inconsistencies"
+  relations:
+    type: array
+    description: "Graph edges to other frames"
+    items:
+      $ref: "#/$defs/FrameRelation"
 
-  time_mapping:
-    type: object
-    description: "Maps T-values to narrative time descriptions"
-    additionalProperties:
-      type: string
-
-  connections:
+  tags:
     type: array
     items:
-      $ref: "#/$defs/FrameConnection"
+      type: string
+    description: "Free-form tags for filtering and organization"
+
+  properties:
+    type: object
+    description: "Additional frame metadata (e.g., loop_count, observer, entropy_factor)"
+    additionalProperties: true
 
 $defs:
-  FrameConnection:
+  FrameRelation:
     type: object
     required:
+      - target
       - type
     properties:
-      type:
-        type: string
-        enum:
-          - BRANCHES_INTO
-          - BRANCHES_FROM
-          - RECEIVES_RETROCAUSAL
-          - SENDS_RETROCAUSAL
-          - LOOPS_BACK
-          - SUBJECTIVE_OF
       target:
         type: string
         description: "Target frame ID"
-      source:
+      type:
         type: string
-        description: "Source frame ID"
+        description: >
+          Relation type. Free-form; common values:
+          BRANCHES_INTO, MERGES_WITH, LOOPS_BACK, SUBJECTIVE_OF
       at:
         type: string
-        pattern: "^T\\d+$"
-      cause:
+        description: "Time point of the relation"
+      description:
         type: string
-        description: "Event node ID that triggered this connection"
-      affects_range:
-        type: array
-        items:
-          type: string
-          pattern: "^T\\d+$"
-        minItems: 2
-        maxItems: 2
+        description: "Human-readable description of the relation"
