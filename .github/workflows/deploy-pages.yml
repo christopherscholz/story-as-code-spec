@@ -8,8 +8,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
@@ -18,9 +16,6 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -52,7 +47,6 @@ jobs:
             echo "is_tag=false" >> "$GITHUB_OUTPUT"
           fi
 
-      # mike deploys versioned docs to the gh-pages branch
       - name: Deploy versioned docs with mike
         run: |
           VERSION="${{ steps.version.outputs.version }}"
@@ -65,17 +59,14 @@ jobs:
             mike deploy --push "$VERSION"
           fi
 
-      # For tagged releases: add raw schema files to gh-pages
       - name: Add schemas to gh-pages
         if: steps.version.outputs.is_tag == 'true'
         run: |
           VERSION="${{ steps.version.outputs.version }}"
 
-          # Save schemas from main before switching branches
           mkdir -p /tmp/schemas
           cp schemas/*.schema.yaml /tmp/schemas/
 
-          # Switch to gh-pages to add schema files
           git checkout gh-pages
 
           mkdir -p "schemas/v${VERSION}"
@@ -84,20 +75,3 @@ jobs:
           git add "schemas/v${VERSION}/"
           git commit -m "Add raw schemas for v${VERSION}"
           git push origin gh-pages
-
-      # Checkout gh-pages content and deploy via GitHub Actions Pages
-      - name: Prepare pages artifact
-        run: |
-          git checkout gh-pages
-          mkdir -p _site
-          # Copy everything except git metadata
-          rsync -a --exclude='.git' --exclude='_site' . _site/
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site/
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
