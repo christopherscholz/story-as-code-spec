@@ -67,6 +67,9 @@ nav:
       - Variant Meta: schemas/variant-meta.md
     - Supporting:
       - Derivation Meta: schemas/derivation-meta.md
+  - Examples:
+    - examples/index.md
+    - "Lighthouse Keeper\u2019s Secret": examples/lighthouse-keepers-secret.md
   - Contributing: contributing.md
   - Code of Conduct: code-of-conduct.md
   - License: license.md
