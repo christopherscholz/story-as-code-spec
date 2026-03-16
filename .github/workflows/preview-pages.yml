@@ -33,8 +33,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Generate schema reference docs
-        run: bash scripts/generate-schema-docs.sh
+      - name: Generate docs
+        run: |
+          bash scripts/generate-schema-docs.sh
+          python scripts/generate-example-docs.py
 
       - name: Build and deploy preview
         run: |

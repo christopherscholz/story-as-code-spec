@@ -1,8 +1,9 @@
 # MkDocs build output
 site/
 
-# Generated schema docs (build artifact)
+# Generated docs (build artifacts)
 docs/schemas/generated/
+docs/examples/generated/
 
 # Python
 __pycache__/

@@ -28,8 +28,10 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Generate schema reference docs
-        run: bash scripts/generate-schema-docs.sh
+      - name: Generate docs
+        run: |
+          bash scripts/generate-schema-docs.sh
+          python scripts/generate-example-docs.py
 
       - name: Configure git for mike
         run: |
