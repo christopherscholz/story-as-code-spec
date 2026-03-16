@@ -1,7 +1,9 @@
 id: isolation-and-connection
 type: THEME
 name: "Isolation vs. Connection"
-description: "The tension between solitude and the need for human connection runs through the entire story, from Mara's self-imposed isolation to her eventual trust in Elara."
+description: >
+  The tension between solitude and the need for human connection runs through the entire story,
+  from Mara's self-imposed isolation to her eventual trust in Elara.
 
 appearances:
   - beat_id: isolation

@@ -77,7 +77,7 @@ $defs:
                 description: "Time point. Format depends on the world's time_system"
           properties:
             type: object
-        
+
   EdgeDependency:
     type: object
     required:

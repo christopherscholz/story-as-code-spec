@@ -64,4 +64,3 @@ properties:
     minimum: 0
     maximum: 5
     description: "Strength of the relationship"
-
