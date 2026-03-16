@@ -53,13 +53,13 @@ jobs:
           ALIAS="${{ steps.version.outputs.alias }}"
 
           if [ -n "$ALIAS" ]; then
-            mike deploy --push --update-aliases "$VERSION" "$ALIAS"
-            mike set-default latest --push
+            mike deploy --push --update-aliases --set-default "$VERSION" "$ALIAS"
           else
-            mike deploy --push "$VERSION"
             # Set dev as default if no latest version exists yet
-            if ! mike list | grep -q '\[latest\]'; then
-              mike set-default dev --push
+            if mike list | grep -q '\[latest\]'; then
+              mike deploy --push "$VERSION"
+            else
+              mike deploy --push --set-default "$VERSION"
             fi
           fi
 
