@@ -16,11 +16,7 @@ properties:
 
   type:
     type: string
-    description: "Node type. Must match a node_type defined in a registered schema (world.schemas[])"
-
-  schema:
-    type: string
-    description: "Schema ID if type comes from a custom schema"
+    description: "Node type (e.g., CHARACTER, LOCATION). Free-form; constrained by type masks at tooling level"
 
   static:
     type: object

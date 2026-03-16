@@ -60,7 +60,6 @@ nav:
     - Format: schemas/format.md
     - Arc: schemas/arc.md
     - Constraint: schemas/constraint.md
-    - Schema: schemas/schema.md
     - Derivation Meta: schemas/derivation-meta.md
     - Variant Meta: schemas/variant-meta.md
   - Contributing: contributing.md

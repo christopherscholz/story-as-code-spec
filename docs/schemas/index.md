@@ -23,14 +23,13 @@ The spec does **not** prescribe a directory layout. A single-file world and a mu
 
 | Schema | World property | Description |
 |--------|---------------|-------------|
-| [Node](node.md) | `nodes[]` | Story world entities (types defined by schemas) |
+| [Node](node.md) | `nodes[]` | Story world entities |
 | [Edge](edge.md) | `edges[]` | Relationships between nodes |
 | [Frame](frame.md) | `frames[]` | Temporal frames and time topologies |
 | [Lens](lens.md) | `lenses[]` | Narrative perspective and filters |
 | [Format](format.md) | `formats[]` | Output format definitions |
 | [Arc](arc.md) | `arcs[]` | Story arcs with milestones |
 | [Constraint](constraint.md) | `constraints[]` | World rules and validation |
-| [Schema](schema.md) | `schemas[]` | User/community schema definitions |
 | [Variant Meta](variant-meta.md) | `variants[]` | Parallel world version metadata |
 
 ## Supporting Schemas

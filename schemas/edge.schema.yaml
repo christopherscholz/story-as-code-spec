@@ -19,7 +19,7 @@ properties:
 
   type:
     type: string
-    description: "Edge type. Must match an edge_type defined in a registered schema (world.schemas[])"
+    description: "Edge type (e.g., RELATIONSHIP, ACTION). Free-form; constrained by type masks at tooling level"
 
   subtype:
     type: string
