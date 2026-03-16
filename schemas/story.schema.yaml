@@ -28,13 +28,6 @@ properties:
       default_language:
         type: string
         description: "ISO 639-1 language code"
-      embedding_model:
-        type: string
-        description: "Model identifier for semantic embeddings"
-      embedding_dimensions:
-        type: integer
-        minimum: 1
-        description: "Dimensionality of embedding vectors"
 
   # --- World Layer ---
   world:
