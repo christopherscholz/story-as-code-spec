@@ -5,8 +5,7 @@ source_version: "0.2.0"
 
 arc_position:
   arc: main-arc
-  milestone: truth-revealed
-  progress: 1.0
+  beat: truth-revealed
 
 dependencies:
   nodes:

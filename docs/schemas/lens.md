@@ -1,6 +1,6 @@
 # Lens Schema
 
-Defines the structure of lens (narrative perspective) files.
+A lens defines the **narrative perspective** — it controls who tells the story, what they know, how they speak, and how reliable they are. Lenses filter and interpret world content but **define no own truth**. All facts remain in the world layer.
 
 ## Composition Rules
 

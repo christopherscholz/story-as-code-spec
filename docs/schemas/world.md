@@ -1,6 +1,8 @@
 # World Schema
 
-The world schema defines the **world layer** of a Story as Code project. It contains the graph structure: nodes, edges, frames, constraints, and the time system.
+The world schema defines the **ground truth** of a Story as Code project. Everything that exists — entities (nodes), relationships (edges), timelines (frames), rules (constraints), and the time system — is defined here.
+
+The world layer is the **single source of truth**. The narrative layer references world content but never defines its own truth.
 
 The world is a sub-object of the root [Story](story.md) document.
 

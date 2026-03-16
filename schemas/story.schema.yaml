@@ -6,7 +6,10 @@
 
 $schema: "https://story-as-code.dev/schemas/v0.2.0/story.schema.yaml"
 type: object
-description: "Root document of a Story as Code project. Composes world (what exists) and narrative (how it is told)."
+description: >
+  Root document of a Story as Code project.
+  Composes world (the ground truth — what exists) and narrative (the storytelling perspective — how it is told).
+  The narrative layer never defines its own truth; it only selects, filters, and presents world layer content.
 required:
   - spec_version
   - name
@@ -29,10 +32,10 @@ properties:
         type: string
         description: "ISO 639-1 language code"
 
-  # --- World Layer ---
+  # --- World Layer (ground truth: what exists) ---
   world:
     $ref: "world.schema.yaml"
 
-  # --- Narrative Layer ---
+  # --- Narrative Layer (storytelling perspective: how the world is told — defines no own truth) ---
   narrative:
     $ref: "narrative.schema.yaml"

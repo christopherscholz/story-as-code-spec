@@ -1,30 +1,36 @@
 # Story as Code – Narrative Schema
-# Sub-object schema for story.narrative — defines how the world is told.
-# Contains lenses, formats, arcs, and variants.
+# Sub-object schema for story.narrative — the storytelling perspective.
+# Defines how the world is told, not what is true.
+# The narrative layer never creates its own truth — it only selects, filters, and presents
+# content from the world layer.
+# Contains lenses (perspective), formats (output container), arcs (graph selection), and variants.
 # Spec Version: 0.2.0
 
 $schema: "https://story-as-code.dev/schemas/v0.2.0/narrative.schema.yaml"
 type: object
-description: "The narrative layer — defines how the world is told: perspective, structure, format, and variants."
+description: >
+  The narrative layer — defines how the world is told: perspective, selection, and presentation.
+  The narrative layer does not define its own truth. All facts live in the world layer.
+  Narrative schemas only select, filter, and arrange world content for storytelling.
 
 properties:
   lenses:
     type: array
     items:
       $ref: "lens.schema.yaml"
-    description: "Narrative perspective configurations"
+    description: "Narrative perspectives — filter and interpret world content (define no own truth)"
 
   formats:
     type: array
     items:
       $ref: "format.schema.yaml"
-    description: "Output format definitions"
+    description: "Output format definitions — purely about presentation, no content relevance"
 
   arcs:
     type: array
     items:
       $ref: "arc.schema.yaml"
-    description: "Story arc definitions"
+    description: "Story arcs — group related world graph elements of a storyline"
 
   variants:
     type: array

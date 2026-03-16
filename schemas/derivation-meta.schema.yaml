@@ -1,9 +1,9 @@
 # Story as Code – Derivation Meta Schema
 # Defines the structure of .meta.yaml files (validation contracts).
 # Derivation meta files are produced alongside compiled outputs, not embedded in world.yaml.
-# Spec Version: 0.2.0
+# Spec Version: 0.3.0
 
-$schema: "https://story-as-code.dev/schemas/v0.2.0/derivation-meta.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.3.0/derivation-meta.schema.yaml"
 type: object
 description: "Validation contract for a compiled output — links lens, format, and arc back to the world graph state."
 required:
@@ -35,13 +35,9 @@ properties:
       arc:
         type: string
         description: "Arc ID"
-      milestone:
+      beat:
         type: string
-        description: "Milestone ID"
-      progress:
-        type: number
-        minimum: 0.0
-        maximum: 1.0
+        description: "Beat ID (optional — omit if the output covers the entire arc)"
 
   dependencies:
     type: object
