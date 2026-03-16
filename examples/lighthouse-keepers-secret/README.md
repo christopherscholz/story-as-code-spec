@@ -1,6 +1,6 @@
 # The Lighthouse Keeper's Secret
 
-A complete example project for the **Story as Code** specification (v0.2.0).
+A complete example project for the **Story as Code** specification (v0.3.0).
 
 ## Synopsis
 
@@ -20,7 +20,7 @@ Mara, a solitary lighthouse keeper, discovers a hidden sea cave exposed by a vio
 | Frames             | Two frames: canonical timeline + "what-if" branch       |
 | Constraints        | Single-location rule, journal-possession rule           |
 | Lenses             | `lenses/mara-pov.yaml` (1st-person), `lenses/omniscient.yaml` (3rd-person) |
-| Arc + milestones   | `arcs/main-arc.yaml` — five milestones from isolation → revelation |
+| Arc + beats        | `arcs/main-arc.yaml` — five beats from isolation → revelation |
 | Format             | `formats/short-story.yaml` — literary short story structure |
 | Variants           | CANON + SPECULATIVE variant metadata                    |
 | Derivation meta    | `derivation-meta.yaml` — compiled-output contract       |

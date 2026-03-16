@@ -1,11 +1,17 @@
 # Story as Code – World Schema
-# Sub-object schema for story.world — defines the world graph structure.
+# Sub-object schema for story.world — the ground truth of the story universe.
+# Everything that exists — entities, relationships, timelines, rules — is defined here.
+# The world layer is the single source of truth. The narrative layer only references it.
 # Contains nodes, edges, frames, constraints, and the time system.
-# Spec Version: 0.2.0
+# Spec Version: 0.3.0
 
-$schema: "https://story-as-code.dev/schemas/v0.2.0/world.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.3.0/world.schema.yaml"
 type: object
-description: "The world graph — defines what exists: entities, relationships, timelines, rules, and the time system."
+description: >
+  The world graph — the ground truth of the story universe.
+  Defines what exists: entities (nodes), relationships (edges), timelines (frames),
+  rules (constraints), and the time system. All facts live here.
+  The narrative layer references world content but never defines its own truth.
 
 properties:
   time_system:

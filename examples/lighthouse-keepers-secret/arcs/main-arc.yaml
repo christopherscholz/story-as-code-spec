@@ -1,80 +1,57 @@
 id: main-arc
 name: "The Keeper's Discovery"
-milestones:
+description: "Mara discovers a hidden cave and journal during a storm, leading to a revelation about the stranger Elara."
+
+node_ids:
+  - mara
+  - elara
+  - finn
+  - lighthouse
+  - village
+  - hidden-cave
+  - old-journal
+  - the-storm
+  - discovery
+  - revelation
+
+edge_ids:
+  - mara-at-lighthouse
+  - mara-trusts-finn
+  - mara-fears-elara
+  - mara-finds-journal
+  - mara-gives-journal
+  - mara-learns-cave
+  - mara-learns-truth
+  - cave-adjacent-lighthouse
+  - mara-trusts-elara
+
+beats:
   - id: isolation
-    position: "0.0-0.15"
     name: "Solitude at the Light"
-    graph_conditions:
-      - edge_exists:
-          edge_id: mara-at-lighthouse
-      - edge_not_exists:
-          edge_id: mara-learns-cave
-    emotional_target:
-      valence: -0.2
-      arousal: 0.2
-    tension: LOW
+    description: "Mara tends the lighthouse alone, her only contact being occasional visits from Finn."
+    node_ids: [mara, finn, lighthouse, village]
+    edge_ids: [mara-at-lighthouse, mara-trusts-finn]
 
   - id: storm-hits
-    position: "0.15-0.35"
     name: "The Storm"
-    graph_conditions:
-      - node_state:
-          node_id: the-storm
-          frame: main-timeline
-          at: "Day 3"
-          properties:
-            intensity: severe
-    emotional_target:
-      valence: -0.5
-      arousal: 0.9
-    tension: RISING
-    depends_on: [isolation]
+    description: "A severe storm batters the coast, exposing the hidden cave near the lighthouse."
+    node_ids: [mara, lighthouse, the-storm, hidden-cave]
+    edge_ids: [mara-at-lighthouse, cave-adjacent-lighthouse]
 
   - id: cave-found
-    position: "0.35-0.55"
     name: "Into the Cave"
-    graph_conditions:
-      - edge_exists:
-          edge_id: mara-finds-journal
-      - edge_exists:
-          edge_id: mara-learns-cave
-    emotional_target:
-      valence: 0.1
-      arousal: 0.7
-    tension: HIGH
-    depends_on: [storm-hits]
+    description: "Mara explores the revealed cave and discovers an old journal inside."
+    node_ids: [mara, hidden-cave, old-journal, discovery]
+    edge_ids: [mara-finds-journal, mara-learns-cave]
 
   - id: stranger-arrives
-    position: "0.55-0.75"
     name: "The Stranger"
-    graph_conditions:
-      - edge_exists:
-          edge_id: mara-fears-elara
-    emotional_target:
-      valence: -0.3
-      arousal: 0.8
-    tension: MAXIMUM
-    depends_on: [cave-found]
+    description: "Elara appears, and Mara grows suspicious of her connection to the journal."
+    node_ids: [mara, elara]
+    edge_ids: [mara-fears-elara]
 
   - id: truth-revealed
-    position: "0.75-1.0"
     name: "The Revelation"
-    graph_conditions:
-      - edge_exists:
-          edge_id: mara-learns-truth
-      - edge_exists:
-          edge_id: mara-gives-journal
-    emotional_target:
-      valence: 0.5
-      arousal: 0.4
-    tension: RESOLVED
-    depends_on: [stranger-arrives]
-    generates:
-      - edge:
-          id: mara-trusts-elara
-          type: RELATIONSHIP
-          subtype: TRUSTS
-          source: mara
-          target: elara
-          properties:
-            weight: 0.6
+    description: "Mara confronts Elara with the journal, and the truth comes out."
+    node_ids: [mara, elara, old-journal, revelation]
+    edge_ids: [mara-learns-truth, mara-gives-journal, mara-trusts-elara]

@@ -28,7 +28,7 @@ examples/lighthouse-keepers-secret/
 │   ├── mara-pov.yaml       # 1st-person, character-bound
 │   └── omniscient.yaml     # 3rd-person, retrospective
 ├── arcs/
-│   └── main-arc.yaml       # 5 milestones
+│   └── main-arc.yaml       # 5 beats
 └── formats/
     └── short-story.yaml    # book > chapters > scenes
 ```
@@ -119,7 +119,7 @@ A third-person narrator looking back from Day 7, with full knowledge and high me
 
 ## Arc
 
-Five milestones trace the story from isolation to revelation. Each milestone defines graph conditions that must be met, emotional targets, and tension levels:
+The main arc selects the nodes and edges that belong to this storyline and structures them into five beats — from isolation to revelation:
 
 ```yaml
 {% include "../../examples/lighthouse-keepers-secret/arcs/main-arc.yaml" %}

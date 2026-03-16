@@ -1,15 +1,18 @@
 # Story as Code – Story Arc Schema
-# Item schema for narrative.arcs[] — defines dramatic structure with milestones.
+# Item schema for narrative.arcs[] — groups related world graph elements of a storyline.
+# Arcs define which nodes and edges belong together for a particular storyline, not how it is told.
 # Can be embedded inline in story.yaml or referenced via $ref.
-# Spec Version: 0.2.0
+# Spec Version: 0.3.0
 
-$schema: "https://story-as-code.dev/schemas/v0.2.0/arc.schema.yaml"
+$schema: "https://story-as-code.dev/schemas/v0.3.0/arc.schema.yaml"
 type: object
-description: "A story arc — dramatic structure with milestones, graph conditions, and emotional targets."
+description: >
+  A story arc — groups related world graph elements (nodes and edges) of a storyline,
+  optionally structured into beats. Arcs define which parts of the world belong together
+  for a particular storyline, not how it is told.
 required:
   - id
   - name
-  - milestones
 
 properties:
   id:
@@ -20,91 +23,61 @@ properties:
     type: string
     description: "Human-readable arc name"
 
-  milestones:
-    type: array
-    items:
-      $ref: "#/$defs/Milestone"
+  description:
+    type: string
+    description: "Brief synopsis of this arc"
 
-  interleaves_with:
+  parent_arc:
+    type: string
+    description: "ID of a parent arc for storyline hierarchy (e.g., main plot containing subplots)"
+
+  node_ids:
     type: array
     items:
       type: string
-    description: "Other arc IDs running simultaneously"
+    description: "Node IDs from the world graph that belong to this arc"
 
-  conflict_points:
+  edge_ids:
     type: array
     items:
-      type: object
-      properties:
-        at:
-          type: string
-          description: "Milestone ID"
-        with:
-          type: string
-          description: "arc_id.milestone_id"
-        tension_type:
-          type: string
-          enum:
-            - OPPOSED_GOALS
-            - SHARED_RESOURCE
-            - MUTUAL_DEPENDENCY
-            - IRONIC_PARALLEL
+      type: string
+    description: "Edge IDs from the world graph that belong to this arc"
+
+  tags:
+    type: array
+    items:
+      type: string
+    description: "Free-form tags for filtering and organization"
+
+  beats:
+    type: array
+    items:
+      $ref: "#/$defs/Beat"
+    description: "Optional ordered sequence of story beats within this arc"
 
 $defs:
-  Milestone:
+  Beat:
     type: object
     required:
       - id
-      - position
       - name
-      - graph_conditions
     properties:
       id:
         type: string
-        description: "Unique milestone identifier within the arc"
-      position:
-        type: string
-        description: "Range within the story (0.0-1.0), e.g., '0.15-0.30'"
+        description: "Unique beat identifier within the arc"
       name:
         type: string
-        description: "Human-readable milestone name"
-      graph_conditions:
-        type: array
-        items:
-          $ref: "#/$defs/GraphCondition"
-      emotional_target:
-        type: object
-        properties:
-          valence:
-            type: number
-            minimum: -1.0
-            maximum: 1.0
-          arousal:
-            type: number
-            minimum: 0.0
-            maximum: 1.0
-      tension:
+        description: "Human-readable beat name"
+      description:
         type: string
-        enum:
-          - LOW
-          - RISING
-          - HIGH
-          - MAXIMUM
-          - FALLING
-          - RESOLVED
-      depends_on:
+        description: "What happens in this beat"
+      node_ids:
         type: array
         items:
           type: string
-      generates:
+        description: "Node IDs relevant to this specific beat (subset of arc's nodes)"
+      edge_ids:
         type: array
         items:
-          type: object
-          description: "New graph elements this milestone introduces"
-
-  GraphCondition:
-    type: object
-    description: >
-      Declarative assertion about graph state.
-      Supported condition types: edge_exists, edge_not_exists, node_state, OR, AND, NOT
-    additionalProperties: true
+          type: string
+        description: "Edge IDs relevant to this specific beat (subset of arc's edges)"

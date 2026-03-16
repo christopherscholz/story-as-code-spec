@@ -1,13 +1,19 @@
 # Story Schema
 
-The story schema defines the **root document** of a Story as Code project. A `story.yaml` serves as the composable entry point — it separates into two layers: **world** (graph structure) and **narrative** (storytelling configuration).
+The story schema defines the **root document** of a Story as Code project. A `story.yaml` serves as the composable entry point — it separates into two layers:
+
+- **World** — the ground truth: what exists (entities, relationships, timelines, rules)
+- **Narrative** — the storytelling perspective: how the world is told (perspective, selection, output format)
+
+The narrative layer **does not define its own truth**. All facts live in the world layer. Narrative schemas only select, filter, and arrange world content for storytelling.
 
 ## Two-Layer Structure
 
 ```yaml
-spec_version: "0.2.0"
+spec_version: "0.3.0"
 name: "My Story"
 
+# Ground truth — what exists
 world:
   time_system:
     id: earth-time
@@ -28,6 +34,7 @@ world:
   frames: []
   constraints: []
 
+# Storytelling perspective — how the world is told (defines no own truth)
 narrative:
   lenses:
     - $ref: "./lenses/omniscient.yaml"
@@ -43,7 +50,7 @@ Each collection property accepts an array of items that can be defined **inline*
 
 ```yaml
 # Multi-file story (with $ref)
-spec_version: "0.2.0"
+spec_version: "0.3.0"
 name: "An Epic Saga"
 
 world:

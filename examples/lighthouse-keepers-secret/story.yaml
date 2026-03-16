@@ -1,4 +1,4 @@
-spec_version: "0.2.0"
+spec_version: "0.3.0"
 name: "The Lighthouse Keeper's Secret"
 
 settings:
@@ -128,6 +128,18 @@ world:
       properties:
         certainty: 0.9
       known_by: [mara, elara]
+
+    # --- Relationships (post-revelation) ---
+    - id: mara-trusts-elara
+      type: RELATIONSHIP
+      subtype: TRUSTS
+      source: mara
+      target: elara
+      valid_in:
+        - frame: main-timeline
+          from: "Day 5"
+      properties:
+        weight: 0.6
 
   frames:
     - id: main-timeline
