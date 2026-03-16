@@ -49,6 +49,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Scope & Boundaries: scope.md
   - Schemas:
     - schemas/index.md
     - World: schemas/world.md
