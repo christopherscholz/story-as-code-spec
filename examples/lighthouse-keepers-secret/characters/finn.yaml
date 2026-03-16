@@ -1,0 +1,12 @@
+id: finn
+type: CHARACTER
+static:
+  name_variants: ["Finn", "the fisherman", "old Finn"]
+  category: supporting
+tags: [villager]
+states:
+  - properties:
+      age: 58
+      emotional_baseline: { valence: 0.3, arousal: 0.2 }
+      moral_alignment: 0.5
+      knowledge: [village, lighthouse, mara]

@@ -1,0 +1,14 @@
+id: hidden-cave
+type: LOCATION
+static:
+  name_variants: ["the hidden cave", "the sea cave", "the grotto"]
+  climate: damp
+tags: [secret, coastal]
+states:
+  - properties:
+      accessible: false
+
+  - frame: main-timeline
+    at: "Day 3"
+    properties:
+      accessible: true

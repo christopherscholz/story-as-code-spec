@@ -1,0 +1,14 @@
+id: elara
+type: CHARACTER
+static:
+  name_variants: ["Elara", "the stranger", "the woman from the cave"]
+  category: catalyst
+tags: [mysterious]
+states:
+  - frame: main-timeline
+    at: "Day 4"
+    properties:
+      age: 40
+      emotional_baseline: { valence: 0.0, arousal: 0.5 }
+      moral_alignment: 0.6
+      knowledge: [hidden-cave, old-journal, lighthouse]

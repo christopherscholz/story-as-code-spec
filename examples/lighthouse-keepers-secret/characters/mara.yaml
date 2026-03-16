@@ -1,0 +1,24 @@
+id: mara
+type: CHARACTER
+static:
+  name_variants: ["Mara", "the keeper", "she"]
+  category: protagonist
+tags: [pov-character, keeper]
+states:
+  - at: "Day 1"
+    properties:
+      age: 34
+      emotional_baseline: { valence: -0.2, arousal: 0.3 }
+      moral_alignment: 0.7
+      knowledge: [lighthouse, village, finn]
+
+  - at: "Day 5"
+    properties:
+      emotional_baseline: { valence: 0.1, arousal: 0.7 }
+      knowledge: [lighthouse, village, finn, hidden-cave, old-journal, elara]
+
+  - frame: what-if-no-storm
+    at: "Day 5"
+    properties:
+      emotional_baseline: { valence: -0.3, arousal: 0.2 }
+      knowledge: [lighthouse, village, finn]
