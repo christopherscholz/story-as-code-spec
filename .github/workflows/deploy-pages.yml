@@ -66,6 +66,19 @@ jobs:
             fi
           fi
 
+      - name: Ensure CNAME on gh-pages
+        run: |
+          git fetch origin gh-pages
+          git worktree add /tmp/gh-pages-cname origin/gh-pages
+          if [ ! -f /tmp/gh-pages-cname/CNAME ]; then
+            cp docs/CNAME /tmp/gh-pages-cname/CNAME
+            cd /tmp/gh-pages-cname
+            git add CNAME
+            git commit -m "Add CNAME for custom domain"
+            git push origin HEAD:gh-pages
+          fi
+          git worktree remove /tmp/gh-pages-cname
+
       - name: Add schemas to gh-pages
         if: steps.version.outputs.is_tag == 'true'
         run: |
