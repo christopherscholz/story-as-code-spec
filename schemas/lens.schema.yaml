@@ -1,5 +1,6 @@
 # Story as Code – Lens Schema
-# Defines the structure of lens (narrative perspective) files
+# Item schema for world.lenses[] — defines narrative perspective and filters.
+# Can be embedded inline in world.yaml or referenced via $ref.
 # Spec Version: 0.1.0
 
 $schema: "https://story-as-code.dev/schemas/v0.1.0/lens.schema.yaml"

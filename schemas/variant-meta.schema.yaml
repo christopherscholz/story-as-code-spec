@@ -1,5 +1,6 @@
 # Story as Code – Variant Metadata Schema
-# Defines the structure of variant metadata files for parallel world versions
+# Item schema for world.variants[] — defines parallel world version metadata.
+# Can be embedded inline in world.yaml or referenced via $ref.
 # Spec Version: 0.1.0
 
 $schema: "https://story-as-code.dev/schemas/v0.1.0/variant-meta.schema.yaml"

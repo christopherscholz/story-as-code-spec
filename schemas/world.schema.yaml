@@ -1,5 +1,7 @@
-# Story as Code – World Metadata Schema
-# Defines the structure of the root world.yaml file
+# Story as Code – World Schema
+# Root document schema. A world.yaml is the composable root of a Story as Code project.
+# All other schemas (node, edge, frame, …) are item schemas for the collections below.
+# Items can be defined inline or referenced via $ref (like OpenAPI).
 # Spec Version: 0.1.0
 
 $schema: "https://story-as-code.dev/schemas/v0.1.0/world.schema.yaml"
@@ -37,3 +39,60 @@ properties:
         type: integer
         minimum: 1
         description: "Dimensionality of embedding vectors"
+
+  # --- Collections ---
+  # Each collection accepts an array of inline objects or $ref pointers to external files.
+
+  nodes:
+    type: array
+    items:
+      $ref: "node.schema.yaml"
+    description: "All nodes (characters, locations, objects, events, concepts) in this world"
+
+  edges:
+    type: array
+    items:
+      $ref: "edge.schema.yaml"
+    description: "All edges (relationships) between nodes"
+
+  frames:
+    type: array
+    items:
+      $ref: "frame.schema.yaml"
+    description: "Temporal frame definitions"
+
+  arcs:
+    type: array
+    items:
+      $ref: "arc.schema.yaml"
+    description: "Story arc definitions"
+
+  lenses:
+    type: array
+    items:
+      $ref: "lens.schema.yaml"
+    description: "Narrative perspective configurations"
+
+  formats:
+    type: array
+    items:
+      $ref: "format.schema.yaml"
+    description: "Output format definitions"
+
+  constraints:
+    type: array
+    items:
+      $ref: "constraint.schema.yaml"
+    description: "World rules and validation constraints"
+
+  schemas:
+    type: array
+    items:
+      $ref: "schema.schema.yaml"
+    description: "User/community schema extensions"
+
+  variants:
+    type: array
+    items:
+      $ref: "variant-meta.schema.yaml"
+    description: "Parallel world version metadata"

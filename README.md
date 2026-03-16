@@ -34,59 +34,65 @@ Think of it like a compiler: the world graph is your source, the output is your 
 
 ## Quick Start
 
-A minimal world consists of a `world.yaml` and node files:
+A minimal world is a single `world.yaml`:
 
 ```yaml
-# world.yaml
-id: "world_fairy_tale"
+# world.yaml — everything in one file
+spec_version: "0.1.0"
 name: "A Simple Fairy Tale"
-version: "0.1.0"
 default_frame: "frame_main"
-schemas:
-  - schema_core
+
+nodes:
+  - id: char_hero
+    type: CHARACTER
+    static: { name_variants: ["The Hero"] }
+    states:
+      - frame: frame_main
+        at: T0
+        properties:
+          age: 18
+          location: loc_village
+          trait_courage: 0.8
+
+  - id: loc_village
+    type: LOCATION
+
+edges:
+  - id: edge_quest
+    type: ACTION
+    subtype: INITIATES
+    source: char_hero
+    target: evt_quest_start
+    valid_in:
+      - frame: frame_main
+        from: T1
+
+frames:
+  - id: frame_main
+    topology: LINEAR
+    time_points: [T0, T1, T2]
 ```
+
+As projects grow, split items into separate files and reference them:
 
 ```yaml
-# graph/nodes/character/hero.yaml
-id: "char_hero"
-type: CHARACTER
-name: "The Hero"
-states:
-  - frame: "frame_main"
-    at: "T:0"
-    properties:
-      age: 18
-      location: "loc_village"
-      trait_courage: 0.8
+# world.yaml — with $ref
+spec_version: "0.1.0"
+name: "A Simple Fairy Tale"
+default_frame: "frame_main"
+
+nodes:
+  - $ref: "./characters/hero.yaml"
+  - $ref: "./locations.yaml"
+
+edges:
+  - $ref: "./relationships.yaml"
+
+frames:
+  - $ref: "./timeline.yaml"
 ```
 
-```yaml
-# graph/edges/quest_begins.yaml
-id: "edge_quest"
-type: ACTION
-subtype: INITIATES
-source: "char_hero"
-target: "evt_quest_start"
-frame: "frame_main"
-at: "T:1"
-```
-
-## Repository Structure
-
-```
-world.yaml                    # Root metadata
-graph/
-  nodes/{type}/              # One YAML file per entity
-  edges/                     # Relationships between entities
-  frames/                    # Temporal frame definitions
-schemas/                     # Type definitions and constraints
-  schema_core.yaml           # Built-in types
-constraints/                 # World rules
-lenses/                      # Narrative perspective configs
-arcs/                        # Story arc definitions
-formats/                     # Output format definitions
-derivations/                 # Generated output content
-```
+The spec does not prescribe a directory layout — inline definitions and `$ref` references can be mixed freely, and file organization is up to you and your tooling.
 
 ## Status
 
