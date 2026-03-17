@@ -8,7 +8,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "#/$defs/Reference"
+            "$ref": "ref.schema.json"
           },
           {
             "$ref": "lens.schema.json"
@@ -22,7 +22,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "#/$defs/Reference"
+            "$ref": "ref.schema.json"
           },
           {
             "$ref": "format.schema.json"
@@ -36,7 +36,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "#/$defs/Reference"
+            "$ref": "ref.schema.json"
           },
           {
             "$ref": "beat.schema.json"
@@ -50,7 +50,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "#/$defs/Reference"
+            "$ref": "ref.schema.json"
           },
           {
             "$ref": "device.schema.json"
@@ -64,7 +64,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "#/$defs/Reference"
+            "$ref": "ref.schema.json"
           },
           {
             "$ref": "thread.schema.json"
@@ -78,7 +78,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "#/$defs/Reference"
+            "$ref": "ref.schema.json"
           },
           {
             "$ref": "variant-meta.schema.json"
@@ -86,22 +86,6 @@
         ]
       },
       "description": "Parallel world version metadata"
-    }
-  },
-  "$defs": {
-    "Reference": {
-      "type": "object",
-      "required": [
-        "$ref"
-      ],
-      "properties": {
-        "$ref": {
-          "type": "string",
-          "format": "uri-reference",
-          "description": "Path to an external YAML file containing this item"
-        }
-      },
-      "additionalProperties": false
     }
   }
 }
