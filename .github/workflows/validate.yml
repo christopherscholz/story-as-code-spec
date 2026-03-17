@@ -32,18 +32,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Verify schema versions match VERSION
+      - name: Verify example spec_versions match VERSION
         run: |
           VERSION=$(tr -d '[:space:]' < VERSION)
           echo "Expected version: $VERSION"
           ERRORS=0
 
-          for schema in schemas/*.schema.json; do
-            name=$(basename "$schema")
+          for example in examples/*/story.yaml; do
+            name=$(echo "$example" | cut -d/ -f2)
+            actual=$(grep -oP 'spec_version:\s*"?\K[0-9]+\.[0-9]+\.[0-9]+' "$example" || true)
 
-            # Check $schema URL
-            if ! grep -q "story-as-code\.dev/schemas/v${VERSION}/" "$schema"; then
-              echo "✗ $name: \$schema URL does not match VERSION"
+            if [ "$actual" != "$VERSION" ]; then
+              echo "✗ $name: spec_version is '$actual', expected '$VERSION'"
               ERRORS=$((ERRORS + 1))
             fi
           done
@@ -54,4 +54,4 @@ jobs:
             exit 1
           fi
 
-          echo "✓ All schemas match VERSION $VERSION"
+          echo "✓ All examples match VERSION $VERSION"

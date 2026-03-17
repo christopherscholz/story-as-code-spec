@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Updates all schema files to match the version in VERSION.
+# Updates all example files to match the version in VERSION.
 # Usage: ./scripts/bump-version.sh [new-version]
 #   If new-version is provided, VERSION is updated first.
-#   If omitted, schemas are synced to the current VERSION.
+#   If omitted, examples are synced to the current VERSION.
 
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
@@ -19,13 +19,12 @@ if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
   exit 1
 fi
 
-echo "Syncing schemas to version $VERSION..."
+echo "Syncing examples to version $VERSION..."
 
-for schema in schemas/*.schema.json; do
-  # Update the $schema URL: .../schemas/vX.Y.Z/name.schema.json
-  sed -i '' "s|\(story-as-code\.dev/schemas/v\)[^/]*/|\1${VERSION}/|" "$schema"
-
-  echo "  ✓ $(basename "$schema")"
+for example in examples/*/story.yaml; do
+  name=$(echo "$example" | cut -d/ -f2)
+  sed -i '' "s|spec_version:.*|spec_version: \"${VERSION}\"|" "$example"
+  echo "  ✓ $name"
 done
 
-echo "Done. All schemas now reference v${VERSION}."
+echo "Done. All examples now reference v${VERSION}."
