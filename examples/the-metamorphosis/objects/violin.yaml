@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=../../../schemas/node.schema.json
+id: violin
+name: "Grete's Violin"
+type: OBJECT
+description: >
+  Grete's violin, which she plays with increasing skill over the course of the story.
+  Gregor had secretly planned to announce at Christmas that he would fund her
+  conservatory studies — a plan destroyed by the transformation. In the final part,
+  Grete plays for the lodgers; Gregor, drawn by the music, crawls out of his room.
+  This moment — where music briefly reconnects him to his human longings — directly
+  triggers the lodgers' discovery and Grete's ultimatum that ends Gregor's life.
+category: instrument
+properties:
+  is_unique: true
+tags: [symbol, humanity, catalyst]

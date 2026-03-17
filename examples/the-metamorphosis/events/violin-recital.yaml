@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=../../../schemas/node.schema.json
+id: violin-recital
+name: "The Violin Recital"
+type: EVENT
+description: >
+  In the final part, Grete plays violin for the lodgers in the living room. The lodgers
+  quickly lose interest, but Gregor — drawn irresistibly by the music — crawls out of
+  his room into the living space. He fantasizes about telling Grete he would have sent
+  her to the conservatory, a plan the transformation destroyed. The lodgers notice him,
+  recoil in disgust, and threaten to leave without paying. This scene triggers Grete's
+  declaration that the creature must go, leading directly to Gregor's death.
+properties:
+  participants: [gregor, grete, lodgers]
+  location: apartment
+tags: [climax, catalyst]

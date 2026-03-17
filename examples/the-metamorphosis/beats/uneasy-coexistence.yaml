@@ -5,7 +5,7 @@ description: "Grete assumes the role of caretaker. The family adjusts uneasily. 
 parent: main-storyline
 order: 3
 
-node_ids: [gregor, grete, mother, gregors-room, picture-frame]
+node_ids: [gregor, grete, mother, gregors-room, picture-frame, furniture-removal]
 edge_ids: [grete-cares-for-gregor, mother-pity-for-gregor]
 
 function: RISING_ACTION

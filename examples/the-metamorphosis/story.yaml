@@ -21,6 +21,8 @@ world:
     - $ref: "./characters/father.yaml"
     - $ref: "./characters/mother.yaml"
     - $ref: "./characters/chief-clerk.yaml"
+    - $ref: "./characters/charwoman.yaml"
+    - $ref: "./characters/lodgers.yaml"
 
     # Locations
     - $ref: "./locations/gregors-room.yaml"
@@ -28,12 +30,16 @@ world:
 
     # Objects
     - $ref: "./objects/picture-frame.yaml"
+    - $ref: "./objects/violin.yaml"
+    - $ref: "./objects/apple.yaml"
 
     # Events
     - $ref: "./events/transformation.yaml"
     - $ref: "./events/chief-clerk-visit.yaml"
     - $ref: "./events/apple-attack.yaml"
+    - $ref: "./events/furniture-removal.yaml"
     - $ref: "./events/gregors-death.yaml"
+    - $ref: "./events/violin-recital.yaml"
 
   edges:
     # --- Spatial ---
@@ -96,6 +102,32 @@ world:
       properties:
         cause: exhaustion-and-disgust
 
+    - id: lodgers-in-apartment
+      type: SPATIAL
+      name: lodges-in
+      source: lodgers
+      target: apartment
+      valid_in:
+        - from: "Month 2"
+
+    - id: gregor-attached-to-violin
+      type: RELATIONSHIP
+      name: emotionally-attached-to
+      source: gregor
+      target: violin
+      description: "Gregor associates the violin with Grete's talent and his unfulfilled plan to send her to the conservatory"
+      weight: 0.7
+
+    - id: lodgers-dominate-apartment
+      type: RELATIONSHIP
+      name: dominates
+      source: lodgers
+      target: apartment
+      description: "The lodgers effectively take over the living room and dictate household standards"
+      valid_in:
+        - from: "Month 2"
+      weight: 0.8
+
     # --- Knowledge ---
     - id: family-knows-transformation
       type: KNOWLEDGE
@@ -130,9 +162,11 @@ narrative:
   devices:
     - $ref: "./devices/picture-setup-payoff.yaml"
     - $ref: "./devices/apple-chekhov.yaml"
+    - $ref: "./devices/violin-setup-payoff.yaml"
 
   threads:
     - $ref: "./threads/dehumanization.yaml"
+    - $ref: "./threads/role-reversal.yaml"
 
   formats:
     - $ref: "./formats/novella.yaml"

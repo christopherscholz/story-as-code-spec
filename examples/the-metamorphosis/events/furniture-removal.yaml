@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=../../../schemas/node.schema.json
+id: furniture-removal
+name: "The Furniture Removal"
+type: EVENT
+description: >
+  Grete and Mother begin emptying Gregor's room to give him more crawling space.
+  Gregor initially welcomes the freedom but panics when he realizes his last human
+  possessions are being taken. He throws himself onto the framed picture to prevent
+  its removal — the one object he fights to keep. Mother sees him clinging to the
+  wall and faints, which triggers Father's apple attack. The scene crystallizes the
+  tension between Gregor's insect needs and his human attachments.
+properties:
+  participants: [gregor, grete, mother]
+  location: gregors-room
+tags: [turning-point, identity]

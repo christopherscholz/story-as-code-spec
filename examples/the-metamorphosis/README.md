@@ -12,17 +12,16 @@ Gregor Samsa, a traveling salesman, wakes one morning to find himself transforme
 | ------------------ | ------------------------------------------------------- |
 | Entry point        | `story.yaml`                                            |
 | Time system        | Linear day-based calendar (in `story.yaml`)             |
-| Nodes – Characters | `characters/gregor.yaml`, `grete.yaml`, `father.yaml`, `mother.yaml`, `chief-clerk.yaml` |
-| Nodes – Locations  | `locations/gregors-room.yaml`, `apartment.yaml`         |
-| Nodes – Objects    | `objects/picture-frame.yaml`                            |
-| Nodes – Events     | `events/transformation.yaml`, `chief-clerk-visit.yaml`, `apple-attack.yaml`, `gregors-death.yaml` |
-| Edges              | Inline in `story.yaml` — spatial, relationships, actions, knowledge |
-| Frames             | Single canonical timeline                               |
-| Constraints        | Gregor-confinement rule, single-location rule            |
+| Nodes – Characters | `characters/` — Gregor, Grete, Father, Mother, Chief Clerk, Charwoman, Lodgers |
+| Nodes – Locations  | `locations/` — Gregor's room, the apartment             |
+| Nodes – Objects    | `objects/` — picture frame, violin, embedded apple      |
+| Nodes – Events     | `events/` — transformation, clerk visit, furniture removal, apple attack, violin recital, death |
+| Edges              | Inline in `story.yaml` — spatial, relationships, knowledge |
+| Constraints        | Single-location rule                                    |
 | Lenses             | `lenses/gregor-pov.yaml` (3rd-person limited), `lenses/detached-observer.yaml` (3rd-person objective) |
 | Beats              | `beats/` — hierarchical storyline with dramaturgical functions |
-| Devices            | `devices/` — picture setup/payoff, apple as Chekhov's gun |
-| Threads            | `threads/` — "Dehumanization and Alienation" theme      |
+| Devices            | `devices/` — picture setup/payoff, apple Chekhov's gun, violin setup/payoff |
+| Threads            | `threads/` — dehumanization, family role reversal       |
 | Format             | `formats/novella.yaml` — novella structure (3 parts)    |
 | Variants           | CANON variant metadata                                  |
 | Derivation meta    | `derivation-meta.yaml` — compiled-output contract       |
@@ -38,16 +37,22 @@ the-metamorphosis/
 │   ├── grete.yaml
 │   ├── father.yaml
 │   ├── mother.yaml
-│   └── chief-clerk.yaml
+│   ├── chief-clerk.yaml
+│   ├── charwoman.yaml
+│   └── lodgers.yaml
 ├── locations/
 │   ├── gregors-room.yaml
 │   └── apartment.yaml
 ├── objects/
-│   └── picture-frame.yaml
+│   ├── picture-frame.yaml
+│   ├── violin.yaml
+│   └── apple.yaml
 ├── events/
 │   ├── transformation.yaml
 │   ├── chief-clerk-visit.yaml
+│   ├── furniture-removal.yaml
 │   ├── apple-attack.yaml
+│   ├── violin-recital.yaml
 │   └── gregors-death.yaml
 ├── lenses/
 │   ├── gregor-pov.yaml
@@ -61,9 +66,11 @@ the-metamorphosis/
 │   └── final-rejection.yaml
 ├── devices/
 │   ├── picture-setup-payoff.yaml
-│   └── apple-chekhov.yaml
+│   ├── apple-chekhov.yaml
+│   └── violin-setup-payoff.yaml
 ├── threads/
-│   └── dehumanization.yaml
+│   ├── dehumanization.yaml
+│   └── role-reversal.yaml
 └── formats/
     └── novella.yaml
 ```

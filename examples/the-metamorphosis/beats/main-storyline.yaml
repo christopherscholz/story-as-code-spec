@@ -10,12 +10,18 @@ node_ids:
   - father
   - mother
   - chief-clerk
+  - charwoman
+  - lodgers
   - gregors-room
   - apartment
   - picture-frame
+  - violin
+  - apple
   - transformation
   - chief-clerk-visit
+  - furniture-removal
   - apple-attack
+  - violin-recital
   - gregors-death
 
 edge_ids:
@@ -26,5 +32,8 @@ edge_ids:
   - mother-pity-for-gregor
   - family-knows-transformation
   - grete-rejects-gregor
+  - lodgers-in-apartment
+  - gregor-attached-to-violin
+  - lodgers-dominate-apartment
 
 tags: [main-plot]

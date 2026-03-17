@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=../../../schemas/thread.schema.json
+id: role-reversal
+type: THEME
+name: "Family Role Reversal"
+description: >
+  Before the transformation, Gregor was the sole breadwinner while his father had
+  given up and his sister was a carefree teenager. The transformation forces the
+  family to reverse roles: Father puts on a uniform and goes to work, Mother takes
+  in sewing, Grete gets a sales job. As the family regains agency, Gregor loses his —
+  the provider becomes the burden, the dependent becomes the decision-maker.
+
+appearances:
+  - beat_id: awakening
+    description: "Gregor worries about work and debts — his identity is defined by providing for the family"
+  - beat_id: failed-emergence
+    description: "The chief clerk's visit underscores that Gregor's value to the household was his income"
+  - beat_id: uneasy-coexistence
+    description: "Grete assumes the caretaker role; Father begins working again in his bank messenger uniform"
+  - beat_id: the-attack
+    description: "Father's new authority manifests physically — he attacks Gregor rather than retreating"
+  - beat_id: final-rejection
+    description: "Grete — now the family's strongest voice — decides Gregor's fate. The former child becomes the executioner"

@@ -5,8 +5,8 @@ description: "Months later, lodgers discover Gregor. Grete declares 'it has to g
 parent: main-storyline
 order: 5
 
-node_ids: [gregor, grete, father, mother, gregors-death]
-edge_ids: [grete-rejects-gregor]
+node_ids: [gregor, grete, father, mother, lodgers, charwoman, violin, violin-recital, gregors-death]
+edge_ids: [grete-rejects-gregor, lodgers-dominate-apartment, gregor-attached-to-violin]
 
 function: CLIMAX
 tension: 0.9

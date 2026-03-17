@@ -5,7 +5,7 @@ description: "Gregor escapes his room during the furniture removal, terrifying h
 parent: main-storyline
 order: 4
 
-node_ids: [gregor, father, mother, apple-attack, apartment]
+node_ids: [gregor, father, mother, apple, apple-attack, apartment]
 edge_ids: [father-hostile-to-gregor]
 
 function: CRISIS
