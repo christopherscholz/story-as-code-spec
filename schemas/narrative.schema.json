@@ -1,5 +1,5 @@
 {
-  "$schema": "https://story-as-code.dev/schemas/v0.4.0/narrative.schema.json",
+  "$schema": "https://story-as-code.dev/schemas/v0.5.0/narrative.schema.json",
   "type": "object",
   "description": "The narrative layer — defines how the world is told: perspective, selection, and presentation. The narrative layer does not define its own truth. All facts live in the world layer. Narrative schemas only select, filter, and arrange world content for storytelling.\n",
   "properties": {

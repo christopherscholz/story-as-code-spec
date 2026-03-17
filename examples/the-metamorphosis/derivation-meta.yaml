@@ -2,7 +2,7 @@
 id: novella-gregor-pov
 lens: gregor-pov
 format: novella
-source_version: "0.4.0"
+source_version: "0.5.0"
 
 beat_position:
   beat: final-rejection

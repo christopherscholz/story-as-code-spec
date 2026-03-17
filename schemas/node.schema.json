@@ -1,5 +1,5 @@
 {
-  "$schema": "https://story-as-code.dev/schemas/v0.4.0/node.schema.json",
+  "$schema": "https://story-as-code.dev/schemas/v0.5.0/node.schema.json",
   "type": "object",
   "description": "An entity in the world graph — characters, locations, objects, events, or any custom type.",
   "required": [
