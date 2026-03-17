@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=../../../schemas/beat.schema.json
+id: awakening
+name: "Unquiet Dreams"
+description: "Gregor wakes transformed into an insect and struggles to comprehend his new body while worrying about missing his train."
+parent: main-storyline
+order: 1
+
+node_ids: [gregor, gregors-room, transformation]
+edge_ids: [gregor-confined-to-room]
+
+function: HOOK
+tension: 0.4
+emotional_target: -0.3
+transition:
+  type: CONTINUATION

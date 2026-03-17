@@ -1,0 +1,112 @@
+{
+  "$schema": "https://story-as-code.dev/schemas/v0.4.0/frame.schema.json",
+  "type": "object",
+  "description": "An alternative timeline or branch. Frames form a graph via parent references and relations.",
+  "required": [
+    "id",
+    "name"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique frame identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable frame name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Purpose or context of this frame"
+    },
+    "parent": {
+      "type": "string",
+      "description": "Frame ID this one branched from"
+    },
+    "branches_at": {
+      "type": "string",
+      "description": "Time point where this frame diverges from its parent"
+    },
+    "relations": {
+      "type": "array",
+      "description": "Graph edges to other frames",
+      "items": {
+        "$ref": "#/$defs/FrameRelation"
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Free-form tags for filtering and organization"
+    },
+    "properties": {
+      "type": "object",
+      "description": "Additional frame metadata (e.g., loop_count, observer, entropy_factor)"
+    }
+  },
+  "examples": [
+    {
+      "id": "main",
+      "name": "Main Timeline"
+    },
+    {
+      "id": "alt-timeline",
+      "name": "What if the hero refused?",
+      "parent": "main",
+      "branches_at": "T42",
+      "relations": [
+        {
+          "target": "main",
+          "type": "BRANCHES_INTO",
+          "at": "T42",
+          "description": "Hero refuses the call"
+        }
+      ]
+    },
+    {
+      "id": "time-loop",
+      "name": "Groundhog Day Loop",
+      "parent": "main",
+      "relations": [
+        {
+          "target": "main",
+          "type": "LOOPS_BACK",
+          "at": "T100"
+        }
+      ],
+      "properties": {
+        "loop_count": 3,
+        "observer": "char-hero"
+      }
+    }
+  ],
+  "$defs": {
+    "FrameRelation": {
+      "type": "object",
+      "required": [
+        "target",
+        "type"
+      ],
+      "properties": {
+        "target": {
+          "type": "string",
+          "description": "Target frame ID"
+        },
+        "type": {
+          "type": "string",
+          "description": "Relation type. Free-form; common values: BRANCHES_INTO, MERGES_WITH, LOOPS_BACK, SUBJECTIVE_OF\n"
+        },
+        "at": {
+          "type": "string",
+          "description": "Time point of the relation"
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable description of the relation"
+        }
+      }
+    }
+  }
+}

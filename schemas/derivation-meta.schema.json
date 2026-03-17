@@ -1,0 +1,135 @@
+{
+  "$schema": "https://story-as-code.dev/schemas/v0.4.0/derivation-meta.schema.json",
+  "type": "object",
+  "description": "Validation contract for a compiled output — links lens, format, and beat back to the world graph state.",
+  "required": [
+    "id",
+    "lens",
+    "format",
+    "dependencies"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Derivation identifier"
+    },
+    "source_version": {
+      "type": "string",
+      "description": "Version or identifier of the graph state used for this derivation"
+    },
+    "lens": {
+      "type": "string",
+      "description": "Lens ID used"
+    },
+    "format": {
+      "type": "string",
+      "description": "Format ID used"
+    },
+    "beat_position": {
+      "type": "object",
+      "properties": {
+        "beat": {
+          "type": "string",
+          "description": "Beat ID (omit if the output covers all beats)"
+        }
+      }
+    },
+    "dependencies": {
+      "type": "object",
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/NodeDependency"
+          }
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/EdgeDependency"
+          }
+        },
+        "reveals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RevealDependency"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "NodeDependency": {
+      "type": "object",
+      "required": [
+        "id",
+        "must_exist"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "must_exist": {
+          "type": "boolean"
+        }
+      }
+    },
+    "EdgeDependency": {
+      "type": "object",
+      "required": [
+        "id",
+        "must_exist"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "must_exist": {
+          "type": "boolean"
+        },
+        "required": {
+          "type": "object"
+        }
+      }
+    },
+    "RevealDependency": {
+      "type": "object",
+      "properties": {
+        "node": {
+          "type": "string"
+        },
+        "revealed_to": {
+          "type": "string"
+        },
+        "at": {
+          "type": "string",
+          "description": "Time point of the reveal"
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "id": "chapter-1-output",
+      "lens": "hero-pov",
+      "format": "novel-format",
+      "beat_position": {
+        "beat": "the-call"
+      },
+      "dependencies": {
+        "nodes": [
+          {
+            "id": "hero",
+            "must_exist": true
+          }
+        ],
+        "edges": [
+          {
+            "id": "hero-meets-mentor",
+            "must_exist": true
+          }
+        ]
+      }
+    }
+  ]
+}

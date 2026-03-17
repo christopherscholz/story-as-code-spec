@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=../../../schemas/node.schema.json
+id: picture-frame
+name: "The Framed Picture"
+type: OBJECT
+description: >
+  A magazine clipping of a woman in furs that Gregor laboriously cut out and placed in a
+  gilded frame. When Grete and Mother begin removing the furniture from his room, Gregor
+  throws himself onto the picture to prevent its removal — the one object he fights to
+  keep. It functions as the last tangible link to his human identity and desires.
+category: decoration
+properties:
+  name_variants: ["the picture", "the magazine clipping"]
+  is_unique: true
+tags: [symbol, humanity]

@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=../../../schemas/node.schema.json
+id: mother
+name: "Mrs. Samsa"
+type: CHARACTER
+description: >
+  Gregor's asthmatic mother who is torn between maternal love and visceral horror at his new
+  form. She wants to help but faints at the sight of him, and her husband and daughter
+  increasingly shield her from contact with Gregor. She represents the family's passive
+  grief — neither actively cruel nor able to intervene on Gregor's behalf.
+category: supporting
+properties:
+  name_variants: ["the mother", "Mother"]
+  age: 50
+  health: asthmatic
+tags: [family, sympathetic]

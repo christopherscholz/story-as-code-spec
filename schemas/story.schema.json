@@ -1,0 +1,90 @@
+{
+  "$schema": "https://story-as-code.dev/schemas/v0.4.0/story.schema.json",
+  "type": "object",
+  "description": "Root document of a Story as Code project. Composes world (the ground truth — what exists) and narrative (the storytelling perspective — how it is told). The narrative layer never defines its own truth; it only selects, filters, and presents world layer content. All collection properties accept arrays of items that can be defined inline or referenced via $ref from external files (analogous to OpenAPI component composition). The spec does not prescribe a directory layout — file organization is a tooling concern.\n",
+  "required": [
+    "spec_version",
+    "name",
+    "world"
+  ],
+  "properties": {
+    "spec_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of the Story as Code spec this story conforms to",
+      "examples": [
+        "0.4.0"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name of the story",
+      "examples": [
+        "My Story",
+        "An Epic Saga"
+      ]
+    },
+    "settings": {
+      "type": "object",
+      "properties": {
+        "default_language": {
+          "type": "string",
+          "description": "ISO 639-1 language code",
+          "examples": [
+            "en",
+            "de"
+          ]
+        }
+      }
+    },
+    "world": {
+      "$ref": "world.schema.json"
+    },
+    "narrative": {
+      "$ref": "narrative.schema.json"
+    }
+  },
+  "examples": [
+    {
+      "spec_version": "0.4.0",
+      "name": "My Story",
+      "world": {
+        "time_system": {
+          "id": "earth-time",
+          "type": "LINEAR"
+        },
+        "nodes": [
+          {
+            "id": "hero",
+            "type": "CHARACTER"
+          }
+        ],
+        "edges": [
+          {
+            "id": "hero-in-village",
+            "type": "SPATIAL",
+            "name": "located-in",
+            "source": "hero",
+            "target": "village"
+          }
+        ]
+      },
+      "narrative": {
+        "lenses": [
+          {
+            "id": "omniscient",
+            "perspective": {
+              "type": "OMNISCIENT"
+            }
+          }
+        ],
+        "beats": [
+          {
+            "id": "main-storyline",
+            "name": "The Hero's Journey"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://story-as-code.dev/schemas/v0.4.0/variant-meta.schema.json",
+  "type": "object",
+  "description": "Metadata for a parallel world version — canon, speculative, retcon, fork, or collaboration.",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "CANON",
+        "SPECULATIVE",
+        "RETCON",
+        "FORK",
+        "COLLAB"
+      ],
+      "description": "CANON: Primary version, the accepted truth. SPECULATIVE: \"What if\" exploration. RETCON: Retroactive change to established canon. FORK: Independent version by another author. COLLAB: Collaborator working on a section.\n"
+    },
+    "parent_variant": {
+      "type": "string",
+      "description": "Identifier of the variant this one diverged from"
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of this variant's purpose"
+    },
+    "affects_frames": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Frame IDs affected by this variant"
+    },
+    "merge_strategy": {
+      "type": "string",
+      "enum": [
+        "PICK_A",
+        "PICK_B",
+        "FORK_FRAME",
+        "MANUAL"
+      ],
+      "description": "Preferred conflict resolution strategy"
+    }
+  },
+  "examples": [
+    {
+      "type": "CANON",
+      "description": "The primary accepted version of events"
+    },
+    {
+      "type": "SPECULATIVE",
+      "description": "What if the hero had refused the call?",
+      "parent_variant": "canon",
+      "affects_frames": [
+        "alt-timeline"
+      ],
+      "merge_strategy": "FORK_FRAME"
+    }
+  ]
+}

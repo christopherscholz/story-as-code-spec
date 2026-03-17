@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=../../../schemas/beat.schema.json
+# Top-level beat acting as the storyline container
+id: main-storyline
+name: "Gregor Samsa's Transformation"
+description: "A traveling salesman wakes as an insect and watches his family's love erode into revulsion, ending in his quiet death and their liberation."
+
+node_ids:
+  - gregor
+  - grete
+  - father
+  - mother
+  - chief-clerk
+  - gregors-room
+  - apartment
+  - picture-frame
+  - transformation
+  - chief-clerk-visit
+  - apple-attack
+  - gregors-death
+
+edge_ids:
+  - gregor-confined-to-room
+  - family-in-apartment
+  - grete-cares-for-gregor
+  - father-hostile-to-gregor
+  - mother-pity-for-gregor
+  - family-knows-transformation
+  - grete-rejects-gregor
+
+tags: [main-plot]

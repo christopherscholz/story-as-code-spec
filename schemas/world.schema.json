@@ -1,0 +1,61 @@
+{
+  "$schema": "https://story-as-code.dev/schemas/v0.4.0/world.schema.json",
+  "type": "object",
+  "description": "The world graph — the ground truth of the story universe. Defines what exists: entities (nodes), relationships (edges), timelines (frames), rules (constraints), and the time system. All facts live here. The narrative layer references world content but never defines its own truth.\n",
+  "properties": {
+    "time_system": {
+      "$ref": "time-system.schema.json"
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "$ref": "node.schema.json"
+      },
+      "description": "All nodes in this world"
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "$ref": "edge.schema.json"
+      },
+      "description": "All edges (relationships) between nodes"
+    },
+    "frames": {
+      "type": "array",
+      "items": {
+        "$ref": "frame.schema.json"
+      },
+      "description": "Temporal frame definitions. An implicit default frame always exists. If no frames are defined, all temporal data belongs to the default frame.\n"
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "$ref": "constraint.schema.json"
+      },
+      "description": "World rules and validation constraints"
+    }
+  },
+  "examples": [
+    {
+      "time_system": {
+        "id": "earth-time",
+        "type": "LINEAR"
+      },
+      "nodes": [
+        {
+          "id": "hero",
+          "type": "CHARACTER"
+        }
+      ],
+      "edges": [
+        {
+          "id": "hero-in-village",
+          "type": "SPATIAL",
+          "name": "located-in",
+          "source": "hero",
+          "target": "village"
+        }
+      ]
+    }
+  ]
+}

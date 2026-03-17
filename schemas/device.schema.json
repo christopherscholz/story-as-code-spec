@@ -1,0 +1,81 @@
+{
+  "$schema": "https://story-as-code.dev/schemas/v0.4.0/device.schema.json",
+  "type": "object",
+  "description": "A narrative device — a rhetorical technique connecting beats to each other. Devices describe how the author arranges information for effect (foreshadowing, red herrings, setup/payoff, etc.). They reference beat IDs only — node and edge references live on the beats themselves.\n",
+  "required": [
+    "id",
+    "type",
+    "setup"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique device identifier"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "FORESHADOWING",
+        "RED_HERRING",
+        "SETUP_PAYOFF",
+        "DRAMATIC_IRONY",
+        "ECHO",
+        "CONTRAST",
+        "PARALLEL",
+        "CALLBACK",
+        "CHEKHOV_GUN",
+        "CUSTOM"
+      ],
+      "description": "Type of narrative device. FORESHADOWING — early hint at a later event. RED_HERRING — deliberate misdirection. SETUP_PAYOFF — something planted early that pays off later. DRAMATIC_IRONY — reader knows something the character does not. ECHO — a scene that mirrors an earlier one. CONTRAST — deliberate juxtaposition of two beats. PARALLEL — two storylines that run in parallel. CALLBACK — reference back to an earlier moment. CHEKHOV_GUN — element introduced early that must be used later. CUSTOM — any other narrative technique.\n"
+    },
+    "description": {
+      "type": "string",
+      "description": "What this device achieves narratively"
+    },
+    "setup": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Beat IDs where the device is planted"
+    },
+    "payoff": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Beat IDs where it resolves"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Free-form tags for filtering and organization"
+    }
+  },
+  "examples": [
+    {
+      "id": "journal-setup-payoff",
+      "type": "SETUP_PAYOFF",
+      "description": "The journal found in the cave pays off when used to confront Elara.",
+      "setup": [
+        "cave-found"
+      ],
+      "payoff": [
+        "truth-revealed"
+      ]
+    },
+    {
+      "id": "elara-red-herring",
+      "type": "RED_HERRING",
+      "description": "Elara's mysterious behavior suggests danger but is actually protectiveness.",
+      "setup": [
+        "stranger-arrives"
+      ],
+      "payoff": [
+        "truth-revealed"
+      ]
+    }
+  ]
+}

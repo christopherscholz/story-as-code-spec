@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=../../../schemas/lens.schema.json
+id: detached-observer
+type: SIMPLE
+perspective:
+  type: OBJECTIVE
+  person: THIRD
+
+knowledge:
+  mode: PUBLIC_ONLY
+
+temporal_position:
+  type: IN_MOMENT
+
+voice:
+  vocabulary_level: FORMAL
+  sentence_tendency: SHORT_STACCATO
+  inner_monologue: false
+  metaphor_density: NONE
+
+reliability:
+  level: RELIABLE

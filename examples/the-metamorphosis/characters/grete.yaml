@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=../../../schemas/node.schema.json
+id: grete
+name: "Grete Samsa"
+type: CHARACTER
+description: >
+  Gregor's seventeen-year-old sister and the only family member willing to enter his room
+  after the transformation. She feeds him, cleans his space, and learns his new preferences.
+  Over time, the burden of care and the family's financial pressure erode her compassion.
+  By the story's end she has stopped using Gregor's name, referring to him only as "it,"
+  and delivers the ultimatum that he must go.
+category: supporting
+properties:
+  name_variants: ["Grete", "Gregor's sister", "the sister"]
+  age: 17
+tags: [family, caretaker]

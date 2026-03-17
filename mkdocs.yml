@@ -72,7 +72,7 @@ nav:
       - Derivation Meta: schemas/derivation-meta.md
   - Examples:
     - Overview: examples/index.md
-    - "Lighthouse Keeper\u2019s Secret": examples/generated/the-lighthouse-keepers-secret.md
+    - "The Metamorphosis": examples/generated/the-metamorphosis.md
   - Contributing: contributing.md
   - Code of Conduct: code-of-conduct.md
   - License: license.md

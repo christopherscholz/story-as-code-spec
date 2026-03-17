@@ -20,6 +20,6 @@ body:
     id: location
     attributes:
       label: Location
-      description: File and section where the issue occurs (e.g. schemas/node.schema.yaml, docs/spec.md#frames)
+      description: File and section where the issue occurs (e.g. schemas/node.schema.json, docs/spec.md#frames)
     validations:
       required: true

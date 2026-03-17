@@ -1,0 +1,121 @@
+{
+  "$schema": "https://story-as-code.dev/schemas/v0.4.0/constraint.schema.json",
+  "type": "object",
+  "description": "A world rule — a scoped assertion with severity that validates the world graph. A constraint has two parts: scope (what the rule applies to — filter by types, IDs, frames, time range) and rule (the assertion that must hold for every matched element). Without a scope, the rule applies globally to all elements.\n",
+  "required": [
+    "id",
+    "name",
+    "rule",
+    "severity"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique constraint identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable rule name"
+    },
+    "rule": {
+      "type": "string",
+      "description": "The world rule to enforce, written in terms of the story world — not in graph terminology (no references to nodes, edges, frames, etc.). Express what must be true in the world itself. Tooling maps the rule to the graph via the scope filter.\n"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "ERROR",
+        "WARNING",
+        "INFO"
+      ],
+      "description": "ERROR: violation must be resolved. WARNING: flags issue but does not block. INFO: suggestion only.\n"
+    },
+    "scope": {
+      "type": "object",
+      "description": "Filters which parts of the world graph this constraint applies to. Omit = applies globally to all elements.\n",
+      "properties": {
+        "node_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Only apply to nodes of these types (e.g., CHARACTER, LOCATION)"
+        },
+        "edge_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Only apply to edges of these types"
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Specific node IDs"
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Specific edge IDs"
+        },
+        "frames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Only apply within these frames. Omit = all frames"
+        },
+        "time_range": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string",
+              "description": "Start time point"
+            },
+            "to": {
+              "type": "string",
+              "description": "End time point"
+            }
+          }
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "id": "no-isolated-characters",
+      "name": "Every character knows at least one other character",
+      "rule": "Every character must have at least one relationship with another character.",
+      "severity": "WARNING",
+      "scope": {
+        "node_types": [
+          "CHARACTER"
+        ]
+      }
+    },
+    {
+      "id": "magic-limit",
+      "name": "Magic users can hold at most 3 spells",
+      "rule": "No person may hold more than three spells at any given time.",
+      "severity": "ERROR"
+    },
+    {
+      "id": "no-undead-before-war",
+      "name": "Undead cannot exist before the Great War",
+      "rule": "The undead do not exist in the world before the Great War.",
+      "severity": "ERROR",
+      "scope": {
+        "node_types": [
+          "CHARACTER"
+        ],
+        "time_range": {
+          "to": "T50"
+        }
+      }
+    }
+  ]
+}

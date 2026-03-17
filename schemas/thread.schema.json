@@ -1,0 +1,81 @@
+{
+  "$schema": "https://story-as-code.dev/schemas/v0.4.0/thread.schema.json",
+  "type": "object",
+  "description": "A thematic thread or motif — horizontal chaining of beats across the storyline hierarchy. While parent references group beats vertically within a single storyline, threads connect beats from different storylines through shared thematic meaning. A THEME is an abstract idea (e.g. \"love conquers death\"), a MOTIF is a recurring symbolic element (e.g. \"mirror imagery\").\n",
+  "required": [
+    "id",
+    "type",
+    "name"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique thread identifier"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "THEME",
+        "MOTIF"
+      ],
+      "description": "Whether this is an abstract theme or a recurring motif. THEME — an abstract idea (e.g. \"love conquers death\", \"choice vs. destiny\"). MOTIF — a recurring symbolic element (e.g. \"mirror imagery\", \"the number three\").\n"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name (e.g. 'love-conquers-death', 'mirror-imagery')"
+    },
+    "description": {
+      "type": "string",
+      "description": "What this thread represents thematically"
+    },
+    "appearances": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "beat_id"
+        ],
+        "properties": {
+          "beat_id": {
+            "type": "string",
+            "description": "Beat ID where this thread surfaces"
+          },
+          "description": {
+            "type": "string",
+            "description": "How the thread manifests in this beat"
+          }
+        }
+      },
+      "description": "Where and how this thread appears across the narrative"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Free-form tags for filtering and organization"
+    }
+  },
+  "examples": [
+    {
+      "id": "isolation-and-connection",
+      "type": "THEME",
+      "name": "Isolation vs. Connection",
+      "description": "The tension between solitude and the need for human connection.",
+      "appearances": [
+        {
+          "beat_id": "isolation",
+          "description": "Mara's daily solitude — isolation as comfort"
+        },
+        {
+          "beat_id": "stranger-arrives",
+          "description": "Elara's arrival — connection as threat"
+        },
+        {
+          "beat_id": "truth-revealed",
+          "description": "Trust replaces fear — connection as resolution"
+        }
+      ]
+    }
+  ]
+}

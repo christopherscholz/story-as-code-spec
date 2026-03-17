@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Generate schema reference documentation from YAML schemas
+# Generate schema reference documentation from JSON schemas
 # using json-schema-for-humans.
 set -euo pipefail
 
@@ -10,8 +10,8 @@ OUTPUT_DIR="$ROOT_DIR/docs/schemas/generated"
 
 mkdir -p "$OUTPUT_DIR"
 
-for schema_file in "$SCHEMA_DIR"/*.schema.yaml; do
-  name="$(basename "$schema_file" .schema.yaml)"
+for schema_file in "$SCHEMA_DIR"/*.schema.json; do
+  name="$(basename "$schema_file" .schema.json)"
   output_file="$OUTPUT_DIR/${name}.md"
 
   python -m json_schema_for_humans.cli \

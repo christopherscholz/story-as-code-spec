@@ -1,0 +1,142 @@
+# yaml-language-server: $schema=../../schemas/story.schema.json
+spec_version: "0.4.0"
+name: "The Metamorphosis"
+
+settings:
+  default_language: en
+
+world:
+  time_system:
+    id: samsa-timeline
+    name: "Samsa Household Calendar"
+    type: LINEAR
+    calendar:
+      unit: day
+      season: winter
+
+  nodes:
+    # Characters
+    - $ref: "./characters/gregor.yaml"
+    - $ref: "./characters/grete.yaml"
+    - $ref: "./characters/father.yaml"
+    - $ref: "./characters/mother.yaml"
+    - $ref: "./characters/chief-clerk.yaml"
+
+    # Locations
+    - $ref: "./locations/gregors-room.yaml"
+    - $ref: "./locations/apartment.yaml"
+
+    # Objects
+    - $ref: "./objects/picture-frame.yaml"
+
+    # Events
+    - $ref: "./events/transformation.yaml"
+    - $ref: "./events/chief-clerk-visit.yaml"
+    - $ref: "./events/apple-attack.yaml"
+    - $ref: "./events/gregors-death.yaml"
+
+  edges:
+    # --- Spatial ---
+    - id: gregor-confined-to-room
+      type: SPATIAL
+      name: confined-to
+      source: gregor
+      target: gregors-room
+
+
+    - id: family-in-apartment
+      type: SPATIAL
+      name: resides-in
+      source: father
+      target: apartment
+      description: "The family occupies the apartment, excluding Gregor's room"
+
+    # --- Relationships ---
+    - id: grete-cares-for-gregor
+      type: RELATIONSHIP
+      name: caretakes
+      source: grete
+      target: gregor
+
+      valid_in:
+        - to: "Month 3"
+      weight: 0.8
+      properties:
+        motivation: guilt-and-duty
+
+    - id: father-hostile-to-gregor
+      type: RELATIONSHIP
+      name: hostile-toward
+      source: father
+      target: gregor
+
+      weight: 0.6
+      properties:
+        motivation: shame-and-authority
+
+    - id: mother-pity-for-gregor
+      type: RELATIONSHIP
+      name: sympathizes-with
+      source: mother
+      target: gregor
+
+      weight: 0.5
+      properties:
+        motivation: maternal-grief
+
+    - id: grete-rejects-gregor
+      type: RELATIONSHIP
+      name: rejects
+      source: grete
+      target: gregor
+
+      valid_in:
+        - from: "Month 3"
+      weight: 0.9
+      properties:
+        cause: exhaustion-and-disgust
+
+    # --- Knowledge ---
+    - id: family-knows-transformation
+      type: KNOWLEDGE
+      name: knows-about
+      source: father
+      target: gregor
+
+      description: "All family members and the chief clerk know about Gregor's insect form"
+
+  constraints:
+    - id: single-location
+      name: "A character can only be in one place at a time"
+      rule: >
+        A character can only occupy one location at any given time.
+      severity: ERROR
+      scope:
+        node_types: [CHARACTER]
+
+narrative:
+  lenses:
+    - $ref: "./lenses/gregor-pov.yaml"
+    - $ref: "./lenses/detached-observer.yaml"
+
+  beats:
+    - $ref: "./beats/main-storyline.yaml"
+    - $ref: "./beats/awakening.yaml"
+    - $ref: "./beats/failed-emergence.yaml"
+    - $ref: "./beats/uneasy-coexistence.yaml"
+    - $ref: "./beats/the-attack.yaml"
+    - $ref: "./beats/final-rejection.yaml"
+
+  devices:
+    - $ref: "./devices/picture-setup-payoff.yaml"
+    - $ref: "./devices/apple-chekhov.yaml"
+
+  threads:
+    - $ref: "./threads/dehumanization.yaml"
+
+  formats:
+    - $ref: "./formats/novella.yaml"
+
+  variants:
+    - type: CANON
+      description: "The canonical story — Gregor transforms, declines, and dies; the family is liberated"
