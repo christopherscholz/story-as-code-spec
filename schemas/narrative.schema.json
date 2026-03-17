@@ -6,44 +6,102 @@
     "lenses": {
       "type": "array",
       "items": {
-        "$ref": "lens.schema.json"
+        "oneOf": [
+          {
+            "$ref": "#/$defs/Reference"
+          },
+          {
+            "$ref": "lens.schema.json"
+          }
+        ]
       },
       "description": "Narrative perspectives — filter and interpret world content (define no own truth)"
     },
     "formats": {
       "type": "array",
       "items": {
-        "$ref": "format.schema.json"
+        "oneOf": [
+          {
+            "$ref": "#/$defs/Reference"
+          },
+          {
+            "$ref": "format.schema.json"
+          }
+        ]
       },
       "description": "Output format definitions — purely about presentation, no content relevance"
     },
     "beats": {
       "type": "array",
       "items": {
-        "$ref": "beat.schema.json"
+        "oneOf": [
+          {
+            "$ref": "#/$defs/Reference"
+          },
+          {
+            "$ref": "beat.schema.json"
+          }
+        ]
       },
       "description": "Story beats — hierarchical narrative building blocks. Beats select world graph elements and add dramaturgical structure. Vertical chaining via parent groups beats within a storyline; horizontal chaining via threads connects beats across storylines.\n"
     },
     "devices": {
       "type": "array",
       "items": {
-        "$ref": "device.schema.json"
+        "oneOf": [
+          {
+            "$ref": "#/$defs/Reference"
+          },
+          {
+            "$ref": "device.schema.json"
+          }
+        ]
       },
       "description": "Narrative devices — rhetorical connections between beats (foreshadowing, red herrings, etc.)"
     },
     "threads": {
       "type": "array",
       "items": {
-        "$ref": "thread.schema.json"
+        "oneOf": [
+          {
+            "$ref": "#/$defs/Reference"
+          },
+          {
+            "$ref": "thread.schema.json"
+          }
+        ]
       },
       "description": "Thematic threads and motifs — horizontal chaining of beats across the storyline hierarchy. Connect beats from different storylines through shared thematic meaning.\n"
     },
     "variants": {
       "type": "array",
       "items": {
-        "$ref": "variant-meta.schema.json"
+        "oneOf": [
+          {
+            "$ref": "#/$defs/Reference"
+          },
+          {
+            "$ref": "variant-meta.schema.json"
+          }
+        ]
       },
       "description": "Parallel world version metadata"
+    }
+  },
+  "$defs": {
+    "Reference": {
+      "type": "object",
+      "required": [
+        "$ref"
+      ],
+      "properties": {
+        "$ref": {
+          "type": "string",
+          "format": "uri-reference",
+          "description": "Path to an external YAML file containing this item"
+        }
+      },
+      "additionalProperties": false
     }
   }
 }

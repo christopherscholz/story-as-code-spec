@@ -9,28 +9,56 @@
     "nodes": {
       "type": "array",
       "items": {
-        "$ref": "node.schema.json"
+        "oneOf": [
+          {
+            "$ref": "#/$defs/Reference"
+          },
+          {
+            "$ref": "node.schema.json"
+          }
+        ]
       },
       "description": "All nodes in this world"
     },
     "edges": {
       "type": "array",
       "items": {
-        "$ref": "edge.schema.json"
+        "oneOf": [
+          {
+            "$ref": "#/$defs/Reference"
+          },
+          {
+            "$ref": "edge.schema.json"
+          }
+        ]
       },
       "description": "All edges (relationships) between nodes"
     },
     "frames": {
       "type": "array",
       "items": {
-        "$ref": "frame.schema.json"
+        "oneOf": [
+          {
+            "$ref": "#/$defs/Reference"
+          },
+          {
+            "$ref": "frame.schema.json"
+          }
+        ]
       },
       "description": "Temporal frame definitions. An implicit default frame always exists. If no frames are defined, all temporal data belongs to the default frame.\n"
     },
     "constraints": {
       "type": "array",
       "items": {
-        "$ref": "constraint.schema.json"
+        "oneOf": [
+          {
+            "$ref": "#/$defs/Reference"
+          },
+          {
+            "$ref": "constraint.schema.json"
+          }
+        ]
       },
       "description": "World rules and validation constraints"
     }
@@ -57,5 +85,21 @@
         }
       ]
     }
-  ]
+  ],
+  "$defs": {
+    "Reference": {
+      "type": "object",
+      "required": [
+        "$ref"
+      ],
+      "properties": {
+        "$ref": {
+          "type": "string",
+          "format": "uri-reference",
+          "description": "Path to an external YAML file containing this item"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
 }

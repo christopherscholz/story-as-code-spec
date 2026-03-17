@@ -6,7 +6,7 @@ parent: main-storyline
 order: 4
 
 node_ids: [gregor, father, mother, apple, apple-attack, apartment]
-edge_ids: [father-hostile-to-gregor]
+edge_ids: [father-hostile-to-gregor, apple-embedded-in-gregor]
 
 function: CRISIS
 tension: 0.8

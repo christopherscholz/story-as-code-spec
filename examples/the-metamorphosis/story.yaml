@@ -27,28 +27,43 @@ world:
     # Locations
     - $ref: "./locations/gregors-room.yaml"
     - $ref: "./locations/apartment.yaml"
+    - $ref: "./locations/living-room.yaml"
 
     # Objects
     - $ref: "./objects/picture-frame.yaml"
     - $ref: "./objects/violin.yaml"
     - $ref: "./objects/apple.yaml"
+    - $ref: "./objects/fathers-uniform.yaml"
 
     # Events
     - $ref: "./events/transformation.yaml"
     - $ref: "./events/chief-clerk-visit.yaml"
-    - $ref: "./events/apple-attack.yaml"
     - $ref: "./events/furniture-removal.yaml"
-    - $ref: "./events/gregors-death.yaml"
+    - $ref: "./events/apple-attack.yaml"
     - $ref: "./events/violin-recital.yaml"
+    - $ref: "./events/gretes-ultimatum.yaml"
+    - $ref: "./events/gregors-death.yaml"
 
   edges:
     # --- Spatial ---
+    - id: gregors-room-in-apartment
+      type: SPATIAL
+      name: part-of
+      source: gregors-room
+      target: apartment
+      description: "Gregor's room is part of the apartment but effectively a separate world"
+
+    - id: living-room-in-apartment
+      type: SPATIAL
+      name: part-of
+      source: living-room
+      target: apartment
+
     - id: gregor-confined-to-room
       type: SPATIAL
       name: confined-to
       source: gregor
       target: gregors-room
-
 
     - id: family-in-apartment
       type: SPATIAL
@@ -57,13 +72,52 @@ world:
       target: apartment
       description: "The family occupies the apartment, excluding Gregor's room"
 
+    - id: picture-in-room
+      type: SPATIAL
+      name: located-in
+      source: picture-frame
+      target: gregors-room
+
+    - id: apple-embedded-in-gregor
+      type: SPATIAL
+      name: embedded-in
+      source: apple
+      target: gregor
+      description: "The apple lodges in Gregor's back and rots in place, never removed"
+      valid_in:
+        - from: "Month 1"
+
+    - id: lodgers-in-apartment
+      type: SPATIAL
+      name: lodges-in
+      source: lodgers
+      target: apartment
+      valid_in:
+        - from: "Month 2"
+
+    # --- Ownership ---
+    - id: grete-owns-violin
+      type: OWNERSHIP
+      name: owns
+      source: grete
+      target: violin
+
+    # --- Social ---
+    - id: gregor-employed-by-firm
+      type: SOCIAL
+      name: employed-by
+      source: gregor
+      target: chief-clerk
+      description: "Gregor works as a traveling salesman under the chief clerk's supervision to pay off his parents' debts"
+      valid_in:
+        - to: "Day 1"
+
     # --- Relationships ---
     - id: grete-cares-for-gregor
       type: RELATIONSHIP
       name: caretakes
       source: grete
       target: gregor
-
       valid_in:
         - to: "Month 3"
       weight: 0.8
@@ -75,7 +129,6 @@ world:
       name: hostile-toward
       source: father
       target: gregor
-
       weight: 0.6
       properties:
         motivation: shame-and-authority
@@ -85,7 +138,6 @@ world:
       name: sympathizes-with
       source: mother
       target: gregor
-
       weight: 0.5
       properties:
         motivation: maternal-grief
@@ -95,20 +147,11 @@ world:
       name: rejects
       source: grete
       target: gregor
-
       valid_in:
         - from: "Month 3"
       weight: 0.9
       properties:
         cause: exhaustion-and-disgust
-
-    - id: lodgers-in-apartment
-      type: SPATIAL
-      name: lodges-in
-      source: lodgers
-      target: apartment
-      valid_in:
-        - from: "Month 2"
 
     - id: gregor-attached-to-violin
       type: RELATIONSHIP
@@ -122,11 +165,29 @@ world:
       type: RELATIONSHIP
       name: dominates
       source: lodgers
-      target: apartment
+      target: living-room
       description: "The lodgers effectively take over the living room and dictate household standards"
       valid_in:
         - from: "Month 2"
       weight: 0.8
+
+    - id: charwoman-tends-gregor
+      type: RELATIONSHIP
+      name: tends-to
+      source: charwoman
+      target: gregor
+      description: "The charwoman handles Gregor without fear or sentiment, calling him 'old dung beetle'"
+      valid_in:
+        - from: "Month 3"
+
+    - id: father-wears-uniform
+      type: RELATIONSHIP
+      name: identified-with
+      source: father
+      target: fathers-uniform
+      description: "Father sleeps in his uniform and refuses to take it off — the uniform becomes his new identity"
+      valid_in:
+        - from: "Month 1"
 
     # --- Knowledge ---
     - id: family-knows-transformation
@@ -134,7 +195,6 @@ world:
       name: knows-about
       source: father
       target: gregor
-
       description: "All family members and the chief clerk know about Gregor's insect form"
 
   constraints:
@@ -157,6 +217,7 @@ narrative:
     - $ref: "./beats/failed-emergence.yaml"
     - $ref: "./beats/uneasy-coexistence.yaml"
     - $ref: "./beats/the-attack.yaml"
+    - $ref: "./beats/the-decline.yaml"
     - $ref: "./beats/final-rejection.yaml"
 
   devices:
@@ -167,6 +228,7 @@ narrative:
   threads:
     - $ref: "./threads/dehumanization.yaml"
     - $ref: "./threads/role-reversal.yaml"
+    - $ref: "./threads/doors-and-barriers.yaml"
 
   formats:
     - $ref: "./formats/novella.yaml"

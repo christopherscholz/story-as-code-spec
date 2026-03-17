@@ -3,9 +3,9 @@ id: final-rejection
 name: "It Has to Go"
 description: "Months later, lodgers discover Gregor. Grete declares 'it has to go.' Gregor retreats to his room and dies in the early morning. The family, relieved, takes a spring outing."
 parent: main-storyline
-order: 5
+order: 6
 
-node_ids: [gregor, grete, father, mother, lodgers, charwoman, violin, violin-recital, gregors-death]
+node_ids: [gregor, grete, father, mother, lodgers, charwoman, violin, living-room, violin-recital, gretes-ultimatum, gregors-death]
 edge_ids: [grete-rejects-gregor, lodgers-dominate-apartment, gregor-attached-to-violin]
 
 function: CLIMAX

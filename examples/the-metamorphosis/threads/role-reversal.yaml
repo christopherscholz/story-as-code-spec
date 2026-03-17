@@ -18,5 +18,7 @@ appearances:
     description: "Grete assumes the caretaker role; Father begins working again in his bank messenger uniform"
   - beat_id: the-attack
     description: "Father's new authority manifests physically — he attacks Gregor rather than retreating"
+  - beat_id: the-decline
+    description: "Father works, Mother sews, Grete sells — the entire family has become self-sufficient. Gregor, the former provider, is now the only one who contributes nothing"
   - beat_id: final-rejection
     description: "Grete — now the family's strongest voice — decides Gregor's fate. The former child becomes the executioner"
