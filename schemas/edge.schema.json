@@ -1,5 +1,5 @@
 {
-  "$schema": "https://story-as-code.dev/schemas/v0.5.0/edge.schema.json",
+  "$schema": "https://json-schema.org/draft-07/schema#",
   "type": "object",
   "description": "A persistent relationship between two nodes that holds over a span of time. Edges always represent durations, never instantaneous events — use EVENT nodes for those. Omit valid_in for edges that always hold; use from/to for edges bounded to a time span.\n",
   "required": [

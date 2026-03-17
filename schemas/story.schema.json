@@ -1,5 +1,5 @@
 {
-  "$schema": "https://story-as-code.dev/schemas/v0.5.0/story.schema.json",
+  "$schema": "https://json-schema.org/draft-07/schema#",
   "type": "object",
   "description": "Root document of a Story as Code project. Composes world (the ground truth — what exists) and narrative (the storytelling perspective — how it is told). The narrative layer never defines its own truth; it only selects, filters, and presents world layer content. All collection properties accept arrays of items that can be defined inline or referenced via $ref from external files (analogous to OpenAPI component composition). The spec does not prescribe a directory layout — file organization is a tooling concern.\n",
   "required": [
