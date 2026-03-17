@@ -1,5 +1,5 @@
 {
-  "$schema": "https://story-as-code.dev/schemas/v0.5.0/narrative.schema.json",
+  "$schema": "https://json-schema.org/draft-07/schema#",
   "type": "object",
   "description": "The narrative layer — defines how the world is told: perspective, selection, and presentation. The narrative layer does not define its own truth. All facts live in the world layer. Narrative schemas only select, filter, and arrange world content for storytelling.\n",
   "properties": {
@@ -8,7 +8,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "#/$defs/Reference"
+            "$ref": "ref.schema.json"
           },
           {
             "$ref": "lens.schema.json"
@@ -22,7 +22,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "#/$defs/Reference"
+            "$ref": "ref.schema.json"
           },
           {
             "$ref": "format.schema.json"
@@ -36,7 +36,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "#/$defs/Reference"
+            "$ref": "ref.schema.json"
           },
           {
             "$ref": "beat.schema.json"
@@ -50,7 +50,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "#/$defs/Reference"
+            "$ref": "ref.schema.json"
           },
           {
             "$ref": "device.schema.json"
@@ -64,7 +64,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "#/$defs/Reference"
+            "$ref": "ref.schema.json"
           },
           {
             "$ref": "thread.schema.json"
@@ -78,7 +78,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "#/$defs/Reference"
+            "$ref": "ref.schema.json"
           },
           {
             "$ref": "variant-meta.schema.json"
@@ -86,22 +86,6 @@
         ]
       },
       "description": "Parallel world version metadata"
-    }
-  },
-  "$defs": {
-    "Reference": {
-      "type": "object",
-      "required": [
-        "$ref"
-      ],
-      "properties": {
-        "$ref": {
-          "type": "string",
-          "format": "uri-reference",
-          "description": "Path to an external YAML file containing this item"
-        }
-      },
-      "additionalProperties": false
     }
   }
 }

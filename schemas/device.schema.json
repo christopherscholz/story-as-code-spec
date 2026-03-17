@@ -1,5 +1,5 @@
 {
-  "$schema": "https://story-as-code.dev/schemas/v0.5.0/device.schema.json",
+  "$schema": "https://json-schema.org/draft-07/schema#",
   "type": "object",
   "description": "A narrative device — a rhetorical technique connecting beats to each other. Devices describe how the author arranges information for effect (foreshadowing, red herrings, setup/payoff, etc.). They reference beat IDs only — node and edge references live on the beats themselves.\n",
   "required": [
