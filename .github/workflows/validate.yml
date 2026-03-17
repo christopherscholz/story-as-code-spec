@@ -38,14 +38,8 @@ jobs:
           echo "Expected version: $VERSION"
           ERRORS=0
 
-          for schema in schemas/*.schema.yaml; do
+          for schema in schemas/*.schema.json; do
             name=$(basename "$schema")
-
-            # Check header comment
-            if ! grep -q "^# Spec Version: ${VERSION}$" "$schema"; then
-              echo "✗ $name: header comment does not match VERSION"
-              ERRORS=$((ERRORS + 1))
-            fi
 
             # Check $schema URL
             if ! grep -q "story-as-code\.dev/schemas/v${VERSION}/" "$schema"; then

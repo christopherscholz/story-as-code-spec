@@ -1,0 +1,128 @@
+{
+  "$schema": "https://story-as-code.dev/schemas/v0.5.0/edge.schema.json",
+  "type": "object",
+  "description": "A persistent relationship between two nodes that holds over a span of time. Edges always represent durations, never instantaneous events — use EVENT nodes for those. Omit valid_in for edges that always hold; use from/to for edges bounded to a time span.\n",
+  "required": [
+    "id",
+    "type",
+    "name",
+    "source",
+    "target"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique edge identifier",
+      "examples": [
+        "hero-in-village",
+        "hero-loves-companion"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "description": "Category (e.g., SPATIAL, KINSHIP, CONFLICT)",
+      "examples": [
+        "SPATIAL",
+        "KINSHIP",
+        "CONFLICT",
+        "RELATIONSHIP",
+        "KNOWLEDGE"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Verb describing the relationship (e.g., mentors, owns, borders)",
+      "examples": [
+        "mentors",
+        "owns",
+        "borders",
+        "loves",
+        "located-in"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional prose summary (e.g., 'Elena mentors Kai in secret')"
+    },
+    "source": {
+      "type": "string",
+      "description": "Source node ID"
+    },
+    "target": {
+      "type": "string",
+      "description": "Target node ID"
+    },
+    "directed": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether edge is directed (source → target). Default true. Set to false for symmetric relationships (e.g., adjacent-to, siblings) where the edge is traversable in both directions.\n"
+    },
+    "valid_in": {
+      "type": "array",
+      "description": "When and where this edge exists. Omit the entire field for edges that hold from the beginning of the world to the end in all frames. Each entry scopes the edge to a specific frame and/or time span. Edges are never point-in-time — they always define a range (from/to).\n",
+      "items": {
+        "type": "object",
+        "properties": {
+          "frame": {
+            "type": "string",
+            "description": "Frame ID. Omit = all frames"
+          },
+          "from": {
+            "type": "string",
+            "description": "Start of the time span. Omit = since the beginning of the world"
+          },
+          "to": {
+            "type": "string",
+            "description": "End of the time span. Omit = until the end of the world"
+          }
+        }
+      }
+    },
+    "properties": {
+      "type": "object",
+      "description": "Free-form key-value pairs for any additional edge attributes"
+    },
+    "weight": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 5,
+      "description": "Strength of the relationship"
+    }
+  },
+  "examples": [
+    {
+      "id": "cave-adjacent-lighthouse",
+      "type": "SPATIAL",
+      "name": "adjacent-to",
+      "source": "hidden-cave",
+      "target": "lighthouse",
+      "directed": false
+    },
+    {
+      "id": "hero-in-dungeon",
+      "type": "SPATIAL",
+      "name": "located-in",
+      "source": "hero",
+      "target": "dungeon",
+      "valid_in": [
+        {
+          "from": "T10",
+          "to": "T15"
+        }
+      ]
+    },
+    {
+      "id": "hero-has-sword",
+      "type": "SPATIAL",
+      "name": "possesses",
+      "source": "hero",
+      "target": "magic-sword",
+      "valid_in": [
+        {
+          "frame": "alt-timeline",
+          "from": "T5"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,392 @@
+{
+  "$schema": "https://story-as-code.dev/schemas/v0.5.0/lens.schema.json",
+  "type": "object",
+  "description": "A narrative perspective — controls who tells the story, what they know, how they speak, and how reliable they are. Lenses filter and interpret world content but define no own truth.\n",
+  "required": [
+    "id",
+    "perspective"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique lens identifier",
+      "examples": [
+        "hero-pov",
+        "omniscient",
+        "unreliable-narrator"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "SIMPLE",
+        "COMPOSITE"
+      ],
+      "default": "SIMPLE"
+    },
+    "perspective": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "CHARACTER_BOUND",
+            "OMNISCIENT",
+            "OBJECTIVE",
+            "CUSTOM"
+          ]
+        },
+        "anchor": {
+          "type": "string",
+          "description": "Node ID for CHARACTER_BOUND perspective"
+        },
+        "person": {
+          "type": "string",
+          "enum": [
+            "FIRST",
+            "SECOND",
+            "THIRD"
+          ]
+        }
+      }
+    },
+    "knowledge": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "OMNISCIENT",
+            "CHARACTER_KNOWLEDGE",
+            "PUBLIC_ONLY"
+          ]
+        },
+        "include_subconscious": {
+          "type": "boolean",
+          "default": false
+        },
+        "include_wrong_beliefs": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "temporal_position": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "IN_MOMENT",
+            "RETROSPECTIVE",
+            "PROPHETIC"
+          ]
+        },
+        "narrating_from": {
+          "type": "string",
+          "description": "For RETROSPECTIVE: time point from which the narrator looks back"
+        },
+        "knows_future_until": {
+          "type": "string",
+          "description": "Time point up to which the narrator knows the future"
+        }
+      }
+    },
+    "emotional": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "enum": [
+            "NEUTRAL",
+            "CHARACTER_STATE",
+            "CUSTOM"
+          ]
+        },
+        "bias": {
+          "type": "object",
+          "properties": {
+            "toward": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Node IDs whose relationships color the narrative"
+            },
+            "bias_strength": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 1.0
+            }
+          }
+        }
+      }
+    },
+    "voice": {
+      "type": "object",
+      "properties": {
+        "vocabulary_level": {
+          "type": "string",
+          "enum": [
+            "LITERARY",
+            "FORMAL",
+            "COLLOQUIAL",
+            "ARCHAIC",
+            "MINIMAL"
+          ]
+        },
+        "sentence_tendency": {
+          "type": "string",
+          "enum": [
+            "FLOWING",
+            "SHORT_STACCATO",
+            "COMPLEX_NESTED"
+          ]
+        },
+        "inner_monologue": {
+          "type": "boolean",
+          "default": true
+        },
+        "metaphor_density": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ]
+        },
+        "verbal_tics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "language_rendering": {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": [
+                "NATURALISTIC",
+                "TRANSLATED_WITH_MARKERS",
+                "INLINE_CONSTRUCTED",
+                "FULL_CONLANG"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "reliability": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": [
+            "RELIABLE",
+            "SELECTIVE",
+            "UNRELIABLE",
+            "LYING"
+          ]
+        },
+        "omits": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Event IDs that this narrator skips or downplays"
+        },
+        "distorts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "node": {
+                "type": "string"
+              },
+              "direction": {
+                "type": "string",
+                "enum": [
+                  "POSITIVE",
+                  "NEGATIVE"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "layers": {
+      "type": "array",
+      "description": "For COMPOSITE lenses: layered lens configuration",
+      "items": {
+        "type": "object",
+        "required": [
+          "lens",
+          "role"
+        ],
+        "properties": {
+          "lens": {
+            "type": "string",
+            "description": "Lens ID to layer"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "BASE",
+              "DIP",
+              "OVERRIDE"
+            ]
+          },
+          "priority": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Precedence order — higher value takes priority on conflict"
+          },
+          "trigger": {
+            "type": "object",
+            "properties": {
+              "when": {
+                "type": "string"
+              },
+              "node": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "alternation": {
+      "type": "object",
+      "description": "For COMPOSITE lenses: alternation configuration",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "PER_SCENE",
+            "PER_CHAPTER",
+            "FLUID"
+          ]
+        },
+        "sequence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Lens IDs to alternate between"
+        },
+        "trigger": {
+          "type": "string",
+          "enum": [
+            "SCENE_BREAK",
+            "POV_TAG",
+            "TIME_SHIFT"
+          ],
+          "description": "Event that causes a lens switch in FLUID mode"
+        }
+      }
+    },
+    "composition": {
+      "type": "object",
+      "description": "For COMPOSITE lenses: defines how conflicts between sub-lenses are resolved",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "LAYERED",
+            "ALTERNATING",
+            "BLENDED"
+          ],
+          "description": "Overall composition strategy"
+        },
+        "conflict_resolution": {
+          "type": "object",
+          "description": "Per-dimension rules for resolving contradictions between sub-lenses",
+          "properties": {
+            "knowledge": {
+              "type": "string",
+              "enum": [
+                "UNION",
+                "INTERSECTION",
+                "PRIORITY_WINS"
+              ],
+              "default": "PRIORITY_WINS",
+              "description": "UNION — narrator knows everything any sub-lens knows. INTERSECTION — narrator knows only what all sub-lenses share. PRIORITY_WINS — higher-priority lens decides visibility.\n"
+            },
+            "emotion": {
+              "type": "string",
+              "enum": [
+                "BLEND",
+                "PRIORITY_WINS",
+                "DOMINANT"
+              ],
+              "default": "BLEND",
+              "description": "BLEND — emotional filters are averaged/mixed. PRIORITY_WINS — higher-priority lens sets the emotional tone. DOMINANT — the strongest emotional state wins regardless of priority.\n"
+            },
+            "voice": {
+              "type": "string",
+              "enum": [
+                "PRIORITY_WINS",
+                "ALTERNATING"
+              ],
+              "default": "PRIORITY_WINS",
+              "description": "PRIORITY_WINS — higher-priority lens dictates voice. ALTERNATING — voice switches with the active sub-lens.\n"
+            },
+            "reliability": {
+              "type": "string",
+              "enum": [
+                "LEAST_RELIABLE",
+                "MOST_RELIABLE",
+                "PRIORITY_WINS"
+              ],
+              "default": "PRIORITY_WINS",
+              "description": "LEAST_RELIABLE — composite inherits the least reliable sub-lens level. MOST_RELIABLE — composite inherits the most reliable sub-lens level. PRIORITY_WINS — higher-priority lens sets reliability.\n"
+            }
+          }
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "id": "hero-pov",
+      "perspective": {
+        "type": "CHARACTER_BOUND",
+        "anchor": "hero",
+        "person": "FIRST"
+      },
+      "knowledge": {
+        "mode": "CHARACTER_KNOWLEDGE"
+      },
+      "voice": {
+        "vocabulary_level": "COLLOQUIAL",
+        "sentence_tendency": "SHORT_STACCATO"
+      },
+      "reliability": {
+        "level": "SELECTIVE",
+        "omits": [
+          "secret-meeting"
+        ]
+      }
+    },
+    {
+      "id": "omniscient",
+      "perspective": {
+        "type": "OMNISCIENT",
+        "person": "THIRD"
+      },
+      "knowledge": {
+        "mode": "OMNISCIENT"
+      },
+      "voice": {
+        "vocabulary_level": "LITERARY",
+        "metaphor_density": "HIGH"
+      }
+    }
+  ]
+}

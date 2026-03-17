@@ -1,7 +1,0 @@
-id: journal-setup-payoff
-type: SETUP_PAYOFF
-description: "The journal found in the cave is planted early and pays off when Mara uses it to confront Elara, revealing the truth."
-setup:
-  - cave-found
-payoff:
-  - truth-revealed

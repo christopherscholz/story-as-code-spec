@@ -45,14 +45,10 @@ default_frame: "main"
 nodes:
   - id: hero
     type: CHARACTER
-    static: { name_variants: ["The Hero"] }
-    states:
-      - frame: main
-        at: T0
-        properties:
-          age: 18
-          location: village
-          trait_courage: 0.8
+    category: protagonist
+    properties:
+      age: 18
+      trait_courage: 0.8
 
   - id: village
     type: LOCATION

@@ -21,11 +21,8 @@ fi
 
 echo "Syncing schemas to version $VERSION..."
 
-for schema in schemas/*.schema.yaml; do
-  # Update the header comment: # Spec Version: x.y.z
-  sed -i '' "s/^# Spec Version: .*/# Spec Version: ${VERSION}/" "$schema"
-
-  # Update the $schema URL: .../schemas/vX.Y.Z/name.schema.yaml
+for schema in schemas/*.schema.json; do
+  # Update the $schema URL: .../schemas/vX.Y.Z/name.schema.json
   sed -i '' "s|\(story-as-code\.dev/schemas/v\)[^/]*/|\1${VERSION}/|" "$schema"
 
   echo "  ✓ $(basename "$schema")"

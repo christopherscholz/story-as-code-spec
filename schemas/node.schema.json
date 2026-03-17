@@ -1,0 +1,94 @@
+{
+  "$schema": "https://story-as-code.dev/schemas/v0.5.0/node.schema.json",
+  "type": "object",
+  "description": "An entity in the world graph — characters, locations, objects, events, or any custom type.",
+  "required": [
+    "id",
+    "name",
+    "type"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique node identifier",
+      "examples": [
+        "hero",
+        "village",
+        "magic-sword"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of this node",
+      "examples": [
+        "Aria",
+        "The Village of Thornwall",
+        "Excalibur"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "description": "Node type — free-form; type-specific constraints are applied by tooling via type masks.\n",
+      "examples": [
+        "CHARACTER",
+        "LOCATION",
+        "OBJECT",
+        "EVENT",
+        "CONCEPT"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "A summary of this node — what it is, its role in the story, and why it matters. May be multiple sentences when the node warrants it.",
+      "examples": [
+        "A wandering knight seeking redemption for a past betrayal. Once the realm's most celebrated champion, he now travels under a false name, haunted by the siege he failed to prevent."
+      ]
+    },
+    "category": {
+      "type": "string",
+      "description": "Free-form categorization (e.g., protagonist, antagonist)",
+      "examples": [
+        "protagonist",
+        "antagonist",
+        "mentor"
+      ]
+    },
+    "properties": {
+      "type": "object",
+      "description": "Free-form key-value pairs for any additional node attributes"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Free-form tags for filtering and organization",
+      "examples": [
+        [
+          "magic",
+          "royal",
+          "quest-giver"
+        ]
+      ]
+    }
+  },
+  "examples": [
+    {
+      "id": "hero",
+      "name": "Aria",
+      "type": "CHARACTER",
+      "description": "A young warrior chosen by prophecy to restore balance to the realm. Raised in obscurity, she discovers her lineage only after the fall of the capital, and must reconcile her quiet upbringing with the violent destiny thrust upon her.",
+      "category": "protagonist",
+      "properties": {
+        "name_variants": [
+          "The Chosen One"
+        ],
+        "age": 22,
+        "homeland": "The Northern Reach"
+      },
+      "tags": [
+        "protagonist"
+      ]
+    }
+  ]
+}

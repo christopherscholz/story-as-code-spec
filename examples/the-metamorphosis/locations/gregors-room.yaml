@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=../../../schemas/node.schema.json
+id: gregors-room
+name: "Gregor's Room"
+type: LOCATION
+description: >
+  Gregor's bedroom, originally furnished with a desk, wardrobe, and the picture he
+  framed himself. After the transformation it becomes his permanent confinement.
+  Grete and Mother remove the furniture to give him crawling space, but the emptying
+  also strips away his human markers. By the final months the room is used as a
+  dumping ground for household junk, mirroring Gregor's own decline into irrelevance.
+properties:
+  name_variants: ["the room", "his room"]
+tags: [domestic, confinement]

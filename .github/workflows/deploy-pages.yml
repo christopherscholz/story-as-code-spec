@@ -93,7 +93,7 @@ jobs:
           git worktree add /tmp/gh-pages origin/gh-pages
 
           mkdir -p "/tmp/gh-pages/schemas/v${VERSION}"
-          cp schemas/*.schema.yaml "/tmp/gh-pages/schemas/v${VERSION}/"
+          cp schemas/*.schema.json "/tmp/gh-pages/schemas/v${VERSION}/"
 
           cd /tmp/gh-pages
           git add "schemas/v${VERSION}/"

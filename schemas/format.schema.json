@@ -1,0 +1,106 @@
+{
+  "$schema": "https://story-as-code.dev/schemas/v0.5.0/format.schema.json",
+  "type": "object",
+  "description": "Output format definition — determines ONLY how content is structured and delivered. Formats have no content relevance. They do not influence what is told, only the structural container in which it appears. The schema defines the shape — concrete output types, structure levels, and their constraints are defined by the user, not prescribed by the schema.\n",
+  "required": [
+    "id",
+    "name",
+    "type",
+    "structure"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique format identifier"
+    },
+    "type": {
+      "type": "string",
+      "description": "Output medium type (e.g. NOVEL, SCREENPLAY, COMIC, AUDIO, INTERACTIVE). Free-form — not prescribed by the schema.\n",
+      "examples": [
+        "NOVEL",
+        "SCREENPLAY",
+        "COMIC",
+        "AUDIO",
+        "INTERACTIVE"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable format name"
+    },
+    "structure": {
+      "$ref": "#/$defs/Structure"
+    },
+    "settings": {
+      "type": "object",
+      "description": "Type-specific settings as free-form key-value pairs. The schema does not prescribe which keys are valid — that depends on the output type and tooling.\n"
+    }
+  },
+  "examples": [
+    {
+      "id": "novel-format",
+      "type": "NOVEL",
+      "name": "Standard Novel",
+      "structure": {
+        "type": "book",
+        "children": {
+          "type": "chapter",
+          "constraints": {
+            "word_count_min": 3000,
+            "word_count_max": 8000
+          },
+          "children": {
+            "type": "scene"
+          }
+        }
+      }
+    },
+    {
+      "id": "comic-format",
+      "type": "COMIC",
+      "name": "Comic Issue",
+      "structure": {
+        "type": "issue",
+        "children": {
+          "type": "page",
+          "constraints": {
+            "panel_count_max": 9
+          },
+          "children": {
+            "type": "panel"
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "Structure": {
+      "type": "object",
+      "description": "Recursive structural level. Hierarchy is expressed via children (e.g. book → chapter → scene, or issue → page → panel).\n",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Structural level identifier (e.g. 'book', 'chapter', 'scene', 'page', 'panel', 'segment'). Free-form — not prescribed by the schema.\n",
+          "examples": [
+            "book",
+            "chapter",
+            "scene",
+            "page",
+            "panel",
+            "segment"
+          ]
+        },
+        "constraints": {
+          "type": "object",
+          "description": "Free-form constraints for this level (e.g. word count ranges, panel counts, duration limits).\n"
+        },
+        "children": {
+          "$ref": "#/$defs/Structure"
+        }
+      }
+    }
+  }
+}
