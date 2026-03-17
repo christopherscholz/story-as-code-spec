@@ -28,14 +28,14 @@
       "items": {
         "type": "string"
       },
-      "description": "Node IDs from the world graph relevant to this beat"
+      "description": "Node IDs from the world graph relevant to this beat. Parent beats inherit node references from their children — only specify IDs that are not already covered by child beats."
     },
     "edge_ids": {
       "type": "array",
       "items": {
         "type": "string"
       },
-      "description": "Edge IDs from the world graph relevant to this beat"
+      "description": "Edge IDs from the world graph relevant to this beat. Parent beats inherit edge references from their children — only specify IDs that are not already covered by child beats."
     },
     "function": {
       "type": "string",
@@ -116,17 +116,7 @@
   "examples": [
     {
       "id": "main-storyline",
-      "name": "The Hero's Journey",
-      "node_ids": [
-        "hero",
-        "mentor",
-        "villain",
-        "kingdom"
-      ],
-      "edge_ids": [
-        "hero-meets-mentor",
-        "hero-defeats-villain"
-      ]
+      "name": "The Hero's Journey"
     },
     {
       "id": "the-call",
