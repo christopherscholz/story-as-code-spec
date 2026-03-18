@@ -23,7 +23,7 @@ theme:
   features:
     - navigation.tabs
     - navigation.sections
-    - navigation.indexes
+
     - navigation.top
     - search.highlight
     - search.share
@@ -55,14 +55,14 @@ nav:
     - Overview: schemas/index.md
     - Story: schemas/story.md
     - World:
-      - schemas/world.md
+      - Overview: schemas/world.md
       - Time System: schemas/time-system.md
       - Node: schemas/node.md
       - Edge: schemas/edge.md
       - Frame: schemas/frame.md
       - Constraint: schemas/constraint.md
     - Narrative:
-      - schemas/narrative.md
+      - Overview: schemas/narrative.md
       - Lens: schemas/lens.md
       - Format: schemas/format.md
       - Beat: schemas/beat.md
@@ -70,7 +70,7 @@ nav:
       - Thread: schemas/thread.md
       - Variant Meta: schemas/variant-meta.md
     - Definitions:
-      - schemas/definitions.md
+      - Overview: schemas/definitions.md
       - Tag: schemas/tag.md
       - Type: schemas/type.md
     - Derivation Meta: schemas/derivation-meta.md
