@@ -5,6 +5,88 @@ name: "The Metamorphosis"
 settings:
   default_language: en
 
+types:
+  # Node types
+  - id: CHARACTER
+    name: Character
+    applies_to: NODE
+    description: "A sentient being — human or transformed — that acts, speaks, or is acted upon."
+
+  - id: LOCATION
+    name: Location
+    applies_to: NODE
+    description: "A physical space where events unfold and characters exist."
+
+  - id: OBJECT
+    name: Object
+    applies_to: NODE
+    description: "A physical thing with symbolic or narrative significance."
+
+  - id: EVENT
+    name: Event
+    applies_to: NODE
+    description: "A discrete occurrence that changes the state of the world."
+
+  # Edge types
+  - id: SPATIAL
+    name: Spatial Relationship
+    applies_to: EDGE
+    description: "A spatial or containment relationship (located-in, part-of, confined-to, embedded-in)."
+
+  - id: OWNERSHIP
+    name: Ownership
+    applies_to: EDGE
+    description: "A possession relationship between an owner and a thing."
+
+  - id: SOCIAL
+    name: Social Relationship
+    applies_to: EDGE
+    description: "A professional or institutional relationship (employed-by, supervised-by)."
+
+  - id: RELATIONSHIP
+    name: Interpersonal Relationship
+    applies_to: EDGE
+    description: "An emotional or interpersonal bond between characters or between a character and an object."
+
+  - id: KNOWLEDGE
+    name: Knowledge
+    applies_to: EDGE
+    description: "An information relationship — what one entity knows about another."
+
+  # Device types
+  - id: SETUP_PAYOFF
+    name: Setup & Payoff
+    applies_to: DEVICE
+    description: "Something planted early that pays off later — the reader recognizes the callback."
+
+  - id: CHEKHOV_GUN
+    name: Chekhov's Gun
+    applies_to: DEVICE
+    description: "An element introduced early that must become significant later — if shown, it must fire."
+
+  # Format types
+  - id: NOVEL
+    name: Novel
+    applies_to: FORMAT
+    description: "Long-form prose fiction structured in chapters and scenes."
+
+  # Lens types
+  - id: SIMPLE
+    name: Simple Lens
+    applies_to: LENS
+    description: "A single, non-composite narrative perspective."
+
+  # Thread types
+  - id: THEME
+    name: Theme
+    applies_to: THREAD
+    description: "An abstract idea that recurs across the narrative (e.g. alienation, duty, identity)."
+
+  - id: MOTIF
+    name: Motif
+    applies_to: THREAD
+    description: "A recurring symbolic element — image, object, or pattern — that reinforces thematic meaning."
+
 world:
   time_system:
     id: samsa-timeline
