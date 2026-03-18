@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema#",
-  "description": "Reusable definition for external file references. Any array item or top-level section that supports modular file splitting uses this schema.\n",
+  "description": "External file reference for modular file splitting.",
   "type": "object",
   "required": [
     "$ref"

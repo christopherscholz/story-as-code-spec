@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema#",
   "type": "object",
-  "description": "Output format definition — determines ONLY how content is structured and delivered. Formats have no content relevance. They do not influence what is told, only the structural container in which it appears. The schema defines the shape — concrete output types, structure levels, and their constraints are defined by the user, not prescribed by the schema.\n",
+  "description": "Output format definition — the structural container for content.",
   "required": [
     "id",
     "name",
@@ -10,12 +10,11 @@
   ],
   "properties": {
     "id": {
-      "type": "string",
-      "description": "Unique format identifier"
+      "type": "string"
     },
     "type": {
       "type": "string",
-      "description": "Output medium type (e.g. NOVEL, SCREENPLAY, COMIC, AUDIO, INTERACTIVE). Free-form — not prescribed by the schema.\n",
+      "description": "Output medium (e.g. NOVEL, SCREENPLAY, COMIC)",
       "examples": [
         "NOVEL",
         "SCREENPLAY",
@@ -25,15 +24,14 @@
       ]
     },
     "name": {
-      "type": "string",
-      "description": "Human-readable format name"
+      "type": "string"
     },
     "structure": {
       "$ref": "#/$defs/Structure"
     },
     "settings": {
       "type": "object",
-      "description": "Type-specific settings as free-form key-value pairs. The schema does not prescribe which keys are valid — that depends on the output type and tooling.\n"
+      "description": "Type-specific settings as free-form key-value pairs"
     }
   },
   "examples": [
@@ -76,14 +74,14 @@
   "$defs": {
     "Structure": {
       "type": "object",
-      "description": "Recursive structural level. Hierarchy is expressed via children (e.g. book → chapter → scene, or issue → page → panel).\n",
+      "description": "Recursive structural level (e.g. book → chapter → scene).",
       "required": [
         "type"
       ],
       "properties": {
         "type": {
           "type": "string",
-          "description": "Structural level identifier (e.g. 'book', 'chapter', 'scene', 'page', 'panel', 'segment'). Free-form — not prescribed by the schema.\n",
+          "description": "Level identifier (e.g. book, chapter, scene, page, panel)",
           "examples": [
             "book",
             "chapter",
@@ -95,7 +93,7 @@
         },
         "constraints": {
           "type": "object",
-          "description": "Free-form constraints for this level (e.g. word count ranges, panel counts, duration limits).\n"
+          "description": "Constraints for this level (e.g. word count, panel count)"
         },
         "children": {
           "$ref": "#/$defs/Structure"

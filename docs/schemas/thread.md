@@ -1,6 +1,6 @@
 # Thread Schema
 
-Thematic threads and motifs — horizontal chaining of beats across the storyline hierarchy.
+A thematic thread or motif connecting beats across storylines.
 
 {%
   include-markdown "./generated/thread.md"

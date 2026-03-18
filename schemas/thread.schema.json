@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema#",
   "type": "object",
-  "description": "A thematic thread or motif — horizontal chaining of beats across the storyline hierarchy. While parent references group beats vertically within a single storyline, threads connect beats from different storylines through shared thematic meaning. A THEME is an abstract idea (e.g. \"love conquers death\"), a MOTIF is a recurring symbolic element (e.g. \"mirror imagery\").\n",
+  "description": "A thematic thread or motif connecting beats across storylines.",
   "required": [
     "id",
     "type",
@@ -9,8 +9,7 @@
   ],
   "properties": {
     "id": {
-      "type": "string",
-      "description": "Unique thread identifier"
+      "type": "string"
     },
     "type": {
       "type": "string",
@@ -18,15 +17,13 @@
         "THEME",
         "MOTIF"
       ],
-      "description": "Whether this is an abstract theme or a recurring motif. THEME — an abstract idea (e.g. \"love conquers death\", \"choice vs. destiny\"). MOTIF — a recurring symbolic element (e.g. \"mirror imagery\", \"the number three\").\n"
+      "description": "THEME — an abstract idea. MOTIF — a recurring symbolic element."
     },
     "name": {
-      "type": "string",
-      "description": "Human-readable name (e.g. 'love-conquers-death', 'mirror-imagery')"
+      "type": "string"
     },
     "description": {
-      "type": "string",
-      "description": "What this thread represents thematically"
+      "type": "string"
     },
     "appearances": {
       "type": "array",
@@ -37,23 +34,19 @@
         ],
         "properties": {
           "beat_id": {
-            "type": "string",
-            "description": "Beat ID where this thread surfaces"
+            "type": "string"
           },
           "description": {
-            "type": "string",
-            "description": "How the thread manifests in this beat"
+            "type": "string"
           }
         }
-      },
-      "description": "Where and how this thread appears across the narrative"
+      }
     },
     "tags": {
       "type": "array",
       "items": {
         "type": "string"
-      },
-      "description": "Free-form tags for filtering and organization"
+      }
     }
   },
   "examples": [

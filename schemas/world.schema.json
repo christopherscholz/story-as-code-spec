@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema#",
   "type": "object",
-  "description": "The world graph — the ground truth of the story universe. Defines what exists: entities (nodes), relationships (edges), timelines (frames), rules (constraints), and the time system. All facts live here. The narrative layer references world content but never defines its own truth.\n",
+  "description": "The world graph — ground truth of the story universe.",
   "properties": {
     "time_system": {
       "$ref": "time-system.schema.json"
@@ -17,8 +17,7 @@
             "$ref": "node.schema.json"
           }
         ]
-      },
-      "description": "All nodes in this world"
+      }
     },
     "edges": {
       "type": "array",
@@ -31,8 +30,7 @@
             "$ref": "edge.schema.json"
           }
         ]
-      },
-      "description": "All edges (relationships) between nodes"
+      }
     },
     "frames": {
       "type": "array",
@@ -46,7 +44,7 @@
           }
         ]
       },
-      "description": "Temporal frame definitions. An implicit default frame always exists. If no frames are defined, all temporal data belongs to the default frame.\n"
+      "description": "Alternative timelines and branches"
     },
     "constraints": {
       "type": "array",
@@ -59,8 +57,7 @@
             "$ref": "constraint.schema.json"
           }
         ]
-      },
-      "description": "World rules and validation constraints"
+      }
     }
   },
   "examples": [

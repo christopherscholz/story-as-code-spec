@@ -1,6 +1,6 @@
 # Format Schema
 
-Output format definition — determines only how content is structured and delivered. Formats have no content relevance.
+Output format definition — the structural container for content.
 
 {%
   include-markdown "./generated/format.md"

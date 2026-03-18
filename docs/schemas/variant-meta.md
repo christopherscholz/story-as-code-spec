@@ -1,6 +1,6 @@
 # Variant Meta Schema
 
-Metadata for parallel world versions — canon, speculative, retcon, fork, or collaboration.
+Metadata for a parallel world version.
 
 {%
   include-markdown "./generated/variant-meta.md"
