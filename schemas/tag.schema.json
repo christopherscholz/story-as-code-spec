@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "description": "A tag definition. Tags are defined once at the story root and referenced by ID from the tags array of any element. A tag definition provides a display name and description for what would otherwise be an opaque string.\n",
+  "required": [
+    "id",
+    "name"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique tag identifier — referenced by elements in their tags arrays",
+      "examples": [
+        "protagonist",
+        "magic",
+        "quest-giver"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable display name of this tag",
+      "examples": [
+        "Protagonist",
+        "Magic",
+        "Quest Giver"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "What this tag means and when to apply it",
+      "examples": [
+        "The central character driving the story forward.",
+        "Anything related to the supernatural magic system of this world."
+      ]
+    }
+  },
+  "examples": [
+    {
+      "id": "protagonist",
+      "name": "Protagonist",
+      "description": "The central character whose journey drives the story."
+    },
+    {
+      "id": "magic",
+      "name": "Magic",
+      "description": "Related to the supernatural magic system of this world."
+    }
+  ]
+}

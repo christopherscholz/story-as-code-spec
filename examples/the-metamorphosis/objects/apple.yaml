@@ -8,7 +8,6 @@ description: >
   accelerates Gregor's physical decline. The family eventually grows so accustomed to it
   that they forget it is there. It serves as a permanent, visible marker of the family's
   violence — a wound carried by the victim while the perpetrators move on.
-category: weapon
 properties:
   is_unique: true
-tags: [symbol, violence, decay]
+tags: [weapon, symbol, violence, decay]

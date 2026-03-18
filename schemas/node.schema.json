@@ -44,15 +44,6 @@
         "A wandering knight seeking redemption for a past betrayal. Once the realm's most celebrated champion, he now travels under a false name, haunted by the siege he failed to prevent."
       ]
     },
-    "category": {
-      "type": "string",
-      "description": "Free-form categorization (e.g., protagonist, antagonist)",
-      "examples": [
-        "protagonist",
-        "antagonist",
-        "mentor"
-      ]
-    },
     "properties": {
       "type": "object",
       "description": "Free-form key-value pairs for any additional node attributes"
@@ -78,7 +69,6 @@
       "name": "Aria",
       "type": "CHARACTER",
       "description": "A young warrior chosen by prophecy to restore balance to the realm. Raised in obscurity, she discovers her lineage only after the fall of the capital, and must reconcile her quiet upbringing with the violent destiny thrust upon her.",
-      "category": "protagonist",
       "properties": {
         "name_variants": [
           "The Chosen One"

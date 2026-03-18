@@ -9,7 +9,6 @@ description: >
   Grete plays for the lodgers; Gregor, drawn by the music, crawls out of his room.
   This moment — where music briefly reconnects him to his human longings — directly
   triggers the lodgers' discovery and Grete's ultimatum that ends Gregor's life.
-category: instrument
 properties:
   is_unique: true
-tags: [symbol, humanity, catalyst]
+tags: [instrument, symbol, humanity, catalyst]

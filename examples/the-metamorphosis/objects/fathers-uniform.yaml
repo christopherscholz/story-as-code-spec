@@ -8,7 +8,6 @@ description: >
   defeated old man into a figure of rigid authority — it is both a symbol of the family's
   forced self-reliance and of Father's new identity as household enforcer. Its gold buttons
   grow increasingly tarnished, mirroring the family's slow decline.
-category: clothing
 properties:
   is_unique: true
-tags: [symbol, authority, decay]
+tags: [clothing, symbol, authority, decay]
