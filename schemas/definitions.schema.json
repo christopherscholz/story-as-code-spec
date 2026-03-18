@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema#",
   "type": "object",
-  "description": "Reusable definitions for the story — the vocabulary of types and tags that elements reference. Definitions are optional; elements may use type and tag strings without a matching definition.\n",
+  "description": "Reusable tag and type definitions. Optional — elements may use tags and types without a matching definition.",
   "properties": {
     "tags": {
       "type": "array",
@@ -14,8 +14,7 @@
             "$ref": "tag.schema.json"
           }
         ]
-      },
-      "description": "Tag definitions. Each tag is referenced by ID from the tags array of any element."
+      }
     },
     "types": {
       "type": "array",
@@ -28,8 +27,7 @@
             "$ref": "type.schema.json"
           }
         ]
-      },
-      "description": "Type definitions. Each type is referenced by ID from the type field of any typed element."
+      }
     }
   },
   "examples": [

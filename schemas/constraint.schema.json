@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema#",
   "type": "object",
-  "description": "A world rule — a scoped assertion with severity that validates the world graph. A constraint has two parts: scope (what the rule applies to — filter by types, IDs, frames, time range) and rule (the assertion that must hold for every matched element). Without a scope, the rule applies globally to all elements.\n",
+  "description": "A world rule that validates the world graph.",
   "required": [
     "id",
     "name",
@@ -10,16 +10,14 @@
   ],
   "properties": {
     "id": {
-      "type": "string",
-      "description": "Unique constraint identifier"
+      "type": "string"
     },
     "name": {
-      "type": "string",
-      "description": "Human-readable rule name"
+      "type": "string"
     },
     "rule": {
       "type": "string",
-      "description": "The world rule to enforce, written in terms of the story world — not in graph terminology (no references to nodes, edges, frames, etc.). Express what must be true in the world itself. Tooling maps the rule to the graph via the scope filter.\n"
+      "description": "The rule to enforce, expressed in story-world terms"
     },
     "severity": {
       "type": "string",
@@ -28,57 +26,50 @@
         "WARNING",
         "INFO"
       ],
-      "description": "ERROR: violation must be resolved. WARNING: flags issue but does not block. INFO: suggestion only.\n"
+      "description": "ERROR — must resolve. WARNING — flags issue. INFO — suggestion only."
     },
     "scope": {
       "type": "object",
-      "description": "Filters which parts of the world graph this constraint applies to. Omit = applies globally to all elements.\n",
+      "description": "What this rule applies to. Omit for global rules.",
       "properties": {
         "node_types": {
           "type": "array",
           "items": {
             "type": "string"
-          },
-          "description": "Only apply to nodes of these types (e.g., CHARACTER, LOCATION)"
+          }
         },
         "edge_types": {
           "type": "array",
           "items": {
             "type": "string"
-          },
-          "description": "Only apply to edges of these types"
+          }
         },
         "nodes": {
           "type": "array",
           "items": {
             "type": "string"
-          },
-          "description": "Specific node IDs"
+          }
         },
         "edges": {
           "type": "array",
           "items": {
             "type": "string"
-          },
-          "description": "Specific edge IDs"
+          }
         },
         "frames": {
           "type": "array",
           "items": {
             "type": "string"
-          },
-          "description": "Only apply within these frames. Omit = all frames"
+          }
         },
         "time_range": {
           "type": "object",
           "properties": {
             "from": {
-              "type": "string",
-              "description": "Start time point"
+              "type": "string"
             },
             "to": {
-              "type": "string",
-              "description": "End time point"
+              "type": "string"
             }
           }
         }

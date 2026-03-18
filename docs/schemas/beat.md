@@ -1,6 +1,6 @@
 # Beat Schema
 
-Story beats — the fundamental narrative building blocks with hierarchical structure and dramaturgical metadata.
+A story beat — selects world elements and adds dramaturgical structure.
 
 {%
   include-markdown "./generated/beat.md"

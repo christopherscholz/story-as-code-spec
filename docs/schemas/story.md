@@ -1,6 +1,6 @@
 # Story Schema
 
-Root document of a Story as Code project — the composable entry point with `world` and `narrative`.
+Root document of a Story as Code project.
 
 {%
   include-markdown "./generated/story.md"

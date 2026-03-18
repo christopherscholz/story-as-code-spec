@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema#",
   "type": "object",
-  "description": "Root document of a Story as Code project. Composes world (the ground truth — what exists) and narrative (the storytelling perspective — how it is told). The narrative layer never defines its own truth; it only selects, filters, and presents world layer content. The spec does not prescribe a directory layout — file organization is a tooling concern.\n",
+  "description": "Root document of a Story as Code project.",
   "required": [
     "spec_version",
     "name",
@@ -11,14 +11,13 @@
     "spec_version": {
       "type": "string",
       "pattern": "^\\d+\\.\\d+\\.\\d+$",
-      "description": "Semantic version of the Story as Code spec this story conforms to",
+      "description": "Spec version this story conforms to",
       "examples": [
         "0.5.0"
       ]
     },
     "name": {
       "type": "string",
-      "description": "Human-readable name of the story",
       "examples": [
         "My Story",
         "An Epic Saga"
@@ -29,7 +28,6 @@
       "properties": {
         "default_language": {
           "type": "string",
-          "description": "ISO 639-1 language code",
           "examples": [
             "en",
             "de"

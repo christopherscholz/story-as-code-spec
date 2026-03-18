@@ -8,28 +8,24 @@
   ],
   "properties": {
     "id": {
-      "type": "string",
-      "description": "Unique frame identifier"
+      "type": "string"
     },
     "name": {
-      "type": "string",
-      "description": "Human-readable frame name"
+      "type": "string"
     },
     "description": {
-      "type": "string",
-      "description": "Purpose or context of this frame"
+      "type": "string"
     },
     "parent": {
       "type": "string",
-      "description": "Frame ID this one branched from"
+      "description": "Frame this one branched from"
     },
     "branches_at": {
       "type": "string",
-      "description": "Time point where this frame diverges from its parent"
+      "description": "Time point where this frame diverges from parent"
     },
     "relations": {
       "type": "array",
-      "description": "Graph edges to other frames",
       "items": {
         "$ref": "#/$defs/FrameRelation"
       }
@@ -38,12 +34,11 @@
       "type": "array",
       "items": {
         "type": "string"
-      },
-      "description": "Free-form tags for filtering and organization"
+      }
     },
     "properties": {
       "type": "object",
-      "description": "Additional frame metadata (e.g., loop_count, observer, entropy_factor)"
+      "description": "Additional metadata as key-value pairs"
     }
   },
   "examples": [
@@ -91,20 +86,18 @@
       ],
       "properties": {
         "target": {
-          "type": "string",
-          "description": "Target frame ID"
+          "type": "string"
         },
         "type": {
           "type": "string",
-          "description": "Relation type. Free-form; common values: BRANCHES_INTO, MERGES_WITH, LOOPS_BACK, SUBJECTIVE_OF\n"
+          "description": "Relation type (e.g. BRANCHES_INTO, MERGES_WITH, LOOPS_BACK)"
         },
         "at": {
           "type": "string",
-          "description": "Time point of the relation"
+          "description": "Time point"
         },
         "description": {
-          "type": "string",
-          "description": "Human-readable description of the relation"
+          "type": "string"
         }
       }
     }

@@ -10,7 +10,6 @@
   "properties": {
     "id": {
       "type": "string",
-      "description": "Unique node identifier",
       "examples": [
         "hero",
         "village",
@@ -19,7 +18,6 @@
     },
     "name": {
       "type": "string",
-      "description": "Display name of this node",
       "examples": [
         "Aria",
         "The Village of Thornwall",
@@ -28,7 +26,6 @@
     },
     "type": {
       "type": "string",
-      "description": "Node type — free-form; type-specific constraints are applied by tooling via type masks.\n",
       "examples": [
         "CHARACTER",
         "LOCATION",
@@ -39,21 +36,19 @@
     },
     "description": {
       "type": "string",
-      "description": "A summary of this node — what it is, its role in the story, and why it matters. May be multiple sentences when the node warrants it.",
       "examples": [
         "A wandering knight seeking redemption for a past betrayal. Once the realm's most celebrated champion, he now travels under a false name, haunted by the siege he failed to prevent."
       ]
     },
     "properties": {
       "type": "object",
-      "description": "Free-form key-value pairs for any additional node attributes"
+      "description": "Additional attributes as key-value pairs"
     },
     "tags": {
       "type": "array",
       "items": {
         "type": "string"
       },
-      "description": "Free-form tags for filtering and organization",
       "examples": [
         [
           "magic",

@@ -14,23 +14,20 @@
         "RETCON",
         "FORK",
         "COLLAB"
-      ],
-      "description": "CANON: Primary version, the accepted truth. SPECULATIVE: \"What if\" exploration. RETCON: Retroactive change to established canon. FORK: Independent version by another author. COLLAB: Collaborator working on a section.\n"
+      ]
     },
     "parent_variant": {
       "type": "string",
-      "description": "Identifier of the variant this one diverged from"
+      "description": "Variant this one diverged from"
     },
     "description": {
-      "type": "string",
-      "description": "Human-readable description of this variant's purpose"
+      "type": "string"
     },
     "affects_frames": {
       "type": "array",
       "items": {
         "type": "string"
-      },
-      "description": "Frame IDs affected by this variant"
+      }
     },
     "merge_strategy": {
       "type": "string",
@@ -39,8 +36,7 @@
         "PICK_B",
         "FORK_FRAME",
         "MANUAL"
-      ],
-      "description": "Preferred conflict resolution strategy"
+      ]
     }
   },
   "examples": [

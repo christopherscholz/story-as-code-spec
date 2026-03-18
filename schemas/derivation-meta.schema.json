@@ -10,27 +10,23 @@
   ],
   "properties": {
     "id": {
-      "type": "string",
-      "description": "Derivation identifier"
+      "type": "string"
     },
     "source_version": {
       "type": "string",
-      "description": "Version or identifier of the graph state used for this derivation"
+      "description": "Graph state version used for this derivation"
     },
     "lens": {
-      "type": "string",
-      "description": "Lens ID used"
+      "type": "string"
     },
     "format": {
-      "type": "string",
-      "description": "Format ID used"
+      "type": "string"
     },
     "beat_position": {
       "type": "object",
       "properties": {
         "beat": {
-          "type": "string",
-          "description": "Beat ID (omit if the output covers all beats)"
+          "type": "string"
         }
       }
     },
@@ -102,8 +98,7 @@
           "type": "string"
         },
         "at": {
-          "type": "string",
-          "description": "Time point of the reveal"
+          "type": "string"
         }
       }
     }

@@ -1,41 +1,38 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema#",
   "type": "object",
-  "description": "A story beat — the fundamental narrative building block. Beats select world graph elements and add dramaturgical structure (function, tension, reveals). They form hierarchies via parent references: a top-level beat without parent acts as a storyline container (what was previously an \"arc\"), while child beats represent individual story moments within that storyline. Vertical chaining (parent) groups beats within a storyline; horizontal chaining (threads) connects beats across storylines by shared thematic meaning.\n",
+  "description": "A story beat — selects world elements and adds dramaturgical structure.",
   "required": [
     "id",
     "name"
   ],
   "properties": {
     "id": {
-      "type": "string",
-      "description": "Unique beat identifier"
+      "type": "string"
     },
     "name": {
-      "type": "string",
-      "description": "Human-readable beat name"
+      "type": "string"
     },
     "description": {
-      "type": "string",
-      "description": "What happens in this beat or what this storyline covers"
+      "type": "string"
     },
     "parent": {
       "type": "string",
-      "description": "ID of parent beat — vertical chaining within a storyline (e.g. main plot > subplots > scenes). A beat without parent is a top-level storyline.\n"
+      "description": "Parent beat ID"
     },
     "node_ids": {
       "type": "array",
       "items": {
         "type": "string"
       },
-      "description": "Node IDs from the world graph relevant to this beat. Parent beats inherit node references from their children — only specify IDs that are not already covered by child beats."
+      "description": "World node IDs relevant to this beat"
     },
     "edge_ids": {
       "type": "array",
       "items": {
         "type": "string"
       },
-      "description": "Edge IDs from the world graph relevant to this beat. Parent beats inherit edge references from their children — only specify IDs that are not already covered by child beats."
+      "description": "World edge IDs relevant to this beat"
     },
     "function": {
       "type": "string",
@@ -52,7 +49,7 @@
         "DENOUEMENT",
         "CUSTOM"
       ],
-      "description": "Dramaturgical function of this beat. All dramaturgical properties (function, reveals, tension, emotional_target, transition) are optional — a beat with only id, name, and world references is valid.\n"
+      "description": "Dramaturgical function"
     },
     "reveals": {
       "type": "array",
@@ -64,7 +61,7 @@
         "properties": {
           "target": {
             "type": "string",
-            "description": "Node or edge ID being revealed to the reader"
+            "description": "Node or edge ID being revealed"
           },
           "degree": {
             "type": "string",

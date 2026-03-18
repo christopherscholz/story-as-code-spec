@@ -1,6 +1,6 @@
 # Edge Schema
 
-Relationships between nodes — with optional temporal validity and directionality.
+A relationship between two nodes that persists over time.
 
 {%
   include-markdown "./generated/edge.md"
