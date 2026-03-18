@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "description": "A type definition for graph elements (nodes or edges). Types are defined once in the world and referenced by ID from any element's type field. A type can describe what the type means, set default property values, and declare which properties are required for elements of this type.\n",
+  "required": [
+    "id",
+    "name"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique type identifier — referenced by elements via their type field",
+      "examples": [
+        "CHARACTER",
+        "LOCATION",
+        "SPATIAL",
+        "KINSHIP"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name of this type",
+      "examples": [
+        "Character",
+        "Location",
+        "Spatial Relationship"
+      ]
+    },
+    "applies_to": {
+      "type": "string",
+      "description": "Which element kind this type applies to (e.g. NODE, EDGE, DEVICE, FORMAT, THREAD). Tooling uses this to validate that a type is only used on the correct element kind.\n",
+      "examples": [
+        "NODE",
+        "EDGE",
+        "DEVICE",
+        "FORMAT",
+        "THREAD"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "What this type represents and how it should be used in the story world",
+      "examples": [
+        "A sentient being that can act, speak, and have relationships. Characters drive the story through their choices and conflicts.",
+        "A spatial or containment relationship between two nodes (e.g., located-in, part-of, borders)."
+      ]
+    },
+    "defaults": {
+      "type": "object",
+      "description": "Default property values applied to elements of this type. Elements can override these in their own properties object.\n"
+    },
+    "required_properties": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Property keys that elements of this type must define in their properties object"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Free-form tags for filtering and grouping types"
+    }
+  },
+  "examples": [
+    {
+      "id": "CHARACTER",
+      "name": "Character",
+      "applies_to": "NODE",
+      "description": "A sentient being that can act, speak, and have relationships.",
+      "required_properties": [
+        "age"
+      ],
+      "defaults": {
+        "alive": true
+      }
+    },
+    {
+      "id": "SPATIAL",
+      "name": "Spatial Relationship",
+      "applies_to": "EDGE",
+      "description": "A spatial or containment relationship between two nodes.",
+      "defaults": {
+        "directed": true
+      }
+    }
+  ]
+}
