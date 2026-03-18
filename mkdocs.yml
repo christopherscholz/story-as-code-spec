@@ -68,6 +68,10 @@ nav:
       - Device: schemas/device.md
       - Thread: schemas/thread.md
       - Variant Meta: schemas/variant-meta.md
+    - Definitions:
+      - Definitions: schemas/definitions.md
+      - Tag: schemas/tag.md
+      - Type: schemas/type.md
     - Supporting:
       - Derivation Meta: schemas/derivation-meta.md
   - Examples:
