@@ -37,19 +37,15 @@
         }
       }
     },
-    "types": {
-      "type": "array",
-      "items": {
-        "oneOf": [
-          {
-            "$ref": "ref.schema.json"
-          },
-          {
-            "$ref": "type.schema.json"
-          }
-        ]
-      },
-      "description": "Type definitions for story elements. Each type is referenced by ID from the type field of nodes, edges, devices, formats, or any other typed element. Defining types is optional — elements may use type strings without a matching definition.\n"
+    "definitions": {
+      "oneOf": [
+        {
+          "$ref": "ref.schema.json"
+        },
+        {
+          "$ref": "definitions.schema.json"
+        }
+      ]
     },
     "world": {
       "oneOf": [
@@ -76,18 +72,26 @@
     {
       "spec_version": "0.5.0",
       "name": "My Story",
-      "types": [
-        {
-          "id": "CHARACTER",
-          "name": "Character",
-          "applies_to": "NODE"
-        },
-        {
-          "id": "SPATIAL",
-          "name": "Spatial Relationship",
-          "applies_to": "EDGE"
-        }
-      ],
+      "definitions": {
+        "tags": [
+          {
+            "id": "protagonist",
+            "name": "Protagonist"
+          }
+        ],
+        "types": [
+          {
+            "id": "CHARACTER",
+            "name": "Character",
+            "applies_to": "NODE"
+          },
+          {
+            "id": "SPATIAL",
+            "name": "Spatial Relationship",
+            "applies_to": "EDGE"
+          }
+        ]
+      },
       "world": {
         "time_system": {
           "id": "earth-time",

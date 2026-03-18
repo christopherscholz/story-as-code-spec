@@ -7,9 +7,8 @@ description: >
   form. She wants to help but faints at the sight of him, and her husband and daughter
   increasingly shield her from contact with Gregor. She represents the family's passive
   grief — neither actively cruel nor able to intervene on Gregor's behalf.
-category: supporting
 properties:
   name_variants: ["the mother", "Mother"]
   age: 50
   health: asthmatic
-tags: [family, sympathetic]
+tags: [supporting, family, sympathetic]

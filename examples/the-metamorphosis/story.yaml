@@ -5,87 +5,208 @@ name: "The Metamorphosis"
 settings:
   default_language: en
 
-types:
-  # Node types
-  - id: CHARACTER
-    name: Character
-    applies_to: NODE
-    description: "A sentient being — human or transformed — that acts, speaks, or is acted upon."
+definitions:
+  tags:
+    # Narrative role
+    - id: protagonist
+      name: Protagonist
+      description: "The central character whose inner life drives the narrative."
+    - id: antagonist
+      name: Antagonist
+      description: "A character who opposes or obstructs the protagonist."
+    - id: supporting
+      name: Supporting Character
+      description: "A character who aids or contrasts with the protagonist without driving the plot."
+    - id: catalyst
+      name: Catalyst
+      description: "An element that triggers or accelerates change without being changed itself."
+    - id: pov-character
+      name: POV Character
+      description: "The character through whose perception the story is filtered."
 
-  - id: LOCATION
-    name: Location
-    applies_to: NODE
-    description: "A physical space where events unfold and characters exist."
+    # Social context
+    - id: family
+      name: Family
+      description: "Related to the family unit and domestic bonds."
+    - id: outsider
+      name: Outsider
+      description: "Someone outside the family circle who intrudes on the domestic space."
+    - id: authority
+      name: Authority
+      description: "Represents institutional or patriarchal power."
+    - id: group
+      name: Group
+      description: "A collective entity acting as one."
 
-  - id: OBJECT
-    name: Object
-    applies_to: NODE
-    description: "A physical thing with symbolic or narrative significance."
+    # Character traits
+    - id: caretaker
+      name: Caretaker
+      description: "A character who assumes responsibility for another's wellbeing."
+    - id: sympathetic
+      name: Sympathetic
+      description: "A character who evokes the reader's compassion."
+    - id: pragmatic
+      name: Pragmatic
+      description: "A character defined by practical, unsentimental action."
 
-  - id: EVENT
-    name: Event
-    applies_to: NODE
-    description: "A discrete occurrence that changes the state of the world."
+    # Thematic markers
+    - id: symbol
+      name: Symbol
+      description: "An element carrying meaning beyond its literal function."
+    - id: humanity
+      name: Humanity
+      description: "Related to the retention or loss of human identity."
+    - id: identity
+      name: Identity
+      description: "Related to who a character is or becomes."
+    - id: decay
+      name: Decay
+      description: "Physical or moral deterioration over time."
+    - id: confinement
+      name: Confinement
+      description: "Restriction of movement or freedom."
+    - id: violence
+      name: Violence
+      description: "Physical aggression or harm."
+    - id: rejection
+      name: Rejection
+      description: "The act of casting someone or something out."
+    - id: transformed
+      name: Transformed
+      description: "An entity that has undergone fundamental change."
+    - id: supernatural
+      name: Supernatural
+      description: "Beyond natural explanation."
 
-  # Edge types
-  - id: SPATIAL
-    name: Spatial Relationship
-    applies_to: EDGE
-    description: "A spatial or containment relationship (located-in, part-of, confined-to, embedded-in)."
+    # Object categories
+    - id: instrument
+      name: Instrument
+      description: "A musical instrument."
+    - id: clothing
+      name: Clothing
+      description: "A garment or wearable item."
+    - id: decoration
+      name: Decoration
+      description: "An ornamental object."
+    - id: weapon
+      name: Weapon
+      description: "An object used to inflict harm."
 
-  - id: OWNERSHIP
-    name: Ownership
-    applies_to: EDGE
-    description: "A possession relationship between an owner and a thing."
+    # Spatial markers
+    - id: domestic
+      name: Domestic
+      description: "Related to the household and private life."
+    - id: family-space
+      name: Family Space
+      description: "A space belonging to and defined by the family."
+    - id: contested-space
+      name: Contested Space
+      description: "A space whose control or meaning is disputed."
 
-  - id: SOCIAL
-    name: Social Relationship
-    applies_to: EDGE
-    description: "A professional or institutional relationship (employed-by, supervised-by)."
+    # Plot structure
+    - id: main-plot
+      name: Main Plot
+      description: "The primary storyline."
+    - id: inciting-incident
+      name: Inciting Incident
+      description: "The event that sets the story in motion."
+    - id: turning-point
+      name: Turning Point
+      description: "A moment that fundamentally redirects the narrative."
+    - id: climax
+      name: Climax
+      description: "The point of highest tension or decisive confrontation."
+    - id: escalation
+      name: Escalation
+      description: "An intensification of conflict or stakes."
+    - id: exposure
+      name: Exposure
+      description: "A hidden truth or condition made visible."
+    - id: resolution
+      name: Resolution
+      description: "The settling of the central conflict."
 
-  - id: RELATIONSHIP
-    name: Interpersonal Relationship
-    applies_to: EDGE
-    description: "An emotional or interpersonal bond between characters or between a character and an object."
+  types:
+    # Node types
+    - id: CHARACTER
+      name: Character
+      applies_to: NODE
+      description: "A sentient being — human or transformed — that acts, speaks, or is acted upon."
 
-  - id: KNOWLEDGE
-    name: Knowledge
-    applies_to: EDGE
-    description: "An information relationship — what one entity knows about another."
+    - id: LOCATION
+      name: Location
+      applies_to: NODE
+      description: "A physical space where events unfold and characters exist."
 
-  # Device types
-  - id: SETUP_PAYOFF
-    name: Setup & Payoff
-    applies_to: DEVICE
-    description: "Something planted early that pays off later — the reader recognizes the callback."
+    - id: OBJECT
+      name: Object
+      applies_to: NODE
+      description: "A physical thing with symbolic or narrative significance."
 
-  - id: CHEKHOV_GUN
-    name: Chekhov's Gun
-    applies_to: DEVICE
-    description: "An element introduced early that must become significant later — if shown, it must fire."
+    - id: EVENT
+      name: Event
+      applies_to: NODE
+      description: "A discrete occurrence that changes the state of the world."
 
-  # Format types
-  - id: NOVEL
-    name: Novel
-    applies_to: FORMAT
-    description: "Long-form prose fiction structured in chapters and scenes."
+    # Edge types
+    - id: SPATIAL
+      name: Spatial Relationship
+      applies_to: EDGE
+      description: "A spatial or containment relationship (located-in, part-of, confined-to, embedded-in)."
 
-  # Lens types
-  - id: SIMPLE
-    name: Simple Lens
-    applies_to: LENS
-    description: "A single, non-composite narrative perspective."
+    - id: OWNERSHIP
+      name: Ownership
+      applies_to: EDGE
+      description: "A possession relationship between an owner and a thing."
 
-  # Thread types
-  - id: THEME
-    name: Theme
-    applies_to: THREAD
-    description: "An abstract idea that recurs across the narrative (e.g. alienation, duty, identity)."
+    - id: SOCIAL
+      name: Social Relationship
+      applies_to: EDGE
+      description: "A professional or institutional relationship (employed-by, supervised-by)."
 
-  - id: MOTIF
-    name: Motif
-    applies_to: THREAD
-    description: "A recurring symbolic element — image, object, or pattern — that reinforces thematic meaning."
+    - id: RELATIONSHIP
+      name: Interpersonal Relationship
+      applies_to: EDGE
+      description: "An emotional or interpersonal bond between characters or between a character and an object."
+
+    - id: KNOWLEDGE
+      name: Knowledge
+      applies_to: EDGE
+      description: "An information relationship — what one entity knows about another."
+
+    # Device types
+    - id: SETUP_PAYOFF
+      name: Setup & Payoff
+      applies_to: DEVICE
+      description: "Something planted early that pays off later — the reader recognizes the callback."
+
+    - id: CHEKHOV_GUN
+      name: Chekhov's Gun
+      applies_to: DEVICE
+      description: "An element introduced early that must become significant later — if shown, it must fire."
+
+    # Format types
+    - id: NOVEL
+      name: Novel
+      applies_to: FORMAT
+      description: "Long-form prose fiction structured in chapters and scenes."
+
+    # Lens types
+    - id: SIMPLE
+      name: Simple Lens
+      applies_to: LENS
+      description: "A single, non-composite narrative perspective."
+
+    # Thread types
+    - id: THEME
+      name: Theme
+      applies_to: THREAD
+      description: "An abstract idea that recurs across the narrative (e.g. alienation, duty, identity)."
+
+    - id: MOTIF
+      name: Motif
+      applies_to: THREAD
+      description: "A recurring symbolic element — image, object, or pattern — that reinforces thematic meaning."
 
 world:
   time_system:

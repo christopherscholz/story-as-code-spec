@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "description": "Reusable definitions for the story — the vocabulary of types and tags that elements reference. Definitions are optional; elements may use type and tag strings without a matching definition.\n",
+  "properties": {
+    "tags": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "ref.schema.json"
+          },
+          {
+            "$ref": "tag.schema.json"
+          }
+        ]
+      },
+      "description": "Tag definitions. Each tag is referenced by ID from the tags array of any element."
+    },
+    "types": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "ref.schema.json"
+          },
+          {
+            "$ref": "type.schema.json"
+          }
+        ]
+      },
+      "description": "Type definitions. Each type is referenced by ID from the type field of any typed element."
+    }
+  },
+  "examples": [
+    {
+      "tags": [
+        {
+          "id": "protagonist",
+          "name": "Protagonist",
+          "description": "The central character driving the story."
+        }
+      ],
+      "types": [
+        {
+          "id": "CHARACTER",
+          "name": "Character",
+          "applies_to": "NODE"
+        }
+      ]
+    }
+  ]
+}

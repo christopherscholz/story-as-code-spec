@@ -8,9 +8,8 @@ description: >
   he is confined to his room and watches helplessly as his family's initial shock gives way to
   resentment. His mind remains human even as his body and habits become increasingly alien,
   and he dies quietly after accepting that he is no longer wanted.
-category: protagonist
 properties:
   name_variants: ["Gregor", "the insect", "the vermin"]
   age: 29
   occupation: traveling-salesman
-tags: [pov-character, transformed]
+tags: [protagonist, pov-character, transformed]
