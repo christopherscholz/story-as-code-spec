@@ -23,6 +23,7 @@ theme:
   features:
     - navigation.tabs
     - navigation.sections
+    - navigation.indexes
     - navigation.top
     - search.highlight
     - search.share
@@ -52,8 +53,7 @@ nav:
   - Scope & Boundaries: scope.md
   - Schemas:
     - Overview: schemas/index.md
-    - Root Document:
-      - Story: schemas/story.md
+    - Story: schemas/story.md
     - World Layer:
       - World: schemas/world.md
       - Time System: schemas/time-system.md
@@ -69,11 +69,10 @@ nav:
       - Thread: schemas/thread.md
       - Variant Meta: schemas/variant-meta.md
     - Definitions:
-      - Definitions: schemas/definitions.md
+      - schemas/definitions.md
       - Tag: schemas/tag.md
       - Type: schemas/type.md
-    - Supporting:
-      - Derivation Meta: schemas/derivation-meta.md
+    - Derivation Meta: schemas/derivation-meta.md
   - Examples:
     - Overview: examples/index.md
     - "The Metamorphosis": examples/generated/the-metamorphosis.md
