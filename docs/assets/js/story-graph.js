@@ -32,7 +32,6 @@
     CHARACTER: 'ellipse', LOCATION: 'round-rectangle', OBJECT: 'diamond',
     EVENT: 'hexagon', CONCEPT: 'octagon',
   };
-  function shapeFor(type) { return SHAPES[type] || 'ellipse'; }
 
   const FUNC_COLORS = {
     HOOK: '#42A5F5', INCITING_INCIDENT: '#66BB6A', RISING_ACTION: '#FFB300',
@@ -43,14 +42,17 @@
 
   /* ── state ─────────────────────────────────────────────────────── */
   let story = null;
-  let selected = null;        // { kind: 'node'|'edge'|'beat'|'thread'|'device'|'lens'|'constraint'|'format', id: string }
+  let selected = null;
   const listeners = [];
-  function select(sel) { selected = sel; listeners.forEach(fn => fn(selected)); }
+  function select(sel) {
+    // toggle off if clicking same element
+    if (selected && sel && selected.kind === sel.kind && selected.id === sel.id) { selected = null; }
+    else { selected = sel; }
+    listeners.forEach(fn => fn(selected));
+  }
   function onSelect(fn) { listeners.push(fn); }
 
-  function isDark() {
-    return document.body.getAttribute('data-md-color-scheme') === 'slate';
-  }
+  function isDark() { return document.body.getAttribute('data-md-color-scheme') === 'slate'; }
   function c(type) { const cl = colorFor(type); return isDark() ? cl.dark : cl.light; }
 
   /* ── data loading ──────────────────────────────────────────────── */
@@ -62,240 +64,47 @@
 
   /* ── init ───────────────────────────────────────────────────────── */
   function init() {
-    buildTabs();
-    buildInfoPanel();
-    buildCrossRef();
-    showView('world');
+    renderAllSections();
 
-    // dark mode observer
     new MutationObserver(() => {
-      if (currentView === 'world' && cy) cy.style().update();
-      // re-render SVG views
-      if (currentView === 'narrative') renderNarrative();
-      if (currentView === 'timeline') renderTimeline();
+      renderAllSections();
     }).observe(document.body, { attributes: true, attributeFilter: ['data-md-color-scheme'] });
   }
 
-  /* ── tabs ───────────────────────────────────────────────────────── */
-  const VIEWS = [
-    { id: 'world', label: 'World Graph' },
-    { id: 'narrative', label: 'Narrative Flow' },
-    { id: 'timeline', label: 'Timeline' },
-    { id: 'lenses', label: 'Lenses' },
-    { id: 'formats', label: 'Formats' },
-    { id: 'constraints', label: 'Constraints' },
-  ];
-  let currentView = null;
+  let cy = null;
 
-  function buildTabs() {
-    const nav = root.querySelector('.graph-tabs');
-    VIEWS.forEach(v => {
-      const btn = document.createElement('button');
-      btn.className = 'graph-tab';
-      btn.textContent = v.label;
-      btn.dataset.view = v.id;
-      btn.addEventListener('click', () => showView(v.id));
-      nav.appendChild(btn);
-    });
-  }
-
-  function showView(id) {
-    currentView = id;
-    root.querySelectorAll('.graph-tab').forEach(b => b.classList.toggle('active', b.dataset.view === id));
-    root.querySelectorAll('.graph-view').forEach(v => v.classList.toggle('active', v.dataset.view === id));
-    const container = root.querySelector(`.graph-view[data-view="${id}"]`);
-    container.innerHTML = '';
-    switch (id) {
-      case 'world': renderWorld(container); break;
-      case 'narrative': renderNarrative(container); break;
-      case 'timeline': renderTimeline(container); break;
-      case 'lenses': renderLenses(container); break;
-      case 'formats': renderFormats(container); break;
-      case 'constraints': renderConstraints(container); break;
-    }
-  }
-
-  /* ── info panel ────────────────────────────────────────────────── */
-  function buildInfoPanel() {
-    const panel = root.querySelector('.graph-info-panel');
-    panel.innerHTML = '<div class="info-close">&times;</div><div class="info-body"></div>';
-    panel.querySelector('.info-close').addEventListener('click', () => {
-      panel.classList.remove('open');
-      select(null);
-    });
-    onSelect(sel => {
-      if (!sel) { panel.classList.remove('open'); return; }
-      panel.classList.add('open');
-      panel.querySelector('.info-body').innerHTML = infoHTML(sel);
-    });
-  }
-
-  function infoHTML(sel) {
-    const w = story.world || {};
-    const n = story.narrative || {};
-
-    if (sel.kind === 'node') {
-      const node = (w.nodes || []).find(n => n.id === sel.id);
-      if (!node) return '<p>Not found</p>';
-      let h = `<h3>${esc(node.name)}</h3><span class="info-badge" style="background:${c(node.type)}">${node.type}</span>`;
-      if (node.description) h += `<p class="info-desc">${esc(node.description)}</p>`;
-      if (node.tags && node.tags.length) h += `<div class="info-tags">${node.tags.map(t => `<span class="info-tag">${esc(t)}</span>`).join('')}</div>`;
-      if (node.properties) h += `<table class="info-props">${Object.entries(node.properties).map(([k,v]) => `<tr><td>${esc(k)}</td><td>${esc(JSON.stringify(v))}</td></tr>`).join('')}</table>`;
-      return h;
-    }
-
-    if (sel.kind === 'edge') {
-      const edge = (w.edges || []).find(e => e.id === sel.id);
-      if (!edge) return '<p>Not found</p>';
-      let h = `<h3>${esc(edge.name)}</h3><span class="info-badge" style="background:${c(edge.type)}">${edge.type}</span>`;
-      h += `<p>${esc(edge.source)} &rarr; ${esc(edge.target)}</p>`;
-      if (edge.description) h += `<p class="info-desc">${esc(edge.description)}</p>`;
-      if (edge.scope) h += `<div class="info-scope"><strong>Scope:</strong> ${renderScope(edge.scope)}</div>`;
-      return h;
-    }
-
-    if (sel.kind === 'beat') {
-      const beat = (n.beats || []).find(b => b.id === sel.id);
-      if (!beat) return '<p>Not found</p>';
-      let h = `<h3>${esc(beat.name)}</h3>`;
-      if (beat.function) h += `<span class="info-badge" style="background:${FUNC_COLORS[beat.function] || '#999'}">${beat.function}</span>`;
-      if (beat.description) h += `<p class="info-desc">${esc(beat.description)}</p>`;
-      if (beat.tension != null) h += `<p><strong>Tension:</strong> ${beat.tension}</p>`;
-      if (beat.emotional_target != null) h += `<p><strong>Emotional target:</strong> ${beat.emotional_target}</p>`;
-      if (beat.node_ids) h += `<p><strong>Nodes:</strong> ${beat.node_ids.map(id => `<a class="info-link" data-kind="node" data-id="${id}">${id}</a>`).join(', ')}</p>`;
-      if (beat.edge_ids) h += `<p><strong>Edges:</strong> ${beat.edge_ids.map(id => `<a class="info-link" data-kind="edge" data-id="${id}">${id}</a>`).join(', ')}</p>`;
-      if (beat.reveals && beat.reveals.length) h += `<p><strong>Reveals:</strong> ${beat.reveals.map(r => `${r.target} (${r.degree || 'FULL'})`).join(', ')}</p>`;
-      if (beat.transition) h += `<p><strong>Transition:</strong> ${beat.transition.type}</p>`;
-      return h;
-    }
-
-    if (sel.kind === 'thread') {
-      const thread = (n.threads || []).find(t => t.id === sel.id);
-      if (!thread) return '<p>Not found</p>';
-      let h = `<h3>${esc(thread.name)}</h3><span class="info-badge">${thread.type}</span>`;
-      if (thread.description) h += `<p class="info-desc">${esc(thread.description)}</p>`;
-      if (thread.appearances) {
-        h += '<div class="info-appearances"><strong>Appearances:</strong><ul>';
-        thread.appearances.forEach(a => { h += `<li><a class="info-link" data-kind="beat" data-id="${a.beat_id}">${a.beat_id}</a>: ${esc(a.description || '')}</li>`; });
-        h += '</ul></div>';
+  function renderAllSections() {
+    const sections = root.querySelectorAll('.graph-section');
+    sections.forEach(sec => {
+      const view = sec.dataset.view;
+      const content = sec.querySelector('.section-content');
+      const detail = sec.querySelector('.section-detail');
+      content.innerHTML = '';
+      if (detail) detail.innerHTML = '';
+      switch (view) {
+        case 'world': renderWorld(content, detail); break;
+        case 'narrative': renderNarrative(content, detail); break;
+        case 'timeline': renderTimeline(content); break;
+        case 'lenses': renderLenses(content); break;
+        case 'formats': renderFormats(content); break;
+        case 'constraints': renderConstraints(content); break;
       }
-      return h;
-    }
-
-    if (sel.kind === 'device') {
-      const dev = (n.devices || []).find(d => d.id === sel.id);
-      if (!dev) return '<p>Not found</p>';
-      let h = `<h3>${esc(dev.id)}</h3><span class="info-badge">${dev.type}</span>`;
-      if (dev.description) h += `<p class="info-desc">${esc(dev.description)}</p>`;
-      if (dev.setup) h += `<p><strong>Setup:</strong> ${dev.setup.map(id => `<a class="info-link" data-kind="beat" data-id="${id}">${id}</a>`).join(', ')}</p>`;
-      if (dev.payoff) h += `<p><strong>Payoff:</strong> ${dev.payoff.map(id => `<a class="info-link" data-kind="beat" data-id="${id}">${id}</a>`).join(', ')}</p>`;
-      return h;
-    }
-
-    if (sel.kind === 'lens') {
-      const lens = (n.lenses || []).find(l => l.id === sel.id);
-      if (!lens) return '<p>Not found</p>';
-      return lensCardHTML(lens);
-    }
-
-    if (sel.kind === 'constraint') {
-      const con = (w.constraints || []).find(c => c.id === sel.id);
-      if (!con) return '<p>Not found</p>';
-      let h = `<h3>${esc(con.name)}</h3><span class="info-badge severity-${con.severity.toLowerCase()}">${con.severity}</span>`;
-      if (con.description) h += `<p class="info-desc">${esc(con.description)}</p>`;
-      if (con.scope) h += `<div class="info-scope"><strong>Scope:</strong> ${renderScope(con.scope)}</div>`;
-      return h;
-    }
-
-    if (sel.kind === 'format') {
-      const fmt = (n.formats || []).find(f => f.id === sel.id);
-      if (!fmt) return '<p>Not found</p>';
-      return formatDetailHTML(fmt);
-    }
-
-    return '';
-  }
-
-  /* ── cross-reference bar ───────────────────────────────────────── */
-  function buildCrossRef() {
-    const bar = root.querySelector('.graph-crossref');
-    onSelect(sel => {
-      if (!sel) { bar.innerHTML = ''; bar.classList.remove('open'); return; }
-      const refs = findCrossRefs(sel);
-      if (!refs.length) { bar.innerHTML = ''; bar.classList.remove('open'); return; }
-      bar.classList.add('open');
-      bar.innerHTML = refs.map(r =>
-        `<a class="crossref-link" data-view="${r.view}" data-kind="${r.kind}" data-id="${r.id}"><span class="crossref-view">${r.viewLabel}</span> ${esc(r.label)}</a>`
-      ).join('');
-      bar.querySelectorAll('.crossref-link').forEach(a => a.addEventListener('click', () => {
-        showView(a.dataset.view);
-        setTimeout(() => select({ kind: a.dataset.kind, id: a.dataset.id }), 100);
-      }));
     });
-  }
-
-  function findCrossRefs(sel) {
-    const refs = [];
-    const n = story.narrative || {};
-    const w = story.world || {};
-
-    if (sel.kind === 'node' || sel.kind === 'edge') {
-      // find beats referencing this node/edge
-      (n.beats || []).forEach(b => {
-        const ids = sel.kind === 'node' ? (b.node_ids || []) : (b.edge_ids || []);
-        if (ids.includes(sel.id)) refs.push({ view: 'narrative', viewLabel: 'Narrative', kind: 'beat', id: b.id, label: b.name || b.id });
-      });
-      // find lenses referencing this node
-      if (sel.kind === 'node') {
-        (n.lenses || []).forEach(l => {
-          if (l.perspective && l.perspective.anchor === sel.id) refs.push({ view: 'lenses', viewLabel: 'Lens', kind: 'lens', id: l.id, label: l.id + ' (anchor)' });
-          if (l.emotional && l.emotional.bias && (l.emotional.bias.toward || []).includes(sel.id)) refs.push({ view: 'lenses', viewLabel: 'Lens', kind: 'lens', id: l.id, label: l.id + ' (bias)' });
-          if (l.reliability && l.reliability.distorts) {
-            l.reliability.distorts.forEach(d => { if (d.node === sel.id) refs.push({ view: 'lenses', viewLabel: 'Lens', kind: 'lens', id: l.id, label: l.id + ' (distorts)' }); });
-          }
-        });
-      }
-    }
-
-    if (sel.kind === 'beat') {
-      // find threads & devices for this beat
-      (n.threads || []).forEach(t => {
-        if ((t.appearances || []).some(a => a.beat_id === sel.id)) refs.push({ view: 'narrative', viewLabel: 'Thread', kind: 'thread', id: t.id, label: t.name || t.id });
-      });
-      (n.devices || []).forEach(d => {
-        if ((d.setup || []).includes(sel.id) || (d.payoff || []).includes(sel.id)) refs.push({ view: 'narrative', viewLabel: 'Device', kind: 'device', id: d.id, label: d.id });
-      });
-      // find world nodes/edges
-      const beat = (n.beats || []).find(b => b.id === sel.id);
-      if (beat) {
-        (beat.node_ids || []).forEach(id => { const nd = (w.nodes || []).find(n => n.id === id); if (nd) refs.push({ view: 'world', viewLabel: 'World', kind: 'node', id, label: nd.name || id }); });
-      }
-    }
-
-    if (sel.kind === 'lens') {
-      const lens = (n.lenses || []).find(l => l.id === sel.id);
-      if (lens && lens.perspective && lens.perspective.anchor) refs.push({ view: 'world', viewLabel: 'World', kind: 'node', id: lens.perspective.anchor, label: lens.perspective.anchor + ' (anchor)' });
-    }
-
-    return refs;
   }
 
   /* ═══════════════════════════════════════════════════════════════════
-     VIEW 1: WORLD GRAPH (Cytoscape)
+     VIEW 1: WORLD GRAPH
      ═══════════════════════════════════════════════════════════════════ */
-  let cy = null;
-
-  function renderWorld(container) {
+  function renderWorld(container, detail) {
     const w = story.world || {};
     const nodes = w.nodes || [];
     const edges = w.edges || [];
 
-    // build filter bar
+    // filter bar
     const filterBar = document.createElement('div');
     filterBar.className = 'world-filters';
     const nodeTypes = [...new Set(nodes.map(n => n.type))];
     const edgeTypes = [...new Set(edges.map(e => e.type))];
-
     filterBar.innerHTML = '<span class="filter-label">Nodes:</span>' +
       nodeTypes.map(t => `<label class="filter-chip" style="--chip-color:${c(t)}"><input type="checkbox" checked data-filter="node-${t}"> ${t}</label>`).join('') +
       '<span class="filter-label">Edges:</span>' +
@@ -315,81 +124,111 @@
     ).join('');
     container.appendChild(legend);
 
-    // build cytoscape elements
+    // build elements
     const elements = [];
     nodes.forEach(n => {
-      elements.push({ group: 'nodes', data: { id: n.id, label: n.name || n.id, type: n.type, _raw: n }, classes: n.type });
+      elements.push({ group: 'nodes', data: { id: n.id, label: n.name || n.id, type: n.type }, classes: n.type });
     });
     edges.forEach(e => {
-      elements.push({ group: 'edges', data: { id: e.id, source: e.source, target: e.target, label: e.name || '', type: e.type, _raw: e, hasScope: !!e.scope }, classes: e.type });
+      elements.push({ group: 'edges', data: { id: e.id, source: e.source, target: e.target, label: e.name || '', type: e.type, hasScope: !!e.scope }, classes: e.type });
     });
 
     const dk = isDark();
+    const bg = dk ? '#1e1e1e' : '#fafafa';
+    const textCol = dk ? '#e0e0e0' : '#333';
+
     cy = cytoscape({
       container: cyDiv,
       elements: elements,
-      style: buildCyStyle(dk),
+      style: buildCyStyle(dk, bg, textCol),
       layout: { name: 'cose', animate: false, nodeRepulsion: function(){ return 12000; }, idealEdgeLength: function(){ return 120; }, padding: 40 },
       minZoom: 0.3, maxZoom: 3,
     });
 
-    // interactions
     cy.on('tap', 'node', e => select({ kind: 'node', id: e.target.id() }));
     cy.on('tap', 'edge', e => select({ kind: 'edge', id: e.target.id() }));
     cy.on('tap', e => { if (e.target === cy) select(null); });
 
     cy.on('mouseover', 'node', e => {
-      const n = e.target;
-      const neighbourhood = n.closedNeighborhood();
+      const neighbourhood = e.target.closedNeighborhood();
       cy.elements().not(neighbourhood).addClass('dimmed');
       neighbourhood.addClass('highlighted');
     });
-    cy.on('mouseout', 'node', () => { cy.elements().removeClass('dimmed highlighted'); });
+    cy.on('mouseout', 'node', () => cy.elements().removeClass('dimmed highlighted'));
     cy.on('mouseover', 'edge', e => {
-      const edge = e.target;
-      const connected = edge.connectedNodes().union(edge);
+      const connected = e.target.connectedNodes().union(e.target);
       cy.elements().not(connected).addClass('dimmed');
       connected.addClass('highlighted');
     });
-    cy.on('mouseout', 'edge', () => { cy.elements().removeClass('dimmed highlighted'); });
+    cy.on('mouseout', 'edge', () => cy.elements().removeClass('dimmed highlighted'));
 
-    // selection highlighting from other views
+    // cross-highlighting from selection
     onSelect(sel => {
       if (!cy) return;
       cy.elements().removeClass('cross-highlighted');
-      if (!sel || currentView !== 'world') {
-        // if navigated from another view, highlight
-        if (sel && sel.kind === 'node') cy.$('#' + sel.id).addClass('cross-highlighted');
-        if (sel && sel.kind === 'edge') cy.$('#' + sel.id).addClass('cross-highlighted');
-        if (sel && sel.kind === 'beat') {
-          const beat = ((story.narrative || {}).beats || []).find(b => b.id === sel.id);
-          if (beat) {
-            (beat.node_ids || []).forEach(id => cy.$('#' + id).addClass('cross-highlighted'));
-            (beat.edge_ids || []).forEach(id => cy.$('#' + id).addClass('cross-highlighted'));
-          }
+      if (!sel) { detail.innerHTML = ''; return; }
+
+      if (sel.kind === 'node') {
+        cy.$('#' + sel.id).addClass('cross-highlighted');
+        const node = nodes.find(n => n.id === sel.id);
+        if (node) detail.innerHTML = nodeDetailHTML(node);
+      } else if (sel.kind === 'edge') {
+        cy.$('#' + sel.id).addClass('cross-highlighted');
+        const edge = edges.find(e => e.id === sel.id);
+        if (edge) detail.innerHTML = edgeDetailHTML(edge);
+      } else if (sel.kind === 'beat') {
+        const beat = ((story.narrative || {}).beats || []).find(b => b.id === sel.id);
+        if (beat) {
+          (beat.node_ids || []).forEach(id => cy.$('#' + id).addClass('cross-highlighted'));
+          (beat.edge_ids || []).forEach(id => cy.$('#' + id).addClass('cross-highlighted'));
         }
-        return;
+        detail.innerHTML = '';
+      } else if (sel.kind === 'thread') {
+        const thread = ((story.narrative || {}).threads || []).find(t => t.id === sel.id);
+        if (thread) {
+          const beatIds = (thread.appearances || []).map(a => a.beat_id);
+          const allNodeIds = new Set();
+          ((story.narrative || {}).beats || []).filter(b => beatIds.includes(b.id)).forEach(b => {
+            (b.node_ids || []).forEach(id => allNodeIds.add(id));
+          });
+          allNodeIds.forEach(id => cy.$('#' + id).addClass('cross-highlighted'));
+        }
+        detail.innerHTML = '';
+      } else if (sel.kind === 'device') {
+        const dev = ((story.narrative || {}).devices || []).find(d => d.id === sel.id);
+        if (dev) {
+          const beatIds = [...(dev.setup || []), ...(dev.payoff || [])];
+          const allNodeIds = new Set();
+          ((story.narrative || {}).beats || []).filter(b => beatIds.includes(b.id)).forEach(b => {
+            (b.node_ids || []).forEach(id => allNodeIds.add(id));
+          });
+          allNodeIds.forEach(id => cy.$('#' + id).addClass('cross-highlighted'));
+        }
+        detail.innerHTML = '';
+      } else if (sel.kind === 'lens') {
+        const lens = ((story.narrative || {}).lenses || []).find(l => l.id === sel.id);
+        if (lens) {
+          if (lens.perspective && lens.perspective.anchor) cy.$('#' + lens.perspective.anchor).addClass('cross-highlighted');
+          if (lens.emotional && lens.emotional.bias) (lens.emotional.bias.toward || []).forEach(id => cy.$('#' + id).addClass('cross-highlighted'));
+          if (lens.reliability && lens.reliability.distorts) lens.reliability.distorts.forEach(d => cy.$('#' + d.node).addClass('cross-highlighted'));
+        }
+        detail.innerHTML = '';
+      } else {
+        detail.innerHTML = '';
       }
-      if (sel.kind === 'node') cy.$('#' + sel.id).addClass('cross-highlighted');
-      if (sel.kind === 'edge') cy.$('#' + sel.id).addClass('cross-highlighted');
     });
 
     // filter handling
     filterBar.querySelectorAll('input[type=checkbox]').forEach(cb => {
       cb.addEventListener('change', () => {
         const [kind, type] = cb.dataset.filter.split('-');
-        if (kind === 'node') {
-          cy.nodes('.' + type).toggleClass('filtered-out', !cb.checked);
-        } else {
-          cy.edges('.' + type).toggleClass('filtered-out', !cb.checked);
-        }
+        if (kind === 'node') cy.nodes('.' + type).toggleClass('filtered-out', !cb.checked);
+        else cy.edges('.' + type).toggleClass('filtered-out', !cb.checked);
       });
     });
   }
 
-  function buildCyStyle(dk) {
-    const bg = dk ? '#1e1e1e' : '#fafafa';
-    const textCol = dk ? '#e0e0e0' : '#333';
+  function buildCyStyle(dk, bg, textCol) {
     const styles = [
       { selector: 'node', style: {
         'label': 'data(label)', 'font-size': 11, 'color': textCol,
@@ -407,13 +246,12 @@
       { selector: '.dimmed', style: { 'opacity': 0.15 }},
       { selector: '.highlighted', style: { 'opacity': 1 }},
       { selector: '.cross-highlighted', style: { 'border-width': 4, 'border-color': '#FFD600', 'z-index': 999 }},
+      { selector: 'edge.cross-highlighted', style: { 'width': 4, 'line-color': '#FFD600', 'target-arrow-color': '#FFD600', 'z-index': 999 }},
       { selector: '.filtered-out', style: { 'display': 'none' }},
     ];
-    // node type styles
     Object.keys(SHAPES).forEach(type => {
       styles.push({ selector: 'node.' + type, style: { 'background-color': c(type), 'shape': SHAPES[type] }});
     });
-    // edge type styles
     Object.keys(COLORS).forEach(type => {
       styles.push({ selector: 'edge.' + type, style: { 'line-color': c(type), 'target-arrow-color': c(type) }});
     });
@@ -423,14 +261,19 @@
   /* ═══════════════════════════════════════════════════════════════════
      VIEW 2: NARRATIVE FLOW
      ═══════════════════════════════════════════════════════════════════ */
-  function renderNarrative(container) {
-    if (!container) container = root.querySelector('.graph-view[data-view="narrative"]');
-    container.innerHTML = '';
+  function renderNarrative(container, detail) {
     const n = story.narrative || {};
     const beats = (n.beats || []).filter(b => b.order != null).sort((a, b) => a.order - b.order);
     const threads = n.threads || [];
     const devices = n.devices || [];
     if (!beats.length) { container.innerHTML = '<p class="empty-msg">No beats with order defined.</p>'; return; }
+
+    // beat stepper
+    const stepper = document.createElement('div');
+    stepper.className = 'beat-stepper';
+    let stepIdx = -1;
+    stepper.innerHTML = '<button class="step-btn step-prev">&larr; Prev</button><span class="step-label">All beats</span><button class="step-btn step-next">Next &rarr;</button>';
+    container.appendChild(stepper);
 
     const CARD_W = 160, CARD_H = 120, GAP = 24, PAD = 60;
     const totalW = beats.length * (CARD_W + GAP) - GAP + PAD * 2;
@@ -439,7 +282,6 @@
     const tensionH = 80;
     const totalH = deviceArcH + tensionH + CARD_H + 20 + threads.length * threadH + PAD * 2;
 
-    // scrollable wrapper
     const wrapper = document.createElement('div');
     wrapper.className = 'narrative-scroll';
     container.appendChild(wrapper);
@@ -448,32 +290,27 @@
     wrapper.appendChild(svg);
 
     const beatX = i => PAD + i * (CARD_W + GAP) + CARD_W / 2;
-    const beatY = deviceArcH + tensionH + CARD_H / 2;
+    const tensionBaseline = deviceArcH + tensionH;
 
-    // ── tension curve ──
+    // ── tension curve
     const tensionG = svgEl('g', { class: 'tension-group' });
     svg.appendChild(tensionG);
-    const tensionBaseline = deviceArcH + tensionH;
     let tensionPath = '';
     beats.forEach((b, i) => {
       const x = beatX(i);
       const y = tensionBaseline - (b.tension || 0) * (tensionH - 10);
       tensionPath += (i === 0 ? 'M' : 'L') + `${x},${y}`;
-      // dot
       const dot = svgEl('circle', { cx: x, cy: y, r: 4, fill: FUNC_COLORS[b.function] || '#999', class: 'tension-dot' });
       dot.innerHTML = `<title>${b.name}: tension ${b.tension}</title>`;
       tensionG.appendChild(dot);
     });
-    const tensionLine = svgEl('path', { d: tensionPath, fill: 'none', stroke: isDark() ? '#B39DDB' : '#7E57C2', 'stroke-width': 2.5, 'stroke-linejoin': 'round' });
-    tensionG.appendChild(tensionLine);
-    // baseline
+    tensionG.appendChild(svgEl('path', { d: tensionPath, fill: 'none', stroke: isDark() ? '#B39DDB' : '#7E57C2', 'stroke-width': 2.5, 'stroke-linejoin': 'round' }));
     tensionG.appendChild(svgEl('line', { x1: PAD, y1: tensionBaseline, x2: totalW - PAD, y2: tensionBaseline, stroke: isDark() ? '#555' : '#ddd', 'stroke-width': 1 }));
-    // label
     const tensionLabel = svgEl('text', { x: 12, y: tensionBaseline - tensionH / 2, fill: isDark() ? '#888' : '#aaa', 'font-size': 10, 'writing-mode': 'tb', 'text-anchor': 'middle' });
     tensionLabel.textContent = 'Tension';
     tensionG.appendChild(tensionLabel);
 
-    // ── device arcs ──
+    // ── device arcs
     const deviceG = svgEl('g', { class: 'device-group' });
     svg.appendChild(deviceG);
     const DEVICE_COLORS = { FORESHADOWING: '#42A5F5', RED_HERRING: '#EF5350', SETUP_PAYOFF: '#FFA726', CHEKHOV_GUN: '#66BB6A', DRAMATIC_IRONY: '#AB47BC', ECHO: '#78909C', CONTRAST: '#EC407A', PARALLEL: '#26C6DA', CALLBACK: '#8D6E63', CUSTOM: '#BDBDBD' };
@@ -491,7 +328,6 @@
           arc.innerHTML = `<title>${dev.type}: ${dev.id}</title>`;
           arc.addEventListener('click', () => select({ kind: 'device', id: dev.id }));
           deviceG.appendChild(arc);
-          // labels
           const label = svgEl('text', { x: midX, y: arcY - 4, fill: col, 'font-size': 9, 'text-anchor': 'middle', class: 'device-label' });
           label.textContent = dev.type.replace(/_/g, ' ');
           deviceG.appendChild(label);
@@ -499,7 +335,7 @@
       });
     });
 
-    // ── beat cards ──
+    // ── beat cards
     const beatsG = svgEl('g', { class: 'beats-group' });
     svg.appendChild(beatsG);
     beats.forEach((b, i) => {
@@ -512,32 +348,25 @@
       const g = svgEl('g', { class: 'beat-card', 'data-beat': b.id, cursor: 'pointer' });
       g.addEventListener('click', () => select({ kind: 'beat', id: b.id }));
 
-      // card bg
       g.appendChild(svgEl('rect', { x, y, width: CARD_W, height: CARD_H, rx: 8, fill: isDark() ? '#2a2a2a' : '#fff', stroke: funcColor, 'stroke-width': 2 }));
-      // emotional tint
       g.appendChild(svgEl('rect', { x: x + 1, y: y + 1, width: CARD_W - 2, height: CARD_H - 2, rx: 7, fill: emColor }));
-      // function badge
       g.appendChild(svgEl('rect', { x: x + 4, y: y + 4, width: CARD_W - 8, height: 20, rx: 4, fill: funcColor }));
       const funcText = svgEl('text', { x: x + CARD_W / 2, y: y + 17, fill: '#fff', 'font-size': 9, 'text-anchor': 'middle', 'font-weight': 'bold' });
       funcText.textContent = (b.function || '').replace(/_/g, ' ');
       g.appendChild(funcText);
 
-      // beat name
       const nameText = svgEl('text', { x: x + CARD_W / 2, y: y + 42, fill: isDark() ? '#e0e0e0' : '#333', 'font-size': 12, 'text-anchor': 'middle', 'font-weight': '600' });
       nameText.textContent = truncate(b.name || b.id, 18);
       g.appendChild(nameText);
 
-      // order number
       const orderText = svgEl('text', { x: x + CARD_W / 2, y: y + 58, fill: isDark() ? '#888' : '#999', 'font-size': 10, 'text-anchor': 'middle' });
       orderText.textContent = `#${b.order}`;
       g.appendChild(orderText);
 
-      // tension bar
       const barW = (CARD_W - 16) * (b.tension || 0);
       g.appendChild(svgEl('rect', { x: x + 8, y: y + CARD_H - 24, width: CARD_W - 16, height: 6, rx: 3, fill: isDark() ? '#444' : '#eee' }));
       g.appendChild(svgEl('rect', { x: x + 8, y: y + CARD_H - 24, width: barW, height: 6, rx: 3, fill: funcColor }));
 
-      // reveals count
       if (b.reveals && b.reveals.length) {
         const revText = svgEl('text', { x: x + CARD_W - 10, y: y + CARD_H - 10, fill: isDark() ? '#FFD54F' : '#FF8F00', 'font-size': 9, 'text-anchor': 'end' });
         revText.textContent = `${b.reveals.length} reveal${b.reveals.length > 1 ? 's' : ''}`;
@@ -546,10 +375,9 @@
 
       beatsG.appendChild(g);
 
-      // transition arrow to next beat
+      // transition arrow
       if (i < beats.length - 1) {
-        const ax = x + CARD_W + 2;
-        const ay = y + CARD_H / 2;
+        const ax = x + CARD_W + 2, ay = y + CARD_H / 2;
         const arrowG = svgEl('g', { class: 'transition-arrow' });
         arrowG.appendChild(svgEl('line', { x1: ax, y1: ay, x2: ax + GAP - 4, y2: ay, stroke: isDark() ? '#666' : '#ccc', 'stroke-width': 1.5 }));
         arrowG.appendChild(svgEl('polygon', { points: `${ax + GAP - 4},${ay - 3} ${ax + GAP},${ay} ${ax + GAP - 4},${ay + 3}`, fill: isDark() ? '#666' : '#ccc' }));
@@ -562,15 +390,13 @@
       }
     });
 
-    // ── thread swim lanes ──
+    // ── thread swim lanes
     const threadG = svgEl('g', { class: 'threads-group' });
     svg.appendChild(threadG);
     const threadBaseY = deviceArcH + tensionH + CARD_H + 20;
     const THREAD_COLORS = [
-      isDark() ? '#F48FB1' : '#EC407A',
-      isDark() ? '#90CAF9' : '#42A5F5',
-      isDark() ? '#A5D6A7' : '#66BB6A',
-      isDark() ? '#FFE082' : '#FFB300',
+      isDark() ? '#F48FB1' : '#EC407A', isDark() ? '#90CAF9' : '#42A5F5',
+      isDark() ? '#A5D6A7' : '#66BB6A', isDark() ? '#FFE082' : '#FFB300',
       isDark() ? '#CE93D8' : '#AB47BC',
     ];
 
@@ -578,68 +404,70 @@
       const y = threadBaseY + ti * threadH;
       const col = THREAD_COLORS[ti % THREAD_COLORS.length];
 
-      // lane label
       const labelEl = svgEl('text', { x: PAD - 8, y: y + threadH / 2 + 4, fill: col, 'font-size': 10, 'text-anchor': 'end', 'font-weight': '500', cursor: 'pointer' });
       labelEl.textContent = truncate(thread.name, 20);
       labelEl.addEventListener('click', () => select({ kind: 'thread', id: thread.id }));
       threadG.appendChild(labelEl);
 
-      // lane line
       threadG.appendChild(svgEl('line', { x1: PAD, y1: y + threadH / 2, x2: totalW - PAD, y2: y + threadH / 2, stroke: col, 'stroke-width': 1, opacity: 0.3 }));
 
-      // type badge
       const typeBadge = svgEl('text', { x: PAD - 8, y: y + threadH / 2 + 14, fill: isDark() ? '#666' : '#bbb', 'font-size': 8, 'text-anchor': 'end' });
       typeBadge.textContent = thread.type;
       threadG.appendChild(typeBadge);
 
-      // dots + connecting line
       const appearances = (thread.appearances || [])
         .map(a => ({ ...a, idx: beats.findIndex(b => b.id === a.beat_id) }))
-        .filter(a => a.idx >= 0)
-        .sort((a, b) => a.idx - b.idx);
+        .filter(a => a.idx >= 0).sort((a, b) => a.idx - b.idx);
 
       let linePath = '';
       appearances.forEach((a, ai) => {
-        const cx = beatX(a.idx);
-        const cy = y + threadH / 2;
+        const cx = beatX(a.idx), cy = y + threadH / 2;
         linePath += (ai === 0 ? 'M' : 'L') + `${cx},${cy}`;
-
-        const dot = svgEl('circle', { cx, cy, r: 6, fill: col, cursor: 'pointer', class: 'thread-dot' });
+        const dot = svgEl('circle', { cx, cy, r: 6, fill: col, cursor: 'pointer', class: 'thread-dot', 'data-thread': thread.id });
         dot.innerHTML = `<title>${esc(a.description || a.beat_id)}</title>`;
-        dot.addEventListener('click', (ev) => { ev.stopPropagation(); select({ kind: 'thread', id: thread.id }); });
+        dot.addEventListener('click', ev => { ev.stopPropagation(); select({ kind: 'thread', id: thread.id }); });
         threadG.appendChild(dot);
       });
-      if (linePath) {
-        threadG.insertBefore(svgEl('path', { d: linePath, fill: 'none', stroke: col, 'stroke-width': 2, opacity: 0.5 }), threadG.firstChild);
-      }
+      if (linePath) threadG.insertBefore(svgEl('path', { d: linePath, fill: 'none', stroke: col, 'stroke-width': 2, opacity: 0.5 }), threadG.firstChild);
     });
 
-    // beat stepper
-    const stepper = document.createElement('div');
-    stepper.className = 'beat-stepper';
-    let stepIdx = -1;
+    // beat stepper logic
     const stepTo = (idx) => {
       stepIdx = Math.max(-1, Math.min(idx, beats.length - 1));
       stepper.querySelector('.step-label').textContent = stepIdx >= 0 ? `${beats[stepIdx].name} (${stepIdx + 1}/${beats.length})` : 'All beats';
-      svg.querySelectorAll('.beat-card').forEach((g, i) => g.classList.toggle('step-active', i === stepIdx));
       if (stepIdx >= 0) select({ kind: 'beat', id: beats[stepIdx].id }); else select(null);
     };
-    stepper.innerHTML = '<button class="step-btn step-prev">&larr; Prev</button><span class="step-label">All beats</span><button class="step-btn step-next">Next &rarr;</button>';
     stepper.querySelector('.step-prev').addEventListener('click', () => stepTo(stepIdx - 1));
     stepper.querySelector('.step-next').addEventListener('click', () => stepTo(stepIdx + 1));
-    container.insertBefore(stepper, wrapper);
 
-    // highlight from selection
+    // selection highlighting
     onSelect(sel => {
       svg.querySelectorAll('.beat-card').forEach(g => g.classList.remove('sel-highlight'));
       svg.querySelectorAll('.device-arc').forEach(a => a.classList.remove('sel-highlight'));
       svg.querySelectorAll('.thread-dot').forEach(d => d.classList.remove('sel-highlight'));
-      if (!sel) return;
-      if (sel.kind === 'beat') svg.querySelector(`.beat-card[data-beat="${sel.id}"]`)?.classList.add('sel-highlight');
-      if (sel.kind === 'device') svg.querySelectorAll(`.device-arc[data-device="${sel.id}"]`).forEach(a => a.classList.add('sel-highlight'));
-      if (sel.kind === 'node') {
+      if (!sel) { detail.innerHTML = ''; return; }
+
+      if (sel.kind === 'beat') {
+        svg.querySelector(`.beat-card[data-beat="${sel.id}"]`)?.classList.add('sel-highlight');
+        const beat = beats.find(b => b.id === sel.id);
+        if (beat) detail.innerHTML = beatDetailHTML(beat);
+      } else if (sel.kind === 'device') {
+        svg.querySelectorAll(`.device-arc[data-device="${sel.id}"]`).forEach(a => a.classList.add('sel-highlight'));
+        const dev = devices.find(d => d.id === sel.id);
+        if (dev) detail.innerHTML = deviceDetailHTML(dev);
+      } else if (sel.kind === 'thread') {
+        svg.querySelectorAll(`.thread-dot[data-thread="${sel.id}"]`).forEach(d => d.classList.add('sel-highlight'));
+        const thread = threads.find(t => t.id === sel.id);
+        if (thread) detail.innerHTML = threadDetailHTML(thread);
+      } else if (sel.kind === 'node') {
         // highlight beats containing this node
-        beats.forEach((b, i) => { if ((b.node_ids || []).includes(sel.id)) svg.querySelectorAll('.beat-card')[i]?.classList.add('sel-highlight'); });
+        beats.forEach(b => { if ((b.node_ids || []).includes(sel.id)) svg.querySelector(`.beat-card[data-beat="${b.id}"]`)?.classList.add('sel-highlight'); });
+        detail.innerHTML = '';
+      } else if (sel.kind === 'edge') {
+        beats.forEach(b => { if ((b.edge_ids || []).includes(sel.id)) svg.querySelector(`.beat-card[data-beat="${b.id}"]`)?.classList.add('sel-highlight'); });
+        detail.innerHTML = '';
+      } else {
+        detail.innerHTML = '';
       }
     });
   }
@@ -648,8 +476,6 @@
      VIEW 3: TIMELINE & FRAMES
      ═══════════════════════════════════════════════════════════════════ */
   function renderTimeline(container) {
-    if (!container) container = root.querySelector('.graph-view[data-view="timeline"]');
-    container.innerHTML = '';
     const w = story.world || {};
     const ts = w.time_system;
     const frames = w.frames || [];
@@ -657,7 +483,6 @@
 
     if (!ts && !edges.length && !frames.length) { container.innerHTML = '<p class="empty-msg">No time system, frames, or temporal scopes defined.</p>'; return; }
 
-    // collect all time points from scopes
     const timePoints = new Set();
     edges.forEach(e => collectTimePoints(e.scope, timePoints));
     frames.forEach(f => { if (f.branches_at) timePoints.add(f.branches_at); (f.relations || []).forEach(r => { if (r.at) timePoints.add(r.at); }); });
@@ -677,25 +502,23 @@
     const svg = createSVG(WIDTH, totalH);
     wrapper.appendChild(svg);
 
-    const tpX = (tp) => {
+    const tpX = tp => {
       const idx = sorted.indexOf(tp);
       return idx >= 0 ? PAD + (idx + 0.5) * ((WIDTH - PAD * 2) / sorted.length) : PAD;
     };
 
     // time system header
     if (ts) {
-      const headerG = svgEl('g', { class: 'ts-header' });
       const title = svgEl('text', { x: PAD, y: 30, fill: isDark() ? '#e0e0e0' : '#333', 'font-size': 16, 'font-weight': 'bold' });
       title.textContent = ts.name || 'Timeline';
-      headerG.appendChild(title);
+      svg.appendChild(title);
       const sub = svgEl('text', { x: PAD, y: 48, fill: isDark() ? '#888' : '#999', 'font-size': 12 });
       sub.textContent = `Type: ${ts.type}` + (ts.calendar ? ` | Unit: ${ts.calendar.unit || ''}` + (ts.calendar.season ? ` | Season: ${ts.calendar.season}` : '') : '');
-      headerG.appendChild(sub);
-      svg.appendChild(headerG);
+      svg.appendChild(sub);
     }
 
-    // time axis
-    const axisG = svgEl('g', { class: 'time-axis' });
+    // axis
+    const axisG = svgEl('g');
     axisG.appendChild(svgEl('line', { x1: PAD, y1: axisY, x2: WIDTH - PAD, y2: axisY, stroke: isDark() ? '#555' : '#ccc', 'stroke-width': 2 }));
     sorted.forEach(tp => {
       const x = tpX(tp);
@@ -705,6 +528,12 @@
       axisG.appendChild(label);
     });
     svg.appendChild(axisG);
+
+    // defs
+    const defs = svgEl('defs');
+    defs.innerHTML = `<linearGradient id="fadeLeft"><stop offset="0%" stop-color="${isDark() ? '#1e1e1e' : '#fff'}" stop-opacity="0.8"/><stop offset="100%" stop-color="${isDark() ? '#1e1e1e' : '#fff'}" stop-opacity="0"/></linearGradient>` +
+      `<linearGradient id="fadeRight"><stop offset="0%" stop-color="${isDark() ? '#1e1e1e' : '#fff'}" stop-opacity="0"/><stop offset="100%" stop-color="${isDark() ? '#1e1e1e' : '#fff'}" stop-opacity="0.8"/></linearGradient>`;
+    svg.insertBefore(defs, svg.firstChild);
 
     // scope bars
     if (edges.length) {
@@ -720,34 +549,19 @@
       const x2 = range.to ? tpX(range.to) : WIDTH - PAD;
       const col = c(edge.type);
 
-      const barG = svgEl('g', { class: 'scope-bar', cursor: 'pointer' });
+      const barG = svgEl('g', { class: 'scope-bar', cursor: 'pointer', 'data-edge': edge.id });
       barG.addEventListener('click', () => select({ kind: 'edge', id: edge.id }));
 
-      barG.appendChild(svgEl('rect', { x: x1, y: y, width: Math.max(x2 - x1, 8), height: BAR_H, rx: 4, fill: col, opacity: 0.3 }));
-      barG.appendChild(svgEl('rect', { x: x1, y: y, width: Math.max(x2 - x1, 8), height: BAR_H, rx: 4, fill: 'none', stroke: col, 'stroke-width': 1.5 }));
-
-      // open boundary indicators
-      if (!range.from) {
-        const grad = svgEl('rect', { x: x1, y: y, width: 20, height: BAR_H, rx: 4, fill: 'url(#fadeLeft)', opacity: 0.6 });
-        barG.appendChild(grad);
-      }
-      if (!range.to) {
-        const grad = svgEl('rect', { x: x2 - 20, y: y, width: 20, height: BAR_H, rx: 4, fill: 'url(#fadeRight)', opacity: 0.6 });
-        barG.appendChild(grad);
-      }
+      barG.appendChild(svgEl('rect', { x: x1, y, width: Math.max(x2 - x1, 8), height: BAR_H, rx: 4, fill: col, opacity: 0.3 }));
+      barG.appendChild(svgEl('rect', { x: x1, y, width: Math.max(x2 - x1, 8), height: BAR_H, rx: 4, fill: 'none', stroke: col, 'stroke-width': 1.5 }));
+      if (!range.from) barG.appendChild(svgEl('rect', { x: x1, y, width: 20, height: BAR_H, rx: 4, fill: 'url(#fadeLeft)', opacity: 0.6 }));
+      if (!range.to) barG.appendChild(svgEl('rect', { x: x2 - 20, y, width: 20, height: BAR_H, rx: 4, fill: 'url(#fadeRight)', opacity: 0.6 }));
 
       const label = svgEl('text', { x: x1 + 6, y: y + BAR_H / 2 + 4, fill: isDark() ? '#e0e0e0' : '#333', 'font-size': 10, 'font-weight': '500' });
       label.textContent = `${edge.name} (${edge.source} → ${edge.target})`;
       barG.appendChild(label);
-
       svg.appendChild(barG);
     });
-
-    // defs for gradients
-    const defs = svgEl('defs');
-    defs.innerHTML = `<linearGradient id="fadeLeft"><stop offset="0%" stop-color="${isDark() ? '#1e1e1e' : '#fff'}" stop-opacity="0.8"/><stop offset="100%" stop-color="${isDark() ? '#1e1e1e' : '#fff'}" stop-opacity="0"/></linearGradient>` +
-      `<linearGradient id="fadeRight"><stop offset="0%" stop-color="${isDark() ? '#1e1e1e' : '#fff'}" stop-opacity="0"/><stop offset="100%" stop-color="${isDark() ? '#1e1e1e' : '#fff'}" stop-opacity="0.8"/></linearGradient>`;
-    svg.insertBefore(defs, svg.firstChild);
 
     // frames
     if (frames.length) {
@@ -758,13 +572,11 @@
       frames.forEach((frame, fi) => {
         const y = frameLaneY + fi * (BAR_H + LANE_GAP);
         const col = isDark() ? '#A5D6A7' : '#388E3C';
-        const g = svgEl('g', { class: 'frame-lane' });
-
+        const g = svgEl('g');
         g.appendChild(svgEl('rect', { x: PAD, y, width: WIDTH - PAD * 2, height: BAR_H, rx: 4, fill: col, opacity: 0.1, stroke: col, 'stroke-width': 1, 'stroke-dasharray': '6,3' }));
         const label = svgEl('text', { x: PAD + 8, y: y + BAR_H / 2 + 4, fill: col, 'font-size': 11, 'font-weight': '500' });
         label.textContent = frame.name || frame.id;
         g.appendChild(label);
-
         if (frame.branches_at && sorted.includes(frame.branches_at)) {
           const bx = tpX(frame.branches_at);
           g.appendChild(svgEl('circle', { cx: bx, cy: y + BAR_H / 2, r: 6, fill: col }));
@@ -772,7 +584,6 @@
           bLabel.textContent = 'branches at ' + frame.branches_at;
           g.appendChild(bLabel);
         }
-
         (frame.relations || []).forEach(rel => {
           if (rel.at && sorted.includes(rel.at)) {
             const rx = tpX(rel.at);
@@ -782,18 +593,22 @@
             g.appendChild(rLabel);
           }
         });
-
         svg.appendChild(g);
       });
     }
+
+    // cross-highlighting for timeline scope bars
+    onSelect(sel => {
+      svg.querySelectorAll('.scope-bar').forEach(b => b.classList.remove('sel-highlight'));
+      if (sel && sel.kind === 'edge') svg.querySelector(`.scope-bar[data-edge="${sel.id}"]`)?.classList.add('sel-highlight');
+    });
   }
 
   /* ═══════════════════════════════════════════════════════════════════
      VIEW 4: LENSES
      ═══════════════════════════════════════════════════════════════════ */
   function renderLenses(container) {
-    const n = story.narrative || {};
-    const lenses = n.lenses || [];
+    const lenses = (story.narrative || {}).lenses || [];
     if (!lenses.length) { container.innerHTML = '<p class="empty-msg">No lenses defined.</p>'; return; }
 
     const grid = document.createElement('div');
@@ -803,24 +618,21 @@
     lenses.forEach(lens => {
       const card = document.createElement('div');
       card.className = 'lens-card';
+      card.dataset.lens = lens.id;
       card.addEventListener('click', () => select({ kind: 'lens', id: lens.id }));
       card.innerHTML = lensCardHTML(lens);
       grid.appendChild(card);
     });
 
-    // highlight
     onSelect(sel => {
       grid.querySelectorAll('.lens-card').forEach(c => c.classList.remove('sel-highlight'));
-      if (sel && sel.kind === 'lens') {
-        const idx = lenses.findIndex(l => l.id === sel.id);
-        if (idx >= 0) grid.children[idx]?.classList.add('sel-highlight');
-      }
+      if (sel && sel.kind === 'lens') grid.querySelector(`.lens-card[data-lens="${sel.id}"]`)?.classList.add('sel-highlight');
       if (sel && sel.kind === 'node') {
-        lenses.forEach((l, i) => {
+        lenses.forEach(l => {
           if (l.perspective?.anchor === sel.id ||
               (l.emotional?.bias?.toward || []).includes(sel.id) ||
               (l.reliability?.distorts || []).some(d => d.node === sel.id)) {
-            grid.children[i]?.classList.add('sel-highlight');
+            grid.querySelector(`.lens-card[data-lens="${l.id}"]`)?.classList.add('sel-highlight');
           }
         });
       }
@@ -834,7 +646,6 @@
     if (p.person) h += ` <span class="info-badge">${p.person} person</span>`;
     h += '</div>';
     if (p.anchor) h += `<div class="lens-row"><strong>Anchor:</strong> <a class="info-link" data-kind="node" data-id="${p.anchor}">${p.anchor}</a></div>`;
-
     const k = lens.knowledge || {};
     if (k.mode) {
       h += `<div class="lens-row"><strong>Knowledge:</strong> ${k.mode}`;
@@ -842,17 +653,14 @@
       if (k.include_wrong_beliefs) h += ' <span class="lens-flag">+wrong beliefs</span>';
       h += '</div>';
     }
-
     const tp = lens.temporal_position || {};
     if (tp.type) h += `<div class="lens-row"><strong>Temporal:</strong> ${tp.type}</div>`;
-
     const em = lens.emotional || {};
     if (em.bias) {
       h += `<div class="lens-row"><strong>Bias toward:</strong> ${(em.bias.toward || []).map(id => `<a class="info-link" data-kind="node" data-id="${id}">${id}</a>`).join(', ')}`;
       if (em.bias.bias_strength != null) h += ` (strength: ${em.bias.bias_strength})`;
       h += '</div>';
     }
-
     const v = lens.voice || {};
     if (v.vocabulary_level || v.sentence_tendency) {
       h += '<div class="lens-row"><strong>Voice:</strong> ';
@@ -865,7 +673,6 @@
       if (v.verbal_tics && v.verbal_tics.length) h += `<br><em>Tics: "${v.verbal_tics.join('", "')}"</em>`;
       h += '</div>';
     }
-
     const r = lens.reliability || {};
     if (r.level) {
       const relColors = { RELIABLE: '#66BB6A', SELECTIVE: '#FFB300', UNRELIABLE: '#FFA726', LYING: '#EF5350' };
@@ -874,7 +681,6 @@
       if (r.distorts && r.distorts.length) h += `<br>Distorts: ${r.distorts.map(d => `<span class="lens-distort ${d.direction.toLowerCase()}">${d.node} ${d.direction === 'POSITIVE' ? '↑' : '↓'}</span>`).join(', ')}`;
       h += '</div>';
     }
-
     return h;
   }
 
@@ -882,14 +688,11 @@
      VIEW 5: FORMATS
      ═══════════════════════════════════════════════════════════════════ */
   function renderFormats(container) {
-    const n = story.narrative || {};
-    const formats = n.formats || [];
+    const formats = (story.narrative || {}).formats || [];
     if (!formats.length) { container.innerHTML = '<p class="empty-msg">No formats defined.</p>'; return; }
-
     formats.forEach(fmt => {
       const card = document.createElement('div');
       card.className = 'format-card';
-      card.addEventListener('click', () => select({ kind: 'format', id: fmt.id }));
       card.innerHTML = formatDetailHTML(fmt);
       container.appendChild(card);
     });
@@ -897,20 +700,15 @@
 
   function formatDetailHTML(fmt) {
     let h = `<h3>${esc(fmt.name || fmt.id)}</h3><span class="info-badge">${fmt.type}</span>`;
-    h += '<div class="format-tree">';
-    h += renderStructureLevel(fmt.structure, 0);
-    h += '</div>';
-    if (fmt.settings) {
-      h += '<div class="format-settings"><strong>Settings:</strong><pre>' + esc(JSON.stringify(fmt.settings, null, 2)) + '</pre></div>';
-    }
+    h += '<div class="format-tree">' + renderStructureLevel(fmt.structure, 0) + '</div>';
+    if (fmt.settings) h += '<div class="format-settings"><strong>Settings:</strong><pre>' + esc(JSON.stringify(fmt.settings, null, 2)) + '</pre></div>';
     return h;
   }
 
   function renderStructureLevel(s, depth) {
     if (!s) return '';
     const indent = depth * 20;
-    let h = `<div class="structure-level" style="margin-left:${indent}px">`;
-    h += `<span class="structure-type">${esc(s.type)}</span>`;
+    let h = `<div class="structure-level" style="margin-left:${indent}px"><span class="structure-type">${esc(s.type)}</span>`;
     if (s.constraints) {
       const parts = Object.entries(s.constraints).map(([k, v]) => `${k}: ${v}`);
       h += ` <span class="structure-constraints">${parts.join(' | ')}</span>`;
@@ -924,13 +722,10 @@
      VIEW 6: CONSTRAINTS
      ═══════════════════════════════════════════════════════════════════ */
   function renderConstraints(container) {
-    const w = story.world || {};
-    const constraints = w.constraints || [];
+    const constraints = (story.world || {}).constraints || [];
     if (!constraints.length) { container.innerHTML = '<p class="empty-msg">No constraints defined.</p>'; return; }
-
     const groups = { ERROR: [], WARNING: [], INFO: [] };
     constraints.forEach(c => (groups[c.severity] || groups.INFO).push(c));
-
     ['ERROR', 'WARNING', 'INFO'].forEach(sev => {
       if (!groups[sev].length) return;
       const section = document.createElement('div');
@@ -939,7 +734,6 @@
       groups[sev].forEach(con => {
         const card = document.createElement('div');
         card.className = `constraint-card severity-${sev.toLowerCase()}`;
-        card.addEventListener('click', () => select({ kind: 'constraint', id: con.id }));
         let h = `<h4>${esc(con.name)}</h4><p>${esc(con.description || '')}</p>`;
         if (con.scope) h += `<div class="info-scope">${renderScope(con.scope)}</div>`;
         card.innerHTML = h;
@@ -949,17 +743,64 @@
     });
   }
 
+  /* ── detail HTML builders ──────────────────────────────────────── */
+  function nodeDetailHTML(node) {
+    let h = `<h4>${esc(node.name)}</h4><span class="info-badge" style="background:${c(node.type)}">${node.type}</span>`;
+    if (node.description) h += `<p class="info-desc">${esc(node.description)}</p>`;
+    if (node.tags && node.tags.length) h += `<div class="info-tags">${node.tags.map(t => `<span class="info-tag">${esc(t)}</span>`).join('')}</div>`;
+    if (node.properties) h += `<table class="info-props">${Object.entries(node.properties).map(([k,v]) => `<tr><td>${esc(k)}</td><td>${esc(JSON.stringify(v))}</td></tr>`).join('')}</table>`;
+    return h;
+  }
+
+  function edgeDetailHTML(edge) {
+    let h = `<h4>${esc(edge.name)}</h4><span class="info-badge" style="background:${c(edge.type)}">${edge.type}</span>`;
+    h += `<p><strong>${esc(edge.source)}</strong> &rarr; <strong>${esc(edge.target)}</strong></p>`;
+    if (edge.description) h += `<p class="info-desc">${esc(edge.description)}</p>`;
+    if (edge.scope) h += `<div class="info-scope"><strong>Scope:</strong> ${renderScope(edge.scope)}</div>`;
+    return h;
+  }
+
+  function beatDetailHTML(beat) {
+    let h = `<h4>${esc(beat.name)}</h4>`;
+    if (beat.function) h += `<span class="info-badge" style="background:${FUNC_COLORS[beat.function] || '#999'}">${beat.function}</span>`;
+    if (beat.description) h += `<p class="info-desc">${esc(beat.description)}</p>`;
+    if (beat.tension != null) h += `<p><strong>Tension:</strong> ${beat.tension}</p>`;
+    if (beat.emotional_target != null) h += `<p><strong>Emotional target:</strong> ${beat.emotional_target}</p>`;
+    if (beat.node_ids) h += `<p><strong>Nodes:</strong> ${beat.node_ids.map(id => `<a class="info-link" data-kind="node" data-id="${id}">${id}</a>`).join(', ')}</p>`;
+    if (beat.edge_ids) h += `<p><strong>Edges:</strong> ${beat.edge_ids.map(id => `<a class="info-link" data-kind="edge" data-id="${id}">${id}</a>`).join(', ')}</p>`;
+    if (beat.reveals && beat.reveals.length) h += `<p><strong>Reveals:</strong> ${beat.reveals.map(r => `${r.target} (${r.degree || 'FULL'})`).join(', ')}</p>`;
+    if (beat.transition) h += `<p><strong>Transition:</strong> ${beat.transition.type}</p>`;
+    return h;
+  }
+
+  function threadDetailHTML(thread) {
+    let h = `<h4>${esc(thread.name)}</h4><span class="info-badge">${thread.type}</span>`;
+    if (thread.description) h += `<p class="info-desc">${esc(thread.description)}</p>`;
+    if (thread.appearances) {
+      h += '<ul class="appearance-list">';
+      thread.appearances.forEach(a => { h += `<li><a class="info-link" data-kind="beat" data-id="${a.beat_id}"><strong>${a.beat_id}</strong></a>: ${esc(a.description || '')}</li>`; });
+      h += '</ul>';
+    }
+    return h;
+  }
+
+  function deviceDetailHTML(dev) {
+    let h = `<h4>${esc(dev.id)}</h4><span class="info-badge">${dev.type}</span>`;
+    if (dev.description) h += `<p class="info-desc">${esc(dev.description)}</p>`;
+    if (dev.setup) h += `<p><strong>Setup:</strong> ${dev.setup.map(id => `<a class="info-link" data-kind="beat" data-id="${id}">${id}</a>`).join(', ')}</p>`;
+    if (dev.payoff) h += `<p><strong>Payoff:</strong> ${dev.payoff.map(id => `<a class="info-link" data-kind="beat" data-id="${id}">${id}</a>`).join(', ')}</p>`;
+    return h;
+  }
+
   /* ── helpers ────────────────────────────────────────────────────── */
   function esc(s) { if (typeof s !== 'string') s = String(s || ''); const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
   function truncate(s, n) { return s.length > n ? s.slice(0, n - 1) + '\u2026' : s; }
 
   function createSVG(w, h) {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('width', w);
-    svg.setAttribute('height', h);
+    svg.setAttribute('width', w); svg.setAttribute('height', h);
     svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
-    svg.style.width = w + 'px';
-    svg.style.minWidth = w + 'px';
+    svg.style.width = w + 'px'; svg.style.minWidth = w + 'px';
     return svg;
   }
 
@@ -1005,10 +846,7 @@
   // delegate clicks on info-links
   root.addEventListener('click', e => {
     const link = e.target.closest('.info-link');
-    if (link) {
-      e.preventDefault();
-      select({ kind: link.dataset.kind, id: link.dataset.id });
-    }
+    if (link) { e.preventDefault(); select({ kind: link.dataset.kind, id: link.dataset.id }); }
   });
 
 })();

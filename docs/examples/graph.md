@@ -5,21 +5,43 @@ hide:
 
 # Interactive Story Graph
 
-Explore the world and narrative structure of a Story as Code example as an interactive visualization.
-Each tab shows a different aspect of the story — click any element to see its details and cross-references.
+Explore the world and narrative structure of a Story as Code example.
+Click any element to see its details and highlight related elements across all views.
 
 <div id="story-graph" data-src="../../assets/data/the-metamorphosis.story.json">
-  <nav class="graph-tabs"></nav>
-  <div class="graph-viewport">
-    <div class="graph-view" data-view="world"></div>
-    <div class="graph-view" data-view="narrative"></div>
-    <div class="graph-view" data-view="timeline"></div>
-    <div class="graph-view" data-view="lenses"></div>
-    <div class="graph-view" data-view="formats"></div>
-    <div class="graph-view" data-view="constraints"></div>
+
+  <div class="graph-section" data-view="world">
+    <h2>World Graph</h2>
+    <div class="section-content"></div>
+    <div class="section-detail"></div>
   </div>
-  <div class="graph-info-panel"></div>
-  <div class="graph-crossref"></div>
+
+  <div class="graph-section" data-view="narrative">
+    <h2>Narrative Flow</h2>
+    <div class="section-content"></div>
+    <div class="section-detail"></div>
+  </div>
+
+  <div class="graph-section" data-view="timeline">
+    <h2>Timeline &amp; Frames</h2>
+    <div class="section-content"></div>
+  </div>
+
+  <div class="graph-section" data-view="lenses">
+    <h2>Lenses</h2>
+    <div class="section-content"></div>
+  </div>
+
+  <div class="graph-section" data-view="formats">
+    <h2>Formats</h2>
+    <div class="section-content"></div>
+  </div>
+
+  <div class="graph-section" data-view="constraints">
+    <h2>Constraints</h2>
+    <div class="section-content"></div>
+  </div>
+
 </div>
 
 <script src="https://unpkg.com/cytoscape@3.30.4/dist/cytoscape.min.js"></script>
