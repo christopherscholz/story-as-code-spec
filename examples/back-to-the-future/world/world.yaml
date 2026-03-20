@@ -55,6 +55,11 @@ edges:
   # Conflict
   - $ref: "./edges/biff-bullies-george.yaml"
   - $ref: "./edges/biff-pursues-lorraine.yaml"
+  - $ref: "./edges/biff-supervises-george.yaml"
+
+  # Frame-scoped relationships (improved 1985)
+  - $ref: "./edges/biff-waxes-george-car.yaml"
+  - $ref: "./edges/george-successful-author.yaml"
 
   # Ownership
   - $ref: "./edges/doc-owns-delorean.yaml"

@@ -17,13 +17,9 @@
   function isDark() { return document.body.getAttribute('data-md-color-scheme') === 'slate'; }
   function c(type) { const cl = colorFor(type); return isDark() ? cl.dark : cl.light; }
 
-  const FUNC_COLORS = {
-    HOOK: '#42A5F5', INCITING_INCIDENT: '#66BB6A', RISING_ACTION: '#FFB300',
-    FIRST_THRESHOLD: '#FFA726', PINCH_POINT: '#FF7043', MIDPOINT: '#AB47BC',
-    CRISIS: '#EF5350', CLIMAX: '#D32F2F', RESOLUTION: '#26A69A',
-    DENOUEMENT: '#78909C', CUSTOM: '#BDBDBD',
-  };
-  const DEVICE_COLORS = { FORESHADOWING: '#42A5F5', RED_HERRING: '#EF5350', SETUP_PAYOFF: '#FFA726', CHEKHOV_GUN: '#66BB6A', DRAMATIC_IRONY: '#AB47BC', ECHO: '#78909C', CONTRAST: '#EC407A', PARALLEL: '#26C6DA', CALLBACK: '#8D6E63', CUSTOM: '#BDBDBD' };
+  // All type→color mappings are auto-assigned via colorFor(). No hardcoded
+  // assumptions about specific schema enum values (beat functions, device
+  // types, reliability levels, etc.).
 
   /* ── state ─────────────────────────────────────────────────────── */
   let story = null;
@@ -95,6 +91,15 @@
         (lens.emotional?.bias?.toward || []).forEach(id => ids.nodes.add(id));
         (lens.reliability?.distorts || []).forEach(d => ids.nodes.add(d.node));
       }
+    } else if (sel.kind === 'frame') {
+      // edges scoped to this frame + edges without any scope (always valid)
+      (w.edges || []).forEach(e => {
+        if (!e.scope || scopeRefFrame(e.scope, sel.id)) {
+          ids.edges.add(e.id);
+          ids.nodes.add(e.source);
+          ids.nodes.add(e.target);
+        }
+      });
     }
     return ids;
   }
@@ -116,12 +121,16 @@
     (w.edges || []).forEach(e => colorFor(e.type));
 
     renderAllSections();
-    setupDetailPanel();
 
     new MutationObserver(() => renderAllSections()).observe(document.body, { attributes: true, attributeFilter: ['data-md-color-scheme'] });
   }
 
   function renderAllSections() {
+    // clear stale listeners from previous render
+    listeners.length = 0;
+    // re-register the detail panel listener
+    setupDetailPanel();
+
     root.querySelectorAll('.graph-section').forEach(sec => {
       const content = sec.querySelector('.section-content');
       content.innerHTML = '';
@@ -149,6 +158,7 @@
       else if (sel.kind === 'thread') { const t = (n.threads || []).find(x => x.id === sel.id); if (t) html = threadDetailHTML(t); }
       else if (sel.kind === 'device') { const d = (n.devices || []).find(x => x.id === sel.id); if (d) html = deviceDetailHTML(d); }
       else if (sel.kind === 'lens') { const l = (n.lenses || []).find(x => x.id === sel.id); if (l) html = lensCardHTML(l); }
+      else if (sel.kind === 'frame') { const f = (w.frames || []).find(x => x.id === sel.id); if (f) html = frameDetailHTML(f); }
       dp.innerHTML = '<button class="detail-close">&times;</button>' + html;
       dp.querySelector('.detail-close').addEventListener('click', () => select(null));
     });
@@ -198,7 +208,7 @@
 
     const dk = isDark(), bg = dk ? '#1e1e1e' : '#fafafa', textCol = dk ? '#ccc' : '#444';
     const styles = [
-      { selector: 'node', style: { 'label': 'data(label)', 'font-size': 10, 'color': textCol, 'text-valign': 'bottom', 'text-margin-y': 5, 'width': 34, 'height': 34, 'border-width': 2, 'border-color': dk ? '#666' : '#ccc', 'text-wrap': 'ellipsis', 'text-max-width': 90, 'shape': 'ellipse' }},
+      { selector: 'node', style: { 'label': 'data(label)', 'font-size': 12, 'color': textCol, 'text-valign': 'bottom', 'text-margin-y': 5, 'width': 34, 'height': 34, 'border-width': 2, 'border-color': dk ? '#666' : '#ccc', 'text-wrap': 'ellipsis', 'text-max-width': 90, 'shape': 'ellipse' }},
       { selector: 'edge', style: { 'width': 1.5, 'curve-style': 'bezier', 'target-arrow-shape': 'triangle', 'target-arrow-color': '#bbb', 'line-color': '#bbb', 'opacity': 0.6 }},
       { selector: 'edge[?hasScope]', style: { 'line-style': 'dashed', 'line-dash-pattern': [5, 3] }},
       { selector: '.dimmed', style: { 'opacity': 0.12 }},
@@ -245,116 +255,150 @@
     const threads = n.threads || [], devices = n.devices || [];
     if (!beats.length) { container.innerHTML = '<p class="empty-msg">No beats with order defined.</p>'; return; }
 
-    const CARD_W = 130, CARD_H = 96, GAP = 18, PAD = 50;
-    const totalW = beats.length * (CARD_W + GAP) - GAP + PAD * 2;
-    const threadH = 22, deviceArcH = 50, tensionH = 60;
-    const totalH = deviceArcH + tensionH + CARD_H + 16 + threads.length * threadH + PAD;
-
+    // vertical layout — measure available width
     const wrapper = document.createElement('div');
-    wrapper.className = 'narrative-scroll';
+    wrapper.className = 'narrative-scroll narrative-vertical';
     container.appendChild(wrapper);
+
+    const availW = wrapper.clientWidth || 400;
+    const PAD = threads.length > 0 ? 50 : 12;
+    const deviceMargin = devices.length * 16 + 12;
+    const tensionW = 30;
+    const threadW = 16;
+    const threadsTotal = threads.length * threadW;
+    const CARD_W = Math.max(150, availW - deviceMargin - tensionW - threadsTotal - PAD * 2 - 20);
+    const CARD_H = 50, GAP = 12;
+    const totalW = availW;
+    const totalH = beats.length * (CARD_H + GAP) - GAP + PAD * 2;
+    const cardX = deviceMargin + tensionW + PAD;
+
     const svg = createSVG(totalW, totalH);
+    svg.style.width = '100%';
+    svg.style.minWidth = '0';
     wrapper.appendChild(svg);
 
-    const beatX = i => PAD + i * (CARD_W + GAP) + CARD_W / 2;
-    const tensionBaseline = deviceArcH + tensionH;
+    const beatY = i => PAD + i * (CARD_H + GAP) + CARD_H / 2;
 
-    // tension curve
+    // tension bar (left side, vertical)
+    const tensionX = PAD + deviceMargin;
+    svg.appendChild(svgEl('line', { x1: tensionX + tensionW, y1: PAD, x2: tensionX + tensionW, y2: totalH - PAD, stroke: isDark() ? '#444' : '#ddd', 'stroke-width': 1 }));
     let tensionPath = '';
     beats.forEach((b, i) => {
-      const x = beatX(i), y = tensionBaseline - (b.tension || 0) * (tensionH - 8);
+      const x = tensionX + tensionW - (b.tension || 0) * (tensionW - 4);
+      const y = beatY(i);
       tensionPath += (i === 0 ? 'M' : 'L') + `${x},${y}`;
-      const dot = svgEl('circle', { cx: x, cy: y, r: 3, fill: FUNC_COLORS[b.function] || '#999' });
-      dot.innerHTML = `<title>${b.name}: tension ${b.tension}</title>`;
-      svg.appendChild(dot);
+      svg.appendChild(svgEl('circle', { cx: x, cy: y, r: 3, fill: c(b.function || 'default') }));
     });
     svg.appendChild(svgEl('path', { d: tensionPath, fill: 'none', stroke: isDark() ? '#B39DDB' : '#7E57C2', 'stroke-width': 2, 'stroke-linejoin': 'round' }));
-    svg.appendChild(svgEl('line', { x1: PAD, y1: tensionBaseline, x2: totalW - PAD, y2: tensionBaseline, stroke: isDark() ? '#444' : '#ddd', 'stroke-width': 1 }));
-    const tLabel = svgEl('text', { x: 8, y: tensionBaseline - tensionH / 2, fill: isDark() ? '#666' : '#bbb', 'font-size': 8, 'writing-mode': 'tb', 'text-anchor': 'middle' });
+    const tLabel = svgEl('text', { x: tensionX + 2, y: PAD - 6, fill: isDark() ? '#666' : '#bbb', 'font-size': 10 });
     tLabel.textContent = 'Tension';
     svg.appendChild(tLabel);
 
-    // device arcs
-    devices.forEach((dev, di) => {
-      const setupIdxs = (dev.setup || []).map(id => beats.findIndex(b => b.id === id)).filter(i => i >= 0);
-      const payoffIdxs = (dev.payoff || []).map(id => beats.findIndex(b => b.id === id)).filter(i => i >= 0);
-      const col = DEVICE_COLORS[dev.type] || '#999';
-      setupIdxs.forEach(si => payoffIdxs.forEach(pi => {
-        const x1 = beatX(si), x2 = beatX(pi), midX = (x1 + x2) / 2, arcY = deviceArcH - 8 - di * 14;
-        const arc = svgEl('path', { d: `M${x1},${tensionBaseline - tensionH} Q${midX},${arcY} ${x2},${tensionBaseline - tensionH}`, fill: 'none', stroke: col, 'stroke-width': 1.5, 'stroke-dasharray': dev.type === 'CHEKHOV_GUN' ? '6,3' : 'none', class: 'device-arc', 'data-device': dev.id, cursor: 'pointer' });
-        arc.addEventListener('click', () => select({ kind: 'device', id: dev.id }));
-        svg.appendChild(arc);
-        const label = svgEl('text', { x: midX, y: arcY - 3, fill: col, 'font-size': 7, 'text-anchor': 'middle' });
-        label.textContent = dev.type.replace(/_/g, ' ');
-        svg.appendChild(label);
-      }));
-    });
-
-    // beat cards
+    // beat cards (vertical stack)
     beats.forEach((b, i) => {
-      const x = PAD + i * (CARD_W + GAP), y = deviceArcH + tensionH;
-      const emColor = b.emotional_target != null ? (b.emotional_target < 0 ? `rgba(66,165,245,${Math.abs(b.emotional_target) * 0.2})` : `rgba(255,167,38,${b.emotional_target * 0.2})`) : 'transparent';
-      const funcColor = FUNC_COLORS[b.function] || '#999';
+      const x = cardX, y = PAD + i * (CARD_H + GAP);
+      const funcColor = c(b.function || 'default');
+      const emColor = b.emotional_target != null ? (b.emotional_target < 0 ? `rgba(66,165,245,${Math.abs(b.emotional_target) * 0.15})` : `rgba(255,167,38,${b.emotional_target * 0.15})`) : 'transparent';
       const g = svgEl('g', { class: 'beat-card', 'data-beat': b.id, cursor: 'pointer' });
       g.addEventListener('click', () => select({ kind: 'beat', id: b.id }));
 
-      g.appendChild(svgEl('rect', { x, y, width: CARD_W, height: CARD_H, rx: 6, fill: isDark() ? '#2a2a2a' : '#fff', stroke: funcColor, 'stroke-width': 1.5 }));
-      g.appendChild(svgEl('rect', { x: x + 1, y: y + 1, width: CARD_W - 2, height: CARD_H - 2, rx: 5, fill: emColor }));
-      g.appendChild(svgEl('rect', { x: x + 3, y: y + 3, width: CARD_W - 6, height: 16, rx: 3, fill: funcColor }));
-      const funcText = svgEl('text', { x: x + CARD_W / 2, y: y + 14, fill: '#fff', 'font-size': 7, 'text-anchor': 'middle', 'font-weight': 'bold' });
-      funcText.textContent = (b.function || '').replace(/_/g, ' ');
-      g.appendChild(funcText);
-      const nameText = svgEl('text', { x: x + CARD_W / 2, y: y + 34, fill: isDark() ? '#ddd' : '#333', 'font-size': 10, 'text-anchor': 'middle', 'font-weight': '600' });
-      nameText.textContent = truncate(b.name || b.id, 16);
+      g.appendChild(svgEl('rect', { x, y, width: CARD_W, height: CARD_H, rx: 5, fill: isDark() ? '#2a2a2a' : '#fff', stroke: funcColor, 'stroke-width': 1.5 }));
+      g.appendChild(svgEl('rect', { x: x + 1, y: y + 1, width: CARD_W - 2, height: CARD_H - 2, rx: 4, fill: emColor }));
+      // name (first line, left-aligned)
+      const nameText = svgEl('text', { x: x + 6, y: y + 14, fill: isDark() ? '#ddd' : '#333', 'font-size': 11, 'font-weight': '600' });
+      nameText.textContent = truncate(b.name || b.id, 28);
       g.appendChild(nameText);
-      const orderText = svgEl('text', { x: x + CARD_W / 2, y: y + 47, fill: isDark() ? '#777' : '#aaa', 'font-size': 8, 'text-anchor': 'middle' });
+      // order number right-aligned
+      const orderText = svgEl('text', { x: x + CARD_W - 6, y: y + 14, fill: isDark() ? '#666' : '#bbb', 'font-size': 10, 'text-anchor': 'end' });
       orderText.textContent = `#${b.order}`;
       g.appendChild(orderText);
-      const barW = (CARD_W - 12) * (b.tension || 0);
-      g.appendChild(svgEl('rect', { x: x + 6, y: y + CARD_H - 18, width: CARD_W - 12, height: 4, rx: 2, fill: isDark() ? '#444' : '#eee' }));
-      g.appendChild(svgEl('rect', { x: x + 6, y: y + CARD_H - 18, width: barW, height: 4, rx: 2, fill: funcColor }));
+      // function badge (second line, small, left-aligned)
+      const funcLabel = (b.function || '').replace(/_/g, ' ');
+      const funcBadgeW = funcLabel.length * 5 + 10;
+      g.appendChild(svgEl('rect', { x: x + 5, y: y + 20, width: funcBadgeW, height: 12, rx: 2, fill: funcColor }));
+      const funcText = svgEl('text', { x: x + 8, y: y + 29, fill: '#fff', 'font-size': 8, 'font-weight': '600' });
+      funcText.textContent = funcLabel;
+      g.appendChild(funcText);
+      // tension bar
+      const barW = (CARD_W - 10) * (b.tension || 0);
+      g.appendChild(svgEl('rect', { x: x + 5, y: y + CARD_H - 10, width: CARD_W - 10, height: 3, rx: 1.5, fill: isDark() ? '#444' : '#eee' }));
+      g.appendChild(svgEl('rect', { x: x + 5, y: y + CARD_H - 10, width: barW, height: 3, rx: 1.5, fill: funcColor }));
+      // reveals
       if (b.reveals && b.reveals.length) {
-        const revText = svgEl('text', { x: x + CARD_W - 8, y: y + CARD_H - 8, fill: isDark() ? '#FFD54F' : '#FF8F00', 'font-size': 7, 'text-anchor': 'end' });
+        const revText = svgEl('text', { x: x + CARD_W - 6, y: y + CARD_H - 14, fill: isDark() ? '#FFD54F' : '#FF8F00', 'font-size': 10, 'text-anchor': 'end' });
         revText.textContent = `${b.reveals.length} reveal${b.reveals.length > 1 ? 's' : ''}`;
         g.appendChild(revText);
       }
+      // transition label
+      if (b.transition && i < beats.length - 1) {
+        const tl = svgEl('text', { x: x + CARD_W / 2, y: y + CARD_H + GAP / 2 + 3, fill: isDark() ? '#555' : '#ccc', 'font-size': 10, 'text-anchor': 'middle' });
+        tl.textContent = b.transition.type;
+        svg.appendChild(tl);
+      }
       svg.appendChild(g);
 
-      // transition arrow
+      // arrow down
       if (i < beats.length - 1) {
-        const ax = x + CARD_W + 1, ay = y + CARD_H / 2;
-        svg.appendChild(svgEl('line', { x1: ax, y1: ay, x2: ax + GAP - 3, y2: ay, stroke: isDark() ? '#555' : '#ccc', 'stroke-width': 1 }));
-        svg.appendChild(svgEl('polygon', { points: `${ax + GAP - 3},${ay - 2} ${ax + GAP},${ay} ${ax + GAP - 3},${ay + 2}`, fill: isDark() ? '#555' : '#ccc' }));
-        if (b.transition) {
-          const tl = svgEl('text', { x: ax + GAP / 2, y: ay - 4, fill: isDark() ? '#666' : '#bbb', 'font-size': 6, 'text-anchor': 'middle' });
-          tl.textContent = b.transition.type;
-          svg.appendChild(tl);
-        }
+        const ax = x + CARD_W / 2, ay = y + CARD_H + 1;
+        svg.appendChild(svgEl('line', { x1: ax, y1: ay, x2: ax, y2: ay + GAP - 3, stroke: isDark() ? '#555' : '#ccc', 'stroke-width': 1 }));
+        svg.appendChild(svgEl('polygon', { points: `${ax - 2},${ay + GAP - 3} ${ax},${ay + GAP} ${ax + 2},${ay + GAP - 3}`, fill: isDark() ? '#555' : '#ccc' }));
       }
     });
 
-    // thread swim lanes
-    const threadBaseY = deviceArcH + tensionH + CARD_H + 16;
+    // thread columns (right of beats)
     const TCOLS = [isDark() ? '#F48FB1' : '#EC407A', isDark() ? '#90CAF9' : '#42A5F5', isDark() ? '#A5D6A7' : '#66BB6A', isDark() ? '#FFE082' : '#FFB300', isDark() ? '#CE93D8' : '#AB47BC'];
+    const threadBaseX = cardX + CARD_W + 16;
     threads.forEach((thread, ti) => {
-      const y = threadBaseY + ti * threadH, col = TCOLS[ti % TCOLS.length];
-      const labelEl = svgEl('text', { x: PAD - 6, y: y + threadH / 2 + 3, fill: col, 'font-size': 8, 'text-anchor': 'end', 'font-weight': '500', cursor: 'pointer' });
-      labelEl.textContent = truncate(thread.name, 18);
+      const x = threadBaseX + ti * threadW, col = TCOLS[ti % TCOLS.length];
+      // vertical line
+      svg.appendChild(svgEl('line', { x1: x, y1: PAD, x2: x, y2: totalH - PAD, stroke: col, 'stroke-width': 1, opacity: 0.2 }));
+      // label at top, rotated so it doesn't overlap
+      const labelEl = svgEl('text', { x: x + 3, y: PAD - 4, fill: col, 'font-size': 10, 'font-weight': '500', cursor: 'pointer', transform: `rotate(-45 ${x + 3} ${PAD - 4})` });
+      labelEl.textContent = truncate(thread.name, 16);
       labelEl.addEventListener('click', () => select({ kind: 'thread', id: thread.id }));
       svg.appendChild(labelEl);
-      svg.appendChild(svgEl('line', { x1: PAD, y1: y + threadH / 2, x2: totalW - PAD, y2: y + threadH / 2, stroke: col, 'stroke-width': 1, opacity: 0.2 }));
 
       const apps = (thread.appearances || []).map(a => ({ ...a, idx: beats.findIndex(b => b.id === a.beat_id) })).filter(a => a.idx >= 0).sort((a, b) => a.idx - b.idx);
       let lp = '';
       apps.forEach((a, ai) => {
-        const cx = beatX(a.idx), cy2 = y + threadH / 2;
-        lp += (ai === 0 ? 'M' : 'L') + `${cx},${cy2}`;
-        const dot = svgEl('circle', { cx, cy: cy2, r: 4, fill: col, cursor: 'pointer', class: 'thread-dot', 'data-thread': thread.id });
+        const cy = beatY(a.idx);
+        lp += (ai === 0 ? 'M' : 'L') + `${x},${cy}`;
+        const dot = svgEl('circle', { cx: x, cy, r: 4, fill: col, cursor: 'pointer', class: 'thread-dot', 'data-thread': thread.id });
         dot.innerHTML = `<title>${esc(a.description || a.beat_id)}</title>`;
         dot.addEventListener('click', ev => { ev.stopPropagation(); select({ kind: 'thread', id: thread.id }); });
         svg.appendChild(dot);
       });
-      if (lp) { const line = svgEl('path', { d: lp, fill: 'none', stroke: col, 'stroke-width': 1.5, opacity: 0.4 }); svg.insertBefore(line, svg.querySelector('.beat-card')); }
+      if (lp) svg.insertBefore(svgEl('path', { d: lp, fill: 'none', stroke: col, 'stroke-width': 1.5, opacity: 0.4 }), svg.querySelector('.beat-card'));
+    });
+
+    // device brackets (left side, right-angle bracket from setup to payoff)
+    const bracketBaseX = PAD + deviceMargin - 4;
+    devices.forEach((dev, di) => {
+      const setupIdxs = (dev.setup || []).map(id => beats.findIndex(b => b.id === id)).filter(i => i >= 0);
+      const payoffIdxs = (dev.payoff || []).map(id => beats.findIndex(b => b.id === id)).filter(i => i >= 0);
+      const col = c(dev.type || 'default');
+      const bx = bracketBaseX - di * 14;
+      setupIdxs.forEach(si => payoffIdxs.forEach(pi => {
+        const y1 = beatY(si), y2 = beatY(pi);
+        // right-angle bracket: horizontal tick at top, vertical line, horizontal tick at bottom with arrow
+        const dash = 'none';
+        const g = svgEl('g', { class: 'device-arc', 'data-device': dev.id, cursor: 'pointer', 'pointer-events': 'all' });
+        g.addEventListener('click', (ev) => { ev.stopPropagation(); select({ kind: 'device', id: dev.id }); });
+        // invisible hit area
+        g.appendChild(svgEl('rect', { x: bx - 10, y: y1 - 4, width: 22, height: y2 - y1 + 8, fill: 'transparent' }));
+        // top tick
+        g.appendChild(svgEl('line', { x1: bx + 8, y1: y1, x2: bx, y2: y1, stroke: col, 'stroke-width': 1.5, 'stroke-dasharray': dash }));
+        // vertical line
+        g.appendChild(svgEl('line', { x1: bx, y1: y1, x2: bx, y2: y2, stroke: col, 'stroke-width': 1.5, 'stroke-dasharray': dash }));
+        // bottom tick with arrow
+        g.appendChild(svgEl('line', { x1: bx, y1: y2, x2: bx + 8, y2: y2, stroke: col, 'stroke-width': 1.5, 'stroke-dasharray': dash }));
+        g.appendChild(svgEl('polygon', { points: `${bx + 5},${y2 - 2} ${bx + 9},${y2} ${bx + 5},${y2 + 2}`, fill: col }));
+        // label (horizontal, left of bracket)
+        const label = svgEl('text', { x: bx - 4, y: (y1 + y2) / 2 + 3, fill: col, 'font-size': 9, 'text-anchor': 'end', transform: `rotate(-90 ${bx - 4} ${(y1 + y2) / 2 + 3})` });
+        label.textContent = dev.type.replace(/_/g, ' ');
+        g.appendChild(label);
+        svg.appendChild(g);
+      }));
     });
 
     // global grey-out for narrative
@@ -382,18 +426,19 @@
   function renderTimeline(container) {
     const w = story.world || {};
     const ts = w.time_system, frames = w.frames || [];
-    const edges = (w.edges || []).filter(e => e.scope);
-    if (!ts && !edges.length && !frames.length) { container.innerHTML = '<p class="empty-msg">No time system, frames, or temporal scopes defined.</p>'; return; }
+    if (!ts && !frames.length) { container.innerHTML = '<p class="empty-msg">No time system or frames defined.</p>'; return; }
 
+    // collect time points from frame-scoped edges and frame metadata
     const timePoints = new Set();
-    edges.forEach(e => collectTimePoints(e.scope, timePoints));
+    (w.edges || []).forEach(e => { if (e.scope) collectTimePoints(e.scope, timePoints); });
     frames.forEach(f => { if (f.branches_at) timePoints.add(f.branches_at); (f.relations || []).forEach(r => { if (r.at) timePoints.add(r.at); }); });
     const sorted = [...timePoints].sort();
 
-    const PAD = 50, BAR_H = 20, LANE_GAP = 6, axisY = 60, barStartY = axisY + 30;
-    const WIDTH = Math.max(700, sorted.length * 120 + PAD * 2);
-    const frameLaneY = barStartY + edges.length * (BAR_H + LANE_GAP) + 30;
-    const totalH = frameLaneY + (frames.length + 1) * (BAR_H + LANE_GAP) + PAD;
+    const PAD = 50, axisY = 60;
+    const WIDTH = Math.max(500, sorted.length * 120 + PAD * 2);
+    const frameLaneY = axisY + 30;
+    const FRAME_H = 30, FRAME_GAP = 12;
+    const totalH = frameLaneY + (frames.length + 1) * (FRAME_H + FRAME_GAP) + PAD;
 
     const wrapper = document.createElement('div');
     wrapper.className = 'timeline-scroll';
@@ -402,13 +447,12 @@
     wrapper.appendChild(svg);
     const tpX = tp => { const idx = sorted.indexOf(tp); return idx >= 0 ? PAD + (idx + 0.5) * ((WIDTH - PAD * 2) / sorted.length) : PAD; };
 
-    // defs
     const defs = svgEl('defs');
-    defs.innerHTML = `<linearGradient id="fadeL"><stop offset="0%" stop-color="${isDark() ? '#1e1e1e' : '#fff'}" stop-opacity="0.8"/><stop offset="100%" stop-opacity="0"/></linearGradient><linearGradient id="fadeR"><stop offset="0%" stop-opacity="0"/><stop offset="100%" stop-color="${isDark() ? '#1e1e1e' : '#fff'}" stop-opacity="0.8"/></linearGradient>`;
     svg.appendChild(defs);
 
+    // time system header
     if (ts) {
-      const title = svgEl('text', { x: PAD, y: 22, fill: isDark() ? '#ddd' : '#333', 'font-size': 13, 'font-weight': 'bold' });
+      const title = svgEl('text', { x: PAD, y: 22, fill: isDark() ? '#ddd' : '#333', 'font-size': 14, 'font-weight': 'bold' });
       title.textContent = ts.name || 'Timeline';
       svg.appendChild(title);
       const sub = svgEl('text', { x: PAD, y: 36, fill: isDark() ? '#777' : '#999', 'font-size': 10 });
@@ -416,48 +460,110 @@
       svg.appendChild(sub);
     }
 
+    // time axis
     svg.appendChild(svgEl('line', { x1: PAD, y1: axisY, x2: WIDTH - PAD, y2: axisY, stroke: isDark() ? '#444' : '#ccc', 'stroke-width': 1.5 }));
     sorted.forEach(tp => {
       const x = tpX(tp);
       svg.appendChild(svgEl('line', { x1: x, y1: axisY - 4, x2: x, y2: axisY + 4, stroke: isDark() ? '#666' : '#999', 'stroke-width': 1 }));
-      const l = svgEl('text', { x, y: axisY + 14, fill: isDark() ? '#999' : '#666', 'font-size': 8, 'text-anchor': 'middle' });
+      const l = svgEl('text', { x, y: axisY + 14, fill: isDark() ? '#999' : '#666', 'font-size': 10, 'text-anchor': 'middle' });
       l.textContent = tp;
       svg.appendChild(l);
     });
 
-    edges.forEach((edge, i) => {
-      const y = barStartY + i * (BAR_H + LANE_GAP);
-      const range = extractRange(edge.scope);
-      if (!range) return;
-      const x1 = range.from ? tpX(range.from) : PAD, x2 = range.to ? tpX(range.to) : WIDTH - PAD;
-      const col = c(edge.type);
-      const g = svgEl('g', { class: 'scope-bar', cursor: 'pointer', 'data-edge': edge.id });
-      g.addEventListener('click', () => select({ kind: 'edge', id: edge.id }));
-      g.appendChild(svgEl('rect', { x: x1, y, width: Math.max(x2 - x1, 6), height: BAR_H, rx: 3, fill: col, opacity: 0.25 }));
-      g.appendChild(svgEl('rect', { x: x1, y, width: Math.max(x2 - x1, 6), height: BAR_H, rx: 3, fill: 'none', stroke: col, 'stroke-width': 1 }));
-      if (!range.from) g.appendChild(svgEl('rect', { x: x1, y, width: 16, height: BAR_H, rx: 3, fill: 'url(#fadeL)' }));
-      if (!range.to) g.appendChild(svgEl('rect', { x: x2 - 16, y, width: 16, height: BAR_H, rx: 3, fill: 'url(#fadeR)' }));
-      const label = svgEl('text', { x: x1 + 4, y: y + BAR_H / 2 + 3, fill: isDark() ? '#ddd' : '#333', 'font-size': 8 });
-      label.textContent = `${edge.name} (${edge.source} → ${edge.target})`;
-      g.appendChild(label);
-      svg.appendChild(g);
-    });
-
     if (frames.length) {
+      const fLabel = svgEl('text', { x: PAD - 4, y: frameLaneY - 6, fill: isDark() ? '#aaa' : '#555', 'font-size': 10, 'font-weight': '600' });
+      fLabel.textContent = 'Frames';
+      svg.appendChild(fLabel);
+
+      const FRAME_H = 30, FRAME_GAP = 12;
+      const frameYMap = {};
+      const frameX1Map = {};
+      const col = isDark() ? '#A5D6A7' : '#388E3C';
+      const colLight = isDark() ? 'rgba(165,214,167,0.12)' : 'rgba(56,142,60,0.06)';
+
+      // derive each frame's time range from edges scoped to it
+      function frameTimeRange(frameId) {
+        const pts = new Set();
+        // find edges whose scope references this frame
+        (w.edges || []).forEach(e => {
+          if (!e.scope) return;
+          if (scopeReferencesFrame(e.scope, frameId)) collectTimePoints(e.scope, pts);
+        });
+        // also include branches_at of child frames (where children fork off)
+        frames.forEach(f => { if (f.parent === frameId && f.branches_at) pts.add(f.branches_at); });
+        const arr = [...pts].filter(p => sorted.includes(p)).sort();
+        if (!arr.length) return null;
+        return { from: arr[0], to: arr[arr.length - 1] };
+      }
+
+      // reuse top-level scopeRefFrame
+      const scopeReferencesFrame = scopeRefFrame;
+
       frames.forEach((frame, fi) => {
-        const y = frameLaneY + fi * (BAR_H + LANE_GAP), col = isDark() ? '#A5D6A7' : '#388E3C';
-        svg.appendChild(svgEl('rect', { x: PAD, y, width: WIDTH - PAD * 2, height: BAR_H, rx: 3, fill: col, opacity: 0.08, stroke: col, 'stroke-width': 1, 'stroke-dasharray': '5,3' }));
-        const l = svgEl('text', { x: PAD + 6, y: y + BAR_H / 2 + 3, fill: col, 'font-size': 9 });
-        l.textContent = frame.name || frame.id;
-        svg.appendChild(l);
+        const y = frameLaneY + fi * (FRAME_H + FRAME_GAP);
+        frameYMap[frame.id] = y;
+
+        // determine x span from scoped edges
+        const range = frameTimeRange(frame.id);
+        let x1 = PAD, x2 = WIDTH - PAD;
+        if (range) { x1 = tpX(range.from) - 20; x2 = tpX(range.to) + 20; }
+        frameX1Map[frame.id] = x1;
+
+        const g = svgEl('g', { class: 'frame-box', 'data-frame': frame.id, cursor: 'pointer', 'pointer-events': 'all' });
+        g.addEventListener('click', (ev) => { ev.stopPropagation(); select({ kind: 'frame', id: frame.id }); });
+
+        g.appendChild(svgEl('rect', { x: x1, y, width: Math.max(x2 - x1, 60), height: FRAME_H, rx: 4, fill: colLight, stroke: col, 'stroke-width': 1.5 }));
+
+        const nameEl = svgEl('text', { x: x1 + 8, y: y + FRAME_H / 2 + 4, fill: col, 'font-size': 11, 'font-weight': '600' });
+        nameEl.textContent = frame.name || frame.id;
+        g.appendChild(nameEl);
+
+        svg.appendChild(g);
       });
+
+      // draw branching arrows from parent to child at branches_at
+      frames.forEach(frame => {
+        if (!frame.parent || !frame.branches_at) return;
+        const parentY = frameYMap[frame.parent];
+        const childY = frameYMap[frame.id];
+        if (parentY == null || childY == null) return;
+
+        // branch point on parent timeline
+        const branchX = sorted.includes(frame.branches_at) ? tpX(frame.branches_at) : PAD + 20;
+        // left edge of child bar
+        const childX1 = frameX1Map[frame.id] || PAD;
+        const sy = parentY + FRAME_H / 2;
+        const ty = childY + FRAME_H / 2;
+
+        // curved arrow from branch point on parent to left edge of child
+        const midY = (sy + ty) / 2;
+        svg.appendChild(svgEl('path', {
+          d: `M${branchX},${sy} C${branchX},${midY} ${childX1},${midY} ${childX1},${ty}`,
+          fill: 'none', stroke: col, 'stroke-width': 1.5, 'stroke-dasharray': '4,2'
+        }));
+        // arrow head at child
+        const dir = ty > sy ? 1 : -1;
+        svg.appendChild(svgEl('polygon', { points: `${childX1 - 4},${ty - dir * 6} ${childX1},${ty} ${childX1 + 4},${ty - dir * 6}`, fill: col }));
+        // dot at branch point on parent
+        svg.appendChild(svgEl('circle', { cx: branchX, cy: sy, r: 3, fill: col }));
+        // label at branch point
+        const lbl = svgEl('text', { x: branchX + 6, y: sy - 4, fill: col, 'font-size': 10 });
+        lbl.textContent = frame.branches_at;
+        svg.appendChild(lbl);
+      });
+
+      // update total height
+      const newH = frameLaneY + frames.length * (FRAME_H + FRAME_GAP) + PAD;
+      svg.setAttribute('height', newH);
+      svg.setAttribute('viewBox', `0 0 ${WIDTH} ${newH}`);
     }
 
     onSelect(sel => {
-      const rel = relatedIds(sel);
-      svg.querySelectorAll('.scope-bar').forEach(b => {
-        const id = b.getAttribute('data-edge');
-        b.classList.toggle('greyed', rel != null && !rel.edges.has(id));
+      svg.querySelectorAll('.frame-box').forEach(b => {
+        const fid = b.getAttribute('data-frame');
+        const isSelected = sel != null && sel.kind === 'frame' && sel.id === fid;
+        b.classList.toggle('greyed', sel != null && !isSelected);
+        b.classList.toggle('sel-highlight', isSelected);
       });
     });
   }
@@ -505,7 +611,7 @@
     const v = lens.voice || {};
     if (v.vocabulary_level || v.sentence_tendency) { h += '<div class="lens-row"><strong>Voice:</strong> '; const pts = []; if (v.vocabulary_level) pts.push(v.vocabulary_level); if (v.sentence_tendency) pts.push(v.sentence_tendency); if (v.metaphor_density) pts.push('metaphor: ' + v.metaphor_density); if (v.inner_monologue) pts.push('inner monologue'); h += pts.join(', '); if (v.verbal_tics?.length) h += `<br><em>"${v.verbal_tics.join('", "')}"</em>`; h += '</div>'; }
     const r = lens.reliability || {};
-    if (r.level) { const rc = { RELIABLE: '#66BB6A', SELECTIVE: '#FFB300', UNRELIABLE: '#FFA726', LYING: '#EF5350' }; h += `<div class="lens-row"><strong>Reliability:</strong> <span class="info-badge" style="background:${rc[r.level] || '#999'}">${r.level}</span>`; if (r.distorts?.length) h += `<br>Distorts: ${r.distorts.map(d => `<span class="lens-distort ${d.direction.toLowerCase()}">${d.node} ${d.direction === 'POSITIVE' ? '↑' : '↓'}</span>`).join(', ')}`; h += '</div>'; }
+    if (r.level) { h += `<div class="lens-row"><strong>Reliability:</strong> <span class="info-badge" style="background:${c(r.level)}">${r.level}</span>`; if (r.distorts?.length) h += `<br>Distorts: ${r.distorts.map(d => `${d.node} (${d.direction})`).join(', ')}`; h += '</div>'; }
     return h;
   }
 
@@ -540,15 +646,16 @@
   function renderConstraints(container) {
     const constraints = (story.world || {}).constraints || [];
     if (!constraints.length) { container.innerHTML = '<p class="empty-msg">No constraints defined.</p>'; return; }
-    const groups = { ERROR: [], WARNING: [], INFO: [] };
-    constraints.forEach(c => (groups[c.severity] || groups.INFO).push(c));
-    ['ERROR', 'WARNING', 'INFO'].forEach(sev => {
-      if (!groups[sev].length) return;
+    // group by severity dynamically (no hardcoded severity values)
+    const groups = {};
+    constraints.forEach(con => { const s = con.severity || 'UNKNOWN'; (groups[s] = groups[s] || []).push(con); });
+    Object.keys(groups).forEach(sev => {
       const sec = document.createElement('div');
-      sec.innerHTML = `<h4 class="severity-${sev.toLowerCase()}">${sev}</h4>`;
+      sec.innerHTML = `<h4 style="color:${c(sev)}">${sev}</h4>`;
       groups[sev].forEach(con => {
         const card = document.createElement('div');
-        card.className = `constraint-card severity-${sev.toLowerCase()}`;
+        card.className = 'constraint-card';
+        card.style.borderLeftColor = c(sev);
         card.innerHTML = `<strong>${esc(con.name)}</strong><p>${esc(con.description || '')}</p>` + (con.scope ? `<div class="info-scope">${renderScope(con.scope)}</div>` : '');
         sec.appendChild(card);
       });
@@ -573,7 +680,7 @@
   }
   function beatDetailHTML(beat) {
     let h = `<h4>${esc(beat.name)}</h4>`;
-    if (beat.function) h += `<span class="info-badge" style="background:${FUNC_COLORS[beat.function] || '#999'}">${beat.function}</span>`;
+    if (beat.function) h += `<span class="info-badge" style="background:${c(beat.function || 'default')}">${beat.function}</span>`;
     if (beat.description) h += `<p class="info-desc">${esc(beat.description)}</p>`;
     if (beat.tension != null) h += `<p><strong>Tension:</strong> ${beat.tension}</p>`;
     if (beat.emotional_target != null) h += `<p><strong>Emotional:</strong> ${beat.emotional_target}</p>`;
@@ -597,7 +704,28 @@
     return h;
   }
 
+  function frameDetailHTML(frame) {
+    let h = `<h4>${esc(frame.name || frame.id)}</h4><span class="info-badge" style="background:#388E3C">FRAME</span>`;
+    if (frame.description) h += `<p class="info-desc">${esc(frame.description)}</p>`;
+    if (frame.parent) h += `<p><strong>Parent:</strong> ${esc(frame.parent)}</p>`;
+    if (frame.branches_at) h += `<p><strong>Branches at:</strong> ${esc(frame.branches_at)}</p>`;
+    if (frame.relations && frame.relations.length) {
+      h += '<p><strong>Relations:</strong></p><ul class="appearance-list">';
+      frame.relations.forEach(r => { h += `<li>${r.type.replace(/_/g, ' ')} → ${r.target}` + (r.at ? ` at ${r.at}` : '') + (r.description ? ` — ${esc(r.description)}` : '') + '</li>'; });
+      h += '</ul>';
+    }
+    return h;
+  }
+
   /* ── helpers ────────────────────────────────────────────────────── */
+  function scopeRefFrame(scope, frameId) {
+    if (!scope) return false;
+    if (scope.type === 'frame' && scope.item === frameId) return true;
+    if (scope.and) return scope.and.some(s => scopeRefFrame(s, frameId));
+    if (scope.or) return scope.or.some(s => scopeRefFrame(s, frameId));
+    if (scope.not) return scopeRefFrame(scope.not, frameId);
+    return false;
+  }
   function esc(s) { if (typeof s !== 'string') s = String(s || ''); const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
   function truncate(s, n) { return s.length > n ? s.slice(0, n - 1) + '\u2026' : s; }
   function createSVG(w, h) { const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); s.setAttribute('width', w); s.setAttribute('height', h); s.setAttribute('viewBox', `0 0 ${w} ${h}`); s.style.width = w + 'px'; s.style.minWidth = w + 'px'; return s; }
