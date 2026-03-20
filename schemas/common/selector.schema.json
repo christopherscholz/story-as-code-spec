@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "description": "A tuple identifying a story element by type and item.",
+  "required": ["type", "item"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "node_type",
+        "node",
+        "edge_type",
+        "edge",
+        "frame",
+        "tag",
+        "time",
+        "constraint",
+        "time_system",
+        "beat",
+        "lens",
+        "format",
+        "device",
+        "thread",
+        "variant"
+      ]
+    },
+    "item": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
