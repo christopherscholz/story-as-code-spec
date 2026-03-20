@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
-"""Resolve a Story as Code example into a single JSON file.
+"""Resolve Story as Code examples into single JSON files.
 
-Walks the YAML tree starting from story.yaml, resolves all $ref pointers
-by loading the referenced YAML files (relative to the referencing file),
-and outputs a single JSON document conforming to story.schema.json.
+Without arguments, scans examples/ for directories containing a story.yaml
+and resolves each into docs/assets/data/<name>.story.json.
+
+With an explicit directory argument, resolves only that example.
+
+Adding a new example = creating a new directory with story.yaml.
 
 Usage:
+    python scripts/resolve-story.py
     python scripts/resolve-story.py examples/the-metamorphosis/
-    python scripts/resolve-story.py examples/the-metamorphosis/ -o docs/assets/data/the-metamorphosis.story.json
+    python scripts/resolve-story.py examples/the-metamorphosis/ -o custom/path.json
 """
 import argparse
 import json
@@ -20,15 +24,15 @@ except ImportError:
     sys.exit("PyYAML is required. Install it with: pip install pyyaml")
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_OUTPUT_DIR = ROOT / "docs" / "assets" / "data"
+EXAMPLES_DIR = ROOT / "examples"
+OUTPUT_DIR = ROOT / "docs" / "assets" / "data"
 
 
 def resolve_refs(data, base_dir: Path):
     """Recursively resolve $ref pointers in a YAML/JSON structure."""
     if isinstance(data, dict):
         if "$ref" in data and len(data) == 1:
-            ref_path = base_dir / data["$ref"]
-            ref_path = ref_path.resolve()
+            ref_path = (base_dir / data["$ref"]).resolve()
             if not ref_path.exists():
                 print(f"  Warning: referenced file not found: {ref_path}", file=sys.stderr)
                 return data
@@ -41,15 +45,9 @@ def resolve_refs(data, base_dir: Path):
     return data
 
 
-def main():
-    parser = argparse.ArgumentParser(description="Resolve Story as Code $refs into a single JSON file.")
-    parser.add_argument("example_dir", type=Path, help="Path to example directory (must contain story.yaml)")
-    parser.add_argument("-o", "--output", type=Path, default=None, help="Output JSON path (default: docs/assets/data/<name>.story.json)")
-    args = parser.parse_args()
-
-    example_dir = args.example_dir.resolve()
+def resolve_example(example_dir: Path, output_path=None):
+    """Resolve a single example directory into a JSON file."""
     story_file = example_dir / "story.yaml"
-
     if not story_file.exists():
         sys.exit(f"Error: {story_file} not found")
 
@@ -58,10 +56,9 @@ def main():
 
     resolved = resolve_refs(story, example_dir)
 
-    output_path = args.output
     if output_path is None:
-        DEFAULT_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-        output_path = DEFAULT_OUTPUT_DIR / f"{example_dir.name}.story.json"
+        OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+        output_path = OUTPUT_DIR / f"{example_dir.name}.story.json"
 
     output_path = output_path.resolve()
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -70,6 +67,25 @@ def main():
         json.dump(resolved, f, indent=2, ensure_ascii=False)
 
     print(f"\u2713 {output_path.relative_to(ROOT)}")
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Resolve Story as Code $refs into single JSON files.")
+    parser.add_argument("example_dir", nargs="?", type=Path, default=None, help="Path to example directory (omit to resolve all examples)")
+    parser.add_argument("-o", "--output", type=Path, default=None, help="Output JSON path (only with explicit example_dir)")
+    args = parser.parse_args()
+
+    if args.example_dir:
+        resolve_example(args.example_dir.resolve(), args.output)
+    else:
+        for example_dir in sorted(EXAMPLES_DIR.iterdir()):
+            if not example_dir.is_dir():
+                continue
+            if not (example_dir / "story.yaml").exists():
+                continue
+            resolve_example(example_dir)
+
+        print(f"\nResolved stories written to {OUTPUT_DIR}")
 
 
 if __name__ == "__main__":

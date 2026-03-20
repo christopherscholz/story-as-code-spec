@@ -5,6 +5,7 @@ site/
 docs/schemas/generated/
 docs/examples/generated/
 docs/examples/index.md
+docs/assets/data/
 
 # Python
 __pycache__/

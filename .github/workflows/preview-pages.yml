@@ -37,6 +37,7 @@ jobs:
         run: |
           bash scripts/generate-schema-docs.sh
           python scripts/generate-example-docs.py
+          python scripts/resolve-story.py
 
       - name: Build and deploy preview
         run: |
