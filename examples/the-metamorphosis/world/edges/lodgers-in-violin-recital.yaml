@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: lodgers-in-violin-recital
+type: PARTICIPATION
+name: audience-at
+source: lodgers
+target: violin-recital

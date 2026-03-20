@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../../schemas/narrative/device.schema.json
+id: marty-as-darth-vader
+type: DRAMATIC_IRONY
+description: "Marty impersonates 'Darth Vader from the planet Vulcan' to scare George into asking Lorraine out — using future pop culture references his father cannot recognise."
+setup:
+  - matchmaking
+payoff:
+  - the-dance

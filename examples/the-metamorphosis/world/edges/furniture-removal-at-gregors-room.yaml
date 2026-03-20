@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: furniture-removal-at-gregors-room
+type: OCCURRENCE
+name: occurs-at
+source: furniture-removal
+target: gregors-room

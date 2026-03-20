@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../../schemas/world/node.schema.json
+id: flux-capacitor
+name: "Flux Capacitor"
+type: OBJECT
+description: >
+  The device that makes time travel possible. Doc conceived it on November 5, 1955,
+  after slipping off his toilet and hitting his head. It took him thirty years and his
+  entire family fortune to turn the vision into a working device.
+tags: [sci-fi, iconic, time-travel]

@@ -44,6 +44,8 @@ types:
   - $ref: "./types/social.yaml"
   - $ref: "./types/relationship.yaml"
   - $ref: "./types/knowledge.yaml"
+  - $ref: "./types/participation.yaml"
+  - $ref: "./types/occurrence.yaml"
 
   # Device types
   - $ref: "./types/setup-payoff.yaml"

@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=../../../../schemas/narrative/beat.schema.json
+id: the-test
+name: "Twin Pines Mall"
+description: "Doc demonstrates the time machine. Libyans attack. Marty flees in the DeLorean and hits 88 mph."
+parent: main-storyline
+order: 2
+node_ids: [marty, doc-brown, delorean, flux-capacitor, twin-pines-mall, time-machine-test, libyan-attack]
+edge_ids: [doc-owns-delorean, doc-invented-flux, flux-in-delorean, marty-in-time-machine-test, doc-brown-in-libyan-attack, marty-in-libyan-attack]
+function: INCITING_INCIDENT
+tension: 0.7
+emotional_target: -0.6
+reveals:
+  - target: delorean
+    degree: FULL
+  - target: flux-capacitor
+    degree: FULL
+transition:
+  type: CUT

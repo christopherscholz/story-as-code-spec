@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: lorraine-infatuated-with-marty
+type: RELATIONSHIP
+name: infatuated-with
+source: lorraine
+target: marty
+description: "Lorraine develops a crush on Marty after nursing him — the affection meant for George"
+scope:
+  and:
+    - { type: frame, item: "1955-timeline" }
+    - range:
+        from: { type: time, item: "1955-11-05" }
+        to: { type: time, item: "1955-11-12" }

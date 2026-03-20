@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/tag.schema.json
+id: time-travel
+name: Time Travel
+description: "Related to temporal displacement or its consequences."

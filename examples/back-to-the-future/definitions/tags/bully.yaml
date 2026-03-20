@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/tag.schema.json
+id: bully
+name: Bully
+description: "A character who intimidates or dominates others through force."

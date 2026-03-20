@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: clock-tower-in-hill-valley
+type: SPATIAL
+name: part-of
+source: clock-tower
+target: hill-valley-1955

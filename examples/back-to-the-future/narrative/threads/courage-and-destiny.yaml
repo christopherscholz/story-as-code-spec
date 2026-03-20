@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=../../../../schemas/narrative/thread.schema.json
+id: courage-and-destiny
+type: THEME
+name: "Courage and Destiny"
+description: >
+  A single act of courage can rewrite a lifetime. George's punch transforms him from victim
+  to hero. The theme mirrors Marty's own arc: he is told never to be called 'chicken,'
+  and his journey in 1955 is ultimately about finding the nerve to act.
+
+appearances:
+  - beat_id: setup-1985
+    description: "George is a coward, bullied by Biff for thirty years — destiny as resignation"
+  - beat_id: matchmaking
+    description: "Marty tries to teach George confidence — destiny as possibility"
+  - beat_id: the-dance
+    description: "George punches Biff — one moment of courage rewrites everything"
+  - beat_id: the-return
+    description: "The new 1985 shows the compounding effect of that single brave act"

@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: doc-brown-in-time-machine-test
+type: PARTICIPATION
+name: conducts
+source: doc-brown
+target: time-machine-test

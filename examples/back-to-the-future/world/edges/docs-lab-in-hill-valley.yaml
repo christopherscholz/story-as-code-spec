@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: docs-lab-in-hill-valley
+type: SPATIAL
+name: part-of
+source: docs-lab
+target: hill-valley-1955

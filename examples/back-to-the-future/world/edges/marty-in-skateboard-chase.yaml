@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: marty-in-skateboard-chase
+type: PARTICIPATION
+name: flees-in
+source: marty
+target: skateboard-chase

@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/tag.schema.json
+id: public-space
+name: Public Space
+description: "A location accessible to the general public."

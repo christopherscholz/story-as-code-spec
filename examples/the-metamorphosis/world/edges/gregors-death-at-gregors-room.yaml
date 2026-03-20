@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: gregors-death-at-gregors-room
+type: OCCURRENCE
+name: occurs-at
+source: gregors-death
+target: gregors-room
