@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=../../../schemas/beat.schema.json
+# yaml-language-server: $schema=../../../schemas/narrative/beat.schema.json
 id: uneasy-coexistence
 name: "The New Routine"
 description: "Grete assumes the role of caretaker. The family adjusts uneasily. When Grete and Mother begin removing furniture, Gregor clings to the picture frame — his last vestige of humanity."

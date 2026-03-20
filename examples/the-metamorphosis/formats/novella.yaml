@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=../../../schemas/format.schema.json
+# yaml-language-server: $schema=../../../schemas/narrative/format.schema.json
 id: novella
 name: "Novella"
 type: NOVEL

@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=../../../schemas/thread.schema.json
+# yaml-language-server: $schema=../../../schemas/narrative/thread.schema.json
 id: role-reversal
 type: THEME
 name: "Family Role Reversal"

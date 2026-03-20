@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=../../../schemas/beat.schema.json
+# yaml-language-server: $schema=../../../schemas/narrative/beat.schema.json
 id: the-decline
 name: "The Junk Room"
 description: "Weeks after the apple attack, Gregor's room becomes a dumping ground. The family stops cleaning, the charwoman takes over his care, and the lodgers move in. Gregor eats less and less, his wound festers, and dust covers everything."

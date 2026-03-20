@@ -8,7 +8,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "ref.schema.json"
+            "$ref": "../common/ref.schema.json"
           },
           {
             "$ref": "lens.schema.json"
@@ -22,7 +22,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "ref.schema.json"
+            "$ref": "../common/ref.schema.json"
           },
           {
             "$ref": "format.schema.json"
@@ -36,7 +36,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "ref.schema.json"
+            "$ref": "../common/ref.schema.json"
           },
           {
             "$ref": "beat.schema.json"
@@ -50,7 +50,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "ref.schema.json"
+            "$ref": "../common/ref.schema.json"
           },
           {
             "$ref": "device.schema.json"
@@ -64,7 +64,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "ref.schema.json"
+            "$ref": "../common/ref.schema.json"
           },
           {
             "$ref": "thread.schema.json"
@@ -78,7 +78,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "ref.schema.json"
+            "$ref": "../common/ref.schema.json"
           },
           {
             "$ref": "variant-meta.schema.json"
