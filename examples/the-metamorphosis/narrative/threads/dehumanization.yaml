@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=../../../../schemas/narrative/thread.schema.json
+id: dehumanization
+type: THEME
+name: "Dehumanization and Alienation"
+description: >
+  The progressive erasure of Gregor's humanity — first physical, then social, then psychological —
+  mirrors the family's gradual shift from horror to indifference to active rejection.
+
+appearances:
+  - beat_id: awakening
+    description: "Gregor's body is alien but his mind remains human — he worries about work and his family's debts"
+  - beat_id: failed-emergence
+    description: "The family sees only the insect; the clerk flees — Gregor's social identity is destroyed"
+  - beat_id: uneasy-coexistence
+    description: "Gregor clings to the picture as his last human attachment while the room is stripped bare"
+  - beat_id: the-attack
+    description: "Father treats Gregor as vermin to be driven back — violence replaces any remaining paternal bond"
+  - beat_id: the-decline
+    description: "The room becomes a junk heap, the charwoman addresses him as 'old dung beetle' — Gregor is no longer a person but an inconvenience"
+  - beat_id: final-rejection
+    description: "Grete stops using his name — 'it has to go' — completing the dehumanization. Gregor accepts and dies."

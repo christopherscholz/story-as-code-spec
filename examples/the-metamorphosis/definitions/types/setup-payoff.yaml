@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
+id: SETUP_PAYOFF
+name: Setup & Payoff
+applies_to: DEVICE
+description: "Something planted early that pays off later — the reader recognizes the callback."

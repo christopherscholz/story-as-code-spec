@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../schemas/narrative/device.schema.json
-id: picture-setup-payoff
-type: SETUP_PAYOFF
-description: "The framed picture of the woman in furs is introduced as part of Gregor's room. When the furniture is removed, Gregor clings to it — revealing it as the last symbol of his human identity."
-setup:
-  - awakening
-payoff:
-  - uneasy-coexistence

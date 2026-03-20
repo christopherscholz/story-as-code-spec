@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: gregor-employed-by-firm
+type: SOCIAL
+name: employed-by
+source: gregor
+target: chief-clerk
+description: "Gregor works as a traveling salesman under the chief clerk's supervision to pay off his parents' debts"
+valid_in:
+  - to: "Day 1"

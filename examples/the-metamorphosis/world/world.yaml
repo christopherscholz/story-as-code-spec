@@ -1,0 +1,76 @@
+# yaml-language-server: $schema=../../../schemas/world/world.schema.json
+time_system:
+  id: samsa-timeline
+  name: "Samsa Household Calendar"
+  type: LINEAR
+  calendar:
+    unit: day
+    season: winter
+
+nodes:
+  # Characters
+  - $ref: "./characters/gregor.yaml"
+  - $ref: "./characters/grete.yaml"
+  - $ref: "./characters/father.yaml"
+  - $ref: "./characters/mother.yaml"
+  - $ref: "./characters/chief-clerk.yaml"
+  - $ref: "./characters/charwoman.yaml"
+  - $ref: "./characters/lodgers.yaml"
+
+  # Locations
+  - $ref: "./locations/gregors-room.yaml"
+  - $ref: "./locations/apartment.yaml"
+  - $ref: "./locations/living-room.yaml"
+
+  # Objects
+  - $ref: "./objects/picture-frame.yaml"
+  - $ref: "./objects/violin.yaml"
+  - $ref: "./objects/apple.yaml"
+  - $ref: "./objects/fathers-uniform.yaml"
+
+  # Events
+  - $ref: "./events/transformation.yaml"
+  - $ref: "./events/chief-clerk-visit.yaml"
+  - $ref: "./events/furniture-removal.yaml"
+  - $ref: "./events/apple-attack.yaml"
+  - $ref: "./events/violin-recital.yaml"
+  - $ref: "./events/gretes-ultimatum.yaml"
+  - $ref: "./events/gregors-death.yaml"
+
+edges:
+  # Spatial
+  - $ref: "./edges/gregors-room-in-apartment.yaml"
+  - $ref: "./edges/living-room-in-apartment.yaml"
+  - $ref: "./edges/gregor-confined-to-room.yaml"
+  - $ref: "./edges/family-in-apartment.yaml"
+  - $ref: "./edges/picture-in-room.yaml"
+  - $ref: "./edges/apple-embedded-in-gregor.yaml"
+  - $ref: "./edges/lodgers-in-apartment.yaml"
+
+  # Ownership
+  - $ref: "./edges/grete-owns-violin.yaml"
+
+  # Social
+  - $ref: "./edges/gregor-employed-by-firm.yaml"
+
+  # Relationships
+  - $ref: "./edges/grete-cares-for-gregor.yaml"
+  - $ref: "./edges/father-hostile-to-gregor.yaml"
+  - $ref: "./edges/mother-pity-for-gregor.yaml"
+  - $ref: "./edges/grete-rejects-gregor.yaml"
+  - $ref: "./edges/gregor-attached-to-violin.yaml"
+  - $ref: "./edges/lodgers-dominate-apartment.yaml"
+  - $ref: "./edges/charwoman-tends-gregor.yaml"
+  - $ref: "./edges/father-wears-uniform.yaml"
+
+  # Knowledge
+  - $ref: "./edges/family-knows-transformation.yaml"
+
+constraints:
+  - id: single-location
+    name: "A character can only be in one place at a time"
+    rule: >
+      A character can only occupy one location at any given time.
+    severity: ERROR
+    scope:
+      node_types: [CHARACTER]

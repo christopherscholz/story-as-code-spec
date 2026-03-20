@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=../../../../schemas/world/node.schema.json
+id: chief-clerk-visit
+name: "The Chief Clerk's Visit"
+type: EVENT
+description: >
+  The chief clerk arrives at the Samsa apartment to investigate why Gregor has not reported
+  for work. The family pleads through the locked door while Gregor struggles to operate the
+  lock with his mandibles. When he finally opens the door, the clerk retreats in horror and
+  flees the building. Father forces Gregor back into his room with a walking stick. This is
+  the moment the transformation becomes a collective family crisis rather than Gregor's
+  private problem.
+properties:
+  name_variants: ["the confrontation at the door"]
+  severity: 0.7
+  participants: [gregor, chief-clerk, father, mother, grete]
+  location: apartment
+

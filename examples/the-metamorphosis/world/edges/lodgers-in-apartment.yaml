@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: lodgers-in-apartment
+type: SPATIAL
+name: lodges-in
+source: lodgers
+target: apartment
+valid_in:
+  - from: "Month 2"

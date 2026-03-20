@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: grete-rejects-gregor
+type: RELATIONSHIP
+name: rejects
+source: grete
+target: gregor
+valid_in:
+  - from: "Month 3"
+weight: 0.9
+properties:
+  cause: exhaustion-and-disgust

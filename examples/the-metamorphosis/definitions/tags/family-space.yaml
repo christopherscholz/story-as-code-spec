@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/tag.schema.json
+id: family-space
+name: Family Space
+description: "A space belonging to and defined by the family."

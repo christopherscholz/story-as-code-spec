@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=../../../schemas/narrative/narrative.schema.json
+lenses:
+  - $ref: "./lenses/gregor-pov.yaml"
+  - $ref: "./lenses/detached-observer.yaml"
+
+beats:
+  - $ref: "./beats/main-storyline.yaml"
+  - $ref: "./beats/awakening.yaml"
+  - $ref: "./beats/failed-emergence.yaml"
+  - $ref: "./beats/uneasy-coexistence.yaml"
+  - $ref: "./beats/the-attack.yaml"
+  - $ref: "./beats/the-decline.yaml"
+  - $ref: "./beats/final-rejection.yaml"
+
+devices:
+  - $ref: "./devices/picture-setup-payoff.yaml"
+  - $ref: "./devices/apple-chekhov.yaml"
+  - $ref: "./devices/violin-setup-payoff.yaml"
+
+threads:
+  - $ref: "./threads/dehumanization.yaml"
+  - $ref: "./threads/role-reversal.yaml"
+  - $ref: "./threads/doors-and-barriers.yaml"
+
+formats:
+  - $ref: "./formats/novella.yaml"
+
+variants:
+  - type: CANON
+    description: "The canonical story — Gregor transforms, declines, and dies; the family is liberated"

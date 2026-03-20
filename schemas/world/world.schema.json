@@ -2,6 +2,9 @@
   "$schema": "https://json-schema.org/draft-07/schema#",
   "type": "object",
   "description": "The world graph — ground truth of the story universe.",
+  "not": {
+    "required": ["$ref"]
+  },
   "properties": {
     "time_system": {
       "$ref": "time-system.schema.json"

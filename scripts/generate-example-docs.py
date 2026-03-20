@@ -5,6 +5,8 @@ Scans examples/ for directories containing a story.yaml.
 For each example, generates a markdown page in docs/examples/generated/
 with the README.md as intro and all YAML files as collapsible sections.
 
+Supports nested directory structures (e.g. world/characters/, narrative/beats/).
+
 Adding a new example = creating a new directory with story.yaml + README.md.
 """
 from pathlib import Path
@@ -13,18 +15,34 @@ ROOT = Path(__file__).resolve().parent.parent
 EXAMPLES_DIR = ROOT / "examples"
 OUTPUT_DIR = ROOT / "docs" / "examples" / "generated"
 
-# Display names and ordering for subdirectories
+# Display names for directories at any level
 DIR_LABELS = {
+    "definitions": "Definitions",
+    "world": "World",
+    "narrative": "Narrative",
+    "tags": "Tags",
+    "types": "Types",
     "characters": "Characters",
     "locations": "Locations",
     "objects": "Objects",
     "events": "Events",
+    "edges": "Edges",
     "lenses": "Lenses",
     "beats": "Beats",
     "devices": "Devices",
     "threads": "Threads",
     "formats": "Formats",
 }
+
+# Ordering for top-level sections
+SECTION_ORDER = ["definitions", "world", "narrative"]
+
+# Ordering for subsections within a section
+SUBSECTION_ORDER = [
+    "tags", "types",
+    "characters", "locations", "objects", "events", "edges",
+    "lenses", "beats", "devices", "threads", "formats",
+]
 
 
 def slug(name: str) -> str:
@@ -42,6 +60,14 @@ def yaml_section(filepath: Path) -> str:
     content = filepath.read_text().rstrip()
     indented = indent(content)
     return f'??? example "`{filepath.name}`"\n\n    ```yaml\n{indented}\n    ```\n'
+
+
+def sort_key(name: str, order: list[str]) -> int:
+    """Return sort index for a name based on an ordering list."""
+    try:
+        return order.index(name)
+    except ValueError:
+        return 999
 
 
 def generate_example_page(example_dir: Path) -> str:
@@ -67,22 +93,45 @@ def generate_example_page(example_dir: Path) -> str:
         for f in root_yamls:
             parts.append(yaml_section(f))
 
-    # Subdirectories in defined order
-    subdirs = sorted(
+    # Top-level sections
+    top_dirs = sorted(
         [d for d in example_dir.iterdir() if d.is_dir()],
-        key=lambda d: list(DIR_LABELS.keys()).index(d.name)
-        if d.name in DIR_LABELS
-        else 999,
+        key=lambda d: sort_key(d.name, SECTION_ORDER),
     )
 
-    for subdir in subdirs:
-        yamls = sorted(subdir.glob("*.yaml"))
-        if not yamls:
-            continue
-        label = DIR_LABELS.get(subdir.name, subdir.name.title())
-        parts.append(f"## {label}\n")
-        for f in yamls:
-            parts.append(yaml_section(f))
+    for top_dir in top_dirs:
+        sub_dirs = sorted(
+            [d for d in top_dir.iterdir() if d.is_dir()],
+            key=lambda d: sort_key(d.name, SUBSECTION_ORDER),
+        )
+        has_subsections = bool(sub_dirs)
+
+        index_yamls = sorted(top_dir.glob("*.yaml"))
+
+        if not has_subsections:
+            # Flat directory — treat as a single section
+            if not index_yamls:
+                continue
+            label = DIR_LABELS.get(top_dir.name, top_dir.name.title())
+            parts.append(f"## {label}\n")
+            for f in index_yamls:
+                parts.append(yaml_section(f))
+        else:
+            # Nested directory — create section with subsections
+            label = DIR_LABELS.get(top_dir.name, top_dir.name.title())
+            parts.append(f"## {label}\n")
+
+            for f in index_yamls:
+                parts.append(yaml_section(f))
+
+            for sub_dir in sub_dirs:
+                sub_yamls = sorted(sub_dir.glob("*.yaml"))
+                if not sub_yamls:
+                    continue
+                sub_label = DIR_LABELS.get(sub_dir.name, sub_dir.name.title())
+                parts.append(f"### {sub_label}\n")
+                for f in sub_yamls:
+                    parts.append(yaml_section(f))
 
     return "\n".join(parts) + "\n"
 

@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
+id: CHARACTER
+name: Character
+applies_to: NODE
+description: "A sentient being — human or transformed — that acts, speaks, or is acted upon."

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: father-wears-uniform
+type: RELATIONSHIP
+name: identified-with
+source: father
+target: fathers-uniform
+description: "Father sleeps in his uniform and refuses to take it off — the uniform becomes his new identity"
+valid_in:
+  - from: "Month 1"
