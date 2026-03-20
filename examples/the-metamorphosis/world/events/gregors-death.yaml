@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=../../../../schemas/world/node.schema.json
+id: gregors-death
+name: "Gregor's Death"
+type: EVENT
+description: >
+  Gregor dies alone in his room in the early morning hours, his body dried out and flat.
+  The night before, Grete declared to the family that the creature is no longer Gregor and
+  must be removed. Gregor, having overheard, retreats to his room and thinks of his family
+  with tenderness before quietly expiring. The charwoman discovers his body and disposes
+  of it. The family, relieved, takes the day off and rides the tram into the countryside,
+  planning a smaller apartment and a fresh start.
+properties:
+  name_variants: ["the end"]
+  severity: 1.0
+  participants: [gregor]
+  location: gregors-room
+tags: [climax, resolution]

@@ -219,33 +219,33 @@ world:
 
   nodes:
     # Characters
-    - $ref: "./characters/gregor.yaml"
-    - $ref: "./characters/grete.yaml"
-    - $ref: "./characters/father.yaml"
-    - $ref: "./characters/mother.yaml"
-    - $ref: "./characters/chief-clerk.yaml"
-    - $ref: "./characters/charwoman.yaml"
-    - $ref: "./characters/lodgers.yaml"
+    - $ref: "./world/characters/gregor.yaml"
+    - $ref: "./world/characters/grete.yaml"
+    - $ref: "./world/characters/father.yaml"
+    - $ref: "./world/characters/mother.yaml"
+    - $ref: "./world/characters/chief-clerk.yaml"
+    - $ref: "./world/characters/charwoman.yaml"
+    - $ref: "./world/characters/lodgers.yaml"
 
     # Locations
-    - $ref: "./locations/gregors-room.yaml"
-    - $ref: "./locations/apartment.yaml"
-    - $ref: "./locations/living-room.yaml"
+    - $ref: "./world/locations/gregors-room.yaml"
+    - $ref: "./world/locations/apartment.yaml"
+    - $ref: "./world/locations/living-room.yaml"
 
     # Objects
-    - $ref: "./objects/picture-frame.yaml"
-    - $ref: "./objects/violin.yaml"
-    - $ref: "./objects/apple.yaml"
-    - $ref: "./objects/fathers-uniform.yaml"
+    - $ref: "./world/objects/picture-frame.yaml"
+    - $ref: "./world/objects/violin.yaml"
+    - $ref: "./world/objects/apple.yaml"
+    - $ref: "./world/objects/fathers-uniform.yaml"
 
     # Events
-    - $ref: "./events/transformation.yaml"
-    - $ref: "./events/chief-clerk-visit.yaml"
-    - $ref: "./events/furniture-removal.yaml"
-    - $ref: "./events/apple-attack.yaml"
-    - $ref: "./events/violin-recital.yaml"
-    - $ref: "./events/gretes-ultimatum.yaml"
-    - $ref: "./events/gregors-death.yaml"
+    - $ref: "./world/events/transformation.yaml"
+    - $ref: "./world/events/chief-clerk-visit.yaml"
+    - $ref: "./world/events/furniture-removal.yaml"
+    - $ref: "./world/events/apple-attack.yaml"
+    - $ref: "./world/events/violin-recital.yaml"
+    - $ref: "./world/events/gretes-ultimatum.yaml"
+    - $ref: "./world/events/gregors-death.yaml"
 
   edges:
     # --- Spatial ---
@@ -411,30 +411,30 @@ world:
 
 narrative:
   lenses:
-    - $ref: "./lenses/gregor-pov.yaml"
-    - $ref: "./lenses/detached-observer.yaml"
+    - $ref: "./narrative/lenses/gregor-pov.yaml"
+    - $ref: "./narrative/lenses/detached-observer.yaml"
 
   beats:
-    - $ref: "./beats/main-storyline.yaml"
-    - $ref: "./beats/awakening.yaml"
-    - $ref: "./beats/failed-emergence.yaml"
-    - $ref: "./beats/uneasy-coexistence.yaml"
-    - $ref: "./beats/the-attack.yaml"
-    - $ref: "./beats/the-decline.yaml"
-    - $ref: "./beats/final-rejection.yaml"
+    - $ref: "./narrative/beats/main-storyline.yaml"
+    - $ref: "./narrative/beats/awakening.yaml"
+    - $ref: "./narrative/beats/failed-emergence.yaml"
+    - $ref: "./narrative/beats/uneasy-coexistence.yaml"
+    - $ref: "./narrative/beats/the-attack.yaml"
+    - $ref: "./narrative/beats/the-decline.yaml"
+    - $ref: "./narrative/beats/final-rejection.yaml"
 
   devices:
-    - $ref: "./devices/picture-setup-payoff.yaml"
-    - $ref: "./devices/apple-chekhov.yaml"
-    - $ref: "./devices/violin-setup-payoff.yaml"
+    - $ref: "./narrative/devices/picture-setup-payoff.yaml"
+    - $ref: "./narrative/devices/apple-chekhov.yaml"
+    - $ref: "./narrative/devices/violin-setup-payoff.yaml"
 
   threads:
-    - $ref: "./threads/dehumanization.yaml"
-    - $ref: "./threads/role-reversal.yaml"
-    - $ref: "./threads/doors-and-barriers.yaml"
+    - $ref: "./narrative/threads/dehumanization.yaml"
+    - $ref: "./narrative/threads/role-reversal.yaml"
+    - $ref: "./narrative/threads/doors-and-barriers.yaml"
 
   formats:
-    - $ref: "./formats/novella.yaml"
+    - $ref: "./narrative/formats/novella.yaml"
 
   variants:
     - type: CANON

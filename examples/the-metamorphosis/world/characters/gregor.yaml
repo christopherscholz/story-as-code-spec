@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=../../../../schemas/world/node.schema.json
+id: gregor
+name: "Gregor Samsa"
+type: CHARACTER
+description: >
+  A dutiful traveling salesman who has sacrificed his own desires to pay off his parents' debts.
+  One morning he wakes transformed into a monstrous insect. Unable to work or communicate,
+  he is confined to his room and watches helplessly as his family's initial shock gives way to
+  resentment. His mind remains human even as his body and habits become increasingly alien,
+  and he dies quietly after accepting that he is no longer wanted.
+properties:
+  name_variants: ["Gregor", "the insect", "the vermin"]
+  age: 29
+  occupation: traveling-salesman
+tags: [protagonist, pov-character, transformed]

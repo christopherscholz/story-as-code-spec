@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=../../../../schemas/world/node.schema.json
+id: lodgers
+name: "The Three Lodgers"
+type: CHARACTER
+description: >
+  Three bearded gentlemen who rent a room in the Samsa apartment to supplement the
+  family's income after Gregor can no longer work. They are fastidious, demanding, and
+  authoritative — they effectively take over the living room and dictate household
+  standards. When they discover Gregor during Grete's violin recital, they threaten to
+  leave without paying and declare the apartment unsanitary. Their presence marks the
+  family's final humiliation and triggers Grete's ultimatum.
+tags: [catalyst, outsider, authority, group]
