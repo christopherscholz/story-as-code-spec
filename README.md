@@ -1,7 +1,7 @@
 # Story as Code Spec
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
-[![Spec Version](https://img.shields.io/badge/Spec-v0.1.0_Draft-orange.svg)](docs/spec.md)
+[![Spec Version](https://img.shields.io/badge/Spec-dev-orange.svg)](docs/spec.md)
 [![GitHub Pages](https://img.shields.io/badge/Docs-GitHub_Pages-brightgreen.svg)](https://christopherscholz.github.io/story-as-code-spec/)
 
 <!-- content-start -->
@@ -38,7 +38,7 @@ A minimal world is a single `world.yaml`:
 
 ```yaml
 # world.yaml — everything in one file
-spec_version: "0.1.0"
+spec_version: "dev"
 name: "A Simple Fairy Tale"
 default_frame: "main"
 
@@ -73,7 +73,7 @@ As projects grow, split items into separate files and reference them:
 
 ```yaml
 # world.yaml — with $ref
-spec_version: "0.1.0"
+spec_version: "dev"
 name: "A Simple Fairy Tale"
 default_frame: "main"
 
@@ -92,7 +92,7 @@ The spec does not prescribe a directory layout — inline definitions and `$ref`
 
 ## Status
 
-This specification is in **Draft v0.1.0**. The core concepts are defined but subject to change. Feedback and contributions are welcome.
+This specification is in **active development**. The core concepts are defined but subject to change. Feedback and contributions are welcome.
 <!-- content-end -->
 
 ## Documentation
