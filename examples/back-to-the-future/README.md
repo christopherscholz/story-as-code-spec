@@ -8,26 +8,20 @@ Teenager Marty McFly is accidentally sent thirty years into the past in a time-t
 
 ## What this example demonstrates
 
-| Spec concept       | Files                                                   |
-| ------------------ | ------------------------------------------------------- |
-| Entry point        | `story.yaml`                                            |
-| Definitions        | `definitions/` — tags and types as individual files     |
-| Time system        | Linear earth calendar (in `world/world.yaml`)           |
-| **Frames**         | **3 timelines: Original 1985, 1955 Adventure, Improved 1985** — branching topology with `branches_at` |
-| Nodes – Characters | `world/characters/` — Marty, Doc Brown, George, Lorraine, Biff, Jennifer |
-| Nodes – Locations  | `world/locations/` — Hill Valley (1985 & 1955), Twin Pines Mall, Doc's Lab, High School, Clock Tower |
-| Nodes – Objects    | `world/objects/` — DeLorean, Flux Capacitor, Family Photo, Clock Tower Flyer, Guitar |
-| Nodes – Events     | `world/events/` — time machine test, Libyan attack, arrival in 1955, dance, George punches Biff, lightning strike, return |
-| Edges              | `world/edges/` — kinship, relationships, conflict, spatial, participation, occurrence |
-| **Temporal scopes** | Edges with frame and time scopes (e.g., Lorraine's infatuation scoped to 1955 frame) |
-| Constraints        | Paradox prevention rule (in `world/world.yaml`)         |
-| Lenses             | `narrative/lenses/` — Marty POV (3rd-person limited, colloquial voice) |
-| Beats              | `narrative/beats/` — 7-beat three-act structure with dramaturgical functions |
-| Devices            | `narrative/devices/` — photo fading (Chekhov's gun), clock tower flyer (setup/payoff), bulletproof vest (setup/payoff), Darth Vader scene (dramatic irony) |
-| Threads            | `narrative/threads/` — temporal paradox, courage & destiny, clocks motif |
-| Format             | `narrative/formats/screenplay.yaml` — three-act screenplay structure |
-| Variants           | CANON variant metadata                                  |
-| Derivation meta    | `derivation-meta.yaml` — source attribution             |
+This example highlights the following spec features:
+
+| Spec feature | What's special here |
+| --- | --- |
+| **Frames (branching timelines)** | Three frames forming a branch topology: `Original 1985` → `1955 Adventure` (branches at 1985-10-26) → `Improved 1985` (branches at 1955-11-12). Shows `parent`, `branches_at`, and `relations` with `BRANCHES_INTO` |
+| **Frame-scoped edges** | Lorraine's infatuation with Marty is scoped to the `1955-timeline` frame with an `and` expression combining frame selector and time range — demonstrating compound boolean scope expressions |
+| **Time-range scoped edges** | Biff's bullying ends at the dance (`range.to: 1955-11-12`), George's marriage starts in 1958 (`range.from: 1958`) — showing open-ended ranges with `null` boundaries |
+| **KINSHIP edge type** | Family relationships (son-of, married-to) as typed edges — the spec supports kinship alongside spatial, conflict, and relationship types |
+| **CONFLICT edge type** | Biff's antagonism modeled as directed conflict edges (bullies, pursues) — distinct from relationship edges, with temporal scopes showing when conflicts are active |
+| **Dramatic irony device** | The Darth Vader scene uses `DRAMATIC_IRONY` — the audience recognises the Star Wars reference but 1955 George cannot. Shows a device type beyond setup/payoff and Chekhov's gun |
+| **Multiple device types** | Four devices across three types: `CHEKHOV_GUN` (fading photo), `SETUP_PAYOFF` (clock tower flyer, bulletproof vest), `DRAMATIC_IRONY` (Darth Vader) — demonstrating the spec's device variety |
+| **Screenplay format** | Recursive structure `film → act → sequence → scene` with runtime constraints — demonstrating the format system for film rather than prose |
+| **Colloquial lens voice** | Marty's POV lens uses `COLLOQUIAL` vocabulary, `SHORT_STACCATO` sentences, and verbal tics ("this is heavy", "what the hell") — showing how voice configuration shapes tone |
+| **Constraint as narrative rule** | The paradox constraint ("Marty must ensure his parents meet") is scoped to the `marty` node — using constraints to express narrative-level rules, not just world physics |
 
 ## File tree
 

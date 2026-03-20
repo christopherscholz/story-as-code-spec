@@ -8,24 +8,19 @@ Gregor Samsa, a traveling salesman, wakes one morning to find himself transforme
 
 ## What this example demonstrates
 
-| Spec concept       | Files                                                   |
-| ------------------ | ------------------------------------------------------- |
-| Entry point        | `story.yaml`                                            |
-| Definitions        | `definitions/` — tags and types as individual files     |
-| Time system        | Linear day-based calendar (in `world/world.yaml`)       |
-| Nodes – Characters | `world/characters/` — Gregor, Grete, Father, Mother, Chief Clerk, Charwoman, Lodgers |
-| Nodes – Locations  | `world/locations/` — Gregor's room, the apartment       |
-| Nodes – Objects    | `world/objects/` — picture frame, violin, embedded apple |
-| Nodes – Events     | `world/events/` — transformation, clerk visit, furniture removal, apple attack, violin recital, death |
-| Edges              | `world/edges/` — spatial, relationships, knowledge      |
-| Constraints        | Single-location rule (in `world/world.yaml`)            |
-| Lenses             | `narrative/lenses/` — gregor-pov (3rd-person limited), detached-observer (3rd-person objective) |
-| Beats              | `narrative/beats/` — hierarchical storyline with dramaturgical functions |
-| Devices            | `narrative/devices/` — picture setup/payoff, apple Chekhov's gun, violin setup/payoff |
-| Threads            | `narrative/threads/` — dehumanization, family role reversal |
-| Format             | `narrative/formats/novella.yaml` — novella structure (3 parts) |
-| Variants           | CANON variant metadata                                  |
-| Derivation meta    | `derivation-meta.yaml` — compiled-output contract       |
+This example highlights the following spec features:
+
+| Spec feature | What's special here |
+| --- | --- |
+| **Abstract time system** | Time uses `LINEAR` type with abstract labels (`Day 1`, `Month 1`, `Month 2`, `Month 3`) instead of calendar dates — showing that the spec's time model is independent of real-world calendars |
+| **Temporal edge scopes** | Relationships evolve over time: Grete's care for Gregor ends at `Month 3`, the apple is embedded from `Month 1` onward, lodgers arrive at `Month 2` — each scoped with `range` expressions |
+| **Multiple lenses** | Two contrasting narrative perspectives on the same world: `gregor-pov` (CHARACTER_BOUND, inner monologue, selective reliability, emotional distortions) vs. `detached-observer` (OBJECTIVE, no inner monologue, fully reliable) |
+| **Lens reliability & distortion** | The Gregor lens distorts perception — views Father negatively and Grete positively — demonstrating the `reliability.distorts` field with directional bias |
+| **Rich edge type variety** | Seven edge types in a single example: SPATIAL, OWNERSHIP, SOCIAL, RELATIONSHIP, KNOWLEDGE, PARTICIPATION, OCCURRENCE — showing the spec's type extensibility |
+| **Constraint with scope** | A world rule ("a character can only be in one place at a time") scoped to `node_type: CHARACTER` — demonstrating constraints with selector-based scopes |
+| **Beat reveals** | Beats use `reveals` to model information disclosure: the transformation is revealed FULL in beat 2, the picture's significance emerges in beat 3 — showing how the spec tracks what the reader learns and when |
+| **Thread types** | Both `THEME` (dehumanization, role reversal) and `MOTIF` (doors and barriers) threads, each with per-beat appearance descriptions — showing the distinction between abstract ideas and recurring symbols |
+| **Novella format** | Recursive structure `book → part → scene` with word count constraints at each level and pacing settings — demonstrating the format system for prose output |
 
 ## File tree
 
