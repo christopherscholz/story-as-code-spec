@@ -4,6 +4,7 @@ site/
 # Generated docs (build artifacts)
 docs/schemas/generated/
 docs/examples/generated/
+docs/examples/index.md
 
 # Python
 __pycache__/
