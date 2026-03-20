@@ -180,18 +180,18 @@
     legend.innerHTML = nodeTypes.map(t => `<span class="legend-item"><span class="legend-dot" style="background:${c(t)}"></span>${t}</span>`).join('');
     container.appendChild(legend);
 
-    // deterministic initial positions: group by type in a circle layout
+    // deterministic initial positions: group by type in a wide circle
     const typeGroups = {};
     nodes.forEach(n => { (typeGroups[n.type] = typeGroups[n.type] || []).push(n); });
     const typeKeys = Object.keys(typeGroups);
     const initPos = {};
-    const R = 250; // radius of type group ring
+    const R = 500; // radius of type group ring
     typeKeys.forEach((type, ti) => {
-      const angle = (2 * Math.PI * ti) / typeKeys.length;
+      const angle = (2 * Math.PI * ti) / typeKeys.length - Math.PI / 2;
       const cx = R * Math.cos(angle), cy = R * Math.sin(angle);
       const group = typeGroups[type];
+      const spread = 60 + group.length * 30;
       group.forEach((n, ni) => {
-        const spread = 80;
         const ga = (2 * Math.PI * ni) / group.length;
         initPos[n.id] = { x: cx + spread * Math.cos(ga), y: cy + spread * Math.sin(ga) };
       });
@@ -213,7 +213,7 @@
     nodeTypes.forEach(type => styles.push({ selector: 'node.' + type, style: { 'background-color': c(type) }}));
     edgeTypes.forEach(type => styles.push({ selector: 'edge.' + type, style: { 'line-color': c(type), 'target-arrow-color': c(type) }}));
 
-    cy = cytoscape({ container: cyDiv, elements, style: styles, layout: { name: 'cose', animate: false, randomize: false, nodeRepulsion: () => 50000, idealEdgeLength: () => 200, nodeOverlap: 30, gravity: 0.15, padding: 60 }, minZoom: 0.3, maxZoom: 3 });
+    cy = cytoscape({ container: cyDiv, elements, style: styles, layout: { name: 'cose', animate: false, randomize: false, nodeRepulsion: () => 200000, idealEdgeLength: () => 350, nodeOverlap: 50, gravity: 0.05, numIter: 500, padding: 80 }, minZoom: 0.1, maxZoom: 3 });
 
     cy.on('tap', 'node', e => select({ kind: 'node', id: e.target.id() }));
     cy.on('tap', 'edge', e => select({ kind: 'edge', id: e.target.id() }));
