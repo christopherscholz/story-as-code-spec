@@ -312,11 +312,12 @@
       const orderText = svgEl('text', { x: x + CARD_W - 6, y: y + 14, fill: isDark() ? '#666' : '#bbb', 'font-size': 10, 'text-anchor': 'end' });
       orderText.textContent = `#${b.order}`;
       g.appendChild(orderText);
-      // function badge (second line)
-      const funcBadgeW = Math.min(CARD_W - 12, (b.function || '').length * 7 + 16);
-      g.appendChild(svgEl('rect', { x: x + 5, y: y + 20, width: funcBadgeW, height: 14, rx: 3, fill: funcColor }));
-      const funcText = svgEl('text', { x: x + 5 + funcBadgeW / 2, y: y + 30, fill: '#fff', 'font-size': 9, 'text-anchor': 'middle', 'font-weight': 'bold' });
-      funcText.textContent = (b.function || '').replace(/_/g, ' ');
+      // function badge (second line, small, left-aligned)
+      const funcLabel = (b.function || '').replace(/_/g, ' ');
+      const funcBadgeW = funcLabel.length * 5 + 10;
+      g.appendChild(svgEl('rect', { x: x + 5, y: y + 20, width: funcBadgeW, height: 12, rx: 2, fill: funcColor }));
+      const funcText = svgEl('text', { x: x + 8, y: y + 29, fill: '#fff', 'font-size': 8, 'font-weight': '600' });
+      funcText.textContent = funcLabel;
       g.appendChild(funcText);
       // tension bar
       const barW = (CARD_W - 10) * (b.tension || 0);
