@@ -74,10 +74,10 @@ def generate_example_page(example_dir: Path) -> str:
     """Generate a markdown page for a single example."""
     parts: list[str] = []
 
-    # Include README.md as intro
+    # Include README.md as intro (ensure trailing blank line for markdown separation)
     readme = example_dir / "README.md"
     if readme.exists():
-        parts.append(readme.read_text().rstrip())
+        parts.append(readme.read_text().rstrip() + "\n")
     else:
         name = example_dir.name.replace("-", " ").title()
         parts.append(f"# {name}")
