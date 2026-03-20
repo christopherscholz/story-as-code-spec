@@ -6,5 +6,5 @@ source: lodgers
 target: apartment
 scope:
   range:
-    - { type: time, item: "Month 2" }
-    - null
+    from: { type: time, item: "Month 2" }
+    to: null

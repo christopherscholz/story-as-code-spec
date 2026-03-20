@@ -7,5 +7,5 @@ target: chief-clerk
 description: "Gregor works as a traveling salesman under the chief clerk's supervision to pay off his parents' debts"
 scope:
   range:
-    - null
-    - { type: time, item: "Day 1" }
+    from: null
+    to: { type: time, item: "Day 1" }

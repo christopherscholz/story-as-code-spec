@@ -63,8 +63,8 @@ edges:
       and:
         - { type: frame, item: main }
         - range:
-            - { type: time, item: T1 }
-            - null
+            from: { type: time, item: T1 }
+            to: null
 
 frames:
   - id: main

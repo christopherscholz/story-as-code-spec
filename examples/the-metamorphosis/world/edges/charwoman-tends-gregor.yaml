@@ -7,5 +7,5 @@ target: gregor
 description: "The charwoman handles Gregor without fear or sentiment, calling him 'old dung beetle'"
 scope:
   range:
-    - { type: time, item: "Month 3" }
-    - null
+    from: { type: time, item: "Month 3" }
+    to: null

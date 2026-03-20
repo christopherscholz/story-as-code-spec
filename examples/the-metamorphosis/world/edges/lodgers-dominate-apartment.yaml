@@ -7,6 +7,6 @@ target: living-room
 description: "The lodgers effectively take over the living room and dictate household standards"
 scope:
   range:
-    - { type: time, item: "Month 2" }
-    - null
+    from: { type: time, item: "Month 2" }
+    to: null
 weight: 0.8

@@ -57,7 +57,7 @@
           { "in": [{ "type": "node_type", "item": "CHARACTER" }, { "type": "node_type", "item": "CREATURE" }] },
           { "type": "tag", "item": "undead" },
           { "not": { "in": [{ "type": "frame", "item": "timeline-b" }] } },
-          { "range": [{ "type": "time", "item": "T00" }, { "type": "time", "item": "T50" }] }
+          { "range": { "from": { "type": "time", "item": "T00" }, "to": { "type": "time", "item": "T50" } } }
         ]
       }
     }

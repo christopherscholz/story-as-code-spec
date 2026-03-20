@@ -7,5 +7,5 @@ target: gregor
 description: "The apple lodges in Gregor's back and rots in place, never removed"
 scope:
   range:
-    - { type: time, item: "Month 1" }
-    - null
+    from: { type: time, item: "Month 1" }
+    to: null

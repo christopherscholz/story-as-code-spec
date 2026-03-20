@@ -83,10 +83,10 @@
       "source": "hero",
       "target": "dungeon",
       "scope": {
-        "range": [
-          { "type": "time", "item": "T10" },
-          { "type": "time", "item": "T15" }
-        ]
+        "range": {
+          "from": { "type": "time", "item": "T10" },
+          "to": { "type": "time", "item": "T15" }
+        }
       }
     },
     {
@@ -99,10 +99,10 @@
         "and": [
           { "type": "frame", "item": "alt-timeline" },
           {
-            "range": [
-              { "type": "time", "item": "T5" },
-              null
-            ]
+            "range": {
+              "from": { "type": "time", "item": "T5" },
+              "to": null
+            }
           }
         ]
       }

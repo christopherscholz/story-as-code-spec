@@ -7,5 +7,5 @@ target: fathers-uniform
 description: "Father sleeps in his uniform and refuses to take it off — the uniform becomes his new identity"
 scope:
   range:
-    - { type: time, item: "Month 1" }
-    - null
+    from: { type: time, item: "Month 1" }
+    to: null

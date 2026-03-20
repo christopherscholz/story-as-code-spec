@@ -51,18 +51,26 @@
     {
       "type": "object",
       "required": ["range"],
-      "description": "Matches all elements alphabetically between the first and last selector (inclusive).",
+      "description": "Matches all elements between from and to (inclusive). Use null for open boundaries.",
       "properties": {
         "range": {
-          "type": "array",
-          "items": {
-            "oneOf": [
-              { "$ref": "selector.schema.json" },
-              { "type": "null" }
-            ]
+          "type": "object",
+          "properties": {
+            "from": {
+              "oneOf": [
+                { "$ref": "selector.schema.json" },
+                { "type": "null" }
+              ]
+            },
+            "to": {
+              "oneOf": [
+                { "$ref": "selector.schema.json" },
+                { "type": "null" }
+              ]
+            }
           },
-          "minItems": 2,
-          "maxItems": 2
+          "required": ["from", "to"],
+          "additionalProperties": false
         }
       },
       "additionalProperties": false
