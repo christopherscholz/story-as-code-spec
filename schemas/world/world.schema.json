@@ -11,7 +11,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "ref.schema.json"
+            "$ref": "../common/ref.schema.json"
           },
           {
             "$ref": "node.schema.json"
@@ -24,7 +24,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "ref.schema.json"
+            "$ref": "../common/ref.schema.json"
           },
           {
             "$ref": "edge.schema.json"
@@ -37,7 +37,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "ref.schema.json"
+            "$ref": "../common/ref.schema.json"
           },
           {
             "$ref": "frame.schema.json"
@@ -51,7 +51,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "ref.schema.json"
+            "$ref": "../common/ref.schema.json"
           },
           {
             "$ref": "constraint.schema.json"

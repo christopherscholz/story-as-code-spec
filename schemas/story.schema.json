@@ -38,30 +38,30 @@
     "definitions": {
       "oneOf": [
         {
-          "$ref": "ref.schema.json"
+          "$ref": "common/ref.schema.json"
         },
         {
-          "$ref": "definitions.schema.json"
+          "$ref": "definitions/definitions.schema.json"
         }
       ]
     },
     "world": {
       "oneOf": [
         {
-          "$ref": "ref.schema.json"
+          "$ref": "common/ref.schema.json"
         },
         {
-          "$ref": "world.schema.json"
+          "$ref": "world/world.schema.json"
         }
       ]
     },
     "narrative": {
       "oneOf": [
         {
-          "$ref": "ref.schema.json"
+          "$ref": "common/ref.schema.json"
         },
         {
-          "$ref": "narrative.schema.json"
+          "$ref": "narrative/narrative.schema.json"
         }
       ]
     }

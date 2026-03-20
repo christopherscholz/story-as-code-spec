@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=../../../schemas/lens.schema.json
+# yaml-language-server: $schema=../../../schemas/narrative/lens.schema.json
 id: detached-observer
 type: SIMPLE
 perspective:

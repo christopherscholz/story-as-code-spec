@@ -8,7 +8,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "ref.schema.json"
+            "$ref": "../common/ref.schema.json"
           },
           {
             "$ref": "tag.schema.json"
@@ -21,7 +21,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "ref.schema.json"
+            "$ref": "../common/ref.schema.json"
           },
           {
             "$ref": "type.schema.json"

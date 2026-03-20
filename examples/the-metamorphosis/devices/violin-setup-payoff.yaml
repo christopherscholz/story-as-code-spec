@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=../../../schemas/device.schema.json
+# yaml-language-server: $schema=../../../schemas/narrative/device.schema.json
 id: violin-setup-payoff
 type: SETUP_PAYOFF
 description: >

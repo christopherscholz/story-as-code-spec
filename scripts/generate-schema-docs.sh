@@ -10,7 +10,7 @@ OUTPUT_DIR="$ROOT_DIR/docs/schemas/generated"
 
 mkdir -p "$OUTPUT_DIR"
 
-for schema_file in "$SCHEMA_DIR"/*.schema.json; do
+find "$SCHEMA_DIR" -name '*.schema.json' | sort | while read -r schema_file; do
   name="$(basename "$schema_file" .schema.json)"
   output_file="$OUTPUT_DIR/${name}.md"
 

@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=../../../schemas/node.schema.json
+# yaml-language-server: $schema=../../../schemas/world/node.schema.json
 id: living-room
 name: "The Living Room"
 type: LOCATION

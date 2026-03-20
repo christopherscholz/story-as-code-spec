@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=../../../schemas/thread.schema.json
+# yaml-language-server: $schema=../../../schemas/narrative/thread.schema.json
 id: dehumanization
 type: THEME
 name: "Dehumanization and Alienation"
