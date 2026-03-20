@@ -4,7 +4,8 @@
   "description": "How time works in this world — its structure and calendar.",
   "required": [
     "id",
-    "name"
+    "name",
+    "type"
   ],
   "properties": {
     "id": {
@@ -44,7 +45,18 @@
     {
       "id": "linear",
       "name": "Linear Timeline",
-      "type": "LINEAR"
+      "type": "LINEAR",
+      "properties": {
+        "epoch": {
+          "name": "The Founding",
+          "description": "Year zero begins with the founding of the First Kingdom"
+        },
+        "units": {
+          "major": "cycles",
+          "minor": "phases",
+          "phases_per_cycle": 8
+        }
+      }
     },
     {
       "id": "iso-8601",
@@ -55,8 +67,16 @@
       "id": "dreamworld",
       "name": "Dreamworld",
       "type": "ABSTRACT",
+      "description": "Time has no direction here; connections define sequence",
       "properties": {
-        "note": "Time has no direction here; connections define sequence"
+        "perception": {
+          "observer_dependent": true,
+          "description": "Each dreamer experiences a different duration for the same event"
+        },
+        "anchors": {
+          "description": "Recurring events that dreamers use to orient themselves in time",
+          "examples": ["the bell tolls", "the tide turns", "the sky fractures"]
+        }
       }
     }
   ]
