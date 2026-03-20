@@ -11,13 +11,14 @@ Gregor Samsa, a traveling salesman, wakes one morning to find himself transforme
 | Spec concept       | Files                                                   |
 | ------------------ | ------------------------------------------------------- |
 | Entry point        | `story.yaml`                                            |
-| Time system        | Linear day-based calendar (in `story.yaml`)             |
+| Definitions        | `definitions/` — tags and types as individual files     |
+| Time system        | Linear day-based calendar (in `world/world.yaml`)       |
 | Nodes – Characters | `world/characters/` — Gregor, Grete, Father, Mother, Chief Clerk, Charwoman, Lodgers |
 | Nodes – Locations  | `world/locations/` — Gregor's room, the apartment       |
 | Nodes – Objects    | `world/objects/` — picture frame, violin, embedded apple |
 | Nodes – Events     | `world/events/` — transformation, clerk visit, furniture removal, apple attack, violin recital, death |
-| Edges              | Inline in `story.yaml` — spatial, relationships, knowledge |
-| Constraints        | Single-location rule                                    |
+| Edges              | `world/edges/` — spatial, relationships, knowledge      |
+| Constraints        | Single-location rule (in `world/world.yaml`)            |
 | Lenses             | `narrative/lenses/` — gregor-pov (3rd-person limited), detached-observer (3rd-person objective) |
 | Beats              | `narrative/beats/` — hierarchical storyline with dramaturgical functions |
 | Devices            | `narrative/devices/` — picture setup/payoff, apple Chekhov's gun, violin setup/payoff |
@@ -32,7 +33,20 @@ Gregor Samsa, a traveling salesman, wakes one morning to find himself transforme
 the-metamorphosis/
 ├── story.yaml                 # entry point
 ├── derivation-meta.yaml       # output contract
+├── definitions/
+│   ├── definitions.yaml       # tag & type index
+│   ├── tags/
+│   │   ├── protagonist.yaml
+│   │   ├── antagonist.yaml
+│   │   ├── ...                # 35 tag files total
+│   │   └── resolution.yaml
+│   └── types/
+│       ├── character.yaml
+│       ├── location.yaml
+│       ├── ...                # 15 type files total
+│       └── motif.yaml
 ├── world/
+│   ├── world.yaml             # time system, node/edge refs, constraints
 │   ├── characters/
 │   │   ├── gregor.yaml
 │   │   ├── grete.yaml
@@ -50,15 +64,21 @@ the-metamorphosis/
 │   │   ├── violin.yaml
 │   │   ├── apple.yaml
 │   │   └── fathers-uniform.yaml
-│   └── events/
-│       ├── transformation.yaml
-│       ├── chief-clerk-visit.yaml
-│       ├── furniture-removal.yaml
-│       ├── apple-attack.yaml
-│       ├── violin-recital.yaml
-│       ├── gretes-ultimatum.yaml
-│       └── gregors-death.yaml
+│   ├── events/
+│   │   ├── transformation.yaml
+│   │   ├── chief-clerk-visit.yaml
+│   │   ├── furniture-removal.yaml
+│   │   ├── apple-attack.yaml
+│   │   ├── violin-recital.yaml
+│   │   ├── gretes-ultimatum.yaml
+│   │   └── gregors-death.yaml
+│   └── edges/
+│       ├── gregor-confined-to-room.yaml
+│       ├── grete-cares-for-gregor.yaml
+│       ├── ...                # 18 edge files total
+│       └── family-knows-transformation.yaml
 └── narrative/
+    ├── narrative.yaml          # lens/beat/device/thread/format refs, variants
     ├── lenses/
     │   ├── gregor-pov.yaml
     │   └── detached-observer.yaml
@@ -87,181 +107,20 @@ the-metamorphosis/
 
     ```yaml
     # yaml-language-server: $schema=../../schemas/story.schema.json
-    spec_version: "0.4.0"
+    spec_version: "dev"
     name: "The Metamorphosis"
 
     settings:
       default_language: en
 
+    definitions:
+      $ref: "./definitions/definitions.yaml"
+
     world:
-      time_system:
-        id: samsa-timeline
-        name: "Samsa Household Calendar"
-        type: LINEAR
-        calendar:
-          unit: day
-          season: winter
-
-      nodes:
-        # Characters
-        - $ref: "./world/characters/gregor.yaml"
-        - $ref: "./world/characters/grete.yaml"
-        - $ref: "./world/characters/father.yaml"
-        - $ref: "./world/characters/mother.yaml"
-        - $ref: "./world/characters/chief-clerk.yaml"
-        - $ref: "./world/characters/charwoman.yaml"
-        - $ref: "./world/characters/lodgers.yaml"
-
-        # Locations
-        - $ref: "./world/locations/gregors-room.yaml"
-        - $ref: "./world/locations/apartment.yaml"
-
-        # Objects
-        - $ref: "./world/objects/picture-frame.yaml"
-        - $ref: "./world/objects/violin.yaml"
-        - $ref: "./world/objects/apple.yaml"
-
-        # Events
-        - $ref: "./world/events/transformation.yaml"
-        - $ref: "./world/events/chief-clerk-visit.yaml"
-        - $ref: "./world/events/apple-attack.yaml"
-        - $ref: "./world/events/furniture-removal.yaml"
-        - $ref: "./world/events/gregors-death.yaml"
-        - $ref: "./world/events/violin-recital.yaml"
-
-      edges:
-        # --- Spatial ---
-        - id: gregor-confined-to-room
-          type: SPATIAL
-          name: confined-to
-          source: gregor
-          target: gregors-room
-
-
-        - id: family-in-apartment
-          type: SPATIAL
-          name: resides-in
-          source: father
-          target: apartment
-          description: "The family occupies the apartment, excluding Gregor's room"
-
-        # --- Relationships ---
-        - id: grete-cares-for-gregor
-          type: RELATIONSHIP
-          name: caretakes
-          source: grete
-          target: gregor
-
-          valid_in:
-            - to: "Month 3"
-          weight: 0.8
-          properties:
-            motivation: guilt-and-duty
-
-        - id: father-hostile-to-gregor
-          type: RELATIONSHIP
-          name: hostile-toward
-          source: father
-          target: gregor
-
-          weight: 0.6
-          properties:
-            motivation: shame-and-authority
-
-        - id: mother-pity-for-gregor
-          type: RELATIONSHIP
-          name: sympathizes-with
-          source: mother
-          target: gregor
-
-          weight: 0.5
-          properties:
-            motivation: maternal-grief
-
-        - id: grete-rejects-gregor
-          type: RELATIONSHIP
-          name: rejects
-          source: grete
-          target: gregor
-
-          valid_in:
-            - from: "Month 3"
-          weight: 0.9
-          properties:
-            cause: exhaustion-and-disgust
-
-        - id: lodgers-in-apartment
-          type: SPATIAL
-          name: lodges-in
-          source: lodgers
-          target: apartment
-          valid_in:
-            - from: "Month 2"
-
-        - id: gregor-attached-to-violin
-          type: RELATIONSHIP
-          name: emotionally-attached-to
-          source: gregor
-          target: violin
-          description: "Gregor associates the violin with Grete's talent and his unfulfilled plan to send her to the conservatory"
-          weight: 0.7
-
-        - id: lodgers-dominate-apartment
-          type: RELATIONSHIP
-          name: dominates
-          source: lodgers
-          target: apartment
-          description: "The lodgers effectively take over the living room and dictate household standards"
-          valid_in:
-            - from: "Month 2"
-          weight: 0.8
-
-        # --- Knowledge ---
-        - id: family-knows-transformation
-          type: KNOWLEDGE
-          name: knows-about
-          source: father
-          target: gregor
-
-          description: "All family members and the chief clerk know about Gregor's insect form"
-
-      constraints:
-        - id: single-location
-          name: "A character can only be in one place at a time"
-          rule: >
-            A character can only occupy one location at any given time.
-          severity: ERROR
-          scope:
-            node_types: [CHARACTER]
+      $ref: "./world/world.yaml"
 
     narrative:
-      lenses:
-        - $ref: "./narrative/lenses/gregor-pov.yaml"
-        - $ref: "./narrative/lenses/detached-observer.yaml"
-
-      beats:
-        - $ref: "./narrative/beats/main-storyline.yaml"
-        - $ref: "./narrative/beats/awakening.yaml"
-        - $ref: "./narrative/beats/failed-emergence.yaml"
-        - $ref: "./narrative/beats/uneasy-coexistence.yaml"
-        - $ref: "./narrative/beats/the-attack.yaml"
-        - $ref: "./narrative/beats/final-rejection.yaml"
-
-      devices:
-        - $ref: "./narrative/devices/picture-setup-payoff.yaml"
-        - $ref: "./narrative/devices/apple-chekhov.yaml"
-        - $ref: "./narrative/devices/violin-setup-payoff.yaml"
-
-      threads:
-        - $ref: "./narrative/threads/dehumanization.yaml"
-        - $ref: "./narrative/threads/role-reversal.yaml"
-
-      formats:
-        - $ref: "./narrative/formats/novella.yaml"
-
-      variants:
-        - type: CANON
-          description: "The canonical story — Gregor transforms, declines, and dies; the family is liberated"
+      $ref: "./narrative/narrative.yaml"
     ```
 
 ??? example "`derivation-meta.yaml`"
@@ -271,7 +130,7 @@ the-metamorphosis/
     id: novella-gregor-pov
     lens: gregor-pov
     format: novella
-    source_version: "0.4.0"
+    source_version: "0.5.0"
 
     beat_position:
       beat: final-rejection
@@ -308,7 +167,87 @@ the-metamorphosis/
           at: "Month 1"
     ```
 
+## Definitions
+
+??? example "`definitions/definitions.yaml` (excerpt)"
+
+    ```yaml
+    # yaml-language-server: $schema=../../../schemas/definitions/definitions.schema.json
+    tags:
+      - $ref: "./tags/protagonist.yaml"
+      - $ref: "./tags/antagonist.yaml"
+      # ... 35 tag files total
+
+    types:
+      - $ref: "./types/character.yaml"
+      - $ref: "./types/spatial.yaml"
+      # ... 15 type files total
+    ```
+
+??? example "`definitions/tags/protagonist.yaml`"
+
+    ```yaml
+    # yaml-language-server: $schema=../../../../schemas/definitions/tag.schema.json
+    id: protagonist
+    name: Protagonist
+    description: "The central character whose inner life drives the narrative."
+    ```
+
+??? example "`definitions/types/character.yaml`"
+
+    ```yaml
+    # yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
+    id: CHARACTER
+    name: Character
+    applies_to: NODE
+    description: "A sentient being — human or transformed — that acts, speaks, or is acted upon."
+    ```
+
+??? example "`definitions/types/spatial.yaml`"
+
+    ```yaml
+    # yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
+    id: SPATIAL
+    name: Spatial Relationship
+    applies_to: EDGE
+    description: "A spatial or containment relationship (located-in, part-of, confined-to, embedded-in)."
+    ```
+
 ## World
+
+??? example "`world/world.yaml` (excerpt)"
+
+    ```yaml
+    # yaml-language-server: $schema=../../../schemas/world/world.schema.json
+    time_system:
+      id: samsa-timeline
+      name: "Samsa Household Calendar"
+      type: LINEAR
+      calendar:
+        unit: day
+        season: winter
+
+    nodes:
+      - $ref: "./characters/gregor.yaml"
+      - $ref: "./locations/gregors-room.yaml"
+      - $ref: "./objects/picture-frame.yaml"
+      - $ref: "./events/transformation.yaml"
+      # ... 21 node files total
+
+    edges:
+      - $ref: "./edges/gregor-confined-to-room.yaml"
+      - $ref: "./edges/grete-cares-for-gregor.yaml"
+      # ... 18 edge files total
+
+    constraints:
+      - id: single-location
+        name: "A character can only be in one place at a time"
+        rule: >
+          A character can only occupy one location at any given time.
+        severity: ERROR
+        scope:
+          node_types: [CHARACTER]
+    ```
 
 ### Characters
 
@@ -537,6 +476,61 @@ the-metamorphosis/
     tags: [symbol, humanity, catalyst]
     ```
 
+### Edges
+
+??? example "`gregor-confined-to-room.yaml`"
+
+    ```yaml
+    # yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+    id: gregor-confined-to-room
+    type: SPATIAL
+    name: confined-to
+    source: gregor
+    target: gregors-room
+    ```
+
+??? example "`grete-cares-for-gregor.yaml`"
+
+    ```yaml
+    # yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+    id: grete-cares-for-gregor
+    type: RELATIONSHIP
+    name: caretakes
+    source: grete
+    target: gregor
+    valid_in:
+      - to: "Month 3"
+    weight: 0.8
+    properties:
+      motivation: guilt-and-duty
+    ```
+
+??? example "`apple-embedded-in-gregor.yaml`"
+
+    ```yaml
+    # yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+    id: apple-embedded-in-gregor
+    type: SPATIAL
+    name: embedded-in
+    source: apple
+    target: gregor
+    description: "The apple lodges in Gregor's back and rots in place, never removed"
+    valid_in:
+      - from: "Month 1"
+    ```
+
+??? example "`family-knows-transformation.yaml`"
+
+    ```yaml
+    # yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+    id: family-knows-transformation
+    type: KNOWLEDGE
+    name: knows-about
+    source: father
+    target: gregor
+    description: "All family members and the chief clerk know about Gregor's insect form"
+    ```
+
 ### Events
 
 ??? example "`apple-attack.yaml`"
@@ -666,6 +660,41 @@ the-metamorphosis/
     ```
 
 ## Narrative
+
+??? example "`narrative/narrative.yaml`"
+
+    ```yaml
+    # yaml-language-server: $schema=../../../schemas/narrative/narrative.schema.json
+    lenses:
+      - $ref: "./lenses/gregor-pov.yaml"
+      - $ref: "./lenses/detached-observer.yaml"
+
+    beats:
+      - $ref: "./beats/main-storyline.yaml"
+      - $ref: "./beats/awakening.yaml"
+      - $ref: "./beats/failed-emergence.yaml"
+      - $ref: "./beats/uneasy-coexistence.yaml"
+      - $ref: "./beats/the-attack.yaml"
+      - $ref: "./beats/the-decline.yaml"
+      - $ref: "./beats/final-rejection.yaml"
+
+    devices:
+      - $ref: "./devices/picture-setup-payoff.yaml"
+      - $ref: "./devices/apple-chekhov.yaml"
+      - $ref: "./devices/violin-setup-payoff.yaml"
+
+    threads:
+      - $ref: "./threads/dehumanization.yaml"
+      - $ref: "./threads/role-reversal.yaml"
+      - $ref: "./threads/doors-and-barriers.yaml"
+
+    formats:
+      - $ref: "./formats/novella.yaml"
+
+    variants:
+      - type: CANON
+        description: "The canonical story — Gregor transforms, declines, and dies; the family is liberated"
+    ```
 
 ### Lenses
 

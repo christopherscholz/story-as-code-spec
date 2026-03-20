@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: charwoman-tends-gregor
+type: RELATIONSHIP
+name: tends-to
+source: charwoman
+target: gregor
+description: "The charwoman handles Gregor without fear or sentiment, calling him 'old dung beetle'"
+valid_in:
+  - from: "Month 3"

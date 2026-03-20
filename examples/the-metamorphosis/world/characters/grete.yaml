@@ -11,4 +11,4 @@ description: >
 properties:
   name_variants: ["Grete", "Gregor's sister", "the sister"]
   age: 17
-tags: [supporting, family, caretaker]
+tags: [family, caretaker]

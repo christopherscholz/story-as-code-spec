@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
+id: KNOWLEDGE
+name: Knowledge
+applies_to: EDGE
+description: "An information relationship — what one entity knows about another."

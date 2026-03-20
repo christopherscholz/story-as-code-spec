@@ -11,4 +11,4 @@ description: >
 properties:
   name_variants: ["the office manager"]
   role: supervisor
-tags: [catalyst, outsider, authority]
+tags: [outsider, authority]

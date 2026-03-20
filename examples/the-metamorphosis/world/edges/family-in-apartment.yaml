@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: family-in-apartment
+type: SPATIAL
+name: resides-in
+source: father
+target: apartment
+description: "The family occupies the apartment, excluding Gregor's room"

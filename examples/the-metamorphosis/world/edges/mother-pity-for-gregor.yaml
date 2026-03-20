@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: mother-pity-for-gregor
+type: RELATIONSHIP
+name: sympathizes-with
+source: mother
+target: gregor
+weight: 0.5
+properties:
+  motivation: maternal-grief

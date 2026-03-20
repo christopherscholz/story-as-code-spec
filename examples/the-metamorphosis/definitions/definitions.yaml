@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=../../../schemas/definitions/definitions.schema.json
+tags:
+  # Social context
+  - $ref: "./tags/family.yaml"
+  - $ref: "./tags/outsider.yaml"
+  - $ref: "./tags/authority.yaml"
+  - $ref: "./tags/group.yaml"
+
+  # Character traits
+  - $ref: "./tags/caretaker.yaml"
+  - $ref: "./tags/sympathetic.yaml"
+  - $ref: "./tags/pragmatic.yaml"
+
+  # Thematic markers
+  - $ref: "./tags/symbol.yaml"
+  - $ref: "./tags/humanity.yaml"
+  - $ref: "./tags/identity.yaml"
+  - $ref: "./tags/decay.yaml"
+  - $ref: "./tags/confinement.yaml"
+  - $ref: "./tags/violence.yaml"
+  - $ref: "./tags/supernatural.yaml"
+
+  # Object categories
+  - $ref: "./tags/instrument.yaml"
+  - $ref: "./tags/clothing.yaml"
+  - $ref: "./tags/decoration.yaml"
+  - $ref: "./tags/weapon.yaml"
+
+  # Spatial markers
+  - $ref: "./tags/domestic.yaml"
+  - $ref: "./tags/family-space.yaml"
+  - $ref: "./tags/contested-space.yaml"
+
+types:
+  # Node types
+  - $ref: "./types/character.yaml"
+  - $ref: "./types/location.yaml"
+  - $ref: "./types/object.yaml"
+  - $ref: "./types/event.yaml"
+
+  # Edge types
+  - $ref: "./types/spatial.yaml"
+  - $ref: "./types/ownership.yaml"
+  - $ref: "./types/social.yaml"
+  - $ref: "./types/relationship.yaml"
+  - $ref: "./types/knowledge.yaml"
+
+  # Device types
+  - $ref: "./types/setup-payoff.yaml"
+  - $ref: "./types/chekhov-gun.yaml"
+
+  # Format types
+  - $ref: "./types/novel.yaml"
+
+  # Lens types
+  - $ref: "./types/simple.yaml"
+
+  # Thread types
+  - $ref: "./types/theme.yaml"
+  - $ref: "./types/motif.yaml"

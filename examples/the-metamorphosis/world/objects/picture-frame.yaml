@@ -10,4 +10,4 @@ description: >
 properties:
   name_variants: ["the picture", "the magazine clipping"]
   is_unique: true
-tags: [decoration, symbol, humanity]
+tags: [decoration, symbol, humanity, identity]

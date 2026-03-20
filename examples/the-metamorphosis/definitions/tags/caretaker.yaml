@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/tag.schema.json
+id: caretaker
+name: Caretaker
+description: "A character who assumes responsibility for another's wellbeing."
