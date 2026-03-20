@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: father-in-apple-attack
+type: PARTICIPATION
+name: perpetrates
+source: father
+target: apple-attack

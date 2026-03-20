@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: violin-recital-at-apartment
+type: OCCURRENCE
+name: occurs-at
+source: violin-recital
+target: apartment

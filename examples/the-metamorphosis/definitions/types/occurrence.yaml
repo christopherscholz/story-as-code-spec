@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
+id: OCCURRENCE
+name: Occurrence
+applies_to: EDGE
+description: "Where an event takes place (occurs-at, set-in)."
