@@ -1,6 +1,6 @@
 # The Metamorphosis
 
-A complete example project for the **Story as Code** specification (v0.4.0), based on Franz Kafka's novella.
+A complete example project for the **Story as Code** specification, based on Franz Kafka's novella.
 
 ## Synopsis
 
