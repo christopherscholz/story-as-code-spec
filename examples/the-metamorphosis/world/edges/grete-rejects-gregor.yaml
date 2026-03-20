@@ -8,6 +8,3 @@ scope:
   range:
     from: { type: time, item: "Month 3" }
     to: null
-weight: 0.9
-properties:
-  cause: exhaustion-and-disgust

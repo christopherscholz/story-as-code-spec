@@ -8,6 +8,3 @@ scope:
   range:
     from: null
     to: { type: time, item: "Month 3" }
-weight: 0.8
-properties:
-  motivation: guilt-and-duty

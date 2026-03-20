@@ -9,4 +9,3 @@ scope:
   range:
     from: { type: time, item: "Month 2" }
     to: null
-weight: 0.8

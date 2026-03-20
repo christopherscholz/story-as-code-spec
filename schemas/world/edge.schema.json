@@ -55,16 +55,6 @@
     "scope": {
       "$ref": "../common/expression.schema.json",
       "description": "Temporal scope of this edge. Omit for edges that always hold. Valid selectors: time_system, time, frame."
-    },
-    "properties": {
-      "type": "object",
-      "description": "Additional attributes as key-value pairs"
-    },
-    "weight": {
-      "type": "number",
-      "minimum": 0,
-      "maximum": 5,
-      "description": "Relationship strength"
     }
   },
   "examples": [
