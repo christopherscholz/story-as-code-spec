@@ -1,11 +1,11 @@
 ---
 hide:
   - toc
+  - edit
 ---
 
 # Interactive Story Graph
 
-Explore the world and narrative structure of a Story as Code example.
 Click any element to see its details and highlight related elements across all views.
 
 <div id="story-graph" data-src="../../assets/data/the-metamorphosis.story.json">
@@ -13,13 +13,11 @@ Click any element to see its details and highlight related elements across all v
   <div class="graph-section" data-view="world">
     <h2>World Graph</h2>
     <div class="section-content"></div>
-    <div class="section-detail"></div>
   </div>
 
   <div class="graph-section" data-view="narrative">
     <h2>Narrative Flow</h2>
     <div class="section-content"></div>
-    <div class="section-detail"></div>
   </div>
 
   <div class="graph-section" data-view="timeline">
@@ -41,6 +39,8 @@ Click any element to see its details and highlight related elements across all v
     <h2>Constraints</h2>
     <div class="section-content"></div>
   </div>
+
+  <div id="detail-panel"></div>
 
 </div>
 

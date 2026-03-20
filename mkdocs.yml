@@ -76,8 +76,9 @@ nav:
     - Derivation Meta: schemas/derivation-meta.md
   - Examples:
     - Overview: examples/index.md
-    - "The Metamorphosis": examples/generated/the-metamorphosis.md
-    - "Interactive Graph": examples/graph.md
+    - "The Metamorphosis":
+      - Overview: examples/generated/the-metamorphosis.md
+      - "Interactive Graph": examples/graph.md
   - Contributing: contributing.md
   - Code of Conduct: code-of-conduct.md
   - License: license.md
