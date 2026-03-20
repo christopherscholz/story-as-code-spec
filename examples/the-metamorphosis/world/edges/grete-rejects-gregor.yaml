@@ -4,8 +4,7 @@ type: RELATIONSHIP
 name: rejects
 source: grete
 target: gregor
-valid_in:
-  - from: "Month 3"
-weight: 0.9
-properties:
-  cause: exhaustion-and-disgust
+scope:
+  range:
+    from: { type: time, item: "Month 3" }
+    to: null

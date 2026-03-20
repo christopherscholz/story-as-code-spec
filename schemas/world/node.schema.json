@@ -42,7 +42,7 @@
     },
     "properties": {
       "type": "object",
-      "description": "Additional attributes as key-value pairs"
+      "description": "Infobox-style attributes — key facts that would appear in a wiki sidebar summary."
     },
     "tags": {
       "type": "array",
@@ -65,11 +65,10 @@
       "type": "CHARACTER",
       "description": "A young warrior chosen by prophecy to restore balance to the realm. Raised in obscurity, she discovers her lineage only after the fall of the capital, and must reconcile her quiet upbringing with the violent destiny thrust upon her.",
       "properties": {
-        "name_variants": [
-          "The Chosen One"
-        ],
+        "title": "The Chosen One",
         "age": 22,
-        "homeland": "The Northern Reach"
+        "homeland": "The Northern Reach",
+        "affiliation": "Order of the Silver Dawn"
       },
       "tags": [
         "protagonist"

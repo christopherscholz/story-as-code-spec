@@ -4,6 +4,3 @@ type: RELATIONSHIP
 name: hostile-toward
 source: father
 target: gregor
-weight: 0.6
-properties:
-  motivation: shame-and-authority

@@ -5,5 +5,7 @@ name: embedded-in
 source: apple
 target: gregor
 description: "The apple lodges in Gregor's back and rots in place, never removed"
-valid_in:
-  - from: "Month 1"
+scope:
+  range:
+    from: { type: time, item: "Month 1" }
+    to: null

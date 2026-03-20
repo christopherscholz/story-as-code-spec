@@ -5,7 +5,7 @@
   "required": [
     "id",
     "name",
-    "rule",
+    "description",
     "severity"
   ],
   "properties": {
@@ -15,18 +15,18 @@
     "name": {
       "type": "string"
     },
-    "rule": {
+    "description": {
       "type": "string",
       "description": "The rule to enforce, expressed in story-world terms"
     },
     "severity": {
       "type": "string",
       "enum": [
-        "ERROR",
+        "INFO",
         "WARNING",
-        "INFO"
+        "ERROR"
       ],
-      "description": "ERROR — must resolve. WARNING — flags issue. INFO — suggestion only."
+      "description": "INFO — suggestion only. WARNING — flags issue. ERROR — must resolve."
     },
     "scope": {
       "$ref": "../common/expression.schema.json",
@@ -37,27 +37,27 @@
     {
       "id": "no-isolated-characters",
       "name": "Every character knows at least one other character",
-      "rule": "Every character must have at least one relationship with another character.",
+      "description": "Every character must have at least one relationship with another character.",
       "severity": "WARNING",
       "scope": { "type": "node_type", "item": "CHARACTER" }
     },
     {
       "id": "magic-limit",
       "name": "Magic users can hold at most 3 spells",
-      "rule": "No person may hold more than three spells at any given time.",
+      "description": "No person may hold more than three spells at any given time.",
       "severity": "ERROR"
     },
     {
       "id": "no-undead-before-war",
       "name": "Undead cannot exist before the Great War",
-      "rule": "The undead do not exist in the world before the Great War.",
+      "description": "The undead do not exist in the world before the Great War.",
       "severity": "ERROR",
       "scope": {
         "and": [
           { "in": [{ "type": "node_type", "item": "CHARACTER" }, { "type": "node_type", "item": "CREATURE" }] },
           { "type": "tag", "item": "undead" },
           { "not": { "in": [{ "type": "frame", "item": "timeline-b" }] } },
-          { "range": [{ "type": "time", "item": "T00" }, { "type": "time", "item": "T50" }] }
+          { "range": { "from": { "type": "time", "item": "T00" }, "to": { "type": "time", "item": "T50" } } }
         ]
       }
     }

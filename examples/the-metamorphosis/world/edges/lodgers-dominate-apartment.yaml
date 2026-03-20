@@ -5,6 +5,7 @@ name: dominates
 source: lodgers
 target: living-room
 description: "The lodgers effectively take over the living room and dictate household standards"
-valid_in:
-  - from: "Month 2"
-weight: 0.8
+scope:
+  range:
+    from: { type: time, item: "Month 2" }
+    to: null

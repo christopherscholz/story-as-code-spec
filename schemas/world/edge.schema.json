@@ -52,36 +52,9 @@
       "default": true,
       "description": "Whether the edge is directed (source → target). Default true."
     },
-    "valid_in": {
-      "type": "array",
-      "description": "When and where this edge exists. Omit for edges that always hold.",
-      "items": {
-        "type": "object",
-        "properties": {
-          "frame": {
-            "type": "string",
-            "description": "Frame ID — omit for all frames"
-          },
-          "from": {
-            "type": "string",
-            "description": "Start of the time span — omit for unbounded start"
-          },
-          "to": {
-            "type": "string",
-            "description": "End of the time span — omit for unbounded end"
-          }
-        }
-      }
-    },
-    "properties": {
-      "type": "object",
-      "description": "Additional attributes as key-value pairs"
-    },
-    "weight": {
-      "type": "number",
-      "minimum": 0,
-      "maximum": 5,
-      "description": "Relationship strength"
+    "scope": {
+      "$ref": "../common/expression.schema.json",
+      "description": "Temporal scope of this edge. Omit for edges that always hold. Valid selectors: time_system, time, frame."
     }
   },
   "examples": [
@@ -99,12 +72,12 @@
       "name": "located-in",
       "source": "hero",
       "target": "dungeon",
-      "valid_in": [
-        {
-          "from": "T10",
-          "to": "T15"
+      "scope": {
+        "range": {
+          "from": { "type": "time", "item": "T10" },
+          "to": { "type": "time", "item": "T15" }
         }
-      ]
+      }
     },
     {
       "id": "hero-has-sword",
@@ -112,12 +85,17 @@
       "name": "possesses",
       "source": "hero",
       "target": "magic-sword",
-      "valid_in": [
-        {
-          "frame": "alt-timeline",
-          "from": "T5"
-        }
-      ]
+      "scope": {
+        "and": [
+          { "type": "frame", "item": "alt-timeline" },
+          {
+            "range": {
+              "from": { "type": "time", "item": "T5" },
+              "to": null
+            }
+          }
+        ]
+      }
     }
   ]
 }

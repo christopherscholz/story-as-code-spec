@@ -4,5 +4,7 @@ type: SPATIAL
 name: lodges-in
 source: lodgers
 target: apartment
-valid_in:
-  - from: "Month 2"
+scope:
+  range:
+    from: { type: time, item: "Month 2" }
+    to: null
