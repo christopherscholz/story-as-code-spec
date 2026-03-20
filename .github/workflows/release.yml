@@ -9,12 +9,13 @@ permissions:
   contents: write
 
 jobs:
-  tag:
+  check-version:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      tag: ${{ steps.version.outputs.tag }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Read version
         id: version
@@ -23,47 +24,45 @@ jobs:
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
 
-      - name: Skip if dev
-        if: steps.version.outputs.version == 'dev'
-        run: |
-          echo "VERSION is 'dev', skipping release."
-          exit 0
+  release:
+    needs: check-version
+    if: needs.check-version.outputs.version != 'dev'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Check if tag exists
         id: check
-        if: steps.version.outputs.version != 'dev'
         run: |
-          if git rev-parse "refs/tags/${{ steps.version.outputs.tag }}" >/dev/null 2>&1; then
+          if git rev-parse "refs/tags/${{ needs.check-version.outputs.tag }}" >/dev/null 2>&1; then
             echo "exists=true" >> "$GITHUB_OUTPUT"
           else
             echo "exists=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Create tag and release
-        if: steps.version.outputs.version != 'dev' && steps.check.outputs.exists == 'false'
+      - name: Create tag
+        if: steps.check.outputs.exists == 'false'
         run: |
-          TAG="${{ steps.version.outputs.tag }}"
-          VERSION="${{ steps.version.outputs.version }}"
-
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          git tag -a "$TAG" -m "Release $TAG"
-          git push origin "$TAG"
+          git tag -a "${{ needs.check-version.outputs.tag }}" -m "Release ${{ needs.check-version.outputs.tag }}"
+          git push origin "${{ needs.check-version.outputs.tag }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create GitHub Release
-        if: steps.version.outputs.version != 'dev' && steps.check.outputs.exists == 'false'
+        if: steps.check.outputs.exists == 'false'
         run: |
-          gh release create "${{ steps.version.outputs.tag }}" \
-            --title "v${{ steps.version.outputs.version }}" \
+          gh release create "${{ needs.check-version.outputs.tag }}" \
+            --title "v${{ needs.check-version.outputs.version }}" \
             --generate-notes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Trigger docs deployment for tag
-        if: steps.version.outputs.version != 'dev' && steps.check.outputs.exists == 'false'
-        run: gh workflow run deploy-pages.yml --ref "${{ steps.version.outputs.tag }}"
+        if: steps.check.outputs.exists == 'false'
+        run: gh workflow run deploy-pages.yml --ref "${{ needs.check-version.outputs.tag }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
