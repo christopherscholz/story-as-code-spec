@@ -10,10 +10,11 @@
   "properties": {
     "spec_version": {
       "type": "string",
-      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "pattern": "^(\\d+\\.\\d+\\.\\d+|dev)$",
       "description": "Spec version this story conforms to",
       "examples": [
-        "0.5.0"
+        "dev",
+        "1.0.0"
       ]
     },
     "name": {
@@ -68,7 +69,7 @@
   },
   "examples": [
     {
-      "spec_version": "0.5.0",
+      "spec_version": "dev",
       "name": "My Story",
       "definitions": {
         "tags": [

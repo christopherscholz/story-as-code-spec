@@ -40,7 +40,7 @@ jobs:
 
           for example in examples/*/story.yaml; do
             name=$(echo "$example" | cut -d/ -f2)
-            actual=$(grep -oP 'spec_version:\s*"?\K[0-9]+\.[0-9]+\.[0-9]+' "$example" || true)
+            actual=$(grep -oP 'spec_version:\s*"?\K[0-9]+\.[0-9]+\.[0-9]+|dev' "$example" || true)
 
             if [ "$actual" != "$VERSION" ]; then
               echo "✗ $name: spec_version is '$actual', expected '$VERSION'"
