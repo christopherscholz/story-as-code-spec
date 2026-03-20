@@ -55,7 +55,12 @@
       "properties": {
         "range": {
           "type": "array",
-          "items": { "$ref": "selector.schema.json" },
+          "items": {
+            "oneOf": [
+              { "$ref": "selector.schema.json" },
+              { "type": "null" }
+            ]
+          },
           "minItems": 2,
           "maxItems": 2
         }

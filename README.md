@@ -59,9 +59,12 @@ edges:
     subtype: INITIATES
     source: hero
     target: quest_start
-    valid_in:
-      - frame: main
-        from: T1
+    scope:
+      and:
+        - { type: frame, item: main }
+        - range:
+            - { type: time, item: T1 }
+            - null
 
 frames:
   - id: main

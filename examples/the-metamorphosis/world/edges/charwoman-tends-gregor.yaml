@@ -5,5 +5,7 @@ name: tends-to
 source: charwoman
 target: gregor
 description: "The charwoman handles Gregor without fear or sentiment, calling him 'old dung beetle'"
-valid_in:
-  - from: "Month 3"
+scope:
+  range:
+    - { type: time, item: "Month 3" }
+    - null

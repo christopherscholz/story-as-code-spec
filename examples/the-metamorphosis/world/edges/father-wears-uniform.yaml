@@ -5,5 +5,7 @@ name: identified-with
 source: father
 target: fathers-uniform
 description: "Father sleeps in his uniform and refuses to take it off — the uniform becomes his new identity"
-valid_in:
-  - from: "Month 1"
+scope:
+  range:
+    - { type: time, item: "Month 1" }
+    - null

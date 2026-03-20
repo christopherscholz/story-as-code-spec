@@ -4,8 +4,10 @@ type: RELATIONSHIP
 name: caretakes
 source: grete
 target: gregor
-valid_in:
-  - to: "Month 3"
+scope:
+  range:
+    - null
+    - { type: time, item: "Month 3" }
 weight: 0.8
 properties:
   motivation: guilt-and-duty
