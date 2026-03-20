@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schemas/narrative/beat.schema.json
+id: main-storyline
+name: "Back to the Future"
+description: "A teenager is sent to 1955, must reunite his future parents, and find a way home."

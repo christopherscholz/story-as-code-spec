@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/tag.schema.json
+id: mentor
+name: Mentor
+description: "A guide or teacher figure for the protagonist."

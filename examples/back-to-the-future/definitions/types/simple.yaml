@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
+id: SIMPLE
+name: Simple Lens
+applies_to: LENS
+description: "A single, non-composite narrative perspective."

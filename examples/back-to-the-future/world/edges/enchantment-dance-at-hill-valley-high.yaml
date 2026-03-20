@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: enchantment-dance-at-hill-valley-high
+type: OCCURRENCE
+name: occurs-at
+source: enchantment-dance
+target: hill-valley-high

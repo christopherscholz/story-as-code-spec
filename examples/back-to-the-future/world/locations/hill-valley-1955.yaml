@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../../schemas/world/node.schema.json
+id: hill-valley-1955
+name: "Hill Valley (1955)"
+type: LOCATION
+description: >
+  Hill Valley thirty years earlier — a thriving small town with a pristine town square,
+  a functioning courthouse clock, and a soda fountain where teenagers gather. Everything
+  Marty knows looks different, yet recognisably the same.
+tags: [public-space]

@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
+id: THEME
+name: Theme
+applies_to: THREAD
+description: "An abstract idea that recurs across the narrative."

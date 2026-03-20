@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=../../../../schemas/world/node.schema.json
+id: jennifer
+name: "Jennifer Parker"
+type: CHARACTER
+description: >
+  Marty's girlfriend. She appears briefly in 1985 before the time-travel journey begins,
+  serving as Marty's emotional anchor and his reason to return.
+properties:
+  name_variants: ["Jennifer"]
+tags: [love-interest]

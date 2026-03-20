@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/tag.schema.json
+id: protagonist
+name: Protagonist
+description: "The central character driving the story."

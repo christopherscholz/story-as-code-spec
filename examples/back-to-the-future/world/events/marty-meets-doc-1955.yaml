@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=../../../../schemas/world/node.schema.json
+id: marty-meets-doc-1955
+name: "Marty Meets Doc (1955)"
+type: EVENT
+description: >
+  Marty finds the 1955 Doc Brown and proves he is from the future by describing the flux
+  capacitor. Doc is astonished but agrees to help Marty get home — if they can find
+  1.21 gigawatts of power.
+properties:
+  participants: [marty, doc-brown]
+  location: docs-lab
+tags: [time-travel]

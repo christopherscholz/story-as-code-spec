@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: lorraine-in-marty-hit-by-car
+type: PARTICIPATION
+name: nurses-after
+source: lorraine
+target: marty-hit-by-car

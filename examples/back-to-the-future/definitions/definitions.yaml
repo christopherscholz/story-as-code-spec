@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=../../../schemas/definitions/definitions.schema.json
+tags:
+  - $ref: "./tags/protagonist.yaml"
+  - $ref: "./tags/antagonist.yaml"
+  - $ref: "./tags/mentor.yaml"
+  - $ref: "./tags/family.yaml"
+  - $ref: "./tags/time-travel.yaml"
+  - $ref: "./tags/sci-fi.yaml"
+  - $ref: "./tags/teenager.yaml"
+  - $ref: "./tags/scientist.yaml"
+  - $ref: "./tags/bully.yaml"
+  - $ref: "./tags/love-interest.yaml"
+  - $ref: "./tags/iconic.yaml"
+  - $ref: "./tags/vehicle.yaml"
+  - $ref: "./tags/public-space.yaml"
+  - $ref: "./tags/private-space.yaml"
+  - $ref: "./tags/school.yaml"
+
+types:
+  # Node types
+  - $ref: "./types/character.yaml"
+  - $ref: "./types/location.yaml"
+  - $ref: "./types/object.yaml"
+  - $ref: "./types/event.yaml"
+
+  # Edge types
+  - $ref: "./types/spatial.yaml"
+  - $ref: "./types/relationship.yaml"
+  - $ref: "./types/kinship.yaml"
+  - $ref: "./types/conflict.yaml"
+  - $ref: "./types/ownership.yaml"
+  - $ref: "./types/participation.yaml"
+  - $ref: "./types/occurrence.yaml"
+
+  # Device types
+  - $ref: "./types/setup-payoff.yaml"
+  - $ref: "./types/chekhov-gun.yaml"
+  - $ref: "./types/dramatic-irony.yaml"
+
+  # Format types
+  - $ref: "./types/novel.yaml"
+
+  # Lens types
+  - $ref: "./types/simple.yaml"
+
+  # Thread types
+  - $ref: "./types/theme.yaml"
+  - $ref: "./types/motif.yaml"

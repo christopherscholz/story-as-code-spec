@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/tag.schema.json
+id: love-interest
+name: Love Interest
+description: "A character who is the object of romantic attention."

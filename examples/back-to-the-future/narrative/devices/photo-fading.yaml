@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../../schemas/narrative/device.schema.json
+id: photo-fading
+type: CHEKHOV_GUN
+description: "The family photo fades as Marty's existence is threatened, then restores when George and Lorraine kiss — a visual countdown for the paradox."
+setup:
+  - stranded-in-1955
+payoff:
+  - the-dance

@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
+id: DRAMATIC_IRONY
+name: Dramatic Irony
+applies_to: DEVICE
+description: "The audience knows something the characters do not."

@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=../../../../schemas/world/node.schema.json
+id: arrival-1955
+name: "Arrival in 1955"
+type: EVENT
+description: >
+  Marty materialises in 1955, crashing through Farmer Peabody's barn and destroying one
+  of the twin pines. The DeLorean is out of plutonium — he is stranded thirty years in
+  the past.
+properties:
+  participants: [marty]
+  location: hill-valley-1955
+tags: [time-travel]

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../../schemas/world/node.schema.json
+id: guitar
+name: "Guitar"
+type: OBJECT
+description: >
+  Marty's instrument. He plays a blistering rendition of 'Johnny B. Goode' at the
+  Enchantment Under the Sea dance, inadvertently inventing rock and roll before
+  its time — a temporal paradox played for comedy.
+tags: [iconic]

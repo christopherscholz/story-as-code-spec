@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=../../../../schemas/world/node.schema.json
+id: marty
+name: "Marty McFly"
+type: CHARACTER
+description: >
+  A seventeen-year-old high school student and aspiring rock guitarist. Marty is likeable,
+  impulsive, and insecure about being called a coward. When he is accidentally sent to 1955
+  in Doc Brown's time machine, he must navigate his parents' adolescence, ensure they fall
+  in love at the Enchantment Under the Sea dance, and find a way back to 1985 before he
+  is erased from existence.
+properties:
+  age: 17
+  name_variants: ["Marty", "Calvin Klein"]
+tags: [protagonist, teenager]

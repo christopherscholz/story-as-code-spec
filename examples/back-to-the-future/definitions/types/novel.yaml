@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
+id: SCREENPLAY
+name: Screenplay
+applies_to: FORMAT
+description: "A film script structured in acts and scenes."

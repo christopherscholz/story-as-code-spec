@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=../../../../schemas/narrative/format.schema.json
+id: screenplay
+name: "Feature Film Screenplay"
+type: SCREENPLAY
+structure:
+  type: film
+  constraints:
+    count: 1
+    target_runtime: "116 minutes"
+  children:
+    type: act
+    constraints:
+      count: 3
+    children:
+      type: sequence
+      constraints:
+        count: "2-4"
+      children:
+        type: scene
+        constraints:
+          target_runtime: "2-5 minutes"
+
+settings:
+  pacing:
+    act:
+      tension_shape: THREE_ACT
+    sequence:
+      tension_shape: MINI_ARC
+      end_hook: USUALLY

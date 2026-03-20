@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../../schemas/world/node.schema.json
+id: hill-valley-high
+name: "Hill Valley High School"
+type: LOCATION
+description: >
+  The high school attended by both Marty (1985) and his parents (1955). The gym hosts
+  the Enchantment Under the Sea dance where George and Lorraine must kiss.
+tags: [school, public-space]

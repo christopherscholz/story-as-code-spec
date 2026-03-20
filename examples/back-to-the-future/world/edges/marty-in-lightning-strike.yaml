@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: marty-in-lightning-strike
+type: PARTICIPATION
+name: drives-during
+source: marty
+target: lightning-strike

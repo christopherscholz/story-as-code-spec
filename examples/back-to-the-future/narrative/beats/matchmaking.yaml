@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=../../../../schemas/narrative/beat.schema.json
+id: matchmaking
+name: "Matchmaking"
+description: "Marty tries to get George to ask Lorraine to the dance. Biff interferes. The skateboard chase humiliates Biff and makes George curious."
+parent: main-storyline
+order: 5
+node_ids: [marty, george, lorraine, biff, hill-valley-1955, skateboard-chase]
+edge_ids: [biff-bullies-george, biff-pursues-lorraine, marty-in-skateboard-chase, biff-in-skateboard-chase]
+function: RISING_ACTION
+tension: 0.5
+emotional_target: -0.2
+transition:
+  type: CONTINUATION

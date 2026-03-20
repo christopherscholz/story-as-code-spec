@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: high-school-in-hill-valley
+type: SPATIAL
+name: part-of
+source: hill-valley-high
+target: hill-valley-1955

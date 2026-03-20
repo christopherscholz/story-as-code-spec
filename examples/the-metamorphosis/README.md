@@ -1,6 +1,6 @@
 # The Metamorphosis
 
-A complete example project for the **Story as Code** specification, based on Franz Kafka's novella.
+A complete example project for the **Story as Code** specification, based on Franz Kafka's 1915 novella *Die Verwandlung* (*The Metamorphosis*). All story elements and characters originate from Kafka's work. This example is provided solely to demonstrate the spec.
 
 ## Synopsis
 

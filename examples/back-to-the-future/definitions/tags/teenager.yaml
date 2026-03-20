@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/tag.schema.json
+id: teenager
+name: Teenager
+description: "A young person navigating adolescence."

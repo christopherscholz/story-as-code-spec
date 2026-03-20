@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=../../../../schemas/world/node.schema.json
+id: biff
+name: "Biff Tannen"
+type: CHARACTER
+description: >
+  The story's antagonist across both timelines. In 1985, he is George McFly's supervisor
+  and still bullies him decades after high school. In 1955, he is the thuggish school bully
+  who terrorises George and pursues Lorraine aggressively. His defeat at the dance — when
+  George punches him unconscious — reshapes the power dynamic for the next thirty years.
+properties:
+  name_variants: ["Biff", "Tannen"]
+tags: [antagonist, bully]

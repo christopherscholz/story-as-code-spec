@@ -78,7 +78,10 @@ nav:
     - Overview: examples/index.md
     - "The Metamorphosis":
       - Overview: examples/generated/the-metamorphosis.md
-      - "Interactive Graph": examples/graph.md
+      - "Interactive Graph": examples/the-metamorphosis-graph.md
+    - "Back to the Future":
+      - Overview: examples/generated/back-to-the-future.md
+      - "Interactive Graph": examples/back-to-the-future-graph.md
   - Contributing: contributing.md
   - Code of Conduct: code-of-conduct.md
   - License: license.md

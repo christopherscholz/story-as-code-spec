@@ -1,0 +1,140 @@
+# yaml-language-server: $schema=../../../schemas/world/world.schema.json
+time_system:
+  id: earth-calendar
+  name: "Earth Calendar"
+  type: LINEAR
+
+nodes:
+  # Characters
+  - $ref: "./characters/marty.yaml"
+  - $ref: "./characters/doc-brown.yaml"
+  - $ref: "./characters/george.yaml"
+  - $ref: "./characters/lorraine.yaml"
+  - $ref: "./characters/biff.yaml"
+  - $ref: "./characters/jennifer.yaml"
+
+  # Locations
+  - $ref: "./locations/hill-valley-1985.yaml"
+  - $ref: "./locations/hill-valley-1955.yaml"
+  - $ref: "./locations/twin-pines-mall.yaml"
+  - $ref: "./locations/docs-lab.yaml"
+  - $ref: "./locations/hill-valley-high.yaml"
+  - $ref: "./locations/clock-tower.yaml"
+
+  # Objects
+  - $ref: "./objects/delorean.yaml"
+  - $ref: "./objects/flux-capacitor.yaml"
+  - $ref: "./objects/photo.yaml"
+  - $ref: "./objects/clock-tower-flyer.yaml"
+  - $ref: "./objects/guitar.yaml"
+
+  # Events
+  - $ref: "./events/time-machine-test.yaml"
+  - $ref: "./events/libyan-attack.yaml"
+  - $ref: "./events/arrival-1955.yaml"
+  - $ref: "./events/marty-hit-by-car.yaml"
+  - $ref: "./events/marty-meets-doc-1955.yaml"
+  - $ref: "./events/skateboard-chase.yaml"
+  - $ref: "./events/enchantment-dance.yaml"
+  - $ref: "./events/george-punches-biff.yaml"
+  - $ref: "./events/lightning-strike.yaml"
+  - $ref: "./events/return-to-1985.yaml"
+
+edges:
+  # Kinship
+  - $ref: "./edges/marty-son-of-george.yaml"
+  - $ref: "./edges/marty-son-of-lorraine.yaml"
+  - $ref: "./edges/george-married-to-lorraine.yaml"
+
+  # Relationships
+  - $ref: "./edges/marty-friends-with-doc.yaml"
+  - $ref: "./edges/marty-dating-jennifer.yaml"
+  - $ref: "./edges/lorraine-infatuated-with-marty.yaml"
+  - $ref: "./edges/george-rescues-lorraine.yaml"
+
+  # Conflict
+  - $ref: "./edges/biff-bullies-george.yaml"
+  - $ref: "./edges/biff-pursues-lorraine.yaml"
+
+  # Ownership
+  - $ref: "./edges/doc-owns-delorean.yaml"
+  - $ref: "./edges/doc-invented-flux.yaml"
+
+  # Spatial
+  - $ref: "./edges/flux-in-delorean.yaml"
+  - $ref: "./edges/clock-tower-in-hill-valley.yaml"
+  - $ref: "./edges/high-school-in-hill-valley.yaml"
+  - $ref: "./edges/docs-lab-in-hill-valley.yaml"
+  - $ref: "./edges/mall-in-hill-valley.yaml"
+
+  # Participation
+  - $ref: "./edges/marty-in-time-machine-test.yaml"
+  - $ref: "./edges/doc-brown-in-time-machine-test.yaml"
+  - $ref: "./edges/marty-in-libyan-attack.yaml"
+  - $ref: "./edges/doc-brown-in-libyan-attack.yaml"
+  - $ref: "./edges/marty-in-arrival-1955.yaml"
+  - $ref: "./edges/marty-in-marty-hit-by-car.yaml"
+  - $ref: "./edges/lorraine-in-marty-hit-by-car.yaml"
+  - $ref: "./edges/marty-in-marty-meets-doc-1955.yaml"
+  - $ref: "./edges/doc-brown-in-marty-meets-doc-1955.yaml"
+  - $ref: "./edges/marty-in-skateboard-chase.yaml"
+  - $ref: "./edges/biff-in-skateboard-chase.yaml"
+  - $ref: "./edges/marty-in-enchantment-dance.yaml"
+  - $ref: "./edges/george-in-enchantment-dance.yaml"
+  - $ref: "./edges/lorraine-in-enchantment-dance.yaml"
+  - $ref: "./edges/biff-in-enchantment-dance.yaml"
+  - $ref: "./edges/george-in-george-punches-biff.yaml"
+  - $ref: "./edges/biff-in-george-punches-biff.yaml"
+  - $ref: "./edges/lorraine-in-george-punches-biff.yaml"
+  - $ref: "./edges/marty-in-lightning-strike.yaml"
+  - $ref: "./edges/doc-brown-in-lightning-strike.yaml"
+  - $ref: "./edges/marty-in-return-to-1985.yaml"
+  - $ref: "./edges/doc-brown-in-return-to-1985.yaml"
+
+  # Occurrence
+  - $ref: "./edges/time-machine-test-at-twin-pines-mall.yaml"
+  - $ref: "./edges/libyan-attack-at-twin-pines-mall.yaml"
+  - $ref: "./edges/arrival-1955-at-hill-valley-1955.yaml"
+  - $ref: "./edges/marty-hit-by-car-at-hill-valley-1955.yaml"
+  - $ref: "./edges/marty-meets-doc-1955-at-docs-lab.yaml"
+  - $ref: "./edges/skateboard-chase-at-hill-valley-1955.yaml"
+  - $ref: "./edges/enchantment-dance-at-hill-valley-high.yaml"
+  - $ref: "./edges/george-punches-biff-at-hill-valley-high.yaml"
+  - $ref: "./edges/lightning-strike-at-clock-tower.yaml"
+  - $ref: "./edges/return-to-1985-at-twin-pines-mall.yaml"
+
+frames:
+  - id: original-1985
+    name: "Original 1985"
+    description: "The timeline Marty leaves — George is a pushover, Biff is his boss, the family is unhappy."
+
+  - id: 1955-timeline
+    name: "1955 Adventure"
+    parent: original-1985
+    branches_at: "1985-10-26"
+    description: "Marty's time in 1955, where his actions alter the course of his parents' lives."
+    relations:
+      - target: original-1985
+        type: BRANCHES_INTO
+        at: "1985-10-26"
+
+  - id: improved-1985
+    name: "Improved 1985"
+    parent: 1955-timeline
+    branches_at: "1955-11-12"
+    description: "The new timeline Marty returns to — George is a confident author, Lorraine is happy, Biff waxes their car."
+    relations:
+      - target: 1955-timeline
+        type: BRANCHES_INTO
+        at: "1955-11-12"
+
+constraints:
+  - id: paradox-prevention
+    name: "Marty must ensure his parents meet"
+    description: >
+      If George and Lorraine do not fall in love, Marty and his siblings will never be born.
+      The fading family photo visualises this constraint.
+    severity: ERROR
+    scope:
+      type: node
+      item: marty

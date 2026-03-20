@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/tag.schema.json
+id: iconic
+name: Iconic
+description: "An element that is culturally emblematic of the story."

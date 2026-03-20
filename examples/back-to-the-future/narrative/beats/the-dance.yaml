@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=../../../../schemas/narrative/beat.schema.json
+id: the-dance
+name: "Enchantment Under the Sea"
+description: "The dance. Biff assaults Lorraine. George punches Biff. George and Lorraine kiss. The photo restores. Marty plays Johnny B. Goode."
+parent: main-storyline
+order: 6
+node_ids: [marty, george, lorraine, biff, guitar, hill-valley-high, enchantment-dance, george-punches-biff, photo]
+edge_ids: [george-rescues-lorraine, marty-in-enchantment-dance, george-in-enchantment-dance, lorraine-in-enchantment-dance, biff-in-enchantment-dance, george-in-george-punches-biff, biff-in-george-punches-biff]
+function: CLIMAX
+tension: 0.9
+emotional_target: 0.5
+reveals:
+  - target: george-punches-biff
+    degree: FULL
+  - target: photo
+    degree: FULL
+transition:
+  type: CUT

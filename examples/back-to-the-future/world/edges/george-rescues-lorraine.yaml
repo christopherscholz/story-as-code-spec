@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
+id: george-rescues-lorraine
+type: RELATIONSHIP
+name: rescues
+source: george
+target: lorraine
+scope:
+  type: time
+  item: "1955-11-12"

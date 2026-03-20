@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=../../../../schemas/narrative/thread.schema.json
+id: clock-motif
+type: MOTIF
+name: "Clocks and Time"
+description: >
+  Clocks appear throughout the film as markers of time's passage and manipulation.
+  Doc's lab is filled with clocks, the broken clock tower defines Hill Valley,
+  and the climax literally races against the clock.
+
+appearances:
+  - beat_id: setup-1985
+    description: "Doc's lab is full of synchronised clocks — time as obsession"
+  - beat_id: the-plan
+    description: "The clock tower flyer reveals the exact moment of the lightning strike"
+  - beat_id: the-dance
+    description: "Marty races against the clock to get to the wire in time"
+  - beat_id: the-return
+    description: "The clock tower cable, the countdown, Doc's watch — every second matters"

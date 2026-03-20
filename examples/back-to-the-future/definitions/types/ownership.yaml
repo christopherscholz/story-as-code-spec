@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
+id: OWNERSHIP
+name: Ownership
+applies_to: EDGE
+description: "A possession or creation relationship."
