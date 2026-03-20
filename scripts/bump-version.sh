@@ -14,8 +14,8 @@ fi
 
 VERSION=$(tr -d '[:space:]' < VERSION)
 
-if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-  echo "Error: VERSION '$VERSION' is not valid semver" >&2
+if ! [[ "$VERSION" =~ ^([0-9]+\.[0-9]+\.[0-9]+|dev)$ ]]; then
+  echo "Error: VERSION '$VERSION' is not valid (expected semver or 'dev')" >&2
   exit 1
 fi
 
