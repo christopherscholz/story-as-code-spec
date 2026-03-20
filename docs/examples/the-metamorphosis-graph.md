@@ -16,14 +16,14 @@ Click any element to see its details and highlight related elements across all v
       <div class="section-content"></div>
     </div>
 
-    <div class="graph-section" data-view="timeline">
-      <h2>Timeline &amp; Frames</h2>
+    <div class="graph-section" data-view="narrative">
+      <h2>Narrative Flow</h2>
       <div class="section-content"></div>
     </div>
   </div>
 
-  <div class="graph-section graph-full" data-view="narrative">
-    <h2>Narrative Flow</h2>
+  <div class="graph-section graph-full" data-view="timeline">
+    <h2>Timeline &amp; Frames</h2>
     <div class="section-content"></div>
   </div>
 
