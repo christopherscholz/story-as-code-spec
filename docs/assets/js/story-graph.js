@@ -185,12 +185,12 @@
     nodes.forEach(n => { (typeGroups[n.type] = typeGroups[n.type] || []).push(n); });
     const typeKeys = Object.keys(typeGroups);
     const initPos = {};
-    const R = 500; // radius of type group ring
+    const R = 800; // radius of type group ring
     typeKeys.forEach((type, ti) => {
       const angle = (2 * Math.PI * ti) / typeKeys.length - Math.PI / 2;
       const cx = R * Math.cos(angle), cy = R * Math.sin(angle);
       const group = typeGroups[type];
-      const spread = 60 + group.length * 30;
+      const spread = 100 + group.length * 40;
       group.forEach((n, ni) => {
         const ga = (2 * Math.PI * ni) / group.length;
         initPos[n.id] = { x: cx + spread * Math.cos(ga), y: cy + spread * Math.sin(ga) };
@@ -213,7 +213,9 @@
     nodeTypes.forEach(type => styles.push({ selector: 'node.' + type, style: { 'background-color': c(type) }}));
     edgeTypes.forEach(type => styles.push({ selector: 'edge.' + type, style: { 'line-color': c(type), 'target-arrow-color': c(type) }}));
 
-    cy = cytoscape({ container: cyDiv, elements, style: styles, layout: { name: 'cose', animate: false, randomize: false, nodeRepulsion: () => 200000, idealEdgeLength: () => 350, nodeOverlap: 50, gravity: 0.05, numIter: 500, padding: 80 }, minZoom: 0.1, maxZoom: 3 });
+    cy = cytoscape({ container: cyDiv, elements, style: styles, layout: { name: 'preset' }, minZoom: 0.1, maxZoom: 3 });
+    // run cose from preset positions with very low gravity to gently refine
+    cy.layout({ name: 'cose', animate: false, randomize: false, nodeRepulsion: () => 800000, idealEdgeLength: () => 500, nodeOverlap: 80, gravity: 0.01, gravityRange: 1.0, numIter: 200, padding: 80, fit: true }).run();
 
     cy.on('tap', 'node', e => select({ kind: 'node', id: e.target.id() }));
     cy.on('tap', 'edge', e => select({ kind: 'edge', id: e.target.id() }));
