@@ -87,6 +87,7 @@ extra_javascript:
   - assets/js/story-graph.js
 
 extra_css:
+  - assets/css/custom.css
   - assets/css/story-graph.css
 
 extra:

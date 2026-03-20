@@ -175,22 +175,17 @@
     cyDiv.className = 'cy-container';
     container.appendChild(cyDiv);
 
-    const legend = document.createElement('div');
-    legend.className = 'graph-legend';
-    legend.innerHTML = nodeTypes.map(t => `<span class="legend-item"><span class="legend-dot" style="background:${c(t)}"></span>${t}</span>`).join('');
-    container.appendChild(legend);
-
     // deterministic initial positions: group by type in a wide circle
     const typeGroups = {};
     nodes.forEach(n => { (typeGroups[n.type] = typeGroups[n.type] || []).push(n); });
     const typeKeys = Object.keys(typeGroups);
     const initPos = {};
-    const R = 800; // radius of type group ring
+    const R = 240; // radius of type group ring
     typeKeys.forEach((type, ti) => {
       const angle = (2 * Math.PI * ti) / typeKeys.length - Math.PI / 2;
       const cx = R * Math.cos(angle), cy = R * Math.sin(angle);
       const group = typeGroups[type];
-      const spread = 100 + group.length * 40;
+      const spread = 40 + group.length * 16;
       group.forEach((n, ni) => {
         const ga = (2 * Math.PI * ni) / group.length;
         initPos[n.id] = { x: cx + spread * Math.cos(ga), y: cy + spread * Math.sin(ga) };
@@ -203,8 +198,8 @@
 
     const dk = isDark(), bg = dk ? '#1e1e1e' : '#fafafa', textCol = dk ? '#ccc' : '#444';
     const styles = [
-      { selector: 'node', style: { 'label': 'data(label)', 'font-size': 9, 'color': textCol, 'text-valign': 'bottom', 'text-margin-y': 4, 'width': 28, 'height': 28, 'border-width': 1.5, 'border-color': '#555', 'text-wrap': 'ellipsis', 'text-max-width': 80, 'shape': 'ellipse' }},
-      { selector: 'edge', style: { 'width': 1.5, 'curve-style': 'bezier', 'target-arrow-shape': 'triangle', 'target-arrow-color': '#999', 'line-color': '#999', 'font-size': 7, 'label': 'data(label)', 'text-rotation': 'autorotate', 'color': textCol, 'text-background-color': bg, 'text-background-opacity': 0.8, 'text-background-padding': '1px' }},
+      { selector: 'node', style: { 'label': 'data(label)', 'font-size': 10, 'color': textCol, 'text-valign': 'bottom', 'text-margin-y': 5, 'width': 34, 'height': 34, 'border-width': 2, 'border-color': dk ? '#666' : '#ccc', 'text-wrap': 'ellipsis', 'text-max-width': 90, 'shape': 'ellipse' }},
+      { selector: 'edge', style: { 'width': 1.5, 'curve-style': 'bezier', 'target-arrow-shape': 'triangle', 'target-arrow-color': '#bbb', 'line-color': '#bbb', 'opacity': 0.6 }},
       { selector: 'edge[?hasScope]', style: { 'line-style': 'dashed', 'line-dash-pattern': [5, 3] }},
       { selector: '.dimmed', style: { 'opacity': 0.12 }},
       { selector: '.highlighted', style: { 'opacity': 1 }},
@@ -213,9 +208,7 @@
     nodeTypes.forEach(type => styles.push({ selector: 'node.' + type, style: { 'background-color': c(type) }}));
     edgeTypes.forEach(type => styles.push({ selector: 'edge.' + type, style: { 'line-color': c(type), 'target-arrow-color': c(type) }}));
 
-    cy = cytoscape({ container: cyDiv, elements, style: styles, layout: { name: 'preset' }, minZoom: 0.1, maxZoom: 3 });
-    // run cose from preset positions with very low gravity to gently refine
-    cy.layout({ name: 'cose', animate: false, randomize: false, nodeRepulsion: () => 800000, idealEdgeLength: () => 500, nodeOverlap: 80, gravity: 0.01, gravityRange: 1.0, numIter: 200, padding: 80, fit: true }).run();
+    cy = cytoscape({ container: cyDiv, elements, style: styles, layout: { name: 'preset', fit: true, padding: 40 }, minZoom: 0.1, maxZoom: 3 });
 
     cy.on('tap', 'node', e => select({ kind: 'node', id: e.target.id() }));
     cy.on('tap', 'edge', e => select({ kind: 'edge', id: e.target.id() }));

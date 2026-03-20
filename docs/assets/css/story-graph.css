@@ -1,13 +1,22 @@
-/* ── full-width layout override for graph page ─────────────────── */
-.md-content__inner { max-width: none !important; }
-
 /* ── sections ──────────────────────────────────────────────────── */
 #story-graph { margin: 0.5rem 0; }
 
-.graph-section { margin-bottom: 2rem; }
+.graph-section { margin-bottom: 1.5rem; }
 .graph-section h2 {
   font-size: 0.95rem; margin: 0 0 8px; padding-bottom: 4px;
   border-bottom: 1.5px solid var(--md-default-fg-color--lightest, #e0e0e0);
+}
+
+/* row layouts for sections side by side */
+.graph-row {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.graph-row-2 { grid-template-columns: 1fr 1fr; }
+.graph-row:not(.graph-row-2) { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 1000px) {
+  .graph-row, .graph-row-2 { grid-template-columns: 1fr; }
 }
 
 .empty-msg { color: var(--md-default-fg-color--light, #999); font-style: italic; padding: 1.5rem; text-align: center; font-size: 0.8rem; }
@@ -30,7 +39,7 @@
 
 /* ── world graph ───────────────────────────────────────────────── */
 .cy-container {
-  width: 100%; height: 55vh; min-height: 350px; border-radius: 6px;
+  width: 100%; height: 500px; border-radius: 6px;
   border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
   background: var(--md-default-bg-color, #fafafa);
 }
@@ -78,10 +87,11 @@
 
 /* ── narrative flow ────────────────────────────────────────────── */
 .narrative-scroll, .timeline-scroll {
-  overflow-x: auto; overflow-y: hidden; border-radius: 6px;
+  overflow-x: auto; overflow-y: auto; border-radius: 6px;
   border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
   background: var(--md-default-bg-color, #fafafa); padding: 10px 0;
 }
+.timeline-scroll { max-height: 500px; }
 [data-md-color-scheme="slate"] .narrative-scroll,
 [data-md-color-scheme="slate"] .timeline-scroll { background: #1e1e1e; border-color: #333; }
 
@@ -99,7 +109,7 @@
 .beat-card.greyed, .device-arc.greyed, .thread-dot.greyed, .scope-bar.greyed { pointer-events: auto; }
 
 /* ── lens cards ────────────────────────────────────────────────── */
-.lens-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 10px; }
+.lens-grid { display: flex; flex-direction: column; gap: 10px; }
 .lens-card {
   padding: 12px; border-radius: 6px; border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
   background: var(--md-default-bg-color, #fff); cursor: pointer; transition: opacity 0.15s, border-color 0.15s;
@@ -151,5 +161,4 @@ h4.severity-info { color: #42A5F5; font-size: 0.8rem; }
 /* ── responsive ────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .cy-container { height: 45vh; min-height: 250px; }
-  .lens-grid { grid-template-columns: 1fr; }
 }
