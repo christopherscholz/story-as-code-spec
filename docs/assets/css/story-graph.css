@@ -129,8 +129,6 @@
 .lens-flag { padding: 0 4px; border-radius: 4px; background: #EDE7F6; font-size: 0.62rem; color: #673AB7; }
 [data-md-color-scheme="slate"] .lens-flag { background: #311B92; color: #B39DDB; }
 .lens-distort { font-weight: 600; }
-.lens-distort.positive { color: #66BB6A; }
-.lens-distort.negative { color: #EF5350; }
 
 /* ── format cards ──────────────────────────────────────────────── */
 .format-card {
@@ -154,15 +152,9 @@
   padding: 8px 12px; border-radius: 6px; border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
   background: var(--md-default-bg-color, #fff); margin-bottom: 6px; border-left: 3px solid;
 }
-.constraint-card.severity-error { border-left-color: #EF5350; }
-.constraint-card.severity-warning { border-left-color: #FFB300; }
-.constraint-card.severity-info { border-left-color: #42A5F5; }
 [data-md-color-scheme="slate"] .constraint-card { background: #252525; border-color: #333; }
 .constraint-card strong { font-size: 0.8rem; }
 .constraint-card p { font-size: 0.73rem; margin: 2px 0; color: var(--md-default-fg-color--light, #666); }
-h4.severity-error { color: #EF5350; font-size: 0.8rem; }
-h4.severity-warning { color: #FFB300; font-size: 0.8rem; }
-h4.severity-info { color: #42A5F5; font-size: 0.8rem; }
 
 /* ── responsive ────────────────────────────────────────────────── */
 @media (max-width: 768px) {

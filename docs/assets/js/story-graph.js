@@ -17,13 +17,9 @@
   function isDark() { return document.body.getAttribute('data-md-color-scheme') === 'slate'; }
   function c(type) { const cl = colorFor(type); return isDark() ? cl.dark : cl.light; }
 
-  const FUNC_COLORS = {
-    HOOK: '#42A5F5', INCITING_INCIDENT: '#66BB6A', RISING_ACTION: '#FFB300',
-    FIRST_THRESHOLD: '#FFA726', PINCH_POINT: '#FF7043', MIDPOINT: '#AB47BC',
-    CRISIS: '#EF5350', CLIMAX: '#D32F2F', RESOLUTION: '#26A69A',
-    DENOUEMENT: '#78909C', CUSTOM: '#BDBDBD',
-  };
-  const DEVICE_COLORS = { FORESHADOWING: '#42A5F5', RED_HERRING: '#EF5350', SETUP_PAYOFF: '#FFA726', CHEKHOV_GUN: '#66BB6A', DRAMATIC_IRONY: '#AB47BC', ECHO: '#78909C', CONTRAST: '#EC407A', PARALLEL: '#26C6DA', CALLBACK: '#8D6E63', CUSTOM: '#BDBDBD' };
+  // All type→color mappings are auto-assigned via colorFor(). No hardcoded
+  // assumptions about specific schema enum values (beat functions, device
+  // types, reliability levels, etc.).
 
   /* ── state ─────────────────────────────────────────────────────── */
   let story = null;
@@ -265,8 +261,8 @@
     container.appendChild(wrapper);
 
     const availW = wrapper.clientWidth || 400;
-    const PAD = 12;
-    const deviceMargin = devices.length * 14 + 8;
+    const PAD = threads.length > 0 ? 50 : 12;
+    const deviceMargin = devices.length * 16 + 12;
     const tensionW = 30;
     const threadW = 16;
     const threadsTotal = threads.length * threadW;
@@ -291,7 +287,7 @@
       const x = tensionX + tensionW - (b.tension || 0) * (tensionW - 4);
       const y = beatY(i);
       tensionPath += (i === 0 ? 'M' : 'L') + `${x},${y}`;
-      svg.appendChild(svgEl('circle', { cx: x, cy: y, r: 3, fill: FUNC_COLORS[b.function] || '#999' }));
+      svg.appendChild(svgEl('circle', { cx: x, cy: y, r: 3, fill: c(b.function || 'default') }));
     });
     svg.appendChild(svgEl('path', { d: tensionPath, fill: 'none', stroke: isDark() ? '#B39DDB' : '#7E57C2', 'stroke-width': 2, 'stroke-linejoin': 'round' }));
     const tLabel = svgEl('text', { x: tensionX + 2, y: PAD - 6, fill: isDark() ? '#666' : '#bbb', 'font-size': 10 });
@@ -301,26 +297,27 @@
     // beat cards (vertical stack)
     beats.forEach((b, i) => {
       const x = cardX, y = PAD + i * (CARD_H + GAP);
-      const funcColor = FUNC_COLORS[b.function] || '#999';
+      const funcColor = c(b.function || 'default');
       const emColor = b.emotional_target != null ? (b.emotional_target < 0 ? `rgba(66,165,245,${Math.abs(b.emotional_target) * 0.15})` : `rgba(255,167,38,${b.emotional_target * 0.15})`) : 'transparent';
       const g = svgEl('g', { class: 'beat-card', 'data-beat': b.id, cursor: 'pointer' });
       g.addEventListener('click', () => select({ kind: 'beat', id: b.id }));
 
       g.appendChild(svgEl('rect', { x, y, width: CARD_W, height: CARD_H, rx: 5, fill: isDark() ? '#2a2a2a' : '#fff', stroke: funcColor, 'stroke-width': 1.5 }));
       g.appendChild(svgEl('rect', { x: x + 1, y: y + 1, width: CARD_W - 2, height: CARD_H - 2, rx: 4, fill: emColor }));
-      // function badge
-      g.appendChild(svgEl('rect', { x: x + 3, y: y + 3, width: 70, height: 14, rx: 3, fill: funcColor }));
-      const funcText = svgEl('text', { x: x + 38, y: y + 13, fill: '#fff', 'font-size': 11, 'text-anchor': 'middle', 'font-weight': 'bold' });
-      funcText.textContent = (b.function || '').replace(/_/g, ' ');
-      g.appendChild(funcText);
-      // name
-      const nameText = svgEl('text', { x: x + 78, y: y + 13, fill: isDark() ? '#ddd' : '#333', 'font-size': 11, 'font-weight': '600' });
-      nameText.textContent = truncate(b.name || b.id, 22);
+      // name (first line, left-aligned)
+      const nameText = svgEl('text', { x: x + 6, y: y + 14, fill: isDark() ? '#ddd' : '#333', 'font-size': 11, 'font-weight': '600' });
+      nameText.textContent = truncate(b.name || b.id, 28);
       g.appendChild(nameText);
-      // order
-      const orderText = svgEl('text', { x: x + CARD_W - 6, y: y + 13, fill: isDark() ? '#666' : '#bbb', 'font-size': 10, 'text-anchor': 'end' });
+      // order number right-aligned
+      const orderText = svgEl('text', { x: x + CARD_W - 6, y: y + 14, fill: isDark() ? '#666' : '#bbb', 'font-size': 10, 'text-anchor': 'end' });
       orderText.textContent = `#${b.order}`;
       g.appendChild(orderText);
+      // function badge (second line)
+      const funcBadgeW = Math.min(CARD_W - 12, (b.function || '').length * 7 + 16);
+      g.appendChild(svgEl('rect', { x: x + 5, y: y + 20, width: funcBadgeW, height: 14, rx: 3, fill: funcColor }));
+      const funcText = svgEl('text', { x: x + 5 + funcBadgeW / 2, y: y + 30, fill: '#fff', 'font-size': 9, 'text-anchor': 'middle', 'font-weight': 'bold' });
+      funcText.textContent = (b.function || '').replace(/_/g, ' ');
+      g.appendChild(funcText);
       // tension bar
       const barW = (CARD_W - 10) * (b.tension || 0);
       g.appendChild(svgEl('rect', { x: x + 5, y: y + CARD_H - 10, width: CARD_W - 10, height: 3, rx: 1.5, fill: isDark() ? '#444' : '#eee' }));
@@ -354,9 +351,9 @@
       const x = threadBaseX + ti * threadW, col = TCOLS[ti % TCOLS.length];
       // vertical line
       svg.appendChild(svgEl('line', { x1: x, y1: PAD, x2: x, y2: totalH - PAD, stroke: col, 'stroke-width': 1, opacity: 0.2 }));
-      // label at top
-      const labelEl = svgEl('text', { x, y: PAD - 4, fill: col, 'font-size': 10, 'text-anchor': 'middle', 'font-weight': '500', cursor: 'pointer' });
-      labelEl.textContent = truncate(thread.name, 12);
+      // label at top, rotated so it doesn't overlap
+      const labelEl = svgEl('text', { x: x + 3, y: PAD - 4, fill: col, 'font-size': 10, 'font-weight': '500', cursor: 'pointer', transform: `rotate(-45 ${x + 3} ${PAD - 4})` });
+      labelEl.textContent = truncate(thread.name, 16);
       labelEl.addEventListener('click', () => select({ kind: 'thread', id: thread.id }));
       svg.appendChild(labelEl);
 
@@ -378,12 +375,12 @@
     devices.forEach((dev, di) => {
       const setupIdxs = (dev.setup || []).map(id => beats.findIndex(b => b.id === id)).filter(i => i >= 0);
       const payoffIdxs = (dev.payoff || []).map(id => beats.findIndex(b => b.id === id)).filter(i => i >= 0);
-      const col = DEVICE_COLORS[dev.type] || '#999';
+      const col = c(dev.type || 'default');
       const bx = bracketBaseX - di * 14;
       setupIdxs.forEach(si => payoffIdxs.forEach(pi => {
         const y1 = beatY(si), y2 = beatY(pi);
         // right-angle bracket: horizontal tick at top, vertical line, horizontal tick at bottom with arrow
-        const dash = dev.type === 'CHEKHOV_GUN' ? '5,3' : 'none';
+        const dash = 'none';
         const g = svgEl('g', { class: 'device-arc', 'data-device': dev.id, cursor: 'pointer', 'pointer-events': 'all' });
         g.addEventListener('click', (ev) => { ev.stopPropagation(); select({ kind: 'device', id: dev.id }); });
         // invisible hit area
@@ -395,8 +392,8 @@
         // bottom tick with arrow
         g.appendChild(svgEl('line', { x1: bx, y1: y2, x2: bx + 8, y2: y2, stroke: col, 'stroke-width': 1.5, 'stroke-dasharray': dash }));
         g.appendChild(svgEl('polygon', { points: `${bx + 5},${y2 - 2} ${bx + 9},${y2} ${bx + 5},${y2 + 2}`, fill: col }));
-        // label
-        const label = svgEl('text', { x: bx - 2, y: (y1 + y2) / 2 + 3, fill: col, 'font-size': 10, 'text-anchor': 'end', 'writing-mode': 'tb' });
+        // label (horizontal, left of bracket)
+        const label = svgEl('text', { x: bx - 4, y: (y1 + y2) / 2 + 3, fill: col, 'font-size': 9, 'text-anchor': 'end', transform: `rotate(-90 ${bx - 4} ${(y1 + y2) / 2 + 3})` });
         label.textContent = dev.type.replace(/_/g, ' ');
         g.appendChild(label);
         svg.appendChild(g);
@@ -613,7 +610,7 @@
     const v = lens.voice || {};
     if (v.vocabulary_level || v.sentence_tendency) { h += '<div class="lens-row"><strong>Voice:</strong> '; const pts = []; if (v.vocabulary_level) pts.push(v.vocabulary_level); if (v.sentence_tendency) pts.push(v.sentence_tendency); if (v.metaphor_density) pts.push('metaphor: ' + v.metaphor_density); if (v.inner_monologue) pts.push('inner monologue'); h += pts.join(', '); if (v.verbal_tics?.length) h += `<br><em>"${v.verbal_tics.join('", "')}"</em>`; h += '</div>'; }
     const r = lens.reliability || {};
-    if (r.level) { const rc = { RELIABLE: '#66BB6A', SELECTIVE: '#FFB300', UNRELIABLE: '#FFA726', LYING: '#EF5350' }; h += `<div class="lens-row"><strong>Reliability:</strong> <span class="info-badge" style="background:${rc[r.level] || '#999'}">${r.level}</span>`; if (r.distorts?.length) h += `<br>Distorts: ${r.distorts.map(d => `<span class="lens-distort ${d.direction.toLowerCase()}">${d.node} ${d.direction === 'POSITIVE' ? '↑' : '↓'}</span>`).join(', ')}`; h += '</div>'; }
+    if (r.level) { h += `<div class="lens-row"><strong>Reliability:</strong> <span class="info-badge" style="background:${c(r.level)}">${r.level}</span>`; if (r.distorts?.length) h += `<br>Distorts: ${r.distorts.map(d => `${d.node} (${d.direction})`).join(', ')}`; h += '</div>'; }
     return h;
   }
 
@@ -648,15 +645,16 @@
   function renderConstraints(container) {
     const constraints = (story.world || {}).constraints || [];
     if (!constraints.length) { container.innerHTML = '<p class="empty-msg">No constraints defined.</p>'; return; }
-    const groups = { ERROR: [], WARNING: [], INFO: [] };
-    constraints.forEach(c => (groups[c.severity] || groups.INFO).push(c));
-    ['ERROR', 'WARNING', 'INFO'].forEach(sev => {
-      if (!groups[sev].length) return;
+    // group by severity dynamically (no hardcoded severity values)
+    const groups = {};
+    constraints.forEach(con => { const s = con.severity || 'UNKNOWN'; (groups[s] = groups[s] || []).push(con); });
+    Object.keys(groups).forEach(sev => {
       const sec = document.createElement('div');
-      sec.innerHTML = `<h4 class="severity-${sev.toLowerCase()}">${sev}</h4>`;
+      sec.innerHTML = `<h4 style="color:${c(sev)}">${sev}</h4>`;
       groups[sev].forEach(con => {
         const card = document.createElement('div');
-        card.className = `constraint-card severity-${sev.toLowerCase()}`;
+        card.className = 'constraint-card';
+        card.style.borderLeftColor = c(sev);
         card.innerHTML = `<strong>${esc(con.name)}</strong><p>${esc(con.description || '')}</p>` + (con.scope ? `<div class="info-scope">${renderScope(con.scope)}</div>` : '');
         sec.appendChild(card);
       });
@@ -681,7 +679,7 @@
   }
   function beatDetailHTML(beat) {
     let h = `<h4>${esc(beat.name)}</h4>`;
-    if (beat.function) h += `<span class="info-badge" style="background:${FUNC_COLORS[beat.function] || '#999'}">${beat.function}</span>`;
+    if (beat.function) h += `<span class="info-badge" style="background:${c(beat.function || 'default')}">${beat.function}</span>`;
     if (beat.description) h += `<p class="info-desc">${esc(beat.description)}</p>`;
     if (beat.tension != null) h += `<p><strong>Tension:</strong> ${beat.tension}</p>`;
     if (beat.emotional_target != null) h += `<p><strong>Emotional:</strong> ${beat.emotional_target}</p>`;
