@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "description": "A boolean expression over selectors. Either a single selector tuple, or a boolean/set operator combining expressions.",
+  "oneOf": [
+    { "$ref": "selector.schema.json" },
+    {
+      "type": "object",
+      "required": ["and"],
+      "properties": {
+        "and": {
+          "type": "array",
+          "items": { "$ref": "expression.schema.json" },
+          "minItems": 2
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["or"],
+      "properties": {
+        "or": {
+          "type": "array",
+          "items": { "$ref": "expression.schema.json" },
+          "minItems": 2
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["not"],
+      "properties": {
+        "not": { "$ref": "expression.schema.json" }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["in"],
+      "description": "Matches if the element is one of the listed values.",
+      "properties": {
+        "in": {
+          "type": "array",
+          "items": { "$ref": "selector.schema.json" },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["range"],
+      "description": "Matches all elements alphabetically between the first and last selector (inclusive).",
+      "properties": {
+        "range": {
+          "type": "array",
+          "items": { "$ref": "selector.schema.json" },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

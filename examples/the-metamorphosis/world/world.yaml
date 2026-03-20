@@ -73,4 +73,5 @@ constraints:
       A character can only occupy one location at any given time.
     severity: ERROR
     scope:
-      node_types: [CHARACTER]
+      type: node_type
+      item: CHARACTER

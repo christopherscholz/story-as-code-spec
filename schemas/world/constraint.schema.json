@@ -29,51 +29,8 @@
       "description": "ERROR — must resolve. WARNING — flags issue. INFO — suggestion only."
     },
     "scope": {
-      "type": "object",
-      "description": "What this rule applies to. Omit for global rules.",
-      "properties": {
-        "node_types": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "edge_types": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "nodes": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "edges": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "frames": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "time_range": {
-          "type": "object",
-          "properties": {
-            "from": {
-              "type": "string"
-            },
-            "to": {
-              "type": "string"
-            }
-          }
-        }
-      }
+      "$ref": "../common/expression.schema.json",
+      "description": "What this rule applies to. Omit for global rules."
     }
   },
   "examples": [
@@ -82,11 +39,7 @@
       "name": "Every character knows at least one other character",
       "rule": "Every character must have at least one relationship with another character.",
       "severity": "WARNING",
-      "scope": {
-        "node_types": [
-          "CHARACTER"
-        ]
-      }
+      "scope": { "type": "node_type", "item": "CHARACTER" }
     },
     {
       "id": "magic-limit",
@@ -100,12 +53,12 @@
       "rule": "The undead do not exist in the world before the Great War.",
       "severity": "ERROR",
       "scope": {
-        "node_types": [
-          "CHARACTER"
-        ],
-        "time_range": {
-          "to": "T50"
-        }
+        "and": [
+          { "in": [{ "type": "node_type", "item": "CHARACTER" }, { "type": "node_type", "item": "CREATURE" }] },
+          { "type": "tag", "item": "undead" },
+          { "not": { "in": [{ "type": "frame", "item": "timeline-b" }] } },
+          { "range": [{ "type": "time", "item": "T00" }, { "type": "time", "item": "T50" }] }
+        ]
       }
     }
   ]
