@@ -10,7 +10,7 @@ sacsh:VariantMetaShape
     sh:targetClass sac:VariantMeta ;
     sh:property [
         sh:path sac:variantType ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;
@@ -30,6 +30,6 @@ sacsh:VariantMetaShape
     ] ;
     sh:property [
         sh:path sac:mergeStrategy ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] .

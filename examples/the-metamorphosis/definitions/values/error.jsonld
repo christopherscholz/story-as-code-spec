@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "ERROR",
+  "name": "Error",
+  "description": "A constraint violation that represents a hard error — the story is invalid."
+}

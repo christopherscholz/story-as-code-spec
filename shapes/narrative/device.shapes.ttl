@@ -16,7 +16,7 @@ sacsh:DeviceShape
     ] ;
     sh:property [
         sh:path sac:deviceType ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;

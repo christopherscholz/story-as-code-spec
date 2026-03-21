@@ -54,7 +54,7 @@ sacsh:FrameRelationShape
     ] ;
     sh:property [
         sh:path sac:relationType ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;

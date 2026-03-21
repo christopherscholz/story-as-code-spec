@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "CLIFFHANGER",
+  "name": "Cliffhanger",
+  "description": "The beat ends on an unresolved tension, leaving the reader in suspense."
+}

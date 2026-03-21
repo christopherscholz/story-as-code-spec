@@ -10,7 +10,7 @@ sacsh:ThreadShape
     sh:targetClass sac:Thread ;
     sh:property [
         sh:path sac:threadType ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;

@@ -37,7 +37,7 @@ sacsh:BeatShape
     ] ;
     sh:property [
         sh:path sac:function ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -75,7 +75,7 @@ sacsh:RevealShape
     ] ;
     sh:property [
         sh:path sac:degree ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] .
 
@@ -83,7 +83,7 @@ sacsh:TransitionShape
     a sh:NodeShape ;
     sh:property [
         sh:path sac:transitionType ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [

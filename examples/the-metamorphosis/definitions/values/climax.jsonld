@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "CLIMAX",
+  "name": "Climax",
+  "description": "The decisive turning point where the central conflict reaches its peak."
+}

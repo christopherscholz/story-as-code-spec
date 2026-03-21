@@ -17,10 +17,9 @@ sacsh:NodeShape
     ] ;
     sh:property [
         sh:path sac:nodeType ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:minLength 1 ;
     ] ;
     sh:property [
         sh:path sac:description ;

@@ -16,7 +16,7 @@ sacsh:LensShape
     ] ;
     sh:property [
         sh:path sac:lensType ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -63,7 +63,7 @@ sacsh:PerspectiveShape
     a sh:NodeShape ;
     sh:property [
         sh:path sac:perspectiveType ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;
@@ -75,7 +75,7 @@ sacsh:PerspectiveShape
     ] ;
     sh:property [
         sh:path sac:person ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] .
 
@@ -83,7 +83,7 @@ sacsh:KnowledgeShape
     a sh:NodeShape ;
     sh:property [
         sh:path sac:mode ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -101,7 +101,7 @@ sacsh:TemporalPositionShape
     a sh:NodeShape ;
     sh:property [
         sh:path sac:temporalType ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -119,7 +119,7 @@ sacsh:EmotionalShape
     a sh:NodeShape ;
     sh:property [
         sh:path sac:emotionalSource ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -147,12 +147,12 @@ sacsh:VoiceShape
     a sh:NodeShape ;
     sh:property [
         sh:path sac:vocabularyLevel ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:sentenceTendency ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -162,7 +162,7 @@ sacsh:VoiceShape
     ] ;
     sh:property [
         sh:path sac:metaphorDensity ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -179,7 +179,7 @@ sacsh:LanguageRenderingShape
     a sh:NodeShape ;
     sh:property [
         sh:path sac:renderingMode ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] .
 
@@ -187,7 +187,7 @@ sacsh:ReliabilityShape
     a sh:NodeShape ;
     sh:property [
         sh:path sac:level ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -210,7 +210,7 @@ sacsh:DistortionShape
     ] ;
     sh:property [
         sh:path sac:direction ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] .
 
@@ -225,7 +225,7 @@ sacsh:LensLayerShape
     ] ;
     sh:property [
         sh:path sac:role ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;
@@ -244,7 +244,7 @@ sacsh:AlternationShape
     a sh:NodeShape ;
     sh:property [
         sh:path sac:alternationMode ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -254,7 +254,7 @@ sacsh:AlternationShape
     ] ;
     sh:property [
         sh:path sac:alternationTrigger ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] .
 
@@ -262,7 +262,7 @@ sacsh:CompositionShape
     a sh:NodeShape ;
     sh:property [
         sh:path sac:compositionMode ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -275,21 +275,21 @@ sacsh:ConflictResolutionShape
     a sh:NodeShape ;
     sh:property [
         sh:path sac:knowledgeResolution ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:emotionResolution ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:voiceResolution ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:reliabilityResolution ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] .

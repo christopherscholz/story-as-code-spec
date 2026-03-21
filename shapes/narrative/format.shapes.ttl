@@ -16,7 +16,7 @@ sacsh:FormatShape
     ] ;
     sh:property [
         sh:path sac:formatType ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;
@@ -36,7 +36,7 @@ sacsh:StructureShape
     a sh:NodeShape ;
     sh:property [
         sh:path sac:structureType ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;

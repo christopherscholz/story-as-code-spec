@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "NONE",
+  "name": "None",
+  "description": "No metaphors or figurative language are used."
+}

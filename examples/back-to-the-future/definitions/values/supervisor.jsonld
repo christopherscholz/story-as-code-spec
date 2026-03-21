@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "supervisor",
+  "name": "Supervisor",
+  "description": "A lens layer that oversees and moderates the output of other layers."
+}

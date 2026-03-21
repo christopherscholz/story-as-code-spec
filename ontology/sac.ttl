@@ -40,6 +40,9 @@ sac:Tag a owl:Class ;
 sac:TypeDefinition a owl:Class ;
     rdfs:comment "Defines defaults and required properties for a given element type" .
 
+sac:ValueDefinition a owl:Class ;
+    rdfs:comment "Defines the meaning of a controlled vocabulary value (e.g. LINEAR, ERROR, HOOK)" .
+
 # =============================================================================
 # Classes — World
 # =============================================================================
@@ -216,6 +219,11 @@ sac:hasTypes a owl:ObjectProperty ;
     rdfs:range sac:TypeDefinition ;
     rdfs:comment "Type definitions in this definitions layer" .
 
+sac:hasValueDefs a owl:ObjectProperty ;
+    rdfs:domain sac:DefinitionsLayer ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Value definitions (controlled vocabulary) in this definitions layer" .
+
 # =============================================================================
 # Properties — Tag (shared)
 # =============================================================================
@@ -284,10 +292,10 @@ sac:hasConstraint a owl:ObjectProperty ;
 # Properties — TimeSystem
 # =============================================================================
 
-sac:timeSystemType a owl:DatatypeProperty ;
+sac:timeSystemType a owl:ObjectProperty ;
     rdfs:domain sac:TimeSystem ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Type of time system (e.g. linear, branching)" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Type of time system (e.g. LINEAR, BRANCHING)" .
 
 sac:calendar a owl:DatatypeProperty ;
     rdfs:domain sac:TimeSystem ;
@@ -298,10 +306,10 @@ sac:calendar a owl:DatatypeProperty ;
 # Properties — Node
 # =============================================================================
 
-sac:nodeType a owl:DatatypeProperty ;
+sac:nodeType a owl:ObjectProperty ;
     rdfs:domain sac:Node ;
-    rdfs:range xsd:string ;
-    rdfs:comment "The type of this node (e.g. character, location, event)" .
+    rdfs:range sac:TypeDefinition ;
+    rdfs:comment "The type of this node, referencing a TypeDefinition" .
 
 sac:properties a owl:DatatypeProperty ;
     rdfs:range rdf:JSON ;
@@ -311,10 +319,10 @@ sac:properties a owl:DatatypeProperty ;
 # Properties — Edge
 # =============================================================================
 
-sac:edgeType a owl:DatatypeProperty ;
+sac:edgeType a owl:ObjectProperty ;
     rdfs:domain sac:Edge ;
-    rdfs:range xsd:string ;
-    rdfs:comment "The type of this edge (e.g. knows, loves, located_in)" .
+    rdfs:range sac:TypeDefinition ;
+    rdfs:comment "The type of this edge, referencing a TypeDefinition" .
 
 sac:source a owl:ObjectProperty ;
     rdfs:domain sac:Edge ;
@@ -353,10 +361,10 @@ sac:hasRelation a owl:ObjectProperty ;
 # Properties — FrameRelation
 # =============================================================================
 
-sac:relationType a owl:DatatypeProperty ;
+sac:relationType a owl:ObjectProperty ;
     rdfs:domain sac:FrameRelation ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Type of frame relation (e.g. branch, merge, loop)" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Type of frame relation, referencing a ValueDefinition" .
 
 sac:at a owl:DatatypeProperty ;
     rdfs:domain sac:FrameRelation ;
@@ -367,10 +375,10 @@ sac:at a owl:DatatypeProperty ;
 # Properties — Constraint
 # =============================================================================
 
-sac:severity a owl:DatatypeProperty ;
+sac:severity a owl:ObjectProperty ;
     rdfs:domain sac:Constraint ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Severity level of a constraint violation (e.g. error, warning)" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Severity level of a constraint violation, referencing a ValueDefinition" .
 
 # =============================================================================
 # Properties — NarrativeLayer
@@ -410,10 +418,10 @@ sac:hasVariant a owl:ObjectProperty ;
 # Properties — Lens
 # =============================================================================
 
-sac:lensType a owl:DatatypeProperty ;
+sac:lensType a owl:ObjectProperty ;
     rdfs:domain sac:Lens ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Type of lens (e.g. single, composite)" .
+    rdfs:range sac:TypeDefinition ;
+    rdfs:comment "The type of this lens, referencing a TypeDefinition" .
 
 sac:perspective a owl:ObjectProperty ;
     rdfs:domain sac:Lens ;
@@ -464,28 +472,28 @@ sac:composition a owl:ObjectProperty ;
 # Properties — Perspective
 # =============================================================================
 
-sac:perspectiveType a owl:DatatypeProperty ;
+sac:perspectiveType a owl:ObjectProperty ;
     rdfs:domain sac:Perspective ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Type of perspective (e.g. first, third-limited, omniscient)" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Type of perspective, referencing a ValueDefinition" .
 
 sac:anchor a owl:ObjectProperty ;
     rdfs:domain sac:Perspective ;
     rdfs:comment "The node this perspective is anchored to" .
 
-sac:person a owl:DatatypeProperty ;
+sac:person a owl:ObjectProperty ;
     rdfs:domain sac:Perspective ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Grammatical person (e.g. first, second, third)" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Grammatical person, referencing a ValueDefinition (e.g. FIRST, THIRD)" .
 
 # =============================================================================
 # Properties — Knowledge
 # =============================================================================
 
-sac:mode a owl:DatatypeProperty ;
+sac:mode a owl:ObjectProperty ;
     rdfs:domain sac:Knowledge ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Knowledge mode (e.g. limited, omniscient)" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Knowledge mode, referencing a ValueDefinition" .
 
 sac:includeSubconscious a owl:DatatypeProperty ;
     rdfs:domain sac:Knowledge ;
@@ -501,10 +509,10 @@ sac:includeWrongBeliefs a owl:DatatypeProperty ;
 # Properties — TemporalPosition
 # =============================================================================
 
-sac:temporalType a owl:DatatypeProperty ;
+sac:temporalType a owl:ObjectProperty ;
     rdfs:domain sac:TemporalPosition ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Type of temporal position (e.g. concurrent, retrospective)" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Type of temporal position, referencing a ValueDefinition" .
 
 sac:narratingFrom a owl:DatatypeProperty ;
     rdfs:domain sac:TemporalPosition ;
@@ -520,10 +528,10 @@ sac:knowsFutureUntil a owl:DatatypeProperty ;
 # Properties — Emotional
 # =============================================================================
 
-sac:emotionalSource a owl:DatatypeProperty ;
+sac:emotionalSource a owl:ObjectProperty ;
     rdfs:domain sac:Emotional ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Source of emotional coloring" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Source of emotional coloring, referencing a ValueDefinition" .
 
 sac:bias a owl:ObjectProperty ;
     rdfs:domain sac:Emotional ;
@@ -547,25 +555,25 @@ sac:biasStrength a owl:DatatypeProperty ;
 # Properties — Voice
 # =============================================================================
 
-sac:vocabularyLevel a owl:DatatypeProperty ;
+sac:vocabularyLevel a owl:ObjectProperty ;
     rdfs:domain sac:Voice ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Level of vocabulary sophistication" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Level of vocabulary sophistication, referencing a ValueDefinition" .
 
-sac:sentenceTendency a owl:DatatypeProperty ;
+sac:sentenceTendency a owl:ObjectProperty ;
     rdfs:domain sac:Voice ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Tendency in sentence structure (e.g. short, flowing)" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Tendency in sentence structure, referencing a ValueDefinition" .
 
 sac:innerMonologue a owl:DatatypeProperty ;
     rdfs:domain sac:Voice ;
     rdfs:range xsd:boolean ;
     rdfs:comment "Whether inner monologue is used" .
 
-sac:metaphorDensity a owl:DatatypeProperty ;
+sac:metaphorDensity a owl:ObjectProperty ;
     rdfs:domain sac:Voice ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Density of metaphor usage" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Density of metaphor usage, referencing a ValueDefinition" .
 
 sac:verbalTics a owl:DatatypeProperty ;
     rdfs:domain sac:Voice ;
@@ -581,19 +589,19 @@ sac:languageRendering a owl:ObjectProperty ;
 # Properties — LanguageRendering
 # =============================================================================
 
-sac:renderingMode a owl:DatatypeProperty ;
+sac:renderingMode a owl:ObjectProperty ;
     rdfs:domain sac:LanguageRendering ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Mode of language rendering" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Mode of language rendering, referencing a ValueDefinition" .
 
 # =============================================================================
 # Properties — Reliability
 # =============================================================================
 
-sac:level a owl:DatatypeProperty ;
+sac:level a owl:ObjectProperty ;
     rdfs:domain sac:Reliability ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Reliability level of the narrator" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Reliability level of the narrator, referencing a ValueDefinition" .
 
 sac:omits a owl:ObjectProperty ;
     rdfs:domain sac:Reliability ;
@@ -612,10 +620,10 @@ sac:distortedNode a owl:ObjectProperty ;
     rdfs:domain sac:Distortion ;
     rdfs:comment "The node being distorted" .
 
-sac:direction a owl:DatatypeProperty ;
+sac:direction a owl:ObjectProperty ;
     rdfs:domain sac:Distortion ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Direction of the distortion" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Direction of the distortion, referencing a ValueDefinition" .
 
 # =============================================================================
 # Properties — LensLayer
@@ -645,28 +653,28 @@ sac:trigger a owl:DatatypeProperty ;
 # Properties — Alternation
 # =============================================================================
 
-sac:alternationMode a owl:DatatypeProperty ;
+sac:alternationMode a owl:ObjectProperty ;
     rdfs:domain sac:Alternation ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Mode of alternation between sub-lenses" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Mode of alternation between sub-lenses, referencing a ValueDefinition" .
 
 sac:sequence a owl:ObjectProperty ;
     rdfs:domain sac:Alternation ;
     rdfs:comment "Ordered sequence of lens references" .
 
-sac:alternationTrigger a owl:DatatypeProperty ;
+sac:alternationTrigger a owl:ObjectProperty ;
     rdfs:domain sac:Alternation ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Trigger for alternation switches" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Trigger for alternation switches, referencing a ValueDefinition" .
 
 # =============================================================================
 # Properties — Composition
 # =============================================================================
 
-sac:compositionMode a owl:DatatypeProperty ;
+sac:compositionMode a owl:ObjectProperty ;
     rdfs:domain sac:Composition ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Mode of composition between sub-lenses" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Mode of composition between sub-lenses, referencing a ValueDefinition" .
 
 sac:conflictResolution a owl:ObjectProperty ;
     rdfs:domain sac:Composition ;
@@ -677,21 +685,21 @@ sac:conflictResolution a owl:ObjectProperty ;
 # Properties — ConflictResolution
 # =============================================================================
 
-sac:knowledgeResolution a owl:DatatypeProperty ;
-    rdfs:range xsd:string ;
-    rdfs:comment "How knowledge conflicts are resolved" .
+sac:knowledgeResolution a owl:ObjectProperty ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "How knowledge conflicts are resolved, referencing a ValueDefinition" .
 
-sac:emotionResolution a owl:DatatypeProperty ;
-    rdfs:range xsd:string ;
-    rdfs:comment "How emotion conflicts are resolved" .
+sac:emotionResolution a owl:ObjectProperty ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "How emotion conflicts are resolved, referencing a ValueDefinition" .
 
-sac:voiceResolution a owl:DatatypeProperty ;
-    rdfs:range xsd:string ;
-    rdfs:comment "How voice conflicts are resolved" .
+sac:voiceResolution a owl:ObjectProperty ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "How voice conflicts are resolved, referencing a ValueDefinition" .
 
-sac:reliabilityResolution a owl:DatatypeProperty ;
-    rdfs:range xsd:string ;
-    rdfs:comment "How reliability conflicts are resolved" .
+sac:reliabilityResolution a owl:ObjectProperty ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "How reliability conflicts are resolved, referencing a ValueDefinition" .
 
 # =============================================================================
 # Properties — Beat
@@ -707,10 +715,10 @@ sac:referencesEdge a owl:ObjectProperty ;
     rdfs:range sac:Edge ;
     rdfs:comment "A world edge referenced by this beat" .
 
-sac:function a owl:DatatypeProperty ;
+sac:function a owl:ObjectProperty ;
     rdfs:domain sac:Beat ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Dramaturgical function of this beat" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Dramaturgical function of this beat, referencing a ValueDefinition" .
 
 sac:hasReveal a owl:ObjectProperty ;
     rdfs:domain sac:Beat ;
@@ -740,19 +748,19 @@ sac:revealTarget a owl:ObjectProperty ;
     rdfs:domain sac:Reveal ;
     rdfs:comment "The entity being revealed" .
 
-sac:degree a owl:DatatypeProperty ;
+sac:degree a owl:ObjectProperty ;
     rdfs:domain sac:Reveal ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Degree of the reveal (e.g. partial, full)" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Degree of the reveal, referencing a ValueDefinition" .
 
 # =============================================================================
 # Properties — Transition
 # =============================================================================
 
-sac:transitionType a owl:DatatypeProperty ;
+sac:transitionType a owl:ObjectProperty ;
     rdfs:domain sac:Transition ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Type of transition (e.g. cut, dissolve, continuous)" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Type of transition, referencing a ValueDefinition" .
 
 sac:toBeat a owl:ObjectProperty ;
     rdfs:domain sac:Transition ;
@@ -763,10 +771,10 @@ sac:toBeat a owl:ObjectProperty ;
 # Properties — Device
 # =============================================================================
 
-sac:deviceType a owl:DatatypeProperty ;
+sac:deviceType a owl:ObjectProperty ;
     rdfs:domain sac:Device ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Type of narrative device (e.g. foreshadowing, chekhov_gun)" .
+    rdfs:range sac:TypeDefinition ;
+    rdfs:comment "The type of this device, referencing a TypeDefinition" .
 
 sac:setupBeats a owl:ObjectProperty ;
     rdfs:domain sac:Device ;
@@ -782,10 +790,10 @@ sac:payoffBeats a owl:ObjectProperty ;
 # Properties — Thread
 # =============================================================================
 
-sac:threadType a owl:DatatypeProperty ;
+sac:threadType a owl:ObjectProperty ;
     rdfs:domain sac:Thread ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Type of thread (e.g. motif, theme, subplot)" .
+    rdfs:range sac:TypeDefinition ;
+    rdfs:comment "The type of this thread, referencing a TypeDefinition" .
 
 sac:hasAppearance a owl:ObjectProperty ;
     rdfs:domain sac:Thread ;
@@ -805,10 +813,10 @@ sac:atBeat a owl:ObjectProperty ;
 # Properties — Format
 # =============================================================================
 
-sac:formatType a owl:DatatypeProperty ;
+sac:formatType a owl:ObjectProperty ;
     rdfs:domain sac:Format ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Type of output format (e.g. novel, screenplay)" .
+    rdfs:range sac:TypeDefinition ;
+    rdfs:comment "The type of this format, referencing a TypeDefinition" .
 
 sac:structure a owl:ObjectProperty ;
     rdfs:domain sac:Format ;
@@ -824,10 +832,10 @@ sac:formatSettings a owl:DatatypeProperty ;
 # Properties — Structure
 # =============================================================================
 
-sac:structureType a owl:DatatypeProperty ;
+sac:structureType a owl:ObjectProperty ;
     rdfs:domain sac:Structure ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Type of structural element (e.g. part, chapter, scene)" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Type of structural element, referencing a ValueDefinition" .
 
 sac:constraints a owl:DatatypeProperty ;
     rdfs:domain sac:Structure ;
@@ -843,10 +851,10 @@ sac:children a owl:ObjectProperty ;
 # Properties — VariantMeta
 # =============================================================================
 
-sac:variantType a owl:DatatypeProperty ;
+sac:variantType a owl:ObjectProperty ;
     rdfs:domain sac:VariantMeta ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Type of variant (e.g. what-if, alternate)" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Type of variant, referencing a ValueDefinition" .
 
 sac:parentVariant a owl:ObjectProperty ;
     rdfs:domain sac:VariantMeta ;
@@ -857,10 +865,10 @@ sac:affectsFrames a owl:ObjectProperty ;
     rdfs:range sac:Frame ;
     rdfs:comment "Frames affected by this variant" .
 
-sac:mergeStrategy a owl:DatatypeProperty ;
+sac:mergeStrategy a owl:ObjectProperty ;
     rdfs:domain sac:VariantMeta ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Strategy for merging this variant" .
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Strategy for merging this variant, referencing a ValueDefinition" .
 
 # =============================================================================
 # Properties — DerivationMeta

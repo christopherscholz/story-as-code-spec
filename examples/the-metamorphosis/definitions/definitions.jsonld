@@ -119,5 +119,160 @@
     {
       "@id": "THEME"
     }
+  ],
+  "valueDefs": [
+    {
+      "@id": "BRANCHES_INTO"
+    },
+    {
+      "@id": "CANON"
+    },
+    {
+      "@id": "CHARACTER_BOUND"
+    },
+    {
+      "@id": "CHARACTER_KNOWLEDGE"
+    },
+    {
+      "@id": "CHARACTER_STATE"
+    },
+    {
+      "@id": "CLIFFHANGER"
+    },
+    {
+      "@id": "CLIMAX"
+    },
+    {
+      "@id": "COLLOQUIAL"
+    },
+    {
+      "@id": "COMPLEX_NESTED"
+    },
+    {
+      "@id": "CONTINUATION"
+    },
+    {
+      "@id": "CRISIS"
+    },
+    {
+      "@id": "CUT"
+    },
+    {
+      "@id": "ERROR"
+    },
+    {
+      "@id": "FADE"
+    },
+    {
+      "@id": "FIRST"
+    },
+    {
+      "@id": "FIRST_THRESHOLD"
+    },
+    {
+      "@id": "FORMAL"
+    },
+    {
+      "@id": "FULL"
+    },
+    {
+      "@id": "HIGH"
+    },
+    {
+      "@id": "HOOK"
+    },
+    {
+      "@id": "INCITING_INCIDENT"
+    },
+    {
+      "@id": "IN_MOMENT"
+    },
+    {
+      "@id": "LINEAR"
+    },
+    {
+      "@id": "LOW"
+    },
+    {
+      "@id": "NEGATIVE"
+    },
+    {
+      "@id": "NONE"
+    },
+    {
+      "@id": "OBJECTIVE"
+    },
+    {
+      "@id": "OMNISCIENT"
+    },
+    {
+      "@id": "PARTIAL"
+    },
+    {
+      "@id": "PINCH_POINT"
+    },
+    {
+      "@id": "POSITIVE"
+    },
+    {
+      "@id": "PUBLIC_ONLY"
+    },
+    {
+      "@id": "RELIABLE"
+    },
+    {
+      "@id": "RESOLUTION"
+    },
+    {
+      "@id": "RETROSPECTIVE"
+    },
+    {
+      "@id": "RISING_ACTION"
+    },
+    {
+      "@id": "SECOND"
+    },
+    {
+      "@id": "SELECTIVE"
+    },
+    {
+      "@id": "SHORT_STACCATO"
+    },
+    {
+      "@id": "THIRD"
+    },
+    {
+      "@id": "TIME_SKIP"
+    },
+    {
+      "@id": "UNRELIABLE"
+    },
+    {
+      "@id": "WARNING"
+    },
+    {
+      "@id": "act"
+    },
+    {
+      "@id": "book"
+    },
+    {
+      "@id": "chapter"
+    },
+    {
+      "@id": "film"
+    },
+    {
+      "@id": "part"
+    },
+    {
+      "@id": "scene"
+    },
+    {
+      "@id": "sequence"
+    },
+    {
+      "@id": "supervisor"
+    }
   ]
 }

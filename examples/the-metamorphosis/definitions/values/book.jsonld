@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "book",
+  "name": "Book",
+  "description": "The top-level structural unit of a prose work."
+}

@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "FORMAL",
+  "name": "Formal",
+  "description": "Language uses elevated, precise vocabulary suited to formal register."
+}

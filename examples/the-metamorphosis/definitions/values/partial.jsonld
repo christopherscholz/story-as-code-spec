@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "PARTIAL",
+  "name": "Partial",
+  "description": "Only part of the information is revealed."
+}

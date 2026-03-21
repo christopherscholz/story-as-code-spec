@@ -16,4 +16,8 @@ sacsh:DefinitionsLayerShape
     sh:property [
         sh:path sac:hasTypes ;
         sh:node sacsh:TypeDefinitionShape ;
+    ] ;
+    sh:property [
+        sh:path sac:hasValueDefs ;
+        sh:node sacsh:ValueDefinitionShape ;
     ] .

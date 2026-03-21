@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "SHORT_STACCATO",
+  "name": "Short Staccato",
+  "description": "Sentences tend to be short and clipped, creating a staccato rhythm."
+}

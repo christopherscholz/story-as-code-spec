@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "chapter",
+  "name": "Chapter",
+  "description": "A named or numbered division of a narrative."
+}

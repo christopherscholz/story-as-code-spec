@@ -11,7 +11,7 @@ sacsh:EdgeShape
     sh:targetClass sac:Edge ;
     sh:property [
         sh:path sac:edgeType ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;

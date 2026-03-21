@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "CANON",
+  "name": "Canon",
+  "description": "The canonical version of the story."
+}

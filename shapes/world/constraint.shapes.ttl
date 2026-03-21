@@ -23,7 +23,7 @@ sacsh:ConstraintShape
     ] ;
     sh:property [
         sh:path sac:severity ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;

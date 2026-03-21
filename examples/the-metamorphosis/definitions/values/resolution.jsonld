@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "RESOLUTION",
+  "name": "Resolution",
+  "description": "The beat where the conflict resolves and a new equilibrium is established."
+}

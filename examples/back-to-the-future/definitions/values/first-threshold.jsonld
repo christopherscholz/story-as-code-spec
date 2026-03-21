@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "FIRST_THRESHOLD",
+  "name": "First Threshold",
+  "description": "The moment the protagonist commits to the main journey."
+}

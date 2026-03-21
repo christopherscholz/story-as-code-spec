@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "CHARACTER_STATE",
+  "name": "Character State",
+  "description": "Emotional coloring derives from the anchor character's current emotional state."
+}
