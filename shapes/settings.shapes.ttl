@@ -1,0 +1,16 @@
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix sac:   <https://story-as-code.dev/ontology#> .
+@prefix sacsh: <https://story-as-code.dev/shapes/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+sacsh:SettingsShape
+    a sh:NodeShape ;
+    rdfs:comment "Project-level settings." ;
+    sh:targetClass sac:Settings ;
+    sh:property [
+        sh:path sac:defaultLanguage ;
+        sh:description "Default language for the project (BCP 47 tag)." ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] .

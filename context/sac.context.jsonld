@@ -14,8 +14,11 @@
 
     "Story": "sac:Story",
     "DefinitionsLayer": "sac:DefinitionsLayer",
+    "Definitions": "sac:DefinitionsLayer",
     "WorldLayer": "sac:WorldLayer",
+    "World": "sac:WorldLayer",
     "NarrativeLayer": "sac:NarrativeLayer",
+    "Narrative": "sac:NarrativeLayer",
     "Tag": "sac:Tag",
     "TypeDefinition": "sac:TypeDefinition",
     "ValueDefinition": "sac:ValueDefinition",

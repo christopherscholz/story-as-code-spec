@@ -48,6 +48,10 @@ sacex:inItems a owl:ObjectProperty ;
     rdfs:range rdf:List ;
     rdfs:comment "List of selectors to match against" .
 
+sacex:range a owl:ObjectProperty ;
+    rdfs:range sacex:RangeExpression ;
+    rdfs:comment "Wrapper property connecting an expression to a range sub-expression" .
+
 sacex:rangeFrom a owl:ObjectProperty ;
     rdfs:domain sacex:RangeExpression ;
     rdfs:comment "Start of range (inclusive)" .
