@@ -42,4 +42,12 @@ sacsh:StoryShape
     sh:property [
         sh:path sac:narrative ;
         sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:derivation ;
+        sh:maxCount 1 ;
+        sh:or (
+            [ sh:nodeKind sh:IRI ]
+            [ sh:node sacsh:DerivationLayerShape ]
+        ) ;
     ] .

@@ -1,0 +1,143 @@
+{
+  "@context": "../../../../../context/sac.context.jsonld",
+  "type": "Section",
+  "id": "act-1",
+  "sectionType": "ACT",
+  "title": "Act I",
+  "order": 1,
+  "passages": [
+    {
+      "type": "Passage",
+      "id": "act-1-opening",
+      "beat": "setup-1985",
+      "order": 1,
+      "content": "EXT. HILL VALLEY - DAY (1985)\n\nA skateboard rolls down a suburban sidewalk. MARTY MCFLY (17), in a red vest and Nike high-tops, grabs onto the back of a passing Jeep and rides through the town square of HILL VALLEY.\n\nHe passes the clock tower, its clock frozen at 10:04. A woman hands him a flyer: SAVE THE CLOCK TOWER.\n\nMarty checks his watch and grimaces. Late again.",
+      "annotations": [
+        {
+          "ref": "marty",
+          "start": 66,
+          "end": 77,
+          "exact": "MARTY MCFLY"
+        },
+        {
+          "ref": "hill-valley-1985",
+          "start": 155,
+          "end": 166,
+          "exact": "HILL VALLEY"
+        }
+      ],
+      "passageStatus": "FINAL"
+    },
+    {
+      "type": "Passage",
+      "id": "act-1-mcfly-house",
+      "beat": "setup-1985",
+      "order": 2,
+      "content": "INT. MCFLY HOUSE - EVENING\n\nMarty sits at the dinner table across from his parents. GEORGE MCFLY (47) hunches over his plate, laughing nervously at the TV. LORRAINE MCFLY (47) pours another drink.\n\nBIFF TANNEN barges in through the front door, tossing car keys at George.\n\nBIFF: I told you, McFly -- I can't be held responsible if your car isn't up to snuff. Now I need your reports finished by tomorrow morning.\n\nGeorge shrinks in his chair.\n\nGEORGE: Sure, Biff. I'll get right on it.\n\nMarty watches his father submit and looks away, jaw clenching.",
+      "annotations": [
+        {
+          "ref": "marty",
+          "start": 29,
+          "end": 34,
+          "exact": "Marty"
+        },
+        {
+          "ref": "george",
+          "start": 82,
+          "end": 94,
+          "exact": "GEORGE MCFLY"
+        },
+        {
+          "ref": "lorraine",
+          "start": 140,
+          "end": 154,
+          "exact": "LORRAINE MCFLY"
+        },
+        {
+          "ref": "biff",
+          "start": 188,
+          "end": 200,
+          "exact": "BIFF TANNEN"
+        }
+      ],
+      "edgeIds": ["marty-son-of-george", "marty-son-of-lorraine", "biff-bullies-george"],
+      "passageStatus": "FINAL"
+    },
+    {
+      "type": "Passage",
+      "id": "act-1-twin-pines-mall",
+      "beat": "the-test",
+      "order": 3,
+      "content": "EXT. TWIN PINES MALL - PARKING LOT - NIGHT (1:15 AM)\n\nMarty pulls into the empty parking lot on his skateboard. A lone van sits under the sodium lights. DOC BROWN (65), wild-haired and manic, swings open the van doors to reveal --\n\nA DeLorean DMC-12, gleaming under the lights.\n\nDOC: Marty! You made it! Welcome to my latest -- my greatest -- my most spectacular experiment!\n\nDoc gestures grandly at the car. Marty stares.\n\nMARTY: Doc... you built a time machine? Out of a DeLorean?\n\nDoc grins, pointing to a device nestled behind the seats.\n\nDOC: The FLUX CAPACITOR. This is what makes time travel possible.\n\nMarty leans in, squinting at the glowing Y-shaped device.",
+      "annotations": [
+        {
+          "ref": "twin-pines-mall",
+          "start": 5,
+          "end": 21,
+          "exact": "TWIN PINES MALL"
+        },
+        {
+          "ref": "marty",
+          "start": 55,
+          "end": 60,
+          "exact": "Marty"
+        },
+        {
+          "ref": "doc-brown",
+          "start": 117,
+          "end": 126,
+          "exact": "DOC BROWN"
+        },
+        {
+          "ref": "delorean",
+          "start": 233,
+          "end": 249,
+          "exact": "DeLorean DMC-12"
+        },
+        {
+          "ref": "flux-capacitor",
+          "start": 525,
+          "end": 540,
+          "exact": "FLUX CAPACITOR"
+        }
+      ],
+      "edgeIds": ["doc-owns-delorean", "doc-invented-flux", "flux-in-delorean", "marty-friends-with-doc"],
+      "passageStatus": "FINAL"
+    },
+    {
+      "type": "Passage",
+      "id": "act-1-stranded",
+      "beat": "stranded-in-1955",
+      "order": 4,
+      "content": "EXT. PEABODY FARM - NIGHT (1955)\n\nThe DeLorean skids to a halt in a barn, scattering hay and terrifying cattle. Marty stumbles out, coughing.\n\nHe stares at a farmhouse lit by kerosene lamps. No power lines. No TV antennas.\n\nMARTY: This is heavy.\n\nHe runs into town. HILL VALLEY looks completely different -- the courthouse lawn is pristine, the cinema marquee reads CATTLE QUEEN OF MONTANA.\n\nMarty pulls out the fading PHOTOGRAPH of himself and his siblings. His brother's head is starting to disappear.\n\nMARTY (CONT'D): What the hell...?",
+      "annotations": [
+        {
+          "ref": "delorean",
+          "start": 35,
+          "end": 48,
+          "exact": "The DeLorean"
+        },
+        {
+          "ref": "marty",
+          "start": 103,
+          "end": 108,
+          "exact": "Marty"
+        },
+        {
+          "ref": "hill-valley-1955",
+          "start": 234,
+          "end": 245,
+          "exact": "HILL VALLEY"
+        },
+        {
+          "ref": "photo",
+          "start": 371,
+          "end": 381,
+          "exact": "PHOTOGRAPH"
+        }
+      ],
+      "edgeIds": ["marty-in-arrival-1955"],
+      "passageStatus": "FINAL"
+    }
+  ]
+}

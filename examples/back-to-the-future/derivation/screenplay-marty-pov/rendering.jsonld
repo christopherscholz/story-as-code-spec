@@ -1,0 +1,12 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Rendering",
+  "id": "screenplay-marty-pov",
+  "name": "Back to the Future - Screenplay (Marty POV)",
+  "description": "Feature film screenplay rendered through Marty's colloquial third-person perspective.",
+  "renderingLens": "marty-pov",
+  "renderingFormat": "screenplay",
+  "sections": [
+    { "@id": "act-1" }
+  ]
+}

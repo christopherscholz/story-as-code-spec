@@ -1,0 +1,12 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Rendering",
+  "id": "novella-gregor-pov",
+  "name": "Die Verwandlung - Gregor POV Novella",
+  "description": "Full novella text rendered through Gregor's limited third-person perspective.",
+  "renderingLens": "gregor-pov",
+  "renderingFormat": "novella",
+  "sections": [
+    { "@id": "part-1" }
+  ]
+}
