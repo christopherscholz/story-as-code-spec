@@ -3,7 +3,6 @@ name: Release
 on:
   push:
     branches: [main]
-    paths: [VERSION]
 
 permissions:
   contents: write
@@ -67,5 +66,20 @@ jobs:
           gh api repos/christopherscholz/story-as-code-website/dispatches \
             -f event_type=spec-release \
             -f 'client_payload[version]=${{ needs.check-version.outputs.version }}'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy-dev:
+    needs: check-version
+    if: needs.check-version.outputs.version == 'dev'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Trigger dev website deployment
+        run: |
+          gh api repos/christopherscholz/story-as-code-website/dispatches \
+            -f event_type=spec-release \
+            -f 'client_payload[version]=dev'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
