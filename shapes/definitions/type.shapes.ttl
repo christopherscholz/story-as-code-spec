@@ -8,6 +8,7 @@
 
 sacsh:TypeDefinitionShape
     a sh:NodeShape ;
+    rdfs:comment "A type definition — defaults and required properties for a given element type. Defining a type is optional." ;
     sh:targetClass sac:TypeDefinition ;
     sh:property [
         sh:path sac:entityName ;
@@ -17,6 +18,7 @@ sacsh:TypeDefinitionShape
     ] ;
     sh:property [
         sh:path sac:appliesTo ;
+        sh:description "Element kind this type applies to (e.g. sacsh:NodeShape, sacsh:EdgeShape)." ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
         sh:in ( sacsh:NodeShape sacsh:EdgeShape sacsh:ThreadShape sacsh:DeviceShape sacsh:FormatShape sacsh:LensShape ) ;
@@ -28,11 +30,13 @@ sacsh:TypeDefinitionShape
     ] ;
     sh:property [
         sh:path sac:defaults ;
+        sh:description "Default property values for elements of this type." ;
         sh:datatype rdf:JSON ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:requiredProperties ;
+        sh:description "Property keys required on instances of this type." ;
         sh:datatype xsd:string ;
     ] ;
     sh:property [

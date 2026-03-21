@@ -6,6 +6,7 @@
 
 sacsh:ValueDefinitionShape
     a sh:NodeShape ;
+    rdfs:comment "Defines the meaning of a controlled vocabulary value (e.g. LINEAR, ERROR, HOOK)." ;
     sh:targetClass sac:ValueDefinition ;
     sh:property [
         sh:path sac:entityName ;

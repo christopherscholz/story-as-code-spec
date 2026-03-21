@@ -4,9 +4,11 @@
 @prefix sacex: <https://story-as-code.dev/expr/> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 
 sacsh:VariantMetaShape
     a sh:NodeShape ;
+    rdfs:comment "Metadata for a parallel world version — canon, speculative, retcon, fork, or collaboration." ;
     sh:targetClass sac:VariantMeta ;
     sh:property [
         sh:path sac:variantType ;
@@ -16,6 +18,7 @@ sacsh:VariantMetaShape
     ] ;
     sh:property [
         sh:path sac:parentVariant ;
+        sh:description "Variant this one diverged from." ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;

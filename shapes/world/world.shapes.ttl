@@ -8,6 +8,7 @@
 
 sacsh:WorldLayerShape
     a sh:NodeShape ;
+    rdfs:comment "The world graph — ground truth of the story universe." ;
     sh:targetClass sac:WorldLayer ;
     sh:property [
         sh:path sac:timeSystem ;
@@ -24,6 +25,7 @@ sacsh:WorldLayerShape
     ] ;
     sh:property [
         sh:path sac:hasFrame ;
+        sh:description "Alternative timelines and branches." ;
         sh:node sacsh:FrameShape ;
     ] ;
     sh:property [

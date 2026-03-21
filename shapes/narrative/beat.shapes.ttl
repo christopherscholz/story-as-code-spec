@@ -4,9 +4,11 @@
 @prefix sacex: <https://story-as-code.dev/expr/> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 
 sacsh:BeatShape
     a sh:NodeShape ;
+    rdfs:comment "A story beat — selects world elements and adds dramaturgical structure." ;
     sh:targetClass sac:Beat ;
     sh:property [
         sh:path sac:entityName ;
@@ -21,31 +23,37 @@ sacsh:BeatShape
     ] ;
     sh:property [
         sh:path sac:parent ;
+        sh:description "Parent beat ID." ;
         sh:nodeKind sh:IRI ;
         sh:node sacsh:BeatShape ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:referencesNode ;
+        sh:description "World node IDs relevant to this beat." ;
         sh:nodeKind sh:IRI ;
         sh:node sacsh:NodeShape ;
     ] ;
     sh:property [
         sh:path sac:referencesEdge ;
+        sh:description "World edge IDs relevant to this beat." ;
         sh:nodeKind sh:IRI ;
         sh:node sacsh:EdgeShape ;
     ] ;
     sh:property [
         sh:path sac:function ;
+        sh:description "Dramaturgical function." ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:hasReveal ;
+        sh:description "Information disclosed to the reader at this beat." ;
         sh:node sacsh:RevealShape ;
     ] ;
     sh:property [
         sh:path sac:tension ;
+        sh:description "Tension level at this beat (for tension curve modeling)." ;
         sh:datatype xsd:double ;
         sh:maxCount 1 ;
         sh:minInclusive 0.0 ;
@@ -53,6 +61,7 @@ sacsh:BeatShape
     ] ;
     sh:property [
         sh:path sac:emotionalTarget ;
+        sh:description "Target emotional valence at this beat." ;
         sh:datatype xsd:double ;
         sh:maxCount 1 ;
         sh:minInclusive -1.0 ;
@@ -68,6 +77,7 @@ sacsh:RevealShape
     a sh:NodeShape ;
     sh:property [
         sh:path sac:revealTarget ;
+        sh:description "Node or edge ID being revealed." ;
         sh:nodeKind sh:IRI ;
         sh:or ( [ sh:class sac:Node ] [ sh:class sac:Edge ] ) ;
         sh:minCount 1 ;
@@ -75,6 +85,7 @@ sacsh:RevealShape
     ] ;
     sh:property [
         sh:path sac:degree ;
+        sh:description "How much is disclosed (HINT, PARTIAL, FULL)." ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] .
@@ -83,11 +94,13 @@ sacsh:TransitionShape
     a sh:NodeShape ;
     sh:property [
         sh:path sac:transitionType ;
+        sh:description "How this beat connects to the next." ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:toBeat ;
+        sh:description "Beat ID this transitions to (if cross-hierarchy)." ;
         sh:nodeKind sh:IRI ;
         sh:node sacsh:BeatShape ;
         sh:maxCount 1 ;

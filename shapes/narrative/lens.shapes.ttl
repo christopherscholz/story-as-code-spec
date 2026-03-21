@@ -4,9 +4,11 @@
 @prefix sacex: <https://story-as-code.dev/expr/> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 
 sacsh:LensShape
     a sh:NodeShape ;
+    rdfs:comment "A narrative perspective — who tells the story, what they know, and how reliable they are." ;
     sh:targetClass sac:Lens ;
     sh:property [
         sh:path sac:perspective ;
@@ -69,6 +71,7 @@ sacsh:PerspectiveShape
     ] ;
     sh:property [
         sh:path sac:anchor ;
+        sh:description "Node ID — for CHARACTER_BOUND." ;
         sh:nodeKind sh:IRI ;
         sh:node sacsh:NodeShape ;
         sh:maxCount 1 ;
@@ -106,6 +109,7 @@ sacsh:TemporalPositionShape
     ] ;
     sh:property [
         sh:path sac:narratingFrom ;
+        sh:description "Time point from which the narrator looks back." ;
         sh:datatype xsd:string ;
         sh:maxCount 1 ;
     ] ;
@@ -192,6 +196,7 @@ sacsh:ReliabilityShape
     ] ;
     sh:property [
         sh:path sac:omits ;
+        sh:description "Event IDs this narrator skips or downplays." ;
         sh:nodeKind sh:IRI ;
         sh:or ( [ sh:class sac:Node ] [ sh:class sac:Edge ] ) ;
     ] ;
@@ -231,6 +236,7 @@ sacsh:LensLayerShape
     ] ;
     sh:property [
         sh:path sac:priority ;
+        sh:description "Higher value takes priority on conflict." ;
         sh:datatype xsd:integer ;
         sh:maxCount 1 ;
     ] ;
@@ -275,21 +281,25 @@ sacsh:ConflictResolutionShape
     a sh:NodeShape ;
     sh:property [
         sh:path sac:knowledgeResolution ;
+        sh:description "UNION — knows everything any sub-lens knows. INTERSECTION — only shared knowledge. PRIORITY_WINS — higher priority decides." ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:emotionResolution ;
+        sh:description "BLEND — averaged. PRIORITY_WINS — higher priority decides. DOMINANT — strongest emotion wins." ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:voiceResolution ;
+        sh:description "PRIORITY_WINS — higher priority decides. ALTERNATING — switches with active sub-lens." ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:reliabilityResolution ;
+        sh:description "LEAST_RELIABLE — inherits least reliable. MOST_RELIABLE — inherits most reliable. PRIORITY_WINS — higher priority decides." ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] .

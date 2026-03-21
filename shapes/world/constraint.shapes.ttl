@@ -8,6 +8,7 @@
 
 sacsh:ConstraintShape
     a sh:NodeShape ;
+    rdfs:comment "A world rule that validates the world graph." ;
     sh:targetClass sac:Constraint ;
     sh:property [
         sh:path sac:entityName ;
@@ -17,18 +18,21 @@ sacsh:ConstraintShape
     ] ;
     sh:property [
         sh:path sac:description ;
+        sh:description "The rule to enforce, expressed in story-world terms." ;
         sh:datatype xsd:string ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:severity ;
+        sh:description "INFO — suggestion only. WARNING — flags issue. ERROR — must resolve." ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:scope ;
+        sh:description "What this rule applies to. Omit for global rules." ;
         sh:maxCount 1 ;
         sh:node sacsh:ExpressionShape ;
     ] .

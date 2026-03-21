@@ -8,9 +8,11 @@
 
 sacsh:StoryShape
     a sh:NodeShape ;
+    rdfs:comment "Root document of a Story as Code project." ;
     sh:targetClass sac:Story ;
     sh:property [
         sh:path sac:specVersion ;
+        sh:description "Spec version this story conforms to." ;
         sh:datatype xsd:string ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
