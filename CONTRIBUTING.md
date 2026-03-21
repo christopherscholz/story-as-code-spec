@@ -20,7 +20,7 @@ For questions, ideas, and general feedback, use [GitHub Discussions](https://git
 1. Fork the repository
 2. Create a branch from `main`
 3. Make your changes
-4. Ensure YAML files pass validation (`yamllint`)
+4. Ensure SHACL validation passes (`python scripts/validate.py`)
 5. Submit a pull request
 
 ## Commit Conventions
