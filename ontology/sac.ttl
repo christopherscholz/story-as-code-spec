@@ -326,6 +326,7 @@ sac:edgeType a owl:ObjectProperty ;
 
 sac:source a owl:ObjectProperty ;
     rdfs:domain sac:Edge ;
+    rdfs:range sac:Node ;
     rdfs:comment "Source node of the edge" .
 
 sac:target a owl:ObjectProperty ;
@@ -479,6 +480,7 @@ sac:perspectiveType a owl:ObjectProperty ;
 
 sac:anchor a owl:ObjectProperty ;
     rdfs:domain sac:Perspective ;
+    rdfs:range sac:Node ;
     rdfs:comment "The node this perspective is anchored to" .
 
 sac:person a owl:ObjectProperty ;
@@ -544,6 +546,7 @@ sac:bias a owl:ObjectProperty ;
 
 sac:toward a owl:ObjectProperty ;
     rdfs:domain sac:EmotionalBias ;
+    rdfs:range sac:Node ;
     rdfs:comment "The node this bias is directed toward" .
 
 sac:biasStrength a owl:DatatypeProperty ;
@@ -605,6 +608,7 @@ sac:level a owl:ObjectProperty ;
 
 sac:omits a owl:ObjectProperty ;
     rdfs:domain sac:Reliability ;
+    rdfs:range sac:Node ;
     rdfs:comment "Event nodes the narrator omits" .
 
 sac:hasDistortion a owl:ObjectProperty ;
@@ -618,6 +622,7 @@ sac:hasDistortion a owl:ObjectProperty ;
 
 sac:distortedNode a owl:ObjectProperty ;
     rdfs:domain sac:Distortion ;
+    rdfs:range sac:Node ;
     rdfs:comment "The node being distorted" .
 
 sac:direction a owl:ObjectProperty ;
@@ -660,6 +665,7 @@ sac:alternationMode a owl:ObjectProperty ;
 
 sac:sequence a owl:ObjectProperty ;
     rdfs:domain sac:Alternation ;
+    rdfs:range sac:Lens ;
     rdfs:comment "Ordered sequence of lens references" .
 
 sac:alternationTrigger a owl:ObjectProperty ;
@@ -686,18 +692,22 @@ sac:conflictResolution a owl:ObjectProperty ;
 # =============================================================================
 
 sac:knowledgeResolution a owl:ObjectProperty ;
+    rdfs:domain sac:ConflictResolution ;
     rdfs:range sac:ValueDefinition ;
     rdfs:comment "How knowledge conflicts are resolved, referencing a ValueDefinition" .
 
 sac:emotionResolution a owl:ObjectProperty ;
+    rdfs:domain sac:ConflictResolution ;
     rdfs:range sac:ValueDefinition ;
     rdfs:comment "How emotion conflicts are resolved, referencing a ValueDefinition" .
 
 sac:voiceResolution a owl:ObjectProperty ;
+    rdfs:domain sac:ConflictResolution ;
     rdfs:range sac:ValueDefinition ;
     rdfs:comment "How voice conflicts are resolved, referencing a ValueDefinition" .
 
 sac:reliabilityResolution a owl:ObjectProperty ;
+    rdfs:domain sac:ConflictResolution ;
     rdfs:range sac:ValueDefinition ;
     rdfs:comment "How reliability conflicts are resolved, referencing a ValueDefinition" .
 
@@ -858,6 +868,7 @@ sac:variantType a owl:ObjectProperty ;
 
 sac:parentVariant a owl:ObjectProperty ;
     rdfs:domain sac:VariantMeta ;
+    rdfs:range sac:VariantMeta ;
     rdfs:comment "Parent variant this variant derives from" .
 
 sac:affectsFrames a owl:ObjectProperty ;
@@ -945,7 +956,7 @@ sac:mustExist a owl:DatatypeProperty ;
 
 # EdgeDependency reuses sac:dependencyId and sac:mustExist from above.
 
-sac:requiredProperties a owl:DatatypeProperty ;
+sac:requiredProps a owl:DatatypeProperty ;
     rdfs:domain sac:EdgeDependency ;
     rdfs:range rdf:JSON ;
     rdfs:comment "Properties required on the edge for this dependency" .
@@ -956,10 +967,12 @@ sac:requiredProperties a owl:DatatypeProperty ;
 
 sac:revealNode a owl:ObjectProperty ;
     rdfs:domain sac:RevealDependency ;
+    rdfs:range sac:Node ;
     rdfs:comment "The node whose information is revealed" .
 
 sac:revealedTo a owl:ObjectProperty ;
     rdfs:domain sac:RevealDependency ;
+    rdfs:range sac:Node ;
     rdfs:comment "The entity to whom information is revealed" .
 
 sac:revealAt a owl:DatatypeProperty ;
