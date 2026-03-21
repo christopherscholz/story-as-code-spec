@@ -71,7 +71,7 @@ sacsh:PerspectiveShape
     ] ;
     sh:property [
         sh:path sac:anchor ;
-        sh:description "Node ID — for CHARACTER_BOUND." ;
+        sh:description "The character node this perspective is anchored to. Only relevant when perspectiveType is CHARACTER_BOUND." ;
         sh:nodeKind sh:IRI ;
         sh:node sacsh:NodeShape ;
         sh:maxCount 1 ;
@@ -281,25 +281,25 @@ sacsh:ConflictResolutionShape
     a sh:NodeShape ;
     sh:property [
         sh:path sac:knowledgeResolution ;
-        sh:description "UNION — knows everything any sub-lens knows. INTERSECTION — only shared knowledge. PRIORITY_WINS — higher priority decides." ;
+        sh:description "How knowledge conflicts between sub-lenses are resolved — e.g. by union (narrator knows everything any sub-lens knows), intersection (only shared knowledge), or by priority." ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:emotionResolution ;
-        sh:description "BLEND — averaged. PRIORITY_WINS — higher priority decides. DOMINANT — strongest emotion wins." ;
+        sh:description "How conflicting emotional states from sub-lenses are merged — e.g. blended, dominated by the strongest, or resolved by priority." ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:voiceResolution ;
-        sh:description "PRIORITY_WINS — higher priority decides. ALTERNATING — switches with active sub-lens." ;
+        sh:description "How voice conflicts between sub-lenses are resolved — e.g. by priority or by alternating with the active sub-lens." ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:reliabilityResolution ;
-        sh:description "LEAST_RELIABLE — inherits least reliable. MOST_RELIABLE — inherits most reliable. PRIORITY_WINS — higher priority decides." ;
+        sh:description "How reliability conflicts between sub-lenses are resolved — e.g. inheriting the least reliable, the most reliable, or resolving by priority." ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] .

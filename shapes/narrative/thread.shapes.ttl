@@ -12,7 +12,7 @@ sacsh:ThreadShape
     sh:targetClass sac:Thread ;
     sh:property [
         sh:path sac:threadType ;
-        sh:description "THEME — an abstract idea. MOTIF — a recurring symbolic element." ;
+        sh:description "Whether this thread is an abstract idea woven through the story (THEME) or a concrete recurring symbol or image (MOTIF)." ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;

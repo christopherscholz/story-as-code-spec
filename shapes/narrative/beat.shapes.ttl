@@ -85,7 +85,7 @@ sacsh:RevealShape
     ] ;
     sh:property [
         sh:path sac:degree ;
-        sh:description "How much is disclosed (HINT, PARTIAL, FULL)." ;
+        sh:description "How completely the target is disclosed to the reader at this beat — e.g. a hint, partial information, or full disclosure." ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] .

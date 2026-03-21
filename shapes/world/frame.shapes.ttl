@@ -58,7 +58,7 @@ sacsh:FrameRelationShape
     ] ;
     sh:property [
         sh:path sac:relationType ;
-        sh:description "Relation type (e.g. BRANCHES_INTO, MERGES_WITH, LOOPS_BACK)." ;
+        sh:description "How this frame relates to another — e.g. branching off at a divergence point, merging back, or looping." ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;

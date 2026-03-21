@@ -18,7 +18,7 @@ sacsh:TimeSystemShape
     ] ;
     sh:property [
         sh:path sac:timeSystemType ;
-        sh:description "LINEAR — time points have a natural order and sort lexicographically. ABSTRACT — time points are unordered labels; sequence is defined through the graph." ;
+        sh:description "How time is structured in this world — whether time points have a natural ordering (e.g. LINEAR) or are abstract unordered labels whose sequence is defined through the world graph (e.g. ABSTRACT)." ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
