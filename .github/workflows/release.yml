@@ -61,8 +61,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Trigger docs deployment for tag
+      - name: Trigger website deployment
         if: steps.check.outputs.exists == 'false'
-        run: gh workflow run deploy-pages.yml --ref "${{ needs.check-version.outputs.tag }}"
+        run: |
+          gh api repos/christopherscholz/story-as-code-website/dispatches \
+            -f event_type=spec-release \
+            -f 'client_payload[version]=${{ needs.check-version.outputs.version }}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
