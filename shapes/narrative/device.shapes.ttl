@@ -9,6 +9,12 @@ sacsh:DeviceShape
     a sh:NodeShape ;
     sh:targetClass sac:Device ;
     sh:property [
+        sh:path sac:entityName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
         sh:path sac:deviceType ;
         sh:datatype xsd:string ;
         sh:minCount 1 ;

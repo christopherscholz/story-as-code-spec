@@ -25,7 +25,7 @@
       }
     }
   },
-  "settings": {
+  "formatSettings": {
     "pacing": {
       "part": {
         "tension_shape": "MINI_ARC",

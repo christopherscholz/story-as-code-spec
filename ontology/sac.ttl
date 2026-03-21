@@ -319,8 +319,7 @@ sac:source a owl:ObjectProperty ;
     rdfs:comment "Source node of the edge" .
 
 sac:target a owl:ObjectProperty ;
-    rdfs:domain sac:Edge ;
-    rdfs:comment "Target node of the edge" .
+    rdfs:comment "Target of the edge or frame relation" .
 
 sac:directed a owl:DatatypeProperty ;
     rdfs:domain sac:Edge ;
@@ -328,7 +327,6 @@ sac:directed a owl:DatatypeProperty ;
     rdfs:comment "Whether this edge is directed" .
 
 sac:scope a owl:ObjectProperty ;
-    rdfs:domain sac:Edge ;
     rdfs:range sac:Expression ;
     rdfs:comment "Conditional scope expression for this edge" .
 
@@ -352,10 +350,6 @@ sac:hasRelation a owl:ObjectProperty ;
 # =============================================================================
 # Properties — FrameRelation
 # =============================================================================
-
-sac:relationTarget a owl:ObjectProperty ;
-    rdfs:domain sac:FrameRelation ;
-    rdfs:comment "The target frame of this relation" .
 
 sac:relationType a owl:DatatypeProperty ;
     rdfs:domain sac:FrameRelation ;

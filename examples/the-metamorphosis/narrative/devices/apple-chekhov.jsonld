@@ -2,6 +2,7 @@
   "@context": "../../../../context/sac.context.jsonld",
   "type": "Device",
   "id": "apple-chekhov",
+  "name": "The Apple",
   "deviceType": "CHEKHOV_GUN",
   "description": "Father's growing hostility culminates in the apple bombardment. The apple lodged in Gregor's back rots over months, a physical marker of the family's violence that accelerates his decline toward death.",
   "setup": [

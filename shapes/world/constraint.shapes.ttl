@@ -30,4 +30,5 @@ sacsh:ConstraintShape
     sh:property [
         sh:path sac:scope ;
         sh:maxCount 1 ;
+        sh:node sacsh:ExpressionShape ;
     ] .

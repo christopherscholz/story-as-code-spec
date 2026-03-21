@@ -29,7 +29,7 @@
       }
     }
   },
-  "settings": {
+  "formatSettings": {
     "pacing": {
       "act": {
         "tension_shape": "THREE_ACT"
