@@ -9,8 +9,8 @@
   "description": "In the improved 1985, Biff now waxes George's car — the power dynamic is reversed",
   "scope": {
     "and": [
-      { "selectorType": "frame", "selectorItem": "improved-1985" },
-      { "selectorType": "time", "selectorItem": "1985-10-26" }
+      { "@id": "improved-1985" },
+      { "@id": "1985-10-26" }
     ]
   }
 }

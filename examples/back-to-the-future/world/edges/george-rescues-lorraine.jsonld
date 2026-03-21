@@ -6,8 +6,5 @@
   "name": "rescues",
   "source": "george",
   "target": "lorraine",
-  "scope": {
-    "selectorType": "time",
-    "selectorItem": "1955-11-12"
-  }
+  "scope": { "@id": "1955-11-12" }
 }

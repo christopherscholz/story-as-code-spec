@@ -8,10 +8,7 @@
   "target": "apartment",
   "scope": {
     "range": {
-      "from": {
-        "selectorType": "time",
-        "selectorItem": "Month 2"
-      },
+      "from": "Month 2",
       "to": null
     }
   }

@@ -9,10 +9,7 @@
   "description": "The apple lodges in Gregor's back and rots in place, never removed",
   "scope": {
     "range": {
-      "from": {
-        "selectorType": "time",
-        "selectorItem": "Month 1"
-      },
+      "from": "Month 1",
       "to": null
     }
   }

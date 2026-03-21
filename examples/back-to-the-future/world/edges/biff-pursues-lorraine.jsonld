@@ -6,8 +6,5 @@
   "name": "pursues",
   "source": "biff",
   "target": "lorraine",
-  "scope": {
-    "selectorType": "frame",
-    "selectorItem": "1955-timeline"
-  }
+  "scope": { "@id": "1955-timeline" }
 }

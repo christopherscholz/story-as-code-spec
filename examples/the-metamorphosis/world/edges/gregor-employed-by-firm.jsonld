@@ -10,10 +10,7 @@
   "scope": {
     "range": {
       "from": null,
-      "to": {
-        "selectorType": "time",
-        "selectorItem": "Day 1"
-      }
+      "to": "Day 1"
     }
   }
 }

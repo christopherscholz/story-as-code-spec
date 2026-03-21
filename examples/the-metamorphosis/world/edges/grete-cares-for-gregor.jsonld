@@ -9,10 +9,7 @@
   "scope": {
     "range": {
       "from": null,
-      "to": {
-        "selectorType": "time",
-        "selectorItem": "Month 3"
-      }
+      "to": "Month 3"
     }
   }
 }

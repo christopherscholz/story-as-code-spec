@@ -9,7 +9,7 @@
   "scope": {
     "range": {
       "from": null,
-      "to": { "selectorType": "time", "selectorItem": "1955-11-12" }
+      "to": "1955-11-12"
     }
   }
 }

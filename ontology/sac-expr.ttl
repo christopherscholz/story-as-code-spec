@@ -2,14 +2,9 @@
 @prefix sac:   <https://story-as-code.dev/ontology#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
-@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 # --- Classes ---
-
-sacex:SelectorExpression a owl:Class ;
-    rdfs:subClassOf sac:Expression ;
-    rdfs:comment "A single selector tuple identifying a story element" .
 
 sacex:AndExpression a owl:Class ;
     rdfs:subClassOf sac:Expression ;
@@ -33,16 +28,6 @@ sacex:RangeExpression a owl:Class ;
 
 # --- Properties ---
 
-sacex:selectorType a owl:DatatypeProperty ;
-    rdfs:domain sacex:SelectorExpression ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Selector type (node_type, node, edge_type, edge, frame, tag, time, constraint, time_system, beat, lens, format, device, thread, variant)" .
-
-sacex:selectorItem a owl:DatatypeProperty ;
-    rdfs:domain sacex:SelectorExpression ;
-    rdfs:range xsd:string ;
-    rdfs:comment "The specific element ID" .
-
 sacex:andOperands a owl:ObjectProperty ;
     rdfs:domain sacex:AndExpression ;
     rdfs:range rdf:List ;
@@ -65,10 +50,8 @@ sacex:inItems a owl:ObjectProperty ;
 
 sacex:rangeFrom a owl:ObjectProperty ;
     rdfs:domain sacex:RangeExpression ;
-    rdfs:range sacex:SelectorExpression ;
     rdfs:comment "Start of range (inclusive)" .
 
 sacex:rangeTo a owl:ObjectProperty ;
     rdfs:domain sacex:RangeExpression ;
-    rdfs:range sacex:SelectorExpression ;
     rdfs:comment "End of range (inclusive)" .

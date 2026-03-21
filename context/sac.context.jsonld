@@ -198,14 +198,12 @@
     "revealedTo": { "@id": "sac:revealedTo", "@type": "@id" },
     "revealAt": "sac:revealAt",
 
-    "selectorType": "sacex:selectorType",
-    "selectorItem": "sacex:selectorItem",
     "and": { "@id": "sacex:andOperands", "@container": "@list" },
     "or": { "@id": "sacex:orOperands", "@container": "@list" },
     "not": "sacex:notOperand",
     "in": { "@id": "sacex:inItems", "@container": "@list" },
     "range": "sacex:range",
-    "from": "sacex:rangeFrom",
-    "to": "sacex:rangeTo"
+    "from": { "@id": "sacex:rangeFrom", "@type": "@id" },
+    "to": { "@id": "sacex:rangeTo", "@type": "@id" }
   }
 }

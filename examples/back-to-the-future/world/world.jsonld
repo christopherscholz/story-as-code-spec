@@ -142,10 +142,7 @@
       "name": "Time travel requires 1.21 gigawatts and 88 mph",
       "description": "The DeLorean can only traverse time when it reaches 88 mph and the flux capacitor is powered by exactly 1.21 gigawatts. Without both conditions met simultaneously, time travel does not occur.",
       "severity": "ERROR",
-      "scope": {
-        "selectorType": "node",
-        "selectorItem": "delorean"
-      }
+      "scope": { "@id": "delorean" }
     }
   ]
 }
