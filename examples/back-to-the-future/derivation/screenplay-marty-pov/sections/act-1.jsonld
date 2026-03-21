@@ -15,14 +15,14 @@
       "annotations": [
         {
           "ref": "marty",
-          "start": 66,
-          "end": 77,
+          "start": 76,
+          "end": 87,
           "exact": "MARTY MCFLY"
         },
         {
           "ref": "hill-valley-1985",
-          "start": 155,
-          "end": 166,
+          "start": 203,
+          "end": 214,
           "exact": "HILL VALLEY"
         }
       ],
@@ -37,30 +37,34 @@
       "annotations": [
         {
           "ref": "marty",
-          "start": 29,
-          "end": 34,
+          "start": 28,
+          "end": 33,
           "exact": "Marty"
         },
         {
           "ref": "george",
-          "start": 82,
-          "end": 94,
+          "start": 84,
+          "end": 96,
           "exact": "GEORGE MCFLY"
         },
         {
           "ref": "lorraine",
-          "start": 140,
-          "end": 154,
+          "start": 156,
+          "end": 170,
           "exact": "LORRAINE MCFLY"
         },
         {
           "ref": "biff",
-          "start": 188,
-          "end": 200,
+          "start": 198,
+          "end": 209,
           "exact": "BIFF TANNEN"
         }
       ],
-      "edgeIds": ["marty-son-of-george", "marty-son-of-lorraine", "biff-bullies-george"],
+      "edgeIds": [
+        "marty-son-of-george",
+        "marty-son-of-lorraine",
+        "biff-bullies-george"
+      ],
       "passageStatus": "FINAL"
     },
     {
@@ -73,35 +77,40 @@
         {
           "ref": "twin-pines-mall",
           "start": 5,
-          "end": 21,
+          "end": 20,
           "exact": "TWIN PINES MALL"
         },
         {
           "ref": "marty",
-          "start": 55,
-          "end": 60,
+          "start": 54,
+          "end": 59,
           "exact": "Marty"
         },
         {
           "ref": "doc-brown",
-          "start": 117,
-          "end": 126,
+          "start": 153,
+          "end": 162,
           "exact": "DOC BROWN"
         },
         {
           "ref": "delorean",
-          "start": 233,
+          "start": 234,
           "end": 249,
           "exact": "DeLorean DMC-12"
         },
         {
           "ref": "flux-capacitor",
-          "start": 525,
-          "end": 540,
+          "start": 552,
+          "end": 566,
           "exact": "FLUX CAPACITOR"
         }
       ],
-      "edgeIds": ["doc-owns-delorean", "doc-invented-flux", "flux-in-delorean", "marty-friends-with-doc"],
+      "edgeIds": [
+        "doc-owns-delorean",
+        "doc-invented-flux",
+        "flux-in-delorean",
+        "marty-friends-with-doc"
+      ],
       "passageStatus": "FINAL"
     },
     {
@@ -113,30 +122,32 @@
       "annotations": [
         {
           "ref": "delorean",
-          "start": 35,
-          "end": 48,
+          "start": 34,
+          "end": 46,
           "exact": "The DeLorean"
         },
         {
           "ref": "marty",
-          "start": 103,
-          "end": 108,
+          "start": 112,
+          "end": 117,
           "exact": "Marty"
         },
         {
           "ref": "hill-valley-1955",
-          "start": 234,
-          "end": 245,
+          "start": 266,
+          "end": 277,
           "exact": "HILL VALLEY"
         },
         {
           "ref": "photo",
-          "start": 371,
-          "end": 381,
+          "start": 419,
+          "end": 429,
           "exact": "PHOTOGRAPH"
         }
       ],
-      "edgeIds": ["marty-in-arrival-1955"],
+      "edgeIds": [
+        "marty-in-arrival-1955"
+      ],
       "passageStatus": "FINAL"
     }
   ]

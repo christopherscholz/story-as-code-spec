@@ -21,18 +21,20 @@
         },
         {
           "ref": "gregors-room",
-          "start": 80,
-          "end": 84,
+          "start": 87,
+          "end": 91,
           "exact": "Bett"
         },
         {
           "ref": "transformation",
-          "start": 95,
-          "end": 131,
+          "start": 101,
+          "end": 134,
           "exact": "ungeheueren Ungeziefer verwandelt"
         }
       ],
-      "edgeIds": ["gregor-confined-to-room"],
+      "edgeIds": [
+        "gregor-confined-to-room"
+      ],
       "passageStatus": "FINAL"
     },
     {
@@ -49,8 +51,13 @@
           "exact": "Er"
         }
       ],
-      "nodeIds": ["gregors-room", "picture-frame"],
-      "edgeIds": ["picture-in-room"],
+      "nodeIds": [
+        "gregors-room",
+        "picture-frame"
+      ],
+      "edgeIds": [
+        "picture-in-room"
+      ],
       "passageStatus": "FINAL"
     }
   ]
