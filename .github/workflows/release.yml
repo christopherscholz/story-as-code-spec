@@ -67,7 +67,7 @@ jobs:
             -f event_type=spec-release \
             -f 'client_payload[version]=${{ needs.check-version.outputs.version }}'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.WEBSITE_DISPATCH_TOKEN }}
 
   deploy-dev:
     needs: check-version
@@ -82,4 +82,4 @@ jobs:
             -f event_type=spec-release \
             -f 'client_payload[version]=dev'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.WEBSITE_DISPATCH_TOKEN }}
