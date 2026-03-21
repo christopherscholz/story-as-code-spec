@@ -47,13 +47,13 @@ Example: `feat(schema): add magic system node types`
 To propose a new schema extension:
 
 1. Open an issue describing the use case
-2. Draft the schema YAML following the existing patterns in `schemas/`
+2. Draft the SHACL shape following the existing patterns in `shapes/`
 3. Include example node/edge definitions that use your schema
 4. Submit a pull request for review
 
 ## Spec Change Process
 
-Changes to the core specification (`docs/spec.md`) require:
+Changes to the core specification (ontology and shapes) require:
 
 1. An issue describing the motivation and proposed change
 2. Discussion in the issue or in Discussions
