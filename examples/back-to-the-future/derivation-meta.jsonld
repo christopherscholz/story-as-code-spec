@@ -1,6 +1,0 @@
-{
-  "@context": "../../context/sac.context.jsonld",
-  "id": "bttf-derivation-meta",
-  "sac:derivedFrom": "Back to the Future (1985), directed by Robert Zemeckis",
-  "sac:purpose": "Demonstration of Story as Code frames, temporal scopes, and time-travel narrative structure"
-}
