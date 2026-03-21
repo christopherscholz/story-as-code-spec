@@ -87,9 +87,6 @@ sac:Format a owl:Class ;
 sac:VariantMeta a owl:Class ;
     rdfs:comment "Metadata for a parallel world version" .
 
-sac:DerivationMeta a owl:Class ;
-    rdfs:comment "Validation contract for compiled output" .
-
 # =============================================================================
 # Classes — Supporting
 # =============================================================================
@@ -147,21 +144,6 @@ sac:Composition a owl:Class ;
 
 sac:ConflictResolution a owl:Class ;
     rdfs:comment "Conflict resolution between sub-lenses" .
-
-sac:BeatPosition a owl:Class ;
-    rdfs:comment "Beat position in a derivation" .
-
-sac:Dependencies a owl:Class ;
-    rdfs:comment "Dependencies in a derivation" .
-
-sac:NodeDependency a owl:Class ;
-    rdfs:comment "Node dependency in a derivation" .
-
-sac:EdgeDependency a owl:Class ;
-    rdfs:comment "Edge dependency in a derivation" .
-
-sac:RevealDependency a owl:Class ;
-    rdfs:comment "Reveal dependency in a derivation" .
 
 sac:Settings a owl:Class ;
     rdfs:comment "Project settings" .
@@ -880,102 +862,3 @@ sac:mergeStrategy a owl:ObjectProperty ;
     rdfs:domain sac:VariantMeta ;
     rdfs:range sac:ValueDefinition ;
     rdfs:comment "Strategy for merging this variant, referencing a ValueDefinition" .
-
-# =============================================================================
-# Properties — DerivationMeta
-# =============================================================================
-
-sac:sourceVersion a owl:DatatypeProperty ;
-    rdfs:domain sac:DerivationMeta ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Source version this derivation was compiled from" .
-
-sac:derivationLens a owl:ObjectProperty ;
-    rdfs:domain sac:DerivationMeta ;
-    rdfs:range sac:Lens ;
-    rdfs:comment "Lens used in this derivation" .
-
-sac:derivationFormat a owl:ObjectProperty ;
-    rdfs:domain sac:DerivationMeta ;
-    rdfs:range sac:Format ;
-    rdfs:comment "Format used in this derivation" .
-
-sac:beatPosition a owl:ObjectProperty ;
-    rdfs:domain sac:DerivationMeta ;
-    rdfs:range sac:BeatPosition ;
-    rdfs:comment "Beat positions in this derivation" .
-
-sac:dependencies a owl:ObjectProperty ;
-    rdfs:domain sac:DerivationMeta ;
-    rdfs:range sac:Dependencies ;
-    rdfs:comment "Dependencies of this derivation" .
-
-# =============================================================================
-# Properties — BeatPosition
-# =============================================================================
-
-sac:beat a owl:ObjectProperty ;
-    rdfs:domain sac:BeatPosition ;
-    rdfs:range sac:Beat ;
-    rdfs:comment "The beat referenced by this position" .
-
-# =============================================================================
-# Properties — Dependencies
-# =============================================================================
-
-sac:nodeDependencies a owl:ObjectProperty ;
-    rdfs:domain sac:Dependencies ;
-    rdfs:range sac:NodeDependency ;
-    rdfs:comment "Node dependencies in this derivation" .
-
-sac:edgeDependencies a owl:ObjectProperty ;
-    rdfs:domain sac:Dependencies ;
-    rdfs:range sac:EdgeDependency ;
-    rdfs:comment "Edge dependencies in this derivation" .
-
-sac:revealDependencies a owl:ObjectProperty ;
-    rdfs:domain sac:Dependencies ;
-    rdfs:range sac:RevealDependency ;
-    rdfs:comment "Reveal dependencies in this derivation" .
-
-# =============================================================================
-# Properties — NodeDependency
-# =============================================================================
-
-sac:dependencyId a owl:ObjectProperty ;
-    rdfs:domain sac:NodeDependency ;
-    rdfs:comment "The resource this dependency refers to" .
-
-sac:mustExist a owl:DatatypeProperty ;
-    rdfs:range xsd:boolean ;
-    rdfs:comment "Whether the dependency must exist (shared)" .
-
-# =============================================================================
-# Properties — EdgeDependency
-# =============================================================================
-
-# EdgeDependency reuses sac:dependencyId and sac:mustExist from above.
-
-sac:requiredProps a owl:DatatypeProperty ;
-    rdfs:domain sac:EdgeDependency ;
-    rdfs:range rdf:JSON ;
-    rdfs:comment "Properties required on the edge for this dependency" .
-
-# =============================================================================
-# Properties — RevealDependency
-# =============================================================================
-
-sac:revealNode a owl:ObjectProperty ;
-    rdfs:domain sac:RevealDependency ;
-    rdfs:range sac:Node ;
-    rdfs:comment "The node whose information is revealed" .
-
-sac:revealedTo a owl:ObjectProperty ;
-    rdfs:domain sac:RevealDependency ;
-    rdfs:range sac:Node ;
-    rdfs:comment "The entity to whom information is revealed" .
-
-sac:revealAt a owl:DatatypeProperty ;
-    rdfs:domain sac:RevealDependency ;
-    rdfs:range xsd:string ;
-    rdfs:comment "When the reveal must have occurred" .
