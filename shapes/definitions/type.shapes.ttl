@@ -19,6 +19,7 @@ sacsh:TypeDefinitionShape
         sh:path sac:appliesTo ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
+        sh:in ( sacsh:NodeShape sacsh:EdgeShape sacsh:ThreadShape sacsh:DeviceShape sacsh:FormatShape sacsh:LensShape ) ;
     ] ;
     sh:property [
         sh:path sac:description ;
