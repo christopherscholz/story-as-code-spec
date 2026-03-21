@@ -9,9 +9,9 @@
 # --- Union expression shape (recursive, used as a referenced shape) ---
 
 sacsh:ExpressionShape a sh:NodeShape ;
-    rdfs:comment "A boolean expression over selectors. Either a single selector tuple, or a boolean/set operator combining expressions." ;
+    rdfs:comment "A boolean expression over story elements. Either a direct IRI reference (leaf), or a boolean/set operator combining expressions." ;
     sh:or (
-        sacsh:SelectorExpressionShape
+        [ sh:nodeKind sh:IRI ]
         sacsh:AndExpressionShape
         sacsh:OrExpressionShape
         sacsh:NotExpressionShape
@@ -50,6 +50,7 @@ sacsh:InExpressionShape a sh:NodeShape ;
         sh:path sacex:inItems ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
     ] .
 
 sacsh:RangeExpressionShape a sh:NodeShape ;
@@ -58,9 +59,11 @@ sacsh:RangeExpressionShape a sh:NodeShape ;
         sh:path sacex:rangeFrom ;
         sh:description "Start of the range (inclusive). Null for open lower boundary." ;
         sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
     ] ;
     sh:property [
         sh:path sacex:rangeTo ;
         sh:description "End of the range (inclusive). Null for open upper boundary." ;
         sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
     ] .

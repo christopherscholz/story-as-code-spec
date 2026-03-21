@@ -9,8 +9,8 @@
   "description": "In the original 1985, Biff is George's supervisor and still bullies him",
   "scope": {
     "and": [
-      { "selectorType": "frame", "selectorItem": "original-1985" },
-      { "selectorType": "time", "selectorItem": "1985-10-26" }
+      { "@id": "original-1985" },
+      { "@id": "1985-10-26" }
     ]
   }
 }

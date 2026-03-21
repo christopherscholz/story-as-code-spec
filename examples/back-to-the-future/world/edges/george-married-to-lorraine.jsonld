@@ -9,7 +9,7 @@
   "directed": false,
   "scope": {
     "range": {
-      "from": { "selectorType": "time", "selectorItem": "1958" },
+      "from": "1958",
       "to": null
     }
   }

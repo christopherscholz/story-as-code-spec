@@ -9,10 +9,7 @@
   "description": "Father sleeps in his uniform and refuses to take it off \u2014 the uniform becomes his new identity",
   "scope": {
     "range": {
-      "from": {
-        "selectorType": "time",
-        "selectorItem": "Month 1"
-      },
+      "from": "Month 1",
       "to": null
     }
   }

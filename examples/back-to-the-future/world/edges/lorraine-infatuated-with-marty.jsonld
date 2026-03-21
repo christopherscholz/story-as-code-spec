@@ -9,11 +9,11 @@
   "description": "Lorraine develops a crush on Marty after nursing him — the affection meant for George",
   "scope": {
     "and": [
-      { "selectorType": "frame", "selectorItem": "1955-timeline" },
+      { "@id": "1955-timeline" },
       {
         "range": {
-          "from": { "selectorType": "time", "selectorItem": "1955-11-05" },
-          "to": { "selectorType": "time", "selectorItem": "1955-11-12" }
+          "from": "1955-11-05",
+          "to": "1955-11-12"
         }
       }
     ]

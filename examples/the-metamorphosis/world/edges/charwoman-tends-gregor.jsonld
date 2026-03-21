@@ -9,10 +9,7 @@
   "description": "The charwoman handles Gregor without fear or sentiment, calling him 'old dung beetle'",
   "scope": {
     "range": {
-      "from": {
-        "selectorType": "time",
-        "selectorItem": "Month 3"
-      },
+      "from": "Month 3",
       "to": null
     }
   }
