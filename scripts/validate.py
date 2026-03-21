@@ -3,6 +3,9 @@
 
 Loads all .ttl ontology/shape files, then for each example directory
 loads all .jsonld files into a single RDF graph and runs SHACL validation.
+
+Additionally validates that TextAnnotation offsets (start/end) match the
+exact text within the passage content, and suggests fixes for mismatches.
 """
 
 import json
@@ -59,7 +62,85 @@ def load_example_graph(example_dir: Path) -> Graph:
     return g
 
 
-def validate_example(shapes_graph: Graph, example_dir: Path) -> bool:
+def validate_annotations(example_dir: Path, *, fix: bool = False) -> bool:
+    """Check that annotation start/end offsets match the exact text in content.
+
+    Returns True when all annotations are correct.  When *fix* is True the
+    .jsonld files are rewritten with corrected offsets.
+    """
+    ok = True
+    for jsonld_file in sorted(example_dir.rglob("*.jsonld")):
+        with open(jsonld_file) as f:
+            raw = f.read()
+        data = json.loads(raw)
+
+        passages = data.get("passages", [])
+        if not passages:
+            continue
+
+        file_changed = False
+        for passage in passages:
+            content = passage.get("content", "")
+            pid = passage.get("id", "?")
+            for ann in passage.get("annotations", []):
+                start = ann["start"]
+                end = ann["end"]
+                exact = ann.get("exact")
+                if exact is None:
+                    continue
+
+                actual = content[start:end]
+                if actual == exact:
+                    continue
+
+                # Mismatch – find all occurrences and pick the closest one
+                # to the original offset to handle duplicate substrings.
+                ok = False
+                rel = jsonld_file.relative_to(ROOT)
+
+                occurrences = []
+                search_from = 0
+                while True:
+                    idx = content.find(exact, search_from)
+                    if idx == -1:
+                        break
+                    occurrences.append(idx)
+                    search_from = idx + 1
+
+                if not occurrences:
+                    print(
+                        f"  ANNOTATION ERROR  {rel}  passage={pid}  ref={ann['ref']}\n"
+                        f"    exact text {exact!r} NOT FOUND in content"
+                    )
+                    continue
+
+                # Pick the occurrence whose start is closest to the original
+                correct_start = min(occurrences, key=lambda s: abs(s - start))
+                correct_end = correct_start + len(exact)
+                print(
+                    f"  ANNOTATION ERROR  {rel}  passage={pid}  ref={ann['ref']}\n"
+                    f"    content[{start}:{end}] = {actual!r}\n"
+                    f"    exact            = {exact!r}\n"
+                    f"    suggested fix: start={correct_start}, end={correct_end}"
+                )
+
+                if fix:
+                    ann["start"] = correct_start
+                    ann["end"] = correct_end
+                    file_changed = True
+
+        if file_changed:
+            with open(jsonld_file, "w") as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+                f.write("\n")
+            print(f"  FIXED  {jsonld_file.relative_to(ROOT)}")
+
+    return ok
+
+
+def validate_example(
+    shapes_graph: Graph, example_dir: Path, *, fix: bool = False
+) -> bool:
     """Validate a single example against the shapes graph."""
     print(f"\nValidating {example_dir.name}...")
     data_graph = load_example_graph(example_dir)
@@ -79,16 +160,35 @@ def validate_example(shapes_graph: Graph, example_dir: Path) -> bool:
     )
 
     if conforms:
-        print("  PASS")
+        print("  SHACL: PASS")
     else:
-        print("  FAIL")
+        print("  SHACL: FAIL")
         print(results_text)
 
-    return conforms
+    annotations_ok = validate_annotations(example_dir, fix=fix)
+    if annotations_ok:
+        print("  Annotations: PASS")
+    else:
+        print("  Annotations: FAIL")
+
+    return conforms and annotations_ok
 
 
 def main():
-    examples_dir = Path(sys.argv[1]) if len(sys.argv) > 1 else EXAMPLES_DIR
+    import argparse
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "examples", nargs="?", default=str(EXAMPLES_DIR),
+        help="Path to examples directory (default: %(default)s)",
+    )
+    parser.add_argument(
+        "--fix", action="store_true",
+        help="Automatically fix annotation offsets in .jsonld files",
+    )
+    args = parser.parse_args()
+
+    examples_dir = Path(args.examples)
 
     print("Loading ontology and shapes...")
     shapes_graph = load_shapes_graph()
@@ -104,7 +204,7 @@ def main():
         sys.exit(1)
 
     for example_dir in example_dirs:
-        if not validate_example(shapes_graph, example_dir):
+        if not validate_example(shapes_graph, example_dir, fix=args.fix):
             all_pass = False
 
     print()
