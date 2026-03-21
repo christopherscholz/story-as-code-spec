@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: grete-owns-violin
-type: OWNERSHIP
-name: owns
-source: grete
-target: violin

@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "OBJECT",
+  "name": "Object",
+  "appliesTo": "NODE",
+  "description": "A physical thing with symbolic or narrative significance."
+}

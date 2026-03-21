@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/narrative/device.schema.json
-id: clock-tower-flyer-device
-type: SETUP_PAYOFF
-description: "A woman hands Marty a flyer about saving the clock tower. The flyer contains the exact date and time of the lightning strike — the key to getting home."
-setup:
-  - setup-1985
-payoff:
-  - the-plan

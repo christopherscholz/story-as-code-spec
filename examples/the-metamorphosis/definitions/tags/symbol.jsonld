@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "symbol",
+  "name": "Symbol",
+  "description": "An element carrying meaning beyond its literal function."
+}

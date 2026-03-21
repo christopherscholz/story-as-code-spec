@@ -1,0 +1,30 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Thread",
+  "id": "temporal-paradox",
+  "threadType": "THEME",
+  "name": "Temporal Paradox",
+  "description": "Actions in the past have cascading consequences in the future. Marty's presence in 1955 disrupts causality: he prevents his parents' meeting, watches himself fade from a photo, and must actively engineer the future he came from.",
+  "appearances": [
+    {
+      "beatId": "the-test",
+      "description": "The time machine enables temporal displacement but provides no safety net"
+    },
+    {
+      "beatId": "stranded-in-1955",
+      "description": "Marty disrupts his parents' first meeting — the paradox begins"
+    },
+    {
+      "beatId": "matchmaking",
+      "description": "Every attempt to fix the timeline risks further disruption"
+    },
+    {
+      "beatId": "the-dance",
+      "description": "The paradox resolves when George and Lorraine kiss — the photo restores"
+    },
+    {
+      "beatId": "the-return",
+      "description": "The improved 1985 is itself a paradox — Marty remembers a past that no longer exists"
+    }
+  ]
+}

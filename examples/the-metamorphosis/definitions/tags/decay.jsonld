@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "decay",
+  "name": "Decay",
+  "description": "Physical or moral deterioration over time."
+}

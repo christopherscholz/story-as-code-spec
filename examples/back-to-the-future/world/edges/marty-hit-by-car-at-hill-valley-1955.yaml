@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: marty-hit-by-car-at-hill-valley-1955
-type: OCCURRENCE
-name: occurs-at
-source: marty-hit-by-car
-target: hill-valley-1955

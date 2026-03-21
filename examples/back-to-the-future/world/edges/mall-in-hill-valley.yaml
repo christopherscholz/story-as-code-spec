@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: mall-in-hill-valley
-type: SPATIAL
-name: part-of
-source: twin-pines-mall
-target: hill-valley-1985

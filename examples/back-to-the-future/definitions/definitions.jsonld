@@ -1,0 +1,42 @@
+{
+  "@context": "../../../context/sac.context.jsonld",
+  "type": "Definitions",
+  "id": "definitions-layer",
+  "tags": [
+    { "@id": "protagonist" },
+    { "@id": "antagonist" },
+    { "@id": "mentor" },
+    { "@id": "family" },
+    { "@id": "time-travel" },
+    { "@id": "sci-fi" },
+    { "@id": "teenager" },
+    { "@id": "scientist" },
+    { "@id": "bully" },
+    { "@id": "love-interest" },
+    { "@id": "iconic" },
+    { "@id": "vehicle" },
+    { "@id": "public-space" },
+    { "@id": "private-space" },
+    { "@id": "school" }
+  ],
+  "types": [
+    { "@id": "CHARACTER" },
+    { "@id": "LOCATION" },
+    { "@id": "OBJECT" },
+    { "@id": "EVENT" },
+    { "@id": "SPATIAL" },
+    { "@id": "RELATIONSHIP" },
+    { "@id": "KINSHIP" },
+    { "@id": "CONFLICT" },
+    { "@id": "OWNERSHIP" },
+    { "@id": "PARTICIPATION" },
+    { "@id": "OCCURRENCE" },
+    { "@id": "SETUP_PAYOFF" },
+    { "@id": "CHEKHOV_GUN" },
+    { "@id": "DRAMATIC_IRONY" },
+    { "@id": "SCREENPLAY" },
+    { "@id": "SIMPLE" },
+    { "@id": "THEME" },
+    { "@id": "MOTIF" }
+  ]
+}

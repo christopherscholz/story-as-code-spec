@@ -1,0 +1,13 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Device",
+  "id": "violin-setup-payoff",
+  "deviceType": "SETUP_PAYOFF",
+  "description": "Gregor's secret plan to fund Grete's conservatory studies is mentioned early, establishing the violin as a symbol of his human aspirations for his sister. The payoff comes in the final part when Grete plays for the lodgers and Gregor, drawn by the music, crawls out \u2014 the last flicker of his humanity directly causing his exposure and death sentence.",
+  "setup": [
+    "awakening"
+  ],
+  "payoff": [
+    "final-rejection"
+  ]
+}

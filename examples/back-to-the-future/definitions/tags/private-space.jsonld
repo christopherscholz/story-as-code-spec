@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "private-space",
+  "name": "Private Space",
+  "description": "A location belonging to a specific character or group."
+}

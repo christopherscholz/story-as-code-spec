@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "protagonist",
+  "name": "Protagonist",
+  "description": "The central character driving the story."
+}

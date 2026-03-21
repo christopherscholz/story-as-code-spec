@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: biff-in-skateboard-chase
-type: PARTICIPATION
-name: pursues-in
-source: biff
-target: skateboard-chase

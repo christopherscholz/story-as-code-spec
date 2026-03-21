@@ -5,45 +5,55 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "schemas/**"
-      - "**.yaml"
-      - "**.yml"
-      - "VERSION"
 
 jobs:
-  yamllint:
+  shacl-validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install yamllint
-        run: pip install yamllint
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
-      - name: Lint YAML files
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Validate ontology and shapes parse correctly
         run: |
-          FILES=$(find . -name "*.yml" -o -name "*.yaml" | grep -v "^./.git/" | grep -v "^./site/")
-          if [ -n "$FILES" ]; then
-            echo "$FILES" | xargs yamllint
-          fi
+          python3 -c "
+          from rdflib import Graph
+          from pathlib import Path
+          g = Graph()
+          for f in Path('ontology').glob('*.ttl'):
+              g.parse(str(f), format='turtle')
+              print(f'  {f}: OK')
+          for f in sorted(Path('shapes').rglob('*.ttl')):
+              g.parse(str(f), format='turtle')
+              print(f'  {f}: OK')
+          print(f'Total triples: {len(g)}')
+          "
+
+      - name: Validate examples against SHACL shapes
+        run: python3 scripts/validate.py
 
   version-sync:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Verify example spec_versions match VERSION
+      - name: Verify example specVersions match VERSION
         run: |
           VERSION=$(tr -d '[:space:]' < VERSION)
           echo "Expected version: $VERSION"
           ERRORS=0
 
-          for example in examples/*/story.yaml; do
+          for example in examples/*/story.jsonld; do
             name=$(echo "$example" | cut -d/ -f2)
-            actual=$(grep -oP 'spec_version:\s*"?\K([0-9]+\.[0-9]+\.[0-9]+|dev)(?="?\s*$)' "$example" || true)
+            actual=$(python3 -c "import json; print(json.load(open('$example')).get('specVersion', ''))" 2>/dev/null || true)
 
             if [ "$actual" != "$VERSION" ]; then
-              echo "✗ $name: spec_version is '$actual', expected '$VERSION'"
+              echo "✗ $name: specVersion is '$actual', expected '$VERSION'"
               ERRORS=$((ERRORS + 1))
             fi
           done

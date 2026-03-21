@@ -1,9 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/node.schema.json
-id: hill-valley-1985
-name: "Hill Valley (1985)"
-type: LOCATION
-description: >
-  The town of Hill Valley in 1985 — run-down, with a derelict town square and a broken
-  clock tower that stopped at 10:04 PM on November 12, 1955. The McFly house is modest
-  and Biff still lords over George.
-tags: [public-space]

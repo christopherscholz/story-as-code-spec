@@ -1,0 +1,295 @@
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix sac:   <https://story-as-code.dev/ontology#> .
+@prefix sacsh: <https://story-as-code.dev/shapes/> .
+@prefix sacex: <https://story-as-code.dev/expr/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+sacsh:LensShape
+    a sh:NodeShape ;
+    sh:targetClass sac:Lens ;
+    sh:property [
+        sh:path sac:perspective ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:node sacsh:PerspectiveShape ;
+    ] ;
+    sh:property [
+        sh:path sac:lensType ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:knowledge ;
+        sh:maxCount 1 ;
+        sh:node sacsh:KnowledgeShape ;
+    ] ;
+    sh:property [
+        sh:path sac:temporalPosition ;
+        sh:maxCount 1 ;
+        sh:node sacsh:TemporalPositionShape ;
+    ] ;
+    sh:property [
+        sh:path sac:emotional ;
+        sh:maxCount 1 ;
+        sh:node sacsh:EmotionalShape ;
+    ] ;
+    sh:property [
+        sh:path sac:voice ;
+        sh:maxCount 1 ;
+        sh:node sacsh:VoiceShape ;
+    ] ;
+    sh:property [
+        sh:path sac:reliability ;
+        sh:maxCount 1 ;
+        sh:node sacsh:ReliabilityShape ;
+    ] ;
+    sh:property [
+        sh:path sac:hasLayer ;
+        sh:node sacsh:LensLayerShape ;
+    ] ;
+    sh:property [
+        sh:path sac:alternation ;
+        sh:maxCount 1 ;
+        sh:node sacsh:AlternationShape ;
+    ] ;
+    sh:property [
+        sh:path sac:composition ;
+        sh:maxCount 1 ;
+        sh:node sacsh:CompositionShape ;
+    ] .
+
+sacsh:PerspectiveShape
+    a sh:NodeShape ;
+    sh:property [
+        sh:path sac:perspectiveType ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:anchor ;
+        sh:nodeKind sh:IRI ;
+        sh:node sacsh:NodeShape ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:person ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] .
+
+sacsh:KnowledgeShape
+    a sh:NodeShape ;
+    sh:property [
+        sh:path sac:mode ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:includeSubconscious ;
+        sh:datatype xsd:boolean ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:includeWrongBeliefs ;
+        sh:datatype xsd:boolean ;
+        sh:maxCount 1 ;
+    ] .
+
+sacsh:TemporalPositionShape
+    a sh:NodeShape ;
+    sh:property [
+        sh:path sac:temporalType ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:narratingFrom ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:knowsFutureUntil ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] .
+
+sacsh:EmotionalShape
+    a sh:NodeShape ;
+    sh:property [
+        sh:path sac:emotionalSource ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:bias ;
+        sh:maxCount 1 ;
+        sh:node sacsh:EmotionalBiasShape ;
+    ] .
+
+sacsh:EmotionalBiasShape
+    a sh:NodeShape ;
+    sh:property [
+        sh:path sac:toward ;
+        sh:nodeKind sh:IRI ;
+        sh:node sacsh:NodeShape ;
+    ] ;
+    sh:property [
+        sh:path sac:biasStrength ;
+        sh:datatype xsd:double ;
+        sh:maxCount 1 ;
+        sh:minInclusive 0.0 ;
+        sh:maxInclusive 1.0 ;
+    ] .
+
+sacsh:VoiceShape
+    a sh:NodeShape ;
+    sh:property [
+        sh:path sac:vocabularyLevel ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:sentenceTendency ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:innerMonologue ;
+        sh:datatype xsd:boolean ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:metaphorDensity ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:verbalTics ;
+        sh:datatype xsd:string ;
+    ] ;
+    sh:property [
+        sh:path sac:languageRendering ;
+        sh:maxCount 1 ;
+        sh:node sacsh:LanguageRenderingShape ;
+    ] .
+
+sacsh:LanguageRenderingShape
+    a sh:NodeShape ;
+    sh:property [
+        sh:path sac:renderingMode ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] .
+
+sacsh:ReliabilityShape
+    a sh:NodeShape ;
+    sh:property [
+        sh:path sac:level ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:omits ;
+        sh:nodeKind sh:IRI ;
+        sh:or ( [ sh:class sac:Node ] [ sh:class sac:Edge ] ) ;
+    ] ;
+    sh:property [
+        sh:path sac:hasDistortion ;
+        sh:node sacsh:DistortionShape ;
+    ] .
+
+sacsh:DistortionShape
+    a sh:NodeShape ;
+    sh:property [
+        sh:path sac:distortedNode ;
+        sh:nodeKind sh:IRI ;
+        sh:node sacsh:NodeShape ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:direction ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] .
+
+sacsh:LensLayerShape
+    a sh:NodeShape ;
+    sh:property [
+        sh:path sac:layerLens ;
+        sh:nodeKind sh:IRI ;
+        sh:node sacsh:LensShape ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:role ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:priority ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:trigger ;
+        sh:datatype rdf:JSON ;
+        sh:maxCount 1 ;
+    ] .
+
+sacsh:AlternationShape
+    a sh:NodeShape ;
+    sh:property [
+        sh:path sac:alternationMode ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:sequence ;
+        sh:nodeKind sh:IRI ;
+        sh:node sacsh:LensShape ;
+    ] ;
+    sh:property [
+        sh:path sac:alternationTrigger ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] .
+
+sacsh:CompositionShape
+    a sh:NodeShape ;
+    sh:property [
+        sh:path sac:compositionMode ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:conflictResolution ;
+        sh:maxCount 1 ;
+        sh:node sacsh:ConflictResolutionShape ;
+    ] .
+
+sacsh:ConflictResolutionShape
+    a sh:NodeShape ;
+    sh:property [
+        sh:path sac:knowledgeResolution ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:emotionResolution ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:voiceResolution ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:reliabilityResolution ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] .

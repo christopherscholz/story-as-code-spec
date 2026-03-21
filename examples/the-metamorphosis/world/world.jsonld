@@ -1,0 +1,224 @@
+{
+  "@context": "../../../context/sac.context.jsonld",
+  "type": "World",
+  "id": "world-layer",
+  "timeSystem": {
+    "type": "TimeSystem",
+    "id": "samsa-timeline",
+    "name": "Samsa Household Calendar",
+    "timeSystemType": "LINEAR",
+    "calendar": {
+      "unit": "day",
+      "season": "winter"
+    }
+  },
+  "nodes": [
+    {
+      "@id": "gregor"
+    },
+    {
+      "@id": "grete"
+    },
+    {
+      "@id": "father"
+    },
+    {
+      "@id": "mother"
+    },
+    {
+      "@id": "chief-clerk"
+    },
+    {
+      "@id": "charwoman"
+    },
+    {
+      "@id": "lodgers"
+    },
+    {
+      "@id": "gregors-room"
+    },
+    {
+      "@id": "apartment"
+    },
+    {
+      "@id": "living-room"
+    },
+    {
+      "@id": "picture-frame"
+    },
+    {
+      "@id": "violin"
+    },
+    {
+      "@id": "apple"
+    },
+    {
+      "@id": "fathers-uniform"
+    },
+    {
+      "@id": "transformation"
+    },
+    {
+      "@id": "chief-clerk-visit"
+    },
+    {
+      "@id": "furniture-removal"
+    },
+    {
+      "@id": "apple-attack"
+    },
+    {
+      "@id": "violin-recital"
+    },
+    {
+      "@id": "gretes-ultimatum"
+    },
+    {
+      "@id": "gregors-death"
+    }
+  ],
+  "edges": [
+    {
+      "@id": "gregors-room-in-apartment"
+    },
+    {
+      "@id": "living-room-in-apartment"
+    },
+    {
+      "@id": "gregor-confined-to-room"
+    },
+    {
+      "@id": "family-in-apartment"
+    },
+    {
+      "@id": "picture-in-room"
+    },
+    {
+      "@id": "apple-embedded-in-gregor"
+    },
+    {
+      "@id": "lodgers-in-apartment"
+    },
+    {
+      "@id": "grete-owns-violin"
+    },
+    {
+      "@id": "gregor-employed-by-firm"
+    },
+    {
+      "@id": "grete-cares-for-gregor"
+    },
+    {
+      "@id": "father-hostile-to-gregor"
+    },
+    {
+      "@id": "mother-pity-for-gregor"
+    },
+    {
+      "@id": "grete-rejects-gregor"
+    },
+    {
+      "@id": "gregor-attached-to-violin"
+    },
+    {
+      "@id": "lodgers-dominate-apartment"
+    },
+    {
+      "@id": "charwoman-tends-gregor"
+    },
+    {
+      "@id": "father-wears-uniform"
+    },
+    {
+      "@id": "family-knows-transformation"
+    },
+    {
+      "@id": "gregor-in-transformation"
+    },
+    {
+      "@id": "gregor-in-chief-clerk-visit"
+    },
+    {
+      "@id": "chief-clerk-in-chief-clerk-visit"
+    },
+    {
+      "@id": "father-in-chief-clerk-visit"
+    },
+    {
+      "@id": "mother-in-chief-clerk-visit"
+    },
+    {
+      "@id": "grete-in-chief-clerk-visit"
+    },
+    {
+      "@id": "gregor-in-furniture-removal"
+    },
+    {
+      "@id": "grete-in-furniture-removal"
+    },
+    {
+      "@id": "mother-in-furniture-removal"
+    },
+    {
+      "@id": "gregor-in-apple-attack"
+    },
+    {
+      "@id": "father-in-apple-attack"
+    },
+    {
+      "@id": "gregor-in-violin-recital"
+    },
+    {
+      "@id": "grete-in-violin-recital"
+    },
+    {
+      "@id": "lodgers-in-violin-recital"
+    },
+    {
+      "@id": "grete-in-gretes-ultimatum"
+    },
+    {
+      "@id": "father-in-gretes-ultimatum"
+    },
+    {
+      "@id": "mother-in-gretes-ultimatum"
+    },
+    {
+      "@id": "gregor-in-gregors-death"
+    },
+    {
+      "@id": "transformation-at-gregors-room"
+    },
+    {
+      "@id": "chief-clerk-visit-at-apartment"
+    },
+    {
+      "@id": "furniture-removal-at-gregors-room"
+    },
+    {
+      "@id": "apple-attack-at-apartment"
+    },
+    {
+      "@id": "violin-recital-at-apartment"
+    },
+    {
+      "@id": "gretes-ultimatum-at-living-room"
+    },
+    {
+      "@id": "gregors-death-at-gregors-room"
+    }
+  ],
+  "constraints": [
+    {
+      "type": "Constraint",
+      "id": "single-location",
+      "name": "A character can only be in one place at a time",
+      "description": "A character can only occupy one location at any given time.",
+      "severity": "ERROR",
+      "scope": {
+        "selectorType": "node_type",
+        "selectorItem": "CHARACTER"
+      }
+    }
+  ]
+}

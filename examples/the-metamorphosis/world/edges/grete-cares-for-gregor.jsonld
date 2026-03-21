@@ -1,0 +1,18 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "grete-cares-for-gregor",
+  "edgeType": "RELATIONSHIP",
+  "name": "caretakes",
+  "source": "grete",
+  "target": "gregor",
+  "scope": {
+    "range": {
+      "from": null,
+      "to": {
+        "selectorType": "time",
+        "selectorItem": "Month 3"
+      }
+    }
+  }
+}

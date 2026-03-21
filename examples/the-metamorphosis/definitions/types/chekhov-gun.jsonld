@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "CHEKHOV_GUN",
+  "name": "Chekhov's Gun",
+  "appliesTo": "DEVICE",
+  "description": "An element introduced early that must become significant later \u2014 if shown, it must fire."
+}

@@ -1,0 +1,13 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "time-machine-test",
+  "name": "Time Machine Test",
+  "nodeType": "EVENT",
+  "description": "Doc Brown demonstrates the DeLorean at Twin Pines Mall at 1:15 AM, sending Einstein the dog one minute into the future. Moments later, Libyan terrorists arrive to reclaim their stolen plutonium.",
+  "properties": {
+    "participants": ["doc-brown", "marty"],
+    "location": "twin-pines-mall"
+  },
+  "hasTag": ["sci-fi", "time-travel"]
+}

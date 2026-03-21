@@ -1,4 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/definitions/tag.schema.json
-id: domestic
-name: Domestic
-description: "Related to the household and private life."

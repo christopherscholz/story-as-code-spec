@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "flux-capacitor",
+  "name": "Flux Capacitor",
+  "nodeType": "OBJECT",
+  "description": "The device that makes time travel possible. Doc conceived it on November 5, 1955, after slipping off his toilet and hitting his head. It took him thirty years and his entire family fortune to turn the vision into a working device.",
+  "hasTag": ["sci-fi", "iconic", "time-travel"]
+}

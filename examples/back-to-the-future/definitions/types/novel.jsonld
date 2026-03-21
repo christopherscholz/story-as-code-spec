@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "SCREENPLAY",
+  "name": "Screenplay",
+  "appliesTo": "FORMAT",
+  "description": "A film script structured in acts and scenes."
+}

@@ -1,4 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/definitions/tag.schema.json
-id: family
-name: Family
-description: "Related to the family unit and domestic bonds."

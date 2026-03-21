@@ -1,0 +1,151 @@
+{
+  "@context": "../../../context/sac.context.jsonld",
+  "type": "World",
+  "id": "world-layer",
+  "timeSystem": {
+    "type": "TimeSystem",
+    "id": "earth-calendar",
+    "name": "Earth Calendar",
+    "timeSystemType": "LINEAR"
+  },
+  "nodes": [
+    { "@id": "marty" },
+    { "@id": "doc-brown" },
+    { "@id": "george" },
+    { "@id": "lorraine" },
+    { "@id": "biff" },
+    { "@id": "jennifer" },
+    { "@id": "hill-valley-1985" },
+    { "@id": "hill-valley-1955" },
+    { "@id": "twin-pines-mall" },
+    { "@id": "docs-lab" },
+    { "@id": "hill-valley-high" },
+    { "@id": "clock-tower" },
+    { "@id": "delorean" },
+    { "@id": "flux-capacitor" },
+    { "@id": "photo" },
+    { "@id": "clock-tower-flyer" },
+    { "@id": "guitar" },
+    { "@id": "time-machine-test" },
+    { "@id": "libyan-attack" },
+    { "@id": "arrival-1955" },
+    { "@id": "marty-hit-by-car" },
+    { "@id": "marty-meets-doc-1955" },
+    { "@id": "skateboard-chase" },
+    { "@id": "enchantment-dance" },
+    { "@id": "george-punches-biff" },
+    { "@id": "lightning-strike" },
+    { "@id": "return-to-1985" }
+  ],
+  "edges": [
+    { "@id": "marty-son-of-george" },
+    { "@id": "marty-son-of-lorraine" },
+    { "@id": "george-married-to-lorraine" },
+    { "@id": "marty-friends-with-doc" },
+    { "@id": "marty-dating-jennifer" },
+    { "@id": "lorraine-infatuated-with-marty" },
+    { "@id": "george-rescues-lorraine" },
+    { "@id": "biff-bullies-george" },
+    { "@id": "biff-pursues-lorraine" },
+    { "@id": "biff-supervises-george" },
+    { "@id": "biff-waxes-george-car" },
+    { "@id": "george-successful-author" },
+    { "@id": "doc-owns-delorean" },
+    { "@id": "doc-invented-flux" },
+    { "@id": "flux-in-delorean" },
+    { "@id": "clock-tower-in-hill-valley" },
+    { "@id": "high-school-in-hill-valley" },
+    { "@id": "docs-lab-in-hill-valley" },
+    { "@id": "mall-in-hill-valley" },
+    { "@id": "marty-in-time-machine-test" },
+    { "@id": "doc-brown-in-time-machine-test" },
+    { "@id": "marty-in-libyan-attack" },
+    { "@id": "doc-brown-in-libyan-attack" },
+    { "@id": "marty-in-arrival-1955" },
+    { "@id": "marty-in-marty-hit-by-car" },
+    { "@id": "lorraine-in-marty-hit-by-car" },
+    { "@id": "marty-in-marty-meets-doc-1955" },
+    { "@id": "doc-brown-in-marty-meets-doc-1955" },
+    { "@id": "marty-in-skateboard-chase" },
+    { "@id": "biff-in-skateboard-chase" },
+    { "@id": "marty-in-enchantment-dance" },
+    { "@id": "george-in-enchantment-dance" },
+    { "@id": "lorraine-in-enchantment-dance" },
+    { "@id": "biff-in-enchantment-dance" },
+    { "@id": "george-in-george-punches-biff" },
+    { "@id": "biff-in-george-punches-biff" },
+    { "@id": "lorraine-in-george-punches-biff" },
+    { "@id": "marty-in-lightning-strike" },
+    { "@id": "doc-brown-in-lightning-strike" },
+    { "@id": "marty-in-return-to-1985" },
+    { "@id": "doc-brown-in-return-to-1985" },
+    { "@id": "time-machine-test-at-twin-pines-mall" },
+    { "@id": "libyan-attack-at-twin-pines-mall" },
+    { "@id": "arrival-1955-at-hill-valley-1955" },
+    { "@id": "marty-hit-by-car-at-hill-valley-1955" },
+    { "@id": "marty-meets-doc-1955-at-docs-lab" },
+    { "@id": "skateboard-chase-at-hill-valley-1955" },
+    { "@id": "enchantment-dance-at-hill-valley-high" },
+    { "@id": "george-punches-biff-at-hill-valley-high" },
+    { "@id": "lightning-strike-at-clock-tower" },
+    { "@id": "return-to-1985-at-twin-pines-mall" }
+  ],
+  "frames": [
+    {
+      "type": "Frame",
+      "id": "original-1985",
+      "name": "Original 1985",
+      "description": "The timeline Marty leaves — George is a pushover, Biff is his boss, the family is unhappy."
+    },
+    {
+      "type": "Frame",
+      "id": "1955-timeline",
+      "name": "1955 Adventure",
+      "parent": "original-1985",
+      "branchesAt": "1985-10-26",
+      "description": "Marty's time in 1955, where his actions alter the course of his parents' lives.",
+      "relations": [
+        {
+          "target": "original-1985",
+          "relationType": "BRANCHES_INTO",
+          "at": "1985-10-26"
+        }
+      ]
+    },
+    {
+      "type": "Frame",
+      "id": "improved-1985",
+      "name": "Improved 1985",
+      "parent": "1955-timeline",
+      "branchesAt": "1955-11-12",
+      "description": "The new timeline Marty returns to — George is a confident author, Lorraine is happy, Biff waxes their car.",
+      "relations": [
+        {
+          "target": "1955-timeline",
+          "relationType": "BRANCHES_INTO",
+          "at": "1955-11-12"
+        }
+      ]
+    }
+  ],
+  "constraints": [
+    {
+      "type": "Constraint",
+      "id": "temporal-existence-dependency",
+      "name": "A person cannot exist in a time period where their birth has been prevented",
+      "description": "If a time traveller's actions in the past prevent their own birth, they progressively cease to exist. Any character whose causal chain of existence is broken cannot persist in any time period.",
+      "severity": "ERROR"
+    },
+    {
+      "type": "Constraint",
+      "id": "flux-capacitor-threshold",
+      "name": "Time travel requires 1.21 gigawatts and 88 mph",
+      "description": "The DeLorean can only traverse time when it reaches 88 mph and the flux capacitor is powered by exactly 1.21 gigawatts. Without both conditions met simultaneously, time travel does not occur.",
+      "severity": "ERROR",
+      "scope": {
+        "selectorType": "node",
+        "selectorItem": "delorean"
+      }
+    }
+  ]
+}

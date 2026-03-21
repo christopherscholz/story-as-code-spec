@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "gregor-in-furniture-removal",
+  "edgeType": "PARTICIPATION",
+  "name": "resists-during",
+  "source": "gregor",
+  "target": "furniture-removal"
+}

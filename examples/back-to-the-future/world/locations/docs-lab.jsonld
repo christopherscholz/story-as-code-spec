@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "docs-lab",
+  "name": "Doc Brown's Lab",
+  "nodeType": "LOCATION",
+  "description": "Doc's garage laboratory, filled with clocks, inventions, and a model of Hill Valley. In 1955 it is the Brown mansion; in 1985 it is the garage behind the burned-down site.",
+  "hasTag": ["private-space", "sci-fi"]
+}

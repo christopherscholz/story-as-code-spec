@@ -1,0 +1,60 @@
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix sac:   <https://story-as-code.dev/ontology#> .
+@prefix sacsh: <https://story-as-code.dev/shapes/> .
+@prefix sacex: <https://story-as-code.dev/expr/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# --- Union expression shape (recursive, used as a referenced shape) ---
+
+sacsh:ExpressionShape a sh:NodeShape ;
+    sh:or (
+        sacsh:SelectorExpressionShape
+        sacsh:AndExpressionShape
+        sacsh:OrExpressionShape
+        sacsh:NotExpressionShape
+        sacsh:InExpressionShape
+        sacsh:RangeExpressionShape
+    ) .
+
+# --- Logical combinators ---
+
+sacsh:AndExpressionShape a sh:NodeShape ;
+    sh:property [
+        sh:path sacex:andOperands ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+
+sacsh:OrExpressionShape a sh:NodeShape ;
+    sh:property [
+        sh:path sacex:orOperands ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+
+sacsh:NotExpressionShape a sh:NodeShape ;
+    sh:property [
+        sh:path sacex:notOperand ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+
+# --- Set / range expressions ---
+
+sacsh:InExpressionShape a sh:NodeShape ;
+    sh:property [
+        sh:path sacex:inItems ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+
+sacsh:RangeExpressionShape a sh:NodeShape ;
+    sh:property [
+        sh:path sacex:rangeFrom ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sacex:rangeTo ;
+        sh:maxCount 1 ;
+    ] .

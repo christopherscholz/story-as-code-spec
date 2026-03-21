@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "time-travel",
+  "name": "Time Travel",
+  "description": "Related to temporal displacement or its consequences."
+}

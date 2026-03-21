@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "living-room-in-apartment",
+  "edgeType": "SPATIAL",
+  "name": "part-of",
+  "source": "living-room",
+  "target": "apartment"
+}

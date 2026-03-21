@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "father-in-gretes-ultimatum",
+  "edgeType": "PARTICIPATION",
+  "name": "concurs-with",
+  "source": "father",
+  "target": "gretes-ultimatum"
+}

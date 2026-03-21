@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: lorraine-in-enchantment-dance
-type: PARTICIPATION
-name: attends
-source: lorraine
-target: enchantment-dance

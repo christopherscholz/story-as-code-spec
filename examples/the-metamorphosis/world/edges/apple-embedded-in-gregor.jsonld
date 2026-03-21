@@ -1,0 +1,19 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "apple-embedded-in-gregor",
+  "edgeType": "SPATIAL",
+  "name": "embedded-in",
+  "source": "apple",
+  "target": "gregor",
+  "description": "The apple lodges in Gregor's back and rots in place, never removed",
+  "scope": {
+    "range": {
+      "from": {
+        "selectorType": "time",
+        "selectorItem": "Month 1"
+      },
+      "to": null
+    }
+  }
+}

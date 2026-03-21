@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "marty-in-time-machine-test",
+  "edgeType": "PARTICIPATION",
+  "name": "witnesses",
+  "source": "marty",
+  "target": "time-machine-test"
+}

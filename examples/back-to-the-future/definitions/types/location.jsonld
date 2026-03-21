@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "LOCATION",
+  "name": "Location",
+  "appliesTo": "NODE",
+  "description": "A physical space where events unfold."
+}

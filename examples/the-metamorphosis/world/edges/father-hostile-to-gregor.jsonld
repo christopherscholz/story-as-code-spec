@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "father-hostile-to-gregor",
+  "edgeType": "RELATIONSHIP",
+  "name": "hostile-toward",
+  "source": "father",
+  "target": "gregor"
+}

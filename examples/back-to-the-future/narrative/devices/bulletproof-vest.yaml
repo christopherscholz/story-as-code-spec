@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/narrative/device.schema.json
-id: bulletproof-vest
-type: SETUP_PAYOFF
-description: "Marty writes Doc a warning letter about the Libyans. Doc tears it up — but secretly tapes it together and wears a bulletproof vest. The payoff: Doc survives."
-setup:
-  - the-plan
-payoff:
-  - the-return

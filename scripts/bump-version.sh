@@ -21,9 +21,17 @@ fi
 
 echo "Syncing examples to version $VERSION..."
 
-for example in examples/*/story.yaml; do
+for example in examples/*/story.jsonld; do
   name=$(echo "$example" | cut -d/ -f2)
-  sed -i '' "s|spec_version:.*|spec_version: \"${VERSION}\"|" "$example"
+  python3 -c "
+import json
+with open('$example', 'r') as f:
+    data = json.load(f)
+data['specVersion'] = '${VERSION}'
+with open('$example', 'w') as f:
+    json.dump(data, f, indent=2)
+    f.write('\n')
+"
   echo "  ✓ $name"
 done
 

@@ -1,0 +1,14 @@
+{
+  "@context": "../../context/sac.context.jsonld",
+  "type": "Story",
+  "id": "back-to-the-future",
+  "specVersion": "dev",
+  "name": "Back to the Future",
+  "settings": {
+    "type": "Settings",
+    "defaultLanguage": "en"
+  },
+  "definitions": "definitions-layer",
+  "world": "world-layer",
+  "narrative": "narrative-layer"
+}

@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "supernatural",
+  "name": "Supernatural",
+  "description": "Beyond natural explanation."
+}

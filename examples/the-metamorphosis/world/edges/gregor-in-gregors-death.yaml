@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: gregor-in-gregors-death
-type: PARTICIPATION
-name: dies-in
-source: gregor
-target: gregors-death

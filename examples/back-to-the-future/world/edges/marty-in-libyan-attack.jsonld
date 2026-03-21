@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "marty-in-libyan-attack",
+  "edgeType": "PARTICIPATION",
+  "name": "flees-during",
+  "source": "marty",
+  "target": "libyan-attack"
+}

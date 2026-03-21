@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "return-to-1985-at-twin-pines-mall",
+  "edgeType": "OCCURRENCE",
+  "name": "occurs-at",
+  "source": "return-to-1985",
+  "target": "twin-pines-mall"
+}

@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: chief-clerk-visit-at-apartment
-type: OCCURRENCE
-name: occurs-at
-source: chief-clerk-visit
-target: apartment

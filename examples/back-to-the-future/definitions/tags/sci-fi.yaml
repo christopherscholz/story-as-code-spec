@@ -1,4 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/definitions/tag.schema.json
-id: sci-fi
-name: Science Fiction
-description: "Speculative technology or science-driven elements."

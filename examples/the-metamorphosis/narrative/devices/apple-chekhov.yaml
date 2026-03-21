@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/narrative/device.schema.json
-id: apple-chekhov
-type: CHEKHOV_GUN
-description: "Father's growing hostility culminates in the apple bombardment. The apple lodged in Gregor's back rots over months, a physical marker of the family's violence that accelerates his decline toward death."
-setup:
-  - failed-emergence
-payoff:
-  - the-attack

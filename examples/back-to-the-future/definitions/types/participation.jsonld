@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "PARTICIPATION",
+  "name": "Participation",
+  "appliesTo": "EDGE",
+  "description": "A character's involvement in an event."
+}

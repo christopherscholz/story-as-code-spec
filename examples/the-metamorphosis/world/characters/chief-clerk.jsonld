@@ -1,0 +1,18 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "chief-clerk",
+  "nodeType": "CHARACTER",
+  "name": "The Chief Clerk",
+  "description": "Gregor's office supervisor who arrives at the apartment when Gregor fails to catch his morning train. His visit escalates the crisis: he threatens Gregor's job through the locked door, and when Gregor finally emerges in his insect form, the clerk flees without a word. He is the outside world's sole witness to the transformation, and his departure seals the family's isolation.",
+  "properties": {
+    "name_variants": [
+      "the office manager"
+    ],
+    "role": "supervisor"
+  },
+  "hasTag": [
+    "outsider",
+    "authority"
+  ]
+}

@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: marty-in-marty-hit-by-car
-type: PARTICIPATION
-name: injured-in
-source: marty
-target: marty-hit-by-car

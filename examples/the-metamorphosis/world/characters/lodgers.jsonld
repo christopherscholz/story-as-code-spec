@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "lodgers",
+  "nodeType": "CHARACTER",
+  "name": "The Three Lodgers",
+  "description": "Three bearded gentlemen who rent a room in the Samsa apartment to supplement the family's income after Gregor can no longer work. They are fastidious, demanding, and authoritative \u2014 they effectively take over the living room and dictate household standards. When they discover Gregor during Grete's violin recital, they threaten to leave without paying and declare the apartment unsanitary. Their presence marks the family's final humiliation and triggers Grete's ultimatum.",
+  "hasTag": [
+    "outsider",
+    "authority",
+    "group",
+    "pragmatic"
+  ]
+}

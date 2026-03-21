@@ -1,0 +1,13 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Device",
+  "id": "picture-setup-payoff",
+  "deviceType": "SETUP_PAYOFF",
+  "description": "The framed picture of the woman in furs is introduced as part of Gregor's room. When the furniture is removed, Gregor clings to it \u2014 revealing it as the last symbol of his human identity.",
+  "setup": [
+    "awakening"
+  ],
+  "payoff": [
+    "uneasy-coexistence"
+  ]
+}

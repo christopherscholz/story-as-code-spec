@@ -1,0 +1,65 @@
+{
+  "@context": "../../context/sac.context.jsonld",
+  "type": "DerivationMeta",
+  "id": "novella-gregor-pov",
+  "derivationLens": "gregor-pov",
+  "derivationFormat": "novella",
+  "sourceVersion": "dev",
+  "beatPosition": {
+    "beat": "final-rejection"
+  },
+  "dependencies": {
+    "nodes": [
+      {
+        "id": "gregor",
+        "mustExist": true
+      },
+      {
+        "id": "grete",
+        "mustExist": true
+      },
+      {
+        "id": "father",
+        "mustExist": true
+      },
+      {
+        "id": "mother",
+        "mustExist": true
+      },
+      {
+        "id": "gregors-room",
+        "mustExist": true
+      },
+      {
+        "id": "picture-frame",
+        "mustExist": true
+      }
+    ],
+    "edges": [
+      {
+        "id": "gregor-confined-to-room",
+        "mustExist": true
+      },
+      {
+        "id": "grete-cares-for-gregor",
+        "mustExist": true
+      },
+      {
+        "id": "grete-rejects-gregor",
+        "mustExist": true
+      }
+    ],
+    "reveals": [
+      {
+        "node": "gregor",
+        "revealedTo": "father",
+        "at": "Day 1"
+      },
+      {
+        "node": "picture-frame",
+        "revealedTo": "gregor",
+        "at": "Month 1"
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "time-machine-test-at-twin-pines-mall",
+  "edgeType": "OCCURRENCE",
+  "name": "occurs-at",
+  "source": "time-machine-test",
+  "target": "twin-pines-mall"
+}

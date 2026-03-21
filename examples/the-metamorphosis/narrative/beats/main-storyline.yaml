@@ -1,7 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/narrative/beat.schema.json
-# Top-level beat acting as the storyline container.
-# Node and edge references are inherited from child beats.
-id: main-storyline
-name: "Gregor Samsa's Transformation"
-description: "A traveling salesman wakes as an insect and watches his family's love erode into revulsion, ending in his quiet death and their liberation."
-

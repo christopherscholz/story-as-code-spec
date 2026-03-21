@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "lodgers-in-violin-recital",
+  "edgeType": "PARTICIPATION",
+  "name": "audience-at",
+  "source": "lodgers",
+  "target": "violin-recital"
+}

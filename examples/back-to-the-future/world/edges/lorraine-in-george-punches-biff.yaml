@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: lorraine-in-george-punches-biff
-type: PARTICIPATION
-name: witnesses
-source: lorraine
-target: george-punches-biff

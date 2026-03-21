@@ -1,0 +1,12 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "marty-hit-by-car",
+  "name": "Marty Hit by Car",
+  "nodeType": "EVENT",
+  "description": "Marty is hit by Lorraine's father's car — the event that was supposed to happen to George. Lorraine nurses Marty back to health and develops a crush on him instead of George, threatening Marty's existence.",
+  "properties": {
+    "participants": ["marty", "lorraine"],
+    "location": "hill-valley-1955"
+  }
+}

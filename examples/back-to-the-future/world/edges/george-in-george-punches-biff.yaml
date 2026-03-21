@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: george-in-george-punches-biff
-type: PARTICIPATION
-name: punches-in
-source: george
-target: george-punches-biff

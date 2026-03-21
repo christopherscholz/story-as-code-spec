@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "marty-in-return-to-1985",
+  "edgeType": "PARTICIPATION",
+  "name": "returns-in",
+  "source": "marty",
+  "target": "return-to-1985"
+}

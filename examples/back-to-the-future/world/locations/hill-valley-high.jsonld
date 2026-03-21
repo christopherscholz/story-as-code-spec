@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "hill-valley-high",
+  "name": "Hill Valley High School",
+  "nodeType": "LOCATION",
+  "description": "The high school attended by both Marty (1985) and his parents (1955). The gym hosts the Enchantment Under the Sea dance where George and Lorraine must kiss.",
+  "hasTag": ["school", "public-space"]
+}

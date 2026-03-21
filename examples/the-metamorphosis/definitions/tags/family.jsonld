@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "family",
+  "name": "Family",
+  "description": "Related to the family unit and domestic bonds."
+}

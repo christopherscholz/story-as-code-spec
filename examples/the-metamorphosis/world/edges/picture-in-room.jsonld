@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "picture-in-room",
+  "edgeType": "SPATIAL",
+  "name": "located-in",
+  "source": "picture-frame",
+  "target": "gregors-room"
+}

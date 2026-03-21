@@ -1,5 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
-id: KINSHIP
-name: Kinship
-applies_to: EDGE
-description: "A family relationship."

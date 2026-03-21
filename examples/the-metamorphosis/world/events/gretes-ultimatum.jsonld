@@ -1,0 +1,21 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "gretes-ultimatum",
+  "nodeType": "EVENT",
+  "name": "Grete's Ultimatum",
+  "description": "After the lodgers discover Gregor during the violin recital, Grete turns to her parents and declares: \"It has to go. That's the only way, Father.\" She refuses to use Gregor's name, referring to the creature only as \"it,\" and argues that they have done everything humanly possible. This is the moment the last family member who cared for Gregor formally renounces him \u2014 the final severance of his place in the household.",
+  "properties": {
+    "name_variants": [
+      "the declaration",
+      "it has to go"
+    ],
+    "severity": 0.9,
+    "participants": [
+      "grete",
+      "father",
+      "mother"
+    ],
+    "location": "living-room"
+  }
+}

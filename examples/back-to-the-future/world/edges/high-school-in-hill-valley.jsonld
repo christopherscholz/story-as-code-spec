@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "high-school-in-hill-valley",
+  "edgeType": "SPATIAL",
+  "name": "part-of",
+  "source": "hill-valley-high",
+  "target": "hill-valley-1955"
+}

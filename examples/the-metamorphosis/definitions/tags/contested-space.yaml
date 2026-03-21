@@ -1,4 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/definitions/tag.schema.json
-id: contested-space
-name: Contested Space
-description: "A space whose control or meaning is disputed."

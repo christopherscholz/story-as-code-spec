@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "libyan-attack",
+  "name": "Libyan Attack",
+  "nodeType": "EVENT",
+  "description": "Libyan terrorists track Doc to the mall and gun him down. Marty flees in the DeLorean, accidentally reaching 88 mph and triggering the flux capacitor. He is sent to November 5, 1955.",
+  "properties": {
+    "severity": 0.9,
+    "participants": ["doc-brown", "marty"],
+    "location": "twin-pines-mall"
+  },
+  "hasTag": ["time-travel"]
+}

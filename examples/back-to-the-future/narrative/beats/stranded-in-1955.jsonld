@@ -1,0 +1,20 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Beat",
+  "id": "stranded-in-1955",
+  "name": "Where Am I?",
+  "description": "Marty arrives in 1955. No plutonium. He accidentally prevents his parents' meeting and is hit by a car instead of George.",
+  "parent": "main-storyline",
+  "order": 3,
+  "nodeIds": ["marty", "lorraine", "george", "hill-valley-1955", "arrival-1955", "marty-hit-by-car", "photo"],
+  "edgeIds": ["marty-in-arrival-1955", "marty-in-marty-hit-by-car", "lorraine-in-marty-hit-by-car", "lorraine-infatuated-with-marty"],
+  "function": "FIRST_THRESHOLD",
+  "tension": 0.5,
+  "emotionalTarget": -0.4,
+  "reveals": [
+    { "revealTarget": "photo", "degree": "PARTIAL" }
+  ],
+  "transition": {
+    "transitionType": "CONTINUATION"
+  }
+}

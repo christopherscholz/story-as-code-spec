@@ -1,0 +1,10 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "family-knows-transformation",
+  "edgeType": "KNOWLEDGE",
+  "name": "knows-about",
+  "source": "father",
+  "target": "gregor",
+  "description": "All family members and the chief clerk know about Gregor's insect form"
+}

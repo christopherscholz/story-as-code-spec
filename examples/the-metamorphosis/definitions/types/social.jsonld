@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "SOCIAL",
+  "name": "Social Relationship",
+  "appliesTo": "EDGE",
+  "description": "A professional or institutional relationship (employed-by, supervised-by)."
+}

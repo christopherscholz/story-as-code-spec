@@ -1,0 +1,16 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "violin",
+  "nodeType": "OBJECT",
+  "name": "Grete's Violin",
+  "description": "Grete's violin, which she plays with increasing skill over the course of the story. Gregor had secretly planned to announce at Christmas that he would fund her conservatory studies \u2014 a plan destroyed by the transformation. In the final part, Grete plays for the lodgers; Gregor, drawn by the music, crawls out of his room. This moment \u2014 where music briefly reconnects him to his human longings \u2014 directly triggers the lodgers' discovery and Grete's ultimatum that ends Gregor's life.",
+  "properties": {
+    "is_unique": true
+  },
+  "hasTag": [
+    "instrument",
+    "symbol",
+    "humanity"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "clock-tower",
+  "name": "Clock Tower",
+  "nodeType": "LOCATION",
+  "description": "The Hill Valley courthouse clock tower. Lightning strikes it at 10:04 PM on November 12, 1955, stopping the clock permanently. Doc Brown uses this known event to channel 1.21 gigawatts into the DeLorean's flux capacitor, sending Marty home.",
+  "hasTag": ["public-space", "iconic"]
+}

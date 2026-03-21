@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "public-space",
+  "name": "Public Space",
+  "description": "A location accessible to the general public."
+}

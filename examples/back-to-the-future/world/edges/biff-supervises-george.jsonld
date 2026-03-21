@@ -1,0 +1,16 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "biff-supervises-george",
+  "edgeType": "CONFLICT",
+  "name": "supervises",
+  "source": "biff",
+  "target": "george",
+  "description": "In the original 1985, Biff is George's supervisor and still bullies him",
+  "scope": {
+    "and": [
+      { "selectorType": "frame", "selectorItem": "original-1985" },
+      { "selectorType": "time", "selectorItem": "1985-10-26" }
+    ]
+  }
+}

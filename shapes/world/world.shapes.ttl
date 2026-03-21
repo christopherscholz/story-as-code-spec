@@ -1,0 +1,32 @@
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix sac:   <https://story-as-code.dev/ontology#> .
+@prefix sacsh: <https://story-as-code.dev/shapes/> .
+@prefix sacex: <https://story-as-code.dev/expr/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+sacsh:WorldLayerShape
+    a sh:NodeShape ;
+    sh:targetClass sac:WorldLayer ;
+    sh:property [
+        sh:path sac:timeSystem ;
+        sh:maxCount 1 ;
+        sh:node sacsh:TimeSystemShape ;
+    ] ;
+    sh:property [
+        sh:path sac:hasNode ;
+        sh:node sacsh:NodeShape ;
+    ] ;
+    sh:property [
+        sh:path sac:hasEdge ;
+        sh:node sacsh:EdgeShape ;
+    ] ;
+    sh:property [
+        sh:path sac:hasFrame ;
+        sh:node sacsh:FrameShape ;
+    ] ;
+    sh:property [
+        sh:path sac:hasConstraint ;
+        sh:node sacsh:ConstraintShape ;
+    ] .

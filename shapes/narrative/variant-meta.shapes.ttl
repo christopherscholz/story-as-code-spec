@@ -1,0 +1,35 @@
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix sac:   <https://story-as-code.dev/ontology#> .
+@prefix sacsh: <https://story-as-code.dev/shapes/> .
+@prefix sacex: <https://story-as-code.dev/expr/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+sacsh:VariantMetaShape
+    a sh:NodeShape ;
+    sh:targetClass sac:VariantMeta ;
+    sh:property [
+        sh:path sac:variantType ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:parentVariant ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:affectsFrames ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+    sh:property [
+        sh:path sac:mergeStrategy ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] .

@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "george-in-george-punches-biff",
+  "edgeType": "PARTICIPATION",
+  "name": "punches-in",
+  "source": "george",
+  "target": "george-punches-biff"
+}

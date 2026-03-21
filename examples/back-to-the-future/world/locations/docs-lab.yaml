@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/node.schema.json
-id: docs-lab
-name: "Doc Brown's Lab"
-type: LOCATION
-description: >
-  Doc's garage laboratory, filled with clocks, inventions, and a model of Hill Valley.
-  In 1955 it is the Brown mansion; in 1985 it is the garage behind the burned-down site.
-tags: [private-space, sci-fi]

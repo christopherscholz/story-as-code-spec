@@ -1,0 +1,123 @@
+{
+  "@context": "../../../context/sac.context.jsonld",
+  "type": "Definitions",
+  "id": "definitions-layer",
+  "tags": [
+    {
+      "@id": "authority"
+    },
+    {
+      "@id": "caretaker"
+    },
+    {
+      "@id": "clothing"
+    },
+    {
+      "@id": "confinement"
+    },
+    {
+      "@id": "contested-space"
+    },
+    {
+      "@id": "decay"
+    },
+    {
+      "@id": "decoration"
+    },
+    {
+      "@id": "domestic"
+    },
+    {
+      "@id": "family-space"
+    },
+    {
+      "@id": "family"
+    },
+    {
+      "@id": "group"
+    },
+    {
+      "@id": "humanity"
+    },
+    {
+      "@id": "identity"
+    },
+    {
+      "@id": "instrument"
+    },
+    {
+      "@id": "outsider"
+    },
+    {
+      "@id": "pragmatic"
+    },
+    {
+      "@id": "supernatural"
+    },
+    {
+      "@id": "symbol"
+    },
+    {
+      "@id": "sympathetic"
+    },
+    {
+      "@id": "violence"
+    },
+    {
+      "@id": "weapon"
+    }
+  ],
+  "types": [
+    {
+      "@id": "CHARACTER"
+    },
+    {
+      "@id": "CHEKHOV_GUN"
+    },
+    {
+      "@id": "EVENT"
+    },
+    {
+      "@id": "KNOWLEDGE"
+    },
+    {
+      "@id": "LOCATION"
+    },
+    {
+      "@id": "MOTIF"
+    },
+    {
+      "@id": "NOVEL"
+    },
+    {
+      "@id": "OBJECT"
+    },
+    {
+      "@id": "OCCURRENCE"
+    },
+    {
+      "@id": "OWNERSHIP"
+    },
+    {
+      "@id": "PARTICIPATION"
+    },
+    {
+      "@id": "RELATIONSHIP"
+    },
+    {
+      "@id": "SETUP_PAYOFF"
+    },
+    {
+      "@id": "SIMPLE"
+    },
+    {
+      "@id": "SOCIAL"
+    },
+    {
+      "@id": "SPATIAL"
+    },
+    {
+      "@id": "THEME"
+    }
+  ]
+}

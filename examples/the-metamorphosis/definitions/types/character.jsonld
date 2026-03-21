@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "CHARACTER",
+  "name": "Character",
+  "appliesTo": "NODE",
+  "description": "A sentient being \u2014 human or transformed \u2014 that acts, speaks, or is acted upon."
+}

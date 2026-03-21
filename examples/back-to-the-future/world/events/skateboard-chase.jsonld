@@ -1,0 +1,12 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "skateboard-chase",
+  "name": "Skateboard Chase",
+  "nodeType": "EVENT",
+  "description": "Biff and his gang chase Marty through the town square. Marty improvises a skateboard from a child's scooter and outruns them, causing Biff to crash into a manure truck — a humiliation that echoes across both timelines.",
+  "properties": {
+    "participants": ["marty", "biff"],
+    "location": "hill-valley-1955"
+  }
+}

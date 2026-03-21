@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "docs-lab-in-hill-valley",
+  "edgeType": "SPATIAL",
+  "name": "part-of",
+  "source": "docs-lab",
+  "target": "hill-valley-1955"
+}

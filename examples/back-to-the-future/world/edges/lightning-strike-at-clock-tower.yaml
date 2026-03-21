@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: lightning-strike-at-clock-tower
-type: OCCURRENCE
-name: occurs-at
-source: lightning-strike
-target: clock-tower

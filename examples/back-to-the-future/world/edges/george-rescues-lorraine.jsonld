@@ -1,0 +1,13 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "george-rescues-lorraine",
+  "edgeType": "RELATIONSHIP",
+  "name": "rescues",
+  "source": "george",
+  "target": "lorraine",
+  "scope": {
+    "selectorType": "time",
+    "selectorItem": "1955-11-12"
+  }
+}

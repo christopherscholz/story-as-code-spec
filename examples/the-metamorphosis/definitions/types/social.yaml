@@ -1,5 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
-id: SOCIAL
-name: Social Relationship
-applies_to: EDGE
-description: "A professional or institutional relationship (employed-by, supervised-by)."

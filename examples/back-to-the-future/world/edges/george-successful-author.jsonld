@@ -1,0 +1,16 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "george-successful-author",
+  "edgeType": "RELATIONSHIP",
+  "name": "fulfilled-by",
+  "source": "george",
+  "target": "hill-valley-1985",
+  "description": "In the improved 1985, George is a confident, successful science fiction author",
+  "scope": {
+    "and": [
+      { "selectorType": "frame", "selectorItem": "improved-1985" },
+      { "selectorType": "time", "selectorItem": "1985-10-26" }
+    ]
+  }
+}

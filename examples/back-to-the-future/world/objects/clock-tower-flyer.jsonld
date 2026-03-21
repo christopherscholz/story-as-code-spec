@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "clock-tower-flyer",
+  "name": "Clock Tower Flyer",
+  "nodeType": "OBJECT",
+  "description": "A flyer handed to Marty by a woman collecting donations to save the clock tower. It records the exact date and time of the lightning strike — information that becomes essential for powering the DeLorean's return trip.",
+  "hasTag": ["time-travel"]
+}

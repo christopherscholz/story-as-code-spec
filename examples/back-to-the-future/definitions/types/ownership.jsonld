@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "OWNERSHIP",
+  "name": "Ownership",
+  "appliesTo": "EDGE",
+  "description": "A possession or creation relationship."
+}

@@ -1,0 +1,21 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "picture-frame",
+  "nodeType": "OBJECT",
+  "name": "The Framed Picture",
+  "description": "A magazine clipping of a woman in furs that Gregor laboriously cut out and placed in a gilded frame. When Grete and Mother begin removing the furniture from his room, Gregor throws himself onto the picture to prevent its removal \u2014 the one object he fights to keep. It functions as the last tangible link to his human identity and desires.",
+  "properties": {
+    "name_variants": [
+      "the picture",
+      "the magazine clipping"
+    ],
+    "is_unique": true
+  },
+  "hasTag": [
+    "decoration",
+    "symbol",
+    "humanity",
+    "identity"
+  ]
+}

@@ -1,5 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
-id: PARTICIPATION
-name: Participation
-applies_to: EDGE
-description: "A character's involvement in an event (participates-in, witnesses, causes, suffers)."

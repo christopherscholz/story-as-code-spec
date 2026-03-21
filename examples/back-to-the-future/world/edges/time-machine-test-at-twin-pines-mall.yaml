@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: time-machine-test-at-twin-pines-mall
-type: OCCURRENCE
-name: occurs-at
-source: time-machine-test
-target: twin-pines-mall

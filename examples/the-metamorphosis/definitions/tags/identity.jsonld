@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "identity",
+  "name": "Identity",
+  "description": "Related to who a character is or becomes."
+}

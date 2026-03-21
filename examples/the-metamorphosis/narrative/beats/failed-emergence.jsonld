@@ -1,0 +1,37 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Beat",
+  "id": "failed-emergence",
+  "name": "The Door Opens",
+  "description": "The chief clerk arrives; Gregor manages to open his door and is seen by his family and the clerk, who flees. Father forces Gregor back into his room.",
+  "parent": "main-storyline",
+  "order": 2,
+  "nodeIds": [
+    "gregor",
+    "chief-clerk",
+    "father",
+    "mother",
+    "grete",
+    "apartment"
+  ],
+  "edgeIds": [
+    "family-knows-transformation",
+    "father-hostile-to-gregor"
+  ],
+  "function": "INCITING_INCIDENT",
+  "tension": 0.6,
+  "emotionalTarget": -0.5,
+  "reveals": [
+    {
+      "revealTarget": "gregor",
+      "degree": "FULL"
+    },
+    {
+      "revealTarget": "family-knows-transformation",
+      "degree": "FULL"
+    }
+  ],
+  "transition": {
+    "transitionType": "TIME_SKIP"
+  }
+}

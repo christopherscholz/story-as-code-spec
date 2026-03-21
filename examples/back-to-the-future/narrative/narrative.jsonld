@@ -1,0 +1,39 @@
+{
+  "@context": "../../../context/sac.context.jsonld",
+  "type": "Narrative",
+  "id": "narrative-layer",
+  "lenses": [
+    { "@id": "marty-pov" }
+  ],
+  "beats": [
+    { "@id": "main-storyline" },
+    { "@id": "setup-1985" },
+    { "@id": "the-test" },
+    { "@id": "stranded-in-1955" },
+    { "@id": "the-plan" },
+    { "@id": "matchmaking" },
+    { "@id": "the-dance" },
+    { "@id": "the-return" }
+  ],
+  "devices": [
+    { "@id": "photo-fading" },
+    { "@id": "clock-tower-flyer-device" },
+    { "@id": "bulletproof-vest" },
+    { "@id": "marty-as-darth-vader" }
+  ],
+  "threads": [
+    { "@id": "temporal-paradox" },
+    { "@id": "courage-and-destiny" },
+    { "@id": "clock-motif" }
+  ],
+  "formats": [
+    { "@id": "screenplay" }
+  ],
+  "variants": [
+    {
+      "type": "VariantMeta",
+      "variantType": "CANON",
+      "description": "The canonical story — Marty travels to 1955, fixes the timeline, and returns to an improved 1985"
+    }
+  ]
+}

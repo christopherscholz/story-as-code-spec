@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "marty-hit-by-car-at-hill-valley-1955",
+  "edgeType": "OCCURRENCE",
+  "name": "occurs-at",
+  "source": "marty-hit-by-car",
+  "target": "hill-valley-1955"
+}

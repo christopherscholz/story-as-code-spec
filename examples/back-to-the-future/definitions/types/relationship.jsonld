@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "RELATIONSHIP",
+  "name": "Interpersonal Relationship",
+  "appliesTo": "EDGE",
+  "description": "An emotional or social bond between characters."
+}

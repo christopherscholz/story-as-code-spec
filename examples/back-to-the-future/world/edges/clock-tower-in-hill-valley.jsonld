@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "clock-tower-in-hill-valley",
+  "edgeType": "SPATIAL",
+  "name": "part-of",
+  "source": "clock-tower",
+  "target": "hill-valley-1955"
+}

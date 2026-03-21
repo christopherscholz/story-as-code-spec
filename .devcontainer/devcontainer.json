@@ -1,0 +1,19 @@
+{
+  "name": "Story as Code Spec",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "postCreateCommand": "pip install -r requirements.txt && git config core.hooksPath .githooks",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "stardog-union.stardog-rdf-grammars",
+        "analogj.vscode-json-ld"
+      ]
+    }
+  }
+}

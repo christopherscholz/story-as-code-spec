@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "SETUP_PAYOFF",
+  "name": "Setup & Payoff",
+  "appliesTo": "DEVICE",
+  "description": "Something planted early that pays off later."
+}

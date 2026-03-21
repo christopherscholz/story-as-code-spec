@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "libyan-attack-at-twin-pines-mall",
+  "edgeType": "OCCURRENCE",
+  "name": "occurs-at",
+  "source": "libyan-attack",
+  "target": "twin-pines-mall"
+}

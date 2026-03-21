@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Device",
+  "id": "marty-as-darth-vader",
+  "deviceType": "DRAMATIC_IRONY",
+  "description": "Marty impersonates 'Darth Vader from the planet Vulcan' to scare George into asking Lorraine out — using future pop culture references his father cannot recognise.",
+  "setup": ["matchmaking"],
+  "payoff": ["the-dance"]
+}

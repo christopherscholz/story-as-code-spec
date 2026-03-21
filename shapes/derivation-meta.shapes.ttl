@@ -1,0 +1,89 @@
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix sac:   <https://story-as-code.dev/ontology#> .
+@prefix sacsh: <https://story-as-code.dev/shapes/> .
+@prefix sacex: <https://story-as-code.dev/expr/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# --- Derivation meta shape ---
+
+sacsh:DerivationMetaShape a sh:NodeShape ;
+    sh:targetClass sac:DerivationMeta ;
+    sh:property [
+        sh:path sac:derivationLens ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:derivationFormat ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:dependencies ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:sourceVersion ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:beatPosition ;
+        sh:maxCount 1 ;
+    ] .
+
+# --- Dependency shapes ---
+
+sacsh:NodeDependencyShape a sh:NodeShape ;
+    sh:property [
+        sh:path sac:dependencyId ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:mustExist ;
+        sh:datatype xsd:boolean ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+
+sacsh:EdgeDependencyShape a sh:NodeShape ;
+    sh:property [
+        sh:path sac:dependencyId ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:mustExist ;
+        sh:datatype xsd:boolean ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:requiredProps ;
+        sh:datatype rdf:JSON ;
+        sh:maxCount 1 ;
+    ] .
+
+sacsh:RevealDependencyShape a sh:NodeShape ;
+    sh:property [
+        sh:path sac:revealNode ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:revealedTo ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:revealAt ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] .

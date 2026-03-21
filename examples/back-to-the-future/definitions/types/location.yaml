@@ -1,5 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
-id: LOCATION
-name: Location
-applies_to: NODE
-description: "A physical space where events unfold."

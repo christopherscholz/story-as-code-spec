@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "MOTIF",
+  "name": "Motif",
+  "appliesTo": "THREAD",
+  "description": "A recurring symbolic element \u2014 image, object, or pattern \u2014 that reinforces thematic meaning."
+}

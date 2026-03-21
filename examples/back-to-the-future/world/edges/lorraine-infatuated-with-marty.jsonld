@@ -1,0 +1,21 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "lorraine-infatuated-with-marty",
+  "edgeType": "RELATIONSHIP",
+  "name": "infatuated-with",
+  "source": "lorraine",
+  "target": "marty",
+  "description": "Lorraine develops a crush on Marty after nursing him — the affection meant for George",
+  "scope": {
+    "and": [
+      { "selectorType": "frame", "selectorItem": "1955-timeline" },
+      {
+        "range": {
+          "from": { "selectorType": "time", "selectorItem": "1955-11-05" },
+          "to": { "selectorType": "time", "selectorItem": "1955-11-12" }
+        }
+      }
+    ]
+  }
+}

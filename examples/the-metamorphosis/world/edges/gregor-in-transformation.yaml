@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: gregor-in-transformation
-type: PARTICIPATION
-name: undergoes
-source: gregor
-target: transformation

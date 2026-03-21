@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "SPATIAL",
+  "name": "Spatial Relationship",
+  "appliesTo": "EDGE",
+  "description": "A spatial or containment relationship."
+}

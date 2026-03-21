@@ -1,9 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/node.schema.json
-id: clock-tower
-name: "Clock Tower"
-type: LOCATION
-description: >
-  The Hill Valley courthouse clock tower. Lightning strikes it at 10:04 PM on November 12,
-  1955, stopping the clock permanently. Doc Brown uses this known event to channel
-  1.21 gigawatts into the DeLorean's flux capacitor, sending Marty home.
-tags: [public-space, iconic]

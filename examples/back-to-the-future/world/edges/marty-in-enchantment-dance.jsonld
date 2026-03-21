@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "marty-in-enchantment-dance",
+  "edgeType": "PARTICIPATION",
+  "name": "orchestrates",
+  "source": "marty",
+  "target": "enchantment-dance"
+}

@@ -1,0 +1,16 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "charwoman",
+  "nodeType": "CHARACTER",
+  "name": "The Charwoman",
+  "description": "An elderly cleaning woman hired by the family after their previous cook leaves in disgust. Unlike the rest of the household, she is neither horrified nor sentimental about Gregor \u2014 she addresses him casually as \"old dung beetle\" and is the only person who opens his door without fear. She discovers his body in the morning and announces his death to the family with matter-of-fact cheerfulness. She disposes of the remains.",
+  "properties": {
+    "age": 60
+  },
+  "hasTag": [
+    "outsider",
+    "pragmatic",
+    "caretaker"
+  ]
+}

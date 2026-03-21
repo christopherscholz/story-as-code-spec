@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "contested-space",
+  "name": "Contested Space",
+  "description": "A space whose control or meaning is disputed."
+}

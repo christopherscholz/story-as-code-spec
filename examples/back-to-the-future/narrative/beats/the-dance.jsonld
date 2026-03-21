@@ -1,0 +1,21 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Beat",
+  "id": "the-dance",
+  "name": "Enchantment Under the Sea",
+  "description": "The dance. Biff assaults Lorraine. George punches Biff. George and Lorraine kiss. The photo restores. Marty plays Johnny B. Goode.",
+  "parent": "main-storyline",
+  "order": 6,
+  "nodeIds": ["marty", "george", "lorraine", "biff", "guitar", "hill-valley-high", "enchantment-dance", "george-punches-biff", "photo"],
+  "edgeIds": ["george-rescues-lorraine", "marty-in-enchantment-dance", "george-in-enchantment-dance", "lorraine-in-enchantment-dance", "biff-in-enchantment-dance", "george-in-george-punches-biff", "biff-in-george-punches-biff"],
+  "function": "CLIMAX",
+  "tension": 0.9,
+  "emotionalTarget": 0.5,
+  "reveals": [
+    { "revealTarget": "george-punches-biff", "degree": "FULL" },
+    { "revealTarget": "photo", "degree": "FULL" }
+  ],
+  "transition": {
+    "transitionType": "CUT"
+  }
+}

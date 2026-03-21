@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: doc-brown-in-return-to-1985
-type: PARTICIPATION
-name: survives-in
-source: doc-brown
-target: return-to-1985
