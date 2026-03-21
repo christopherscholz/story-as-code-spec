@@ -4,9 +4,11 @@
 @prefix sacex: <https://story-as-code.dev/expr/> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 
 sacsh:FormatShape
     a sh:NodeShape ;
+    rdfs:comment "Output format definition — the structural container for content." ;
     sh:targetClass sac:Format ;
     sh:property [
         sh:path sac:entityName ;
@@ -16,6 +18,7 @@ sacsh:FormatShape
     ] ;
     sh:property [
         sh:path sac:formatType ;
+        sh:description "Output medium (e.g. NOVEL, SCREENPLAY, COMIC)." ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -28,20 +31,24 @@ sacsh:FormatShape
     ] ;
     sh:property [
         sh:path sac:formatSettings ;
+        sh:description "Type-specific settings as free-form key-value pairs." ;
         sh:datatype rdf:JSON ;
         sh:maxCount 1 ;
     ] .
 
 sacsh:StructureShape
     a sh:NodeShape ;
+    rdfs:comment "Recursive structural level (e.g. book → chapter → scene)." ;
     sh:property [
         sh:path sac:structureType ;
+        sh:description "Level identifier (e.g. book, chapter, scene, page, panel)." ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:constraints ;
+        sh:description "Constraints for this level (e.g. word count, panel count)." ;
         sh:datatype rdf:JSON ;
         sh:maxCount 1 ;
     ] ;

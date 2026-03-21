@@ -8,6 +8,7 @@
 
 sacsh:TimeSystemShape
     a sh:NodeShape ;
+    rdfs:comment "How time works in this world — its structure and calendar." ;
     sh:targetClass sac:TimeSystem ;
     sh:property [
         sh:path sac:entityName ;
@@ -17,17 +18,20 @@ sacsh:TimeSystemShape
     ] ;
     sh:property [
         sh:path sac:timeSystemType ;
+        sh:description "How time is structured in this world — whether time points have a natural ordering (e.g. LINEAR) or are abstract unordered labels whose sequence is defined through the world graph (e.g. ABSTRACT)." ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:calendar ;
+        sh:description "Calendar structure." ;
         sh:datatype rdf:JSON ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:properties ;
+        sh:description "Additional time properties." ;
         sh:datatype rdf:JSON ;
         sh:maxCount 1 ;
     ] .

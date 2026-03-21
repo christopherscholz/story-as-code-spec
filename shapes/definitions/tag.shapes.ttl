@@ -8,6 +8,7 @@
 
 sacsh:TagShape
     a sh:NodeShape ;
+    rdfs:comment "A tag definition — display name and description for a tag ID. Defining a tag is optional; elements may reference any tag ID without a matching definition." ;
     sh:targetClass sac:Tag ;
     sh:property [
         sh:path sac:entityName ;

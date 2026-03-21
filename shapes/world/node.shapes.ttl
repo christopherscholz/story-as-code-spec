@@ -8,6 +8,7 @@
 
 sacsh:NodeShape
     a sh:NodeShape ;
+    rdfs:comment "An entity in the world graph — characters, locations, objects, events, or any custom type." ;
     sh:targetClass sac:Node ;
     sh:property [
         sh:path sac:entityName ;
@@ -28,6 +29,7 @@ sacsh:NodeShape
     ] ;
     sh:property [
         sh:path sac:properties ;
+        sh:description "Infobox-style attributes — key facts that would appear in a wiki sidebar summary." ;
         sh:datatype rdf:JSON ;
         sh:maxCount 1 ;
     ] ;

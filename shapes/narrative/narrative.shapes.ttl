@@ -4,31 +4,39 @@
 @prefix sacex: <https://story-as-code.dev/expr/> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 
 sacsh:NarrativeLayerShape
     a sh:NodeShape ;
+    rdfs:comment "The narrative layer — how the world is told." ;
     sh:targetClass sac:NarrativeLayer ;
     sh:property [
         sh:path sac:hasLens ;
+        sh:description "Narrative perspectives." ;
         sh:node sacsh:LensShape ;
     ] ;
     sh:property [
         sh:path sac:hasBeat ;
+        sh:description "Hierarchical narrative building blocks." ;
         sh:node sacsh:BeatShape ;
     ] ;
     sh:property [
         sh:path sac:hasDevice ;
+        sh:description "Rhetorical techniques connecting beats (foreshadowing, red herrings, etc.)." ;
         sh:node sacsh:DeviceShape ;
     ] ;
     sh:property [
         sh:path sac:hasThread ;
+        sh:description "Thematic threads and motifs connecting beats across storylines." ;
         sh:node sacsh:ThreadShape ;
     ] ;
     sh:property [
         sh:path sac:hasFormat ;
+        sh:description "Output format definitions." ;
         sh:node sacsh:FormatShape ;
     ] ;
     sh:property [
         sh:path sac:hasVariant ;
+        sh:description "Parallel world version metadata." ;
         sh:node sacsh:VariantMetaShape ;
     ] .

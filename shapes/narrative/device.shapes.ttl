@@ -4,9 +4,11 @@
 @prefix sacex: <https://story-as-code.dev/expr/> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 
 sacsh:DeviceShape
     a sh:NodeShape ;
+    rdfs:comment "A narrative device — a rhetorical technique connecting beats." ;
     sh:targetClass sac:Device ;
     sh:property [
         sh:path sac:entityName ;
@@ -22,6 +24,7 @@ sacsh:DeviceShape
     ] ;
     sh:property [
         sh:path sac:setupBeats ;
+        sh:description "Beat IDs where the device is planted." ;
         sh:nodeKind sh:IRI ;
         sh:node sacsh:BeatShape ;
         sh:minCount 1 ;
@@ -33,6 +36,7 @@ sacsh:DeviceShape
     ] ;
     sh:property [
         sh:path sac:payoffBeats ;
+        sh:description "Beat IDs where it resolves." ;
         sh:nodeKind sh:IRI ;
         sh:node sacsh:BeatShape ;
     ] ;

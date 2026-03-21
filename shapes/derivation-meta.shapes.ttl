@@ -4,10 +4,12 @@
 @prefix sacex: <https://story-as-code.dev/expr/> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 
 # --- Derivation meta shape ---
 
 sacsh:DerivationMetaShape a sh:NodeShape ;
+    rdfs:comment "Validation contract for a compiled output — links lens, format, and beat back to the world graph state." ;
     sh:targetClass sac:DerivationMeta ;
     sh:property [
         sh:path sac:derivationLens ;
@@ -28,6 +30,7 @@ sacsh:DerivationMetaShape a sh:NodeShape ;
     ] ;
     sh:property [
         sh:path sac:sourceVersion ;
+        sh:description "Graph state version used for this derivation." ;
         sh:datatype xsd:string ;
         sh:maxCount 1 ;
     ] ;

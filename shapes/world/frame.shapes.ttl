@@ -8,6 +8,7 @@
 
 sacsh:FrameShape
     a sh:NodeShape ;
+    rdfs:comment "An alternative timeline or branch. Frames form a graph via parent references and relations." ;
     sh:targetClass sac:Frame ;
     sh:property [
         sh:path sac:entityName ;
@@ -22,11 +23,13 @@ sacsh:FrameShape
     ] ;
     sh:property [
         sh:path sac:parent ;
+        sh:description "Frame this one branched from." ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:branchesAt ;
+        sh:description "Time point where this frame diverges from parent." ;
         sh:datatype xsd:string ;
         sh:maxCount 1 ;
     ] ;
@@ -40,6 +43,7 @@ sacsh:FrameShape
     ] ;
     sh:property [
         sh:path sac:properties ;
+        sh:description "Additional metadata as key-value pairs." ;
         sh:datatype rdf:JSON ;
         sh:maxCount 1 ;
     ] .
@@ -54,12 +58,14 @@ sacsh:FrameRelationShape
     ] ;
     sh:property [
         sh:path sac:relationType ;
+        sh:description "How this frame relates to another — e.g. branching off at a divergence point, merging back, or looping." ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:at ;
+        sh:description "Time point at which the relation occurs." ;
         sh:datatype xsd:string ;
         sh:maxCount 1 ;
     ] ;

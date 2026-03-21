@@ -8,6 +8,7 @@
 
 sacsh:EdgeShape
     a sh:NodeShape ;
+    rdfs:comment "A relationship between two nodes that persists over time." ;
     sh:targetClass sac:Edge ;
     sh:property [
         sh:path sac:edgeType ;
@@ -17,6 +18,7 @@ sacsh:EdgeShape
     ] ;
     sh:property [
         sh:path sac:entityName ;
+        sh:description "Verb describing the relationship." ;
         sh:datatype xsd:string ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -42,11 +44,13 @@ sacsh:EdgeShape
     ] ;
     sh:property [
         sh:path sac:directed ;
+        sh:description "Whether the edge is directed (source → target). Default true." ;
         sh:datatype xsd:boolean ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:scope ;
+        sh:description "Temporal scope of this edge. Omit for edges that always hold. Valid selectors: time_system, time, frame." ;
         sh:maxCount 1 ;
         sh:node sacsh:ExpressionShape ;
     ] .
