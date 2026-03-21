@@ -1,0 +1,20 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Beat",
+  "id": "the-return",
+  "name": "Back to the Future",
+  "description": "The lightning strike sends Marty home. Doc survives thanks to a bulletproof vest. Marty wakes to a transformed family.",
+  "parent": "main-storyline",
+  "order": 7,
+  "nodeIds": ["marty", "doc-brown", "delorean", "clock-tower", "lightning-strike", "return-to-1985", "hill-valley-1985"],
+  "edgeIds": ["marty-in-lightning-strike", "doc-brown-in-lightning-strike", "marty-in-return-to-1985", "doc-brown-in-return-to-1985"],
+  "function": "RESOLUTION",
+  "tension": 0.7,
+  "emotionalTarget": 0.8,
+  "reveals": [
+    { "revealTarget": "return-to-1985", "degree": "FULL" }
+  ],
+  "transition": {
+    "transitionType": "FADE"
+  }
+}

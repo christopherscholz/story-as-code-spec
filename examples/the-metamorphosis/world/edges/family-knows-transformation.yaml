@@ -1,7 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: family-knows-transformation
-type: KNOWLEDGE
-name: knows-about
-source: father
-target: gregor
-description: "All family members and the chief clerk know about Gregor's insect form"

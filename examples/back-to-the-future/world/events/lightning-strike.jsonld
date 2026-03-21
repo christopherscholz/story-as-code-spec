@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "lightning-strike",
+  "name": "Lightning Strike",
+  "nodeType": "EVENT",
+  "description": "At 10:04 PM on November 12, 1955, lightning strikes the clock tower. Doc has rigged a cable from the tower to the street. The DeLorean races toward it at 88 mph, the lightning channels through the cable into the flux capacitor, and Marty is sent back to 1985.",
+  "properties": {
+    "severity": 1.0,
+    "participants": ["marty", "doc-brown"],
+    "location": "clock-tower"
+  },
+  "hasTag": ["sci-fi", "time-travel", "iconic"]
+}

@@ -1,0 +1,10 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Device",
+  "id": "bulletproof-vest",
+  "name": "Bulletproof Vest",
+  "deviceType": "SETUP_PAYOFF",
+  "description": "Marty writes Doc a warning letter about the Libyans. Doc tears it up — but secretly tapes it together and wears a bulletproof vest. The payoff: Doc survives.",
+  "setup": ["the-plan"],
+  "payoff": ["the-return"]
+}

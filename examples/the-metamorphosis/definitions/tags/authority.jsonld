@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "authority",
+  "name": "Authority",
+  "description": "Represents institutional or patriarchal power."
+}

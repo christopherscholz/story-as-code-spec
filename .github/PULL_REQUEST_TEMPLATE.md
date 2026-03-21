@@ -4,8 +4,7 @@
 
 ## Checklist
 
-- [ ] YAML files pass `yamllint` validation
-- [ ] Changes are consistent with the spec (`docs/spec.md`)
+- [ ] SHACL validation passes (`python scripts/validate.py`)
 - [ ] Schema changes include examples in the PR description
 - [ ] Spec text changes are clear and unambiguous
 - [ ] Related issue linked (if applicable)

@@ -1,0 +1,36 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Lens",
+  "id": "marty-pov",
+  "lensType": "SIMPLE",
+  "perspective": {
+    "perspectiveType": "CHARACTER_BOUND",
+    "anchor": "marty",
+    "person": "THIRD"
+  },
+  "knowledge": {
+    "mode": "CHARACTER_KNOWLEDGE",
+    "includeSubconscious": false,
+    "includeWrongBeliefs": true
+  },
+  "temporalPosition": {
+    "temporalType": "IN_MOMENT"
+  },
+  "emotional": {
+    "emotionalSource": "CHARACTER_STATE",
+    "bias": {
+      "toward": ["george", "lorraine", "doc-brown"],
+      "biasStrength": 0.6
+    }
+  },
+  "voice": {
+    "vocabularyLevel": "COLLOQUIAL",
+    "sentenceTendency": "SHORT_STACCATO",
+    "innerMonologue": true,
+    "metaphorDensity": "LOW",
+    "verbalTics": ["this is heavy", "what the hell"]
+  },
+  "reliability": {
+    "level": "RELIABLE"
+  }
+}

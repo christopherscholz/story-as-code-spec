@@ -1,0 +1,37 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Beat",
+  "id": "uneasy-coexistence",
+  "name": "The New Routine",
+  "description": "Grete assumes the role of caretaker. The family adjusts uneasily. When Grete and Mother begin removing furniture, Gregor clings to the picture frame \u2014 his last vestige of humanity.",
+  "parent": "main-storyline",
+  "order": 3,
+  "nodeIds": [
+    "gregor",
+    "grete",
+    "mother",
+    "gregors-room",
+    "picture-frame",
+    "furniture-removal"
+  ],
+  "edgeIds": [
+    "grete-cares-for-gregor",
+    "mother-pity-for-gregor"
+  ],
+  "function": "RISING_ACTION",
+  "tension": 0.5,
+  "emotionalTarget": -0.2,
+  "reveals": [
+    {
+      "revealTarget": "picture-frame",
+      "degree": "FULL"
+    },
+    {
+      "revealTarget": "grete-cares-for-gregor",
+      "degree": "FULL"
+    }
+  ],
+  "transition": {
+    "transitionType": "CLIFFHANGER"
+  }
+}

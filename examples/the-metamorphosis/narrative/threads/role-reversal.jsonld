@@ -1,0 +1,34 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Thread",
+  "id": "role-reversal",
+  "threadType": "THEME",
+  "name": "Family Role Reversal",
+  "description": "Before the transformation, Gregor was the sole breadwinner while his father had given up and his sister was a carefree teenager. The transformation forces the family to reverse roles: Father puts on a uniform and goes to work, Mother takes in sewing, Grete gets a sales job. As the family regains agency, Gregor loses his \u2014 the provider becomes the burden, the dependent becomes the decision-maker.",
+  "appearances": [
+    {
+      "beatId": "awakening",
+      "description": "Gregor worries about work and debts \u2014 his identity is defined by providing for the family"
+    },
+    {
+      "beatId": "failed-emergence",
+      "description": "The chief clerk's visit underscores that Gregor's value to the household was his income"
+    },
+    {
+      "beatId": "uneasy-coexistence",
+      "description": "Grete assumes the caretaker role; Father begins working again in his bank messenger uniform"
+    },
+    {
+      "beatId": "the-attack",
+      "description": "Father's new authority manifests physically \u2014 he attacks Gregor rather than retreating"
+    },
+    {
+      "beatId": "the-decline",
+      "description": "Father works, Mother sews, Grete sells \u2014 the entire family has become self-sufficient. Gregor, the former provider, is now the only one who contributes nothing"
+    },
+    {
+      "beatId": "final-rejection",
+      "description": "Grete \u2014 now the family's strongest voice \u2014 decides Gregor's fate. The former child becomes the executioner"
+    }
+  ]
+}

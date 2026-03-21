@@ -1,0 +1,13 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "return-to-1985",
+  "name": "Return to 1985",
+  "nodeType": "EVENT",
+  "description": "Marty arrives back in 1985 at the mall — now named Lone Pine Mall. He races to find Doc, but arrives moments too late to prevent the shooting. However, Doc reveals he read Marty's warning letter and wore a bulletproof vest. The next morning, Marty discovers his family's life has been transformed: George is a successful author, Lorraine is fit and happy, and Biff now waxes their car.",
+  "properties": {
+    "participants": ["marty", "doc-brown"],
+    "location": "twin-pines-mall"
+  },
+  "hasTag": ["time-travel"]
+}

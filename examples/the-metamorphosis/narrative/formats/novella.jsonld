@@ -1,0 +1,40 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Format",
+  "id": "novella",
+  "name": "Novella",
+  "formatType": "NOVEL",
+  "structure": {
+    "structureType": "book",
+    "structureConstraints": {
+      "count": 1,
+      "target_words": "20000-25000"
+    },
+    "children": {
+      "structureType": "part",
+      "structureConstraints": {
+        "count": 3,
+        "target_words": "6000-9000"
+      },
+      "children": {
+        "structureType": "scene",
+        "structureConstraints": {
+          "count": "3-5",
+          "target_words": "1500-2500"
+        }
+      }
+    }
+  },
+  "formatSettings": {
+    "pacing": {
+      "part": {
+        "tension_shape": "MINI_ARC",
+        "end_hook": "USUALLY"
+      },
+      "scene": {
+        "tension_shape": "RISE_CLIMAX_RESOLVE",
+        "cliffhanger_at_end": false
+      }
+    }
+  }
+}

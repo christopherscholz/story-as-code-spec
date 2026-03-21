@@ -1,0 +1,18 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "living-room",
+  "nodeType": "LOCATION",
+  "name": "The Living Room",
+  "description": "The central shared space of the Samsa apartment. Before the transformation it is the family's gathering place; afterward it becomes territory contested between family and lodgers. The lodgers eat here, Grete plays violin here, and it is here that Gregor's final emergence causes the crisis that ends his life. The room's function shifts from domestic comfort to boardinghouse dining room \u2014 a spatial measure of the family's loss of control over their own home.",
+  "properties": {
+    "name_variants": [
+      "the front room"
+    ]
+  },
+  "hasTag": [
+    "domestic",
+    "contested-space",
+    "family-space"
+  ]
+}

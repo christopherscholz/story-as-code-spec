@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "caretaker",
+  "name": "Caretaker",
+  "description": "A character who assumes responsibility for another's wellbeing."
+}

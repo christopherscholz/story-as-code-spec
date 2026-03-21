@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "Running pre-commit validation..."
+
+# Check if any relevant files are staged
+STAGED=$(git diff --cached --name-only --diff-filter=ACM)
+RELEVANT=$(echo "$STAGED" | grep -E '\.(ttl|jsonld)$' || true)
+
+if [ -z "$RELEVANT" ]; then
+  echo "No .ttl or .jsonld files staged, skipping validation."
+  exit 0
+fi
+
+# Verify Turtle files parse
+TTL_FILES=$(echo "$STAGED" | grep -E '\.ttl$' || true)
+if [ -n "$TTL_FILES" ]; then
+  echo "Checking Turtle syntax..."
+  python3 -c "
+from rdflib import Graph
+from pathlib import Path
+errors = 0
+for f in Path('ontology').glob('*.ttl'):
+    try:
+        Graph().parse(str(f), format='turtle')
+    except Exception as e:
+        print(f'  ERROR {f}: {e}')
+        errors += 1
+for f in sorted(Path('shapes').rglob('*.ttl')):
+    try:
+        Graph().parse(str(f), format='turtle')
+    except Exception as e:
+        print(f'  ERROR {f}: {e}')
+        errors += 1
+if errors:
+    raise SystemExit(f'{errors} Turtle file(s) failed to parse')
+print('  Turtle syntax OK')
+"
+fi
+
+# Run SHACL validation
+echo "Running SHACL validation..."
+python3 scripts/validate.py
+
+echo "Pre-commit validation passed."

@@ -1,0 +1,34 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Thread",
+  "id": "doors-and-barriers",
+  "threadType": "MOTIF",
+  "name": "Doors and Barriers",
+  "description": "Doors recur throughout the story as markers of inclusion and exclusion. Gregor's locked bedroom door is the central barrier \u2014 opened, closed, and guarded at key moments. Each door scene shifts the boundary between Gregor and the family, tracking his progressive expulsion from human society.",
+  "appearances": [
+    {
+      "beatId": "awakening",
+      "description": "Gregor's door is locked from inside \u2014 he controls the barrier but cannot operate the lock with his new body"
+    },
+    {
+      "beatId": "failed-emergence",
+      "description": "Gregor opens the door with his mandibles; the family and clerk see him for the first time. Father forces him back and slams the door shut"
+    },
+    {
+      "beatId": "uneasy-coexistence",
+      "description": "Grete opens and closes the door daily for feeding \u2014 the door becomes a ritual boundary between caretaker and creature"
+    },
+    {
+      "beatId": "the-attack",
+      "description": "Gregor escapes through the open door during furniture removal; Father drives him back through it with apples"
+    },
+    {
+      "beatId": "the-decline",
+      "description": "The door is left ajar in the evenings \u2014 Gregor can watch the family from the dark, but no one invites him through"
+    },
+    {
+      "beatId": "final-rejection",
+      "description": "Gregor crawls through the open door toward the violin music; after the crisis, he retreats through it for the last time. The charwoman opens the door to find him dead"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "fathers-uniform",
+  "nodeType": "OBJECT",
+  "name": "Father's Bank Messenger Uniform",
+  "description": "The uniform Father wears to his new job as a bank messenger. He refuses to take it off at home, sleeping in it despite the family's protests. The uniform transforms him from a defeated old man into a figure of rigid authority \u2014 it is both a symbol of the family's forced self-reliance and of Father's new identity as household enforcer. Its gold buttons grow increasingly tarnished, mirroring the family's slow decline.",
+  "properties": {
+    "is_unique": true
+  },
+  "hasTag": [
+    "clothing",
+    "symbol",
+    "authority",
+    "decay",
+    "identity"
+  ]
+}

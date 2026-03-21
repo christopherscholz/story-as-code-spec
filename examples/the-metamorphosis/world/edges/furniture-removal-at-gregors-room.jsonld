@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "furniture-removal-at-gregors-room",
+  "edgeType": "OCCURRENCE",
+  "name": "occurs-at",
+  "source": "furniture-removal",
+  "target": "gregors-room"
+}

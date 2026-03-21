@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "grete-in-furniture-removal",
+  "edgeType": "PARTICIPATION",
+  "name": "initiates",
+  "source": "grete",
+  "target": "furniture-removal"
+}

@@ -1,4 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/definitions/tag.schema.json
-id: group
-name: Group
-description: "A collective entity acting as one."

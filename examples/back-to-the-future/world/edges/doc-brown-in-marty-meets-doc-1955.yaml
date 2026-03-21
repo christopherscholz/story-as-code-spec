@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: doc-brown-in-marty-meets-doc-1955
-type: PARTICIPATION
-name: convinced-during
-source: doc-brown
-target: marty-meets-doc-1955

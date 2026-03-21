@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "lightning-strike-at-clock-tower",
+  "edgeType": "OCCURRENCE",
+  "name": "occurs-at",
+  "source": "lightning-strike",
+  "target": "clock-tower"
+}

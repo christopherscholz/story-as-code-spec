@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: grete-in-chief-clerk-visit
-type: PARTICIPATION
-name: present-during
-source: grete
-target: chief-clerk-visit

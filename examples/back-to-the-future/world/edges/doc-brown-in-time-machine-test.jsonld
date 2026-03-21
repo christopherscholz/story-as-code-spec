@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "doc-brown-in-time-machine-test",
+  "edgeType": "PARTICIPATION",
+  "name": "conducts",
+  "source": "doc-brown",
+  "target": "time-machine-test"
+}

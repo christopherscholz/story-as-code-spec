@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "school",
+  "name": "School",
+  "description": "Related to an educational institution."
+}

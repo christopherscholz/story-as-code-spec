@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "family-space",
+  "name": "Family Space",
+  "description": "A space belonging to and defined by the family."
+}

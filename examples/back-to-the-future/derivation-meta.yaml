@@ -1,3 +1,0 @@
-# yaml-language-server: $schema=../../schemas/derivation-meta.schema.json
-derived_from: "Back to the Future (1985), directed by Robert Zemeckis"
-purpose: "Demonstration of Story as Code frames, temporal scopes, and time-travel narrative structure"

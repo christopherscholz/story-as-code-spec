@@ -1,0 +1,12 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "jennifer",
+  "name": "Jennifer Parker",
+  "nodeType": "CHARACTER",
+  "description": "Marty's girlfriend. She appears briefly in 1985 before the time-travel journey begins, serving as Marty's emotional anchor and his reason to return.",
+  "properties": {
+    "name_variants": ["Jennifer"]
+  },
+  "hasTag": ["love-interest"]
+}

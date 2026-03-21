@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "outsider",
+  "name": "Outsider",
+  "description": "Someone outside the family circle who intrudes on the domestic space."
+}

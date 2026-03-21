@@ -1,5 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
-id: NOVEL
-name: Novel
-applies_to: FORMAT
-description: "Long-form prose fiction structured in chapters and scenes."

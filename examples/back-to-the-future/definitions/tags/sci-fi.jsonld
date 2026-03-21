@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "sci-fi",
+  "name": "Science Fiction",
+  "description": "Speculative technology or science-driven elements."
+}

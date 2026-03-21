@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "sequence",
+  "name": "Sequence",
+  "description": "A group of scenes forming a unified narrative unit."
+}

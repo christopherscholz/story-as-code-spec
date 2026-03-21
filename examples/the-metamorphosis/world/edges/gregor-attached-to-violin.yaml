@@ -1,7 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: gregor-attached-to-violin
-type: RELATIONSHIP
-name: emotionally-attached-to
-source: gregor
-target: violin
-description: "Gregor associates the violin with Grete's talent and his unfulfilled plan to send her to the conservatory"

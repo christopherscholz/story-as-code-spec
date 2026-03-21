@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "SIMPLE",
+  "name": "Simple Lens",
+  "appliesTo": "sacsh:LensShape",
+  "description": "A single, non-composite narrative perspective."
+}

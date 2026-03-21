@@ -1,0 +1,22 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "transformation",
+  "nodeType": "EVENT",
+  "name": "The Transformation",
+  "description": "Gregor Samsa wakes from uneasy dreams to find himself transformed into a monstrous insect. The event is presented without explanation or buildup \u2014 it simply is. The transformation is irreversible and sets every subsequent conflict in motion: loss of income, family shame, confinement, and the slow erosion of Gregor's place in the household.",
+  "properties": {
+    "name_variants": [
+      "the metamorphosis"
+    ],
+    "severity": 1.0,
+    "participants": [
+      "gregor"
+    ],
+    "location": "gregors-room"
+  },
+  "hasTag": [
+    "supernatural",
+    "identity"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "scene",
+  "name": "Scene",
+  "description": "The smallest discrete narrative unit, occurring in a single location and time."
+}

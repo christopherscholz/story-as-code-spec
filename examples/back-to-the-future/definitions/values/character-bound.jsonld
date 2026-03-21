@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "CHARACTER_BOUND",
+  "name": "Character Bound",
+  "description": "The narrator's perspective is anchored to a specific character."
+}

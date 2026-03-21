@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "CONTINUATION",
+  "name": "Continuation",
+  "description": "The story continues directly from the previous beat without interruption."
+}

@@ -1,5 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
-id: SPATIAL
-name: Spatial Relationship
-applies_to: EDGE
-description: "A spatial or containment relationship (located-in, part-of, confined-to, embedded-in)."

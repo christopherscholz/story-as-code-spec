@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "EVENT",
+  "name": "Event",
+  "appliesTo": "sacsh:NodeShape",
+  "description": "A discrete occurrence that changes the state of the world."
+}

@@ -1,0 +1,278 @@
+{
+  "@context": "../../../context/sac.context.jsonld",
+  "type": "Definitions",
+  "id": "definitions-layer",
+  "tags": [
+    {
+      "@id": "authority"
+    },
+    {
+      "@id": "caretaker"
+    },
+    {
+      "@id": "clothing"
+    },
+    {
+      "@id": "confinement"
+    },
+    {
+      "@id": "contested-space"
+    },
+    {
+      "@id": "decay"
+    },
+    {
+      "@id": "decoration"
+    },
+    {
+      "@id": "domestic"
+    },
+    {
+      "@id": "family-space"
+    },
+    {
+      "@id": "family"
+    },
+    {
+      "@id": "group"
+    },
+    {
+      "@id": "humanity"
+    },
+    {
+      "@id": "identity"
+    },
+    {
+      "@id": "instrument"
+    },
+    {
+      "@id": "outsider"
+    },
+    {
+      "@id": "pragmatic"
+    },
+    {
+      "@id": "supernatural"
+    },
+    {
+      "@id": "symbol"
+    },
+    {
+      "@id": "sympathetic"
+    },
+    {
+      "@id": "violence"
+    },
+    {
+      "@id": "weapon"
+    }
+  ],
+  "types": [
+    {
+      "@id": "CHARACTER"
+    },
+    {
+      "@id": "CHEKHOV_GUN"
+    },
+    {
+      "@id": "EVENT"
+    },
+    {
+      "@id": "KNOWLEDGE"
+    },
+    {
+      "@id": "LOCATION"
+    },
+    {
+      "@id": "MOTIF"
+    },
+    {
+      "@id": "NOVEL"
+    },
+    {
+      "@id": "OBJECT"
+    },
+    {
+      "@id": "OCCURRENCE"
+    },
+    {
+      "@id": "OWNERSHIP"
+    },
+    {
+      "@id": "PARTICIPATION"
+    },
+    {
+      "@id": "RELATIONSHIP"
+    },
+    {
+      "@id": "SETUP_PAYOFF"
+    },
+    {
+      "@id": "SIMPLE"
+    },
+    {
+      "@id": "SOCIAL"
+    },
+    {
+      "@id": "SPATIAL"
+    },
+    {
+      "@id": "THEME"
+    }
+  ],
+  "valueDefs": [
+    {
+      "@id": "BRANCHES_INTO"
+    },
+    {
+      "@id": "CANON"
+    },
+    {
+      "@id": "CHARACTER_BOUND"
+    },
+    {
+      "@id": "CHARACTER_KNOWLEDGE"
+    },
+    {
+      "@id": "CHARACTER_STATE"
+    },
+    {
+      "@id": "CLIFFHANGER"
+    },
+    {
+      "@id": "CLIMAX"
+    },
+    {
+      "@id": "COLLOQUIAL"
+    },
+    {
+      "@id": "COMPLEX_NESTED"
+    },
+    {
+      "@id": "CONTINUATION"
+    },
+    {
+      "@id": "CRISIS"
+    },
+    {
+      "@id": "CUT"
+    },
+    {
+      "@id": "ERROR"
+    },
+    {
+      "@id": "FADE"
+    },
+    {
+      "@id": "FIRST"
+    },
+    {
+      "@id": "FIRST_THRESHOLD"
+    },
+    {
+      "@id": "FORMAL"
+    },
+    {
+      "@id": "FULL"
+    },
+    {
+      "@id": "HIGH"
+    },
+    {
+      "@id": "HOOK"
+    },
+    {
+      "@id": "INCITING_INCIDENT"
+    },
+    {
+      "@id": "IN_MOMENT"
+    },
+    {
+      "@id": "LINEAR"
+    },
+    {
+      "@id": "LOW"
+    },
+    {
+      "@id": "NEGATIVE"
+    },
+    {
+      "@id": "NONE"
+    },
+    {
+      "@id": "OBJECTIVE"
+    },
+    {
+      "@id": "OMNISCIENT"
+    },
+    {
+      "@id": "PARTIAL"
+    },
+    {
+      "@id": "PINCH_POINT"
+    },
+    {
+      "@id": "POSITIVE"
+    },
+    {
+      "@id": "PUBLIC_ONLY"
+    },
+    {
+      "@id": "RELIABLE"
+    },
+    {
+      "@id": "RESOLUTION"
+    },
+    {
+      "@id": "RETROSPECTIVE"
+    },
+    {
+      "@id": "RISING_ACTION"
+    },
+    {
+      "@id": "SECOND"
+    },
+    {
+      "@id": "SELECTIVE"
+    },
+    {
+      "@id": "SHORT_STACCATO"
+    },
+    {
+      "@id": "THIRD"
+    },
+    {
+      "@id": "TIME_SKIP"
+    },
+    {
+      "@id": "UNRELIABLE"
+    },
+    {
+      "@id": "WARNING"
+    },
+    {
+      "@id": "act"
+    },
+    {
+      "@id": "book"
+    },
+    {
+      "@id": "chapter"
+    },
+    {
+      "@id": "film"
+    },
+    {
+      "@id": "part"
+    },
+    {
+      "@id": "scene"
+    },
+    {
+      "@id": "sequence"
+    },
+    {
+      "@id": "supervisor"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix sac:   <https://story-as-code.dev/ontology#> .
+@prefix sacsh: <https://story-as-code.dev/shapes/> .
+@prefix sacex: <https://story-as-code.dev/expr/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+sacsh:NarrativeLayerShape
+    a sh:NodeShape ;
+    sh:targetClass sac:NarrativeLayer ;
+    sh:property [
+        sh:path sac:hasLens ;
+        sh:node sacsh:LensShape ;
+    ] ;
+    sh:property [
+        sh:path sac:hasBeat ;
+        sh:node sacsh:BeatShape ;
+    ] ;
+    sh:property [
+        sh:path sac:hasDevice ;
+        sh:node sacsh:DeviceShape ;
+    ] ;
+    sh:property [
+        sh:path sac:hasThread ;
+        sh:node sacsh:ThreadShape ;
+    ] ;
+    sh:property [
+        sh:path sac:hasFormat ;
+        sh:node sacsh:FormatShape ;
+    ] ;
+    sh:property [
+        sh:path sac:hasVariant ;
+        sh:node sacsh:VariantMetaShape ;
+    ] .

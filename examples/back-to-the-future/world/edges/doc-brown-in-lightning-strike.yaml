@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: doc-brown-in-lightning-strike
-type: PARTICIPATION
-name: engineers
-source: doc-brown
-target: lightning-strike

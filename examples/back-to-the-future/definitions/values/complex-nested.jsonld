@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "COMPLEX_NESTED",
+  "name": "Complex Nested",
+  "description": "Sentences tend to be long with embedded subordinate clauses."
+}

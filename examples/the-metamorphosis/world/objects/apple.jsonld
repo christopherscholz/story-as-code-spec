@@ -1,0 +1,17 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "apple",
+  "nodeType": "OBJECT",
+  "name": "The Embedded Apple",
+  "description": "An apple thrown by Father that lodges in Gregor's back during the attack. It is never removed and rots in place over the following weeks, becoming a festering wound that accelerates Gregor's physical decline. The family eventually grows so accustomed to it that they forget it is there. It serves as a permanent, visible marker of the family's violence \u2014 a wound carried by the victim while the perpetrators move on.",
+  "properties": {
+    "is_unique": true
+  },
+  "hasTag": [
+    "weapon",
+    "symbol",
+    "violence",
+    "decay"
+  ]
+}

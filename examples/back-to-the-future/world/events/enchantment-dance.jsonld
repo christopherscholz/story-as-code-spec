@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "enchantment-dance",
+  "name": "Enchantment Under the Sea Dance",
+  "nodeType": "EVENT",
+  "description": "The high school dance where George and Lorraine must share their first kiss. Marty's plan to have George rescue Lorraine nearly fails when Biff assaults her in the parking lot. George, summoning unexpected courage, punches Biff unconscious. George and Lorraine kiss on the dance floor, and Marty's fading photo is restored.",
+  "properties": {
+    "severity": 0.9,
+    "participants": ["marty", "george", "lorraine", "biff"],
+    "location": "hill-valley-high"
+  },
+  "hasTag": ["iconic"]
+}

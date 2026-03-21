@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "mentor",
+  "name": "Mentor",
+  "description": "A guide or teacher figure for the protagonist."
+}

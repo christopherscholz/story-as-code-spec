@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: marty-in-libyan-attack
-type: PARTICIPATION
-name: flees-during
-source: marty
-target: libyan-attack

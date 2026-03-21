@@ -1,0 +1,17 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Beat",
+  "id": "setup-1985",
+  "name": "Late for School",
+  "description": "Marty's life in 1985 — his band rejection, his loser father, Biff. Doc calls him to the mall at 1 AM.",
+  "parent": "main-storyline",
+  "order": 1,
+  "nodeIds": ["marty", "doc-brown", "george", "lorraine", "biff", "jennifer", "hill-valley-1985", "delorean"],
+  "edgeIds": ["marty-son-of-george", "marty-son-of-lorraine", "biff-bullies-george", "marty-friends-with-doc", "marty-dating-jennifer"],
+  "function": "HOOK",
+  "tension": 0.2,
+  "emotionalTarget": -0.1,
+  "transition": {
+    "transitionType": "CONTINUATION"
+  }
+}

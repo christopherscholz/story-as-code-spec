@@ -1,0 +1,10 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Device",
+  "id": "clock-tower-flyer-device",
+  "name": "Clock Tower Flyer",
+  "deviceType": "SETUP_PAYOFF",
+  "description": "A woman hands Marty a flyer about saving the clock tower. The flyer contains the exact date and time of the lightning strike — the key to getting home.",
+  "setup": ["setup-1985"],
+  "payoff": ["the-plan"]
+}

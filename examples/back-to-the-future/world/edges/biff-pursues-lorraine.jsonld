@@ -1,0 +1,13 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "biff-pursues-lorraine",
+  "edgeType": "CONFLICT",
+  "name": "pursues",
+  "source": "biff",
+  "target": "lorraine",
+  "scope": {
+    "selectorType": "frame",
+    "selectorItem": "1955-timeline"
+  }
+}

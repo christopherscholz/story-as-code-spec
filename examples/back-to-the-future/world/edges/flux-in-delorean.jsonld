@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "flux-in-delorean",
+  "edgeType": "SPATIAL",
+  "name": "installed-in",
+  "source": "flux-capacitor",
+  "target": "delorean"
+}

@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "film",
+  "name": "Film",
+  "description": "The top-level structural unit of a screenplay or film."
+}

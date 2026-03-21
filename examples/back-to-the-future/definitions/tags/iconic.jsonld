@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "iconic",
+  "name": "Iconic",
+  "description": "An element that is culturally emblematic of the story."
+}

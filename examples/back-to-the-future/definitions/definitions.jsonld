@@ -1,0 +1,263 @@
+{
+  "@context": "../../../context/sac.context.jsonld",
+  "type": "Definitions",
+  "id": "definitions-layer",
+  "tags": [
+    {
+      "@id": "protagonist"
+    },
+    {
+      "@id": "antagonist"
+    },
+    {
+      "@id": "mentor"
+    },
+    {
+      "@id": "family"
+    },
+    {
+      "@id": "time-travel"
+    },
+    {
+      "@id": "sci-fi"
+    },
+    {
+      "@id": "teenager"
+    },
+    {
+      "@id": "scientist"
+    },
+    {
+      "@id": "bully"
+    },
+    {
+      "@id": "love-interest"
+    },
+    {
+      "@id": "iconic"
+    },
+    {
+      "@id": "vehicle"
+    },
+    {
+      "@id": "public-space"
+    },
+    {
+      "@id": "private-space"
+    },
+    {
+      "@id": "school"
+    }
+  ],
+  "types": [
+    {
+      "@id": "CHARACTER"
+    },
+    {
+      "@id": "LOCATION"
+    },
+    {
+      "@id": "OBJECT"
+    },
+    {
+      "@id": "EVENT"
+    },
+    {
+      "@id": "SPATIAL"
+    },
+    {
+      "@id": "RELATIONSHIP"
+    },
+    {
+      "@id": "KINSHIP"
+    },
+    {
+      "@id": "CONFLICT"
+    },
+    {
+      "@id": "OWNERSHIP"
+    },
+    {
+      "@id": "PARTICIPATION"
+    },
+    {
+      "@id": "OCCURRENCE"
+    },
+    {
+      "@id": "SETUP_PAYOFF"
+    },
+    {
+      "@id": "CHEKHOV_GUN"
+    },
+    {
+      "@id": "DRAMATIC_IRONY"
+    },
+    {
+      "@id": "SCREENPLAY"
+    },
+    {
+      "@id": "SIMPLE"
+    },
+    {
+      "@id": "THEME"
+    },
+    {
+      "@id": "MOTIF"
+    }
+  ],
+  "valueDefs": [
+    {
+      "@id": "BRANCHES_INTO"
+    },
+    {
+      "@id": "CANON"
+    },
+    {
+      "@id": "CHARACTER_BOUND"
+    },
+    {
+      "@id": "CHARACTER_KNOWLEDGE"
+    },
+    {
+      "@id": "CHARACTER_STATE"
+    },
+    {
+      "@id": "CLIFFHANGER"
+    },
+    {
+      "@id": "CLIMAX"
+    },
+    {
+      "@id": "COLLOQUIAL"
+    },
+    {
+      "@id": "COMPLEX_NESTED"
+    },
+    {
+      "@id": "CONTINUATION"
+    },
+    {
+      "@id": "CRISIS"
+    },
+    {
+      "@id": "CUT"
+    },
+    {
+      "@id": "ERROR"
+    },
+    {
+      "@id": "FADE"
+    },
+    {
+      "@id": "FIRST"
+    },
+    {
+      "@id": "FIRST_THRESHOLD"
+    },
+    {
+      "@id": "FORMAL"
+    },
+    {
+      "@id": "FULL"
+    },
+    {
+      "@id": "HIGH"
+    },
+    {
+      "@id": "HOOK"
+    },
+    {
+      "@id": "INCITING_INCIDENT"
+    },
+    {
+      "@id": "IN_MOMENT"
+    },
+    {
+      "@id": "LINEAR"
+    },
+    {
+      "@id": "LOW"
+    },
+    {
+      "@id": "NEGATIVE"
+    },
+    {
+      "@id": "NONE"
+    },
+    {
+      "@id": "OBJECTIVE"
+    },
+    {
+      "@id": "OMNISCIENT"
+    },
+    {
+      "@id": "PARTIAL"
+    },
+    {
+      "@id": "PINCH_POINT"
+    },
+    {
+      "@id": "POSITIVE"
+    },
+    {
+      "@id": "PUBLIC_ONLY"
+    },
+    {
+      "@id": "RELIABLE"
+    },
+    {
+      "@id": "RESOLUTION"
+    },
+    {
+      "@id": "RETROSPECTIVE"
+    },
+    {
+      "@id": "RISING_ACTION"
+    },
+    {
+      "@id": "SECOND"
+    },
+    {
+      "@id": "SELECTIVE"
+    },
+    {
+      "@id": "SHORT_STACCATO"
+    },
+    {
+      "@id": "THIRD"
+    },
+    {
+      "@id": "TIME_SKIP"
+    },
+    {
+      "@id": "UNRELIABLE"
+    },
+    {
+      "@id": "WARNING"
+    },
+    {
+      "@id": "act"
+    },
+    {
+      "@id": "book"
+    },
+    {
+      "@id": "chapter"
+    },
+    {
+      "@id": "film"
+    },
+    {
+      "@id": "part"
+    },
+    {
+      "@id": "scene"
+    },
+    {
+      "@id": "sequence"
+    },
+    {
+      "@id": "supervisor"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "father-in-chief-clerk-visit",
+  "edgeType": "PARTICIPATION",
+  "name": "intervenes-during",
+  "source": "father",
+  "target": "chief-clerk-visit"
+}

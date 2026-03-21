@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "NEGATIVE",
+  "name": "Negative",
+  "description": "Distortion diminishes or vilifies the target."
+}

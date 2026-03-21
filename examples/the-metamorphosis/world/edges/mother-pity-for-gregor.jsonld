@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "mother-pity-for-gregor",
+  "edgeType": "RELATIONSHIP",
+  "name": "sympathizes-with",
+  "source": "mother",
+  "target": "gregor"
+}

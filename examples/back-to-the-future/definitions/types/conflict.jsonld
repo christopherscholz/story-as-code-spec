@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "CONFLICT",
+  "name": "Conflict",
+  "appliesTo": "sacsh:EdgeShape",
+  "description": "An opposition or antagonistic relationship."
+}

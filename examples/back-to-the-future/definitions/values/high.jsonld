@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "HIGH",
+  "name": "High",
+  "description": "Metaphors and figurative language are used frequently."
+}

@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "RETROSPECTIVE",
+  "name": "Retrospective",
+  "description": "The narrator looks back on past events from a later vantage point."
+}

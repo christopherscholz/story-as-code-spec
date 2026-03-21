@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "photo",
+  "name": "Family Photo",
+  "nodeType": "OBJECT",
+  "description": "A photograph of Marty and his siblings. As Marty's interference threatens his parents' meeting, the siblings begin to fade from the image. The photo serves as a visual countdown: when it goes blank, Marty will cease to exist. After George and Lorraine kiss at the dance, the photo is restored.",
+  "hasTag": ["iconic", "time-travel"]
+}

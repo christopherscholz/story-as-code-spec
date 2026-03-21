@@ -1,0 +1,39 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Beat",
+  "id": "the-decline",
+  "name": "The Junk Room",
+  "description": "Weeks after the apple attack, Gregor's room becomes a dumping ground. The family stops cleaning, the charwoman takes over his care, and the lodgers move in. Gregor eats less and less, his wound festers, and dust covers everything.",
+  "parent": "main-storyline",
+  "order": 5,
+  "nodeIds": [
+    "gregor",
+    "charwoman",
+    "lodgers",
+    "fathers-uniform",
+    "gregors-room",
+    "apartment"
+  ],
+  "edgeIds": [
+    "charwoman-tends-gregor",
+    "lodgers-in-apartment",
+    "lodgers-dominate-apartment",
+    "father-wears-uniform"
+  ],
+  "function": "PINCH_POINT",
+  "tension": 0.6,
+  "emotionalTarget": -0.7,
+  "reveals": [
+    {
+      "revealTarget": "charwoman",
+      "degree": "FULL"
+    },
+    {
+      "revealTarget": "lodgers-dominate-apartment",
+      "degree": "FULL"
+    }
+  ],
+  "transition": {
+    "transitionType": "CONTINUATION"
+  }
+}

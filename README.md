@@ -5,7 +5,7 @@
 [![GitHub Pages](https://img.shields.io/badge/Docs-GitHub_Pages-brightgreen.svg)](https://christopherscholz.github.io/story-as-code-spec/)
 
 <!-- content-start -->
-> Declarative YAML specification for defining worlds as temporal graphs and deriving outputs from them.
+> Declarative JSON-LD specification for defining worlds as temporal graphs and deriving outputs from them.
 
 ## What is Story as Code?
 
@@ -13,12 +13,15 @@ Story as Code treats worlds as **source code** — structured, versioned, and co
 
 Think of it like a compiler: the world graph is your source, the output is your compiled result.
 
+The spec is grounded in the **Semantic Web stack** — an OWL ontology defines the vocabulary, SHACL shapes enforce structural constraints, and all story data is expressed as JSON-LD, making every world graph a valid RDF dataset.
+
 ### Core Principles
 
 - **Declarative** — The graph declares what exists and when; outputs are derived, never primary
 - **Temporally rich** — Time is graph topology, supporting branches, loops, and retrocausality
 - **Schema-flexible** — The type system is extensible for custom world rules
 - **Format-agnostic** — Same world can produce tweets, prose, screenplays, comics, audio, or interactive experiences
+- **Semantically grounded** — Built on OWL/RDFS, queryable with SPARQL, validated with SHACL
 
 ## Key Concepts
 
@@ -32,66 +35,120 @@ Think of it like a compiler: the world graph is your source, the output is your 
 | **Formats** | Output format definitions (tweet, short story, comic panel, book, screenplay, ...) with pacing rules |
 | **Derivations** | Compiled outputs linked back to the graph |
 
+## Development Environment
+
+The repository includes a [Dev Container](https://containers.dev/) configuration. Open the project in VS Code (or any Dev Container-compatible editor) and reopen in the container — all tooling is pre-installed. The only external dependency is **Docker**.
+
+Validate all examples with:
+
+```bash
+python scripts/validate.py
+```
+
 ## Quick Start
 
-A minimal world is a single `world.yaml`:
+A minimal story is a `story.jsonld` with an inline world:
 
-```yaml
-# world.yaml — everything in one file
-spec_version: "dev"
-name: "A Simple Fairy Tale"
-default_frame: "main"
-
-nodes:
-  - id: hero
-    type: CHARACTER
-    category: protagonist
-    properties:
-      age: 18
-      trait_courage: 0.8
-
-  - id: village
-    type: LOCATION
-
-edges:
-  - id: quest_begins
-    type: ACTION
-    subtype: INITIATES
-    source: hero
-    target: quest_start
-    scope:
-      and:
-        - { type: frame, item: main }
-        - range:
-            from: { type: time, item: T1 }
-            to: null
-
-frames:
-  - id: main
-    topology: LINEAR
-    time_points: [T0, T1, T2]
+```jsonld
+{
+  "@context": "./context/sac.context.jsonld",
+  "type": "Story",
+  "id": "fairy-tale",
+  "specVersion": "dev",
+  "name": "A Simple Fairy Tale",
+  "world": {
+    "type": "World",
+    "id": "world-layer",
+    "nodes": [
+      {
+        "type": "Node",
+        "id": "hero",
+        "name": "The Hero",
+        "nodeType": "CHARACTER",
+        "properties": { "age": 18, "trait_courage": 0.8 },
+        "hasTag": ["protagonist"]
+      },
+      {
+        "type": "Node",
+        "id": "village",
+        "name": "The Village",
+        "nodeType": "LOCATION"
+      }
+    ],
+    "edges": [
+      {
+        "type": "Edge",
+        "id": "hero-in-village",
+        "edgeType": "SPATIAL",
+        "source": "hero",
+        "target": "village"
+      }
+    ],
+    "frames": [
+      {
+        "type": "Frame",
+        "id": "main",
+        "name": "Main Timeline"
+      }
+    ]
+  }
+}
 ```
 
-As projects grow, split items into separate files and reference them:
+As projects grow, split nodes and edges into separate files and reference them by `@id`:
 
-```yaml
-# world.yaml — with $ref
-spec_version: "dev"
-name: "A Simple Fairy Tale"
-default_frame: "main"
-
-nodes:
-  - $ref: "./characters/hero.yaml"
-  - $ref: "./locations.yaml"
-
-edges:
-  - $ref: "./relationships.yaml"
-
-frames:
-  - $ref: "./timeline.yaml"
+```jsonld
+// story.jsonld
+{
+  "@context": "./context/sac.context.jsonld",
+  "type": "Story",
+  "id": "fairy-tale",
+  "specVersion": "dev",
+  "name": "A Simple Fairy Tale",
+  "world": "world-layer"
+}
 ```
 
-The spec does not prescribe a directory layout — inline definitions and `$ref` references can be mixed freely, and file organization is up to you and your tooling.
+```jsonld
+// world/world.jsonld
+{
+  "@context": "../context/sac.context.jsonld",
+  "type": "World",
+  "id": "world-layer",
+  "nodes": [
+    { "@id": "hero" },
+    { "@id": "village" }
+  ],
+  "edges": [
+    { "@id": "hero-in-village" }
+  ]
+}
+```
+
+```jsonld
+// world/characters/hero.jsonld
+{
+  "@context": "../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "hero",
+  "name": "The Hero",
+  "nodeType": "CHARACTER",
+  "properties": { "age": 18 },
+  "hasTag": ["protagonist"]
+}
+```
+
+The spec does not prescribe a directory layout — inline definitions and `@id` references can be mixed freely, and file organisation is up to you and your tooling.
+
+## Ontology & Validation
+
+The spec ships three layers of machine-readable definitions:
+
+| Layer | Format | Purpose |
+|-------|--------|---------|
+| **Context** (`context/`) | JSON-LD | Maps compact property names to semantic URIs |
+| **Ontology** (`ontology/`) | OWL/RDFS Turtle | Declares classes and properties |
+| **Shapes** (`shapes/`) | SHACL Turtle | Enforces structural constraints |
 
 ## Status
 

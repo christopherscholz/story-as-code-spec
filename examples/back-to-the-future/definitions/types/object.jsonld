@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "OBJECT",
+  "name": "Object",
+  "appliesTo": "sacsh:NodeShape",
+  "description": "A physical thing with narrative significance."
+}

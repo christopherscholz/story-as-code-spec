@@ -1,0 +1,69 @@
+{
+  "@context": "../../../context/sac.context.jsonld",
+  "type": "Narrative",
+  "id": "narrative-layer",
+  "lenses": [
+    {
+      "@id": "gregor-pov"
+    },
+    {
+      "@id": "detached-observer"
+    }
+  ],
+  "beats": [
+    {
+      "@id": "main-storyline"
+    },
+    {
+      "@id": "awakening"
+    },
+    {
+      "@id": "failed-emergence"
+    },
+    {
+      "@id": "uneasy-coexistence"
+    },
+    {
+      "@id": "the-attack"
+    },
+    {
+      "@id": "the-decline"
+    },
+    {
+      "@id": "final-rejection"
+    }
+  ],
+  "devices": [
+    {
+      "@id": "picture-setup-payoff"
+    },
+    {
+      "@id": "apple-chekhov"
+    },
+    {
+      "@id": "violin-setup-payoff"
+    }
+  ],
+  "threads": [
+    {
+      "@id": "dehumanization"
+    },
+    {
+      "@id": "role-reversal"
+    },
+    {
+      "@id": "doors-and-barriers"
+    }
+  ],
+  "formats": [
+    {
+      "@id": "novella"
+    }
+  ],
+  "variants": [
+    {
+      "variantType": "CANON",
+      "description": "The canonical story \u2014 Gregor transforms, declines, and dies; the family is liberated"
+    }
+  ]
+}

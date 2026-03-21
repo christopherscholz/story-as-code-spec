@@ -1,7 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: marty-friends-with-doc
-type: RELATIONSHIP
-name: friends-with
-source: marty
-target: doc-brown
-directed: false

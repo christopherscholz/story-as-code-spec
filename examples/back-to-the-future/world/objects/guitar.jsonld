@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "guitar",
+  "name": "Guitar",
+  "nodeType": "OBJECT",
+  "description": "Marty's instrument. He plays a blistering rendition of 'Johnny B. Goode' at the Enchantment Under the Sea dance, inadvertently inventing rock and roll before its time — a temporal paradox played for comedy.",
+  "hasTag": ["iconic"]
+}

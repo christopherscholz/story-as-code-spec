@@ -1,5 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
-id: RELATIONSHIP
-name: Interpersonal Relationship
-applies_to: EDGE
-description: "An emotional or interpersonal bond between characters or between a character and an object."

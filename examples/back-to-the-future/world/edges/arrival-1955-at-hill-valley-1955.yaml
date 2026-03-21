@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: arrival-1955-at-hill-valley-1955
-type: OCCURRENCE
-name: occurs-at
-source: arrival-1955
-target: hill-valley-1955

@@ -1,9 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/node.schema.json
-id: twin-pines-mall
-name: "Twin Pines Mall"
-type: LOCATION
-description: >
-  A shopping mall parking lot where Doc Brown conducts the first time-travel test at 1:15 AM.
-  After Marty's trip to 1955, the mall is renamed Lone Pine Mall — one of the pines was
-  destroyed when Marty crashed into Farmer Peabody's barn.
-tags: [public-space]

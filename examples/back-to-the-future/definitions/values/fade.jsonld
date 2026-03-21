@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "FADE",
+  "name": "Fade",
+  "description": "A gradual transition that softens the move to the next beat."
+}

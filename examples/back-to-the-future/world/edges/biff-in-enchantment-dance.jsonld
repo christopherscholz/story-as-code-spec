@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "biff-in-enchantment-dance",
+  "edgeType": "PARTICIPATION",
+  "name": "crashes",
+  "source": "biff",
+  "target": "enchantment-dance"
+}

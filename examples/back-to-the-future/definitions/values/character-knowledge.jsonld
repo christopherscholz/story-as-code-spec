@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "CHARACTER_KNOWLEDGE",
+  "name": "Character Knowledge",
+  "description": "The narrator knows only what the anchor character knows."
+}

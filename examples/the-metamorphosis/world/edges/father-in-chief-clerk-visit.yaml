@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: father-in-chief-clerk-visit
-type: PARTICIPATION
-name: intervenes-during
-source: father
-target: chief-clerk-visit

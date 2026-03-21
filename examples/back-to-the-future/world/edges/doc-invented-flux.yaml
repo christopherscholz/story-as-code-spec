@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: doc-invented-flux
-type: OWNERSHIP
-name: invented
-source: doc-brown
-target: flux-capacitor

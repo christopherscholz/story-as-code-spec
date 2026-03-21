@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "NOVEL",
+  "name": "Novel",
+  "appliesTo": "sacsh:FormatShape",
+  "description": "Long-form prose fiction structured in chapters and scenes."
+}

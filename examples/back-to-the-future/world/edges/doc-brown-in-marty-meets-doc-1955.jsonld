@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "doc-brown-in-marty-meets-doc-1955",
+  "edgeType": "PARTICIPATION",
+  "name": "convinced-during",
+  "source": "doc-brown",
+  "target": "marty-meets-doc-1955"
+}

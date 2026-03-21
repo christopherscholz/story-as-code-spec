@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "scientist",
+  "name": "Scientist",
+  "description": "A character defined by scientific pursuit."
+}

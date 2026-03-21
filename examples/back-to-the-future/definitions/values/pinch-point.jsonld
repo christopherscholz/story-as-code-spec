@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "PINCH_POINT",
+  "name": "Pinch Point",
+  "description": "A beat where the antagonistic force asserts pressure on the protagonist."
+}

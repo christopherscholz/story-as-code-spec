@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: marty-in-marty-meets-doc-1955
-type: PARTICIPATION
-name: initiates
-source: marty
-target: marty-meets-doc-1955

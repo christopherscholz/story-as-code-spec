@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "FIRST",
+  "name": "First Person",
+  "description": "The story is told using first-person pronouns (I, we)."
+}

@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: marty-meets-doc-1955-at-docs-lab
-type: OCCURRENCE
-name: occurs-at
-source: marty-meets-doc-1955
-target: docs-lab

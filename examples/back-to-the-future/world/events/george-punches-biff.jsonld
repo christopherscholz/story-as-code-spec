@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "george-punches-biff",
+  "name": "George Punches Biff",
+  "nodeType": "EVENT",
+  "description": "The story's pivotal moment. George arrives to rescue Lorraine from Biff's assault and, for the first time in his life, stands up to his bully. One punch knocks Biff out cold and transforms George's destiny — from lifelong victim to confident man.",
+  "properties": {
+    "severity": 1.0,
+    "participants": ["george", "biff", "lorraine"],
+    "location": "hill-valley-high"
+  },
+  "hasTag": ["iconic"]
+}

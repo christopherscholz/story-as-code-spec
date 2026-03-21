@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "WARNING",
+  "name": "Warning",
+  "description": "A constraint violation that is noteworthy but does not invalidate the story."
+}

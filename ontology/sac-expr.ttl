@@ -1,0 +1,74 @@
+@prefix sacex: <https://story-as-code.dev/expr/> .
+@prefix sac:   <https://story-as-code.dev/ontology#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# --- Classes ---
+
+sacex:SelectorExpression a owl:Class ;
+    rdfs:subClassOf sac:Expression ;
+    rdfs:comment "A single selector tuple identifying a story element" .
+
+sacex:AndExpression a owl:Class ;
+    rdfs:subClassOf sac:Expression ;
+    rdfs:comment "Logical AND of two or more expressions" .
+
+sacex:OrExpression a owl:Class ;
+    rdfs:subClassOf sac:Expression ;
+    rdfs:comment "Logical OR of two or more expressions" .
+
+sacex:NotExpression a owl:Class ;
+    rdfs:subClassOf sac:Expression ;
+    rdfs:comment "Logical NOT of an expression" .
+
+sacex:InExpression a owl:Class ;
+    rdfs:subClassOf sac:Expression ;
+    rdfs:comment "Matches if element is one of the listed selectors" .
+
+sacex:RangeExpression a owl:Class ;
+    rdfs:subClassOf sac:Expression ;
+    rdfs:comment "Matches elements between from and to (inclusive)" .
+
+# --- Properties ---
+
+sacex:selectorType a owl:DatatypeProperty ;
+    rdfs:domain sacex:SelectorExpression ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Selector type (node_type, node, edge_type, edge, frame, tag, time, constraint, time_system, beat, lens, format, device, thread, variant)" .
+
+sacex:selectorItem a owl:DatatypeProperty ;
+    rdfs:domain sacex:SelectorExpression ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The specific element ID" .
+
+sacex:andOperands a owl:ObjectProperty ;
+    rdfs:domain sacex:AndExpression ;
+    rdfs:range rdf:List ;
+    rdfs:comment "List of sub-expressions (minimum 2)" .
+
+sacex:orOperands a owl:ObjectProperty ;
+    rdfs:domain sacex:OrExpression ;
+    rdfs:range rdf:List ;
+    rdfs:comment "List of sub-expressions (minimum 2)" .
+
+sacex:notOperand a owl:ObjectProperty ;
+    rdfs:domain sacex:NotExpression ;
+    rdfs:range sac:Expression ;
+    rdfs:comment "The expression to negate" .
+
+sacex:inItems a owl:ObjectProperty ;
+    rdfs:domain sacex:InExpression ;
+    rdfs:range rdf:List ;
+    rdfs:comment "List of selectors to match against" .
+
+sacex:rangeFrom a owl:ObjectProperty ;
+    rdfs:domain sacex:RangeExpression ;
+    rdfs:range sacex:SelectorExpression ;
+    rdfs:comment "Start of range (inclusive)" .
+
+sacex:rangeTo a owl:ObjectProperty ;
+    rdfs:domain sacex:RangeExpression ;
+    rdfs:range sacex:SelectorExpression ;
+    rdfs:comment "End of range (inclusive)" .

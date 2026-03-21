@@ -1,0 +1,38 @@
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix sac:   <https://story-as-code.dev/ontology#> .
+@prefix sacsh: <https://story-as-code.dev/shapes/> .
+@prefix sacex: <https://story-as-code.dev/expr/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+sacsh:NodeShape
+    a sh:NodeShape ;
+    sh:targetClass sac:Node ;
+    sh:property [
+        sh:path sac:entityName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:nodeType ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:properties ;
+        sh:datatype rdf:JSON ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:hasTag ;
+        sh:nodeKind sh:IRI ;
+        sh:node sacsh:TagShape ;
+    ] .

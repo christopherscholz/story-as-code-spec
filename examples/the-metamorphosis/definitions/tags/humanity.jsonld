@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "humanity",
+  "name": "Humanity",
+  "description": "Related to the retention or loss of human identity."
+}

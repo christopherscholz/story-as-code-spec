@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "RELIABLE",
+  "name": "Reliable",
+  "description": "The narrator presents events accurately and without distortion."
+}

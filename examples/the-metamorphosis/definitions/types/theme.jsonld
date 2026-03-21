@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "THEME",
+  "name": "Theme",
+  "appliesTo": "sacsh:ThreadShape",
+  "description": "An abstract idea that recurs across the narrative (e.g. alienation, duty, identity)."
+}

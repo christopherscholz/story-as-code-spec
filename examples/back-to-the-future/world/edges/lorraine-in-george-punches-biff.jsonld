@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "lorraine-in-george-punches-biff",
+  "edgeType": "PARTICIPATION",
+  "name": "witnesses",
+  "source": "lorraine",
+  "target": "george-punches-biff"
+}

@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "KNOWLEDGE",
+  "name": "Knowledge",
+  "appliesTo": "sacsh:EdgeShape",
+  "description": "An information relationship \u2014 what one entity knows about another."
+}

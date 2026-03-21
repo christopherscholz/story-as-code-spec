@@ -1,7 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: gregors-room-in-apartment
-type: SPATIAL
-name: part-of
-source: gregors-room
-target: apartment
-description: "Gregor's room is part of the apartment but effectively a separate world"

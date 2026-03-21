@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "grete-owns-violin",
+  "edgeType": "OWNERSHIP",
+  "name": "owns",
+  "source": "grete",
+  "target": "violin"
+}

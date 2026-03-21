@@ -1,0 +1,43 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Beat",
+  "id": "final-rejection",
+  "name": "It Has to Go",
+  "description": "Months later, lodgers discover Gregor. Grete declares 'it has to go.' Gregor retreats to his room and dies in the early morning. The family, relieved, takes a spring outing.",
+  "parent": "main-storyline",
+  "order": 6,
+  "nodeIds": [
+    "gregor",
+    "grete",
+    "father",
+    "mother",
+    "lodgers",
+    "charwoman",
+    "violin",
+    "living-room",
+    "violin-recital",
+    "gretes-ultimatum",
+    "gregors-death"
+  ],
+  "edgeIds": [
+    "grete-rejects-gregor",
+    "lodgers-dominate-apartment",
+    "gregor-attached-to-violin"
+  ],
+  "function": "CLIMAX",
+  "tension": 0.9,
+  "emotionalTarget": -0.8,
+  "reveals": [
+    {
+      "revealTarget": "grete-rejects-gregor",
+      "degree": "FULL"
+    },
+    {
+      "revealTarget": "gregors-death",
+      "degree": "FULL"
+    }
+  ],
+  "transition": {
+    "transitionType": "FADE"
+  }
+}

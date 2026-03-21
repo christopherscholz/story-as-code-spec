@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "teenager",
+  "name": "Teenager",
+  "description": "A young person navigating adolescence."
+}

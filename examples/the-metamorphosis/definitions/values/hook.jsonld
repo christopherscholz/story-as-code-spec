@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "HOOK",
+  "name": "Hook",
+  "description": "An opening beat designed to capture the audience's attention immediately."
+}

@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "OBJECTIVE",
+  "name": "Objective",
+  "description": "The narrator observes events externally without access to inner thoughts."
+}

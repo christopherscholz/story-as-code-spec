@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "IN_MOMENT",
+  "name": "In Moment",
+  "description": "The narrator speaks from within the events as they unfold."
+}

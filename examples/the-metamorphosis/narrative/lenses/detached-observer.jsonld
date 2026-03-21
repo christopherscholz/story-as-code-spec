@@ -1,0 +1,25 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Lens",
+  "id": "detached-observer",
+  "lensType": "SIMPLE",
+  "perspective": {
+    "perspectiveType": "OBJECTIVE",
+    "person": "THIRD"
+  },
+  "knowledge": {
+    "mode": "PUBLIC_ONLY"
+  },
+  "temporalPosition": {
+    "temporalType": "IN_MOMENT"
+  },
+  "voice": {
+    "vocabularyLevel": "FORMAL",
+    "sentenceTendency": "SHORT_STACCATO",
+    "innerMonologue": false,
+    "metaphorDensity": "NONE"
+  },
+  "reliability": {
+    "level": "RELIABLE"
+  }
+}

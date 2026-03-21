@@ -1,0 +1,20 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Beat",
+  "id": "the-plan",
+  "name": "The Plan",
+  "description": "Marty finds Doc in 1955. Together they hatch a plan: reunite George and Lorraine at the dance, and use a lightning strike to power the return trip.",
+  "parent": "main-storyline",
+  "order": 4,
+  "nodeIds": ["marty", "doc-brown", "clock-tower-flyer", "clock-tower", "docs-lab", "marty-meets-doc-1955"],
+  "edgeIds": ["marty-in-marty-meets-doc-1955", "doc-brown-in-marty-meets-doc-1955", "clock-tower-in-hill-valley"],
+  "function": "RISING_ACTION",
+  "tension": 0.4,
+  "emotionalTarget": 0.1,
+  "reveals": [
+    { "revealTarget": "clock-tower-flyer", "degree": "FULL" }
+  ],
+  "transition": {
+    "transitionType": "CONTINUATION"
+  }
+}

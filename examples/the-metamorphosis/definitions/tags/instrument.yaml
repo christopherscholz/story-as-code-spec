@@ -1,4 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/definitions/tag.schema.json
-id: instrument
-name: Instrument
-description: "A musical instrument."

@@ -1,0 +1,15 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "biff-bullies-george",
+  "edgeType": "CONFLICT",
+  "name": "bullies",
+  "source": "biff",
+  "target": "george",
+  "scope": {
+    "range": {
+      "from": null,
+      "to": { "selectorType": "time", "selectorItem": "1955-11-12" }
+    }
+  }
+}

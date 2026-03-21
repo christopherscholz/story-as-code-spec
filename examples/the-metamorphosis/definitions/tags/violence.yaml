@@ -1,4 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/definitions/tag.schema.json
-id: violence
-name: Violence
-description: "Physical aggression or harm."

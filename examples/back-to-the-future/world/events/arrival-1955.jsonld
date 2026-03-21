@@ -1,0 +1,13 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "arrival-1955",
+  "name": "Arrival in 1955",
+  "nodeType": "EVENT",
+  "description": "Marty materialises in 1955, crashing through Farmer Peabody's barn and destroying one of the twin pines. The DeLorean is out of plutonium — he is stranded thirty years in the past.",
+  "properties": {
+    "participants": ["marty"],
+    "location": "hill-valley-1955"
+  },
+  "hasTag": ["time-travel"]
+}

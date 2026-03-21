@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: doc-brown-in-libyan-attack
-type: PARTICIPATION
-name: shot-during
-source: doc-brown
-target: libyan-attack

@@ -1,0 +1,6 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "weapon-of-sorts",
+  "name": "Weapon of Sorts"
+}

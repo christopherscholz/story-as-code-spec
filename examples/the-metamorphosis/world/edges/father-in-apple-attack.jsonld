@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "father-in-apple-attack",
+  "edgeType": "PARTICIPATION",
+  "name": "perpetrates",
+  "source": "father",
+  "target": "apple-attack"
+}

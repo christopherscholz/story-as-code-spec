@@ -1,0 +1,968 @@
+@prefix sac:  <https://story-as-code.dev/ontology#> .
+@prefix sacsh: <https://story-as-code.dev/shapes/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+
+# =============================================================================
+# Ontology declaration
+# =============================================================================
+
+<https://story-as-code.dev/ontology> a owl:Ontology ;
+    rdfs:label "Story as Code Ontology" ;
+    rdfs:comment "Core OWL/RDFS ontology for the Story as Code specification." .
+
+# =============================================================================
+# Classes — Container / Layer
+# =============================================================================
+
+sac:Story a owl:Class ;
+    rdfs:comment "Root document of a Story as Code project" .
+
+sac:DefinitionsLayer a owl:Class ;
+    rdfs:comment "Container for tags and type definitions" .
+
+sac:WorldLayer a owl:Class ;
+    rdfs:comment "The world graph — ground truth entities, relationships, timelines" .
+
+sac:NarrativeLayer a owl:Class ;
+    rdfs:comment "Container for narrative structures" .
+
+# =============================================================================
+# Classes — Definitions
+# =============================================================================
+
+sac:Tag a owl:Class ;
+    rdfs:comment "A categorical label applied to elements" .
+
+sac:TypeDefinition a owl:Class ;
+    rdfs:comment "Defines defaults and required properties for a given element type" .
+
+sac:ValueDefinition a owl:Class ;
+    rdfs:comment "Defines the meaning of a controlled vocabulary value (e.g. LINEAR, ERROR, HOOK)" .
+
+# =============================================================================
+# Classes — World
+# =============================================================================
+
+sac:TimeSystem a owl:Class ;
+    rdfs:comment "How time works in this world" .
+
+sac:Node a owl:Class ;
+    rdfs:comment "An entity in the world graph" .
+
+sac:Edge a owl:Class ;
+    rdfs:comment "A relationship between two nodes" .
+
+sac:Frame a owl:Class ;
+    rdfs:comment "An alternative timeline or branch" .
+
+sac:FrameRelation a owl:Class ;
+    rdfs:comment "A relation between frames (branches, merges, loops)" .
+
+sac:Constraint a owl:Class ;
+    rdfs:comment "A world rule that validates the graph" .
+
+# =============================================================================
+# Classes — Narrative
+# =============================================================================
+
+sac:Lens a owl:Class ;
+    rdfs:comment "A narrative perspective" .
+
+sac:Beat a owl:Class ;
+    rdfs:comment "A story beat — selects world elements and adds dramaturgical structure" .
+
+sac:Device a owl:Class ;
+    rdfs:comment "A narrative device — rhetorical technique connecting beats" .
+
+sac:Thread a owl:Class ;
+    rdfs:comment "A thematic thread or motif connecting beats" .
+
+sac:Format a owl:Class ;
+    rdfs:comment "Output format definition" .
+
+sac:VariantMeta a owl:Class ;
+    rdfs:comment "Metadata for a parallel world version" .
+
+sac:DerivationMeta a owl:Class ;
+    rdfs:comment "Validation contract for compiled output" .
+
+# =============================================================================
+# Classes — Supporting
+# =============================================================================
+
+sac:Expression a owl:Class ;
+    rdfs:comment "A boolean expression over selectors" .
+
+sac:Reveal a owl:Class ;
+    rdfs:comment "Information disclosed at a beat" .
+
+sac:Transition a owl:Class ;
+    rdfs:comment "How a beat connects to the next" .
+
+sac:Structure a owl:Class ;
+    rdfs:comment "Recursive structural level for format definitions" .
+
+sac:ThreadAppearance a owl:Class ;
+    rdfs:comment "Where a thread appears in a beat" .
+
+sac:LensLayer a owl:Class ;
+    rdfs:comment "A layer in a composite lens" .
+
+sac:Perspective a owl:Class ;
+    rdfs:comment "Narrative perspective configuration" .
+
+sac:Knowledge a owl:Class ;
+    rdfs:comment "What the narrator knows" .
+
+sac:TemporalPosition a owl:Class ;
+    rdfs:comment "When the narrator speaks from" .
+
+sac:Emotional a owl:Class ;
+    rdfs:comment "Emotional coloring of narration" .
+
+sac:EmotionalBias a owl:Class ;
+    rdfs:comment "Bias toward specific nodes" .
+
+sac:Voice a owl:Class ;
+    rdfs:comment "Narrative voice characteristics" .
+
+sac:LanguageRendering a owl:Class ;
+    rdfs:comment "Language rendering mode" .
+
+sac:Reliability a owl:Class ;
+    rdfs:comment "Narrator reliability" .
+
+sac:Distortion a owl:Class ;
+    rdfs:comment "How a narrator distorts a node" .
+
+sac:Alternation a owl:Class ;
+    rdfs:comment "Alternation config for composite lens" .
+
+sac:Composition a owl:Class ;
+    rdfs:comment "Composition config for composite lens" .
+
+sac:ConflictResolution a owl:Class ;
+    rdfs:comment "Conflict resolution between sub-lenses" .
+
+sac:BeatPosition a owl:Class ;
+    rdfs:comment "Beat position in a derivation" .
+
+sac:Dependencies a owl:Class ;
+    rdfs:comment "Dependencies in a derivation" .
+
+sac:NodeDependency a owl:Class ;
+    rdfs:comment "Node dependency in a derivation" .
+
+sac:EdgeDependency a owl:Class ;
+    rdfs:comment "Edge dependency in a derivation" .
+
+sac:RevealDependency a owl:Class ;
+    rdfs:comment "Reveal dependency in a derivation" .
+
+sac:Settings a owl:Class ;
+    rdfs:comment "Project settings" .
+
+# =============================================================================
+# Properties — Story
+# =============================================================================
+
+sac:specVersion a owl:DatatypeProperty ;
+    rdfs:domain sac:Story ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Specification version of the Story as Code document" .
+
+sac:storyName a owl:DatatypeProperty ;
+    rdfs:domain sac:Story ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Display name of the story" .
+
+sac:settings a owl:ObjectProperty ;
+    rdfs:domain sac:Story ;
+    rdfs:range sac:Settings ;
+    rdfs:comment "Project-level settings" .
+
+sac:definitions a owl:ObjectProperty ;
+    rdfs:domain sac:Story ;
+    rdfs:range sac:DefinitionsLayer ;
+    rdfs:comment "Link to the definitions layer" .
+
+sac:world a owl:ObjectProperty ;
+    rdfs:domain sac:Story ;
+    rdfs:range sac:WorldLayer ;
+    rdfs:comment "Link to the world layer" .
+
+sac:narrative a owl:ObjectProperty ;
+    rdfs:domain sac:Story ;
+    rdfs:range sac:NarrativeLayer ;
+    rdfs:comment "Link to the narrative layer" .
+
+sac:defaultLanguage a owl:DatatypeProperty ;
+    rdfs:domain sac:Settings ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Default language for the project" .
+
+# =============================================================================
+# Properties — DefinitionsLayer
+# =============================================================================
+
+sac:hasTags a owl:ObjectProperty ;
+    rdfs:domain sac:DefinitionsLayer ;
+    rdfs:range sac:Tag ;
+    rdfs:comment "Tags defined in this definitions layer" .
+
+sac:hasTypes a owl:ObjectProperty ;
+    rdfs:domain sac:DefinitionsLayer ;
+    rdfs:range sac:TypeDefinition ;
+    rdfs:comment "Type definitions in this definitions layer" .
+
+sac:hasValueDefs a owl:ObjectProperty ;
+    rdfs:domain sac:DefinitionsLayer ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Value definitions (controlled vocabulary) in this definitions layer" .
+
+# =============================================================================
+# Properties — Tag (shared)
+# =============================================================================
+
+sac:entityName a owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Display name of an element (shared across many classes)" .
+
+sac:description a owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Human-readable description (shared across many classes)" .
+
+# =============================================================================
+# Properties — TypeDefinition
+# =============================================================================
+
+sac:appliesTo a owl:ObjectProperty ;
+    rdfs:domain sac:TypeDefinition ;
+    rdfs:range sh:NodeShape ;
+    rdfs:comment "The shape this type definition applies to (e.g. sacsh:NodeShape, sacsh:EdgeShape)" .
+
+sac:defaults a owl:DatatypeProperty ;
+    rdfs:domain sac:TypeDefinition ;
+    rdfs:range rdf:JSON ;
+    rdfs:comment "Default property values for this type" .
+
+sac:requiredProperties a owl:DatatypeProperty ;
+    rdfs:domain sac:TypeDefinition ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Properties that must be present on instances of this type" .
+
+sac:hasTag a owl:ObjectProperty ;
+    rdfs:range sac:Tag ;
+    rdfs:comment "Tag applied to an element (shared — used by Node, Edge, Frame, Device, Thread, TypeDefinition)" .
+
+# =============================================================================
+# Properties — WorldLayer
+# =============================================================================
+
+sac:timeSystem a owl:ObjectProperty ;
+    rdfs:domain sac:WorldLayer ;
+    rdfs:range sac:TimeSystem ;
+    rdfs:comment "The time system governing this world" .
+
+sac:hasNode a owl:ObjectProperty ;
+    rdfs:domain sac:WorldLayer ;
+    rdfs:range sac:Node ;
+    rdfs:comment "A node in the world graph" .
+
+sac:hasEdge a owl:ObjectProperty ;
+    rdfs:domain sac:WorldLayer ;
+    rdfs:range sac:Edge ;
+    rdfs:comment "An edge in the world graph" .
+
+sac:hasFrame a owl:ObjectProperty ;
+    rdfs:domain sac:WorldLayer ;
+    rdfs:range sac:Frame ;
+    rdfs:comment "A frame (timeline/branch) in the world" .
+
+sac:hasConstraint a owl:ObjectProperty ;
+    rdfs:domain sac:WorldLayer ;
+    rdfs:range sac:Constraint ;
+    rdfs:comment "A constraint (world rule) in this world" .
+
+# =============================================================================
+# Properties — TimeSystem
+# =============================================================================
+
+sac:timeSystemType a owl:ObjectProperty ;
+    rdfs:domain sac:TimeSystem ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Type of time system (e.g. LINEAR, BRANCHING)" .
+
+sac:calendar a owl:DatatypeProperty ;
+    rdfs:domain sac:TimeSystem ;
+    rdfs:range rdf:JSON ;
+    rdfs:comment "Calendar configuration for the time system" .
+
+# =============================================================================
+# Properties — Node
+# =============================================================================
+
+sac:nodeType a owl:ObjectProperty ;
+    rdfs:domain sac:Node ;
+    rdfs:range sac:TypeDefinition ;
+    rdfs:comment "The type of this node, referencing a TypeDefinition" .
+
+sac:properties a owl:DatatypeProperty ;
+    rdfs:range rdf:JSON ;
+    rdfs:comment "Arbitrary property bag (shared across elements)" .
+
+# =============================================================================
+# Properties — Edge
+# =============================================================================
+
+sac:edgeType a owl:ObjectProperty ;
+    rdfs:domain sac:Edge ;
+    rdfs:range sac:TypeDefinition ;
+    rdfs:comment "The type of this edge, referencing a TypeDefinition" .
+
+sac:source a owl:ObjectProperty ;
+    rdfs:domain sac:Edge ;
+    rdfs:comment "Source node of the edge" .
+
+sac:target a owl:ObjectProperty ;
+    rdfs:comment "Target of the edge or frame relation" .
+
+sac:directed a owl:DatatypeProperty ;
+    rdfs:domain sac:Edge ;
+    rdfs:range xsd:boolean ;
+    rdfs:comment "Whether this edge is directed" .
+
+sac:scope a owl:ObjectProperty ;
+    rdfs:range sac:Expression ;
+    rdfs:comment "Conditional scope expression for this edge" .
+
+# =============================================================================
+# Properties — Frame
+# =============================================================================
+
+sac:parent a owl:ObjectProperty ;
+    rdfs:comment "Parent element (shared — used by Frame, Beat)" .
+
+sac:branchesAt a owl:DatatypeProperty ;
+    rdfs:domain sac:Frame ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The point at which this frame branches from its parent" .
+
+sac:hasRelation a owl:ObjectProperty ;
+    rdfs:domain sac:Frame ;
+    rdfs:range sac:FrameRelation ;
+    rdfs:comment "A relation this frame has to another frame" .
+
+# =============================================================================
+# Properties — FrameRelation
+# =============================================================================
+
+sac:relationType a owl:ObjectProperty ;
+    rdfs:domain sac:FrameRelation ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Type of frame relation, referencing a ValueDefinition" .
+
+sac:at a owl:DatatypeProperty ;
+    rdfs:domain sac:FrameRelation ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The point at which the frame relation occurs" .
+
+# =============================================================================
+# Properties — Constraint
+# =============================================================================
+
+sac:severity a owl:ObjectProperty ;
+    rdfs:domain sac:Constraint ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Severity level of a constraint violation, referencing a ValueDefinition" .
+
+# =============================================================================
+# Properties — NarrativeLayer
+# =============================================================================
+
+sac:hasLens a owl:ObjectProperty ;
+    rdfs:domain sac:NarrativeLayer ;
+    rdfs:range sac:Lens ;
+    rdfs:comment "A lens defined in this narrative layer" .
+
+sac:hasBeat a owl:ObjectProperty ;
+    rdfs:domain sac:NarrativeLayer ;
+    rdfs:range sac:Beat ;
+    rdfs:comment "A beat defined in this narrative layer" .
+
+sac:hasDevice a owl:ObjectProperty ;
+    rdfs:domain sac:NarrativeLayer ;
+    rdfs:range sac:Device ;
+    rdfs:comment "A narrative device defined in this narrative layer" .
+
+sac:hasThread a owl:ObjectProperty ;
+    rdfs:domain sac:NarrativeLayer ;
+    rdfs:range sac:Thread ;
+    rdfs:comment "A thread defined in this narrative layer" .
+
+sac:hasFormat a owl:ObjectProperty ;
+    rdfs:domain sac:NarrativeLayer ;
+    rdfs:range sac:Format ;
+    rdfs:comment "A format defined in this narrative layer" .
+
+sac:hasVariant a owl:ObjectProperty ;
+    rdfs:domain sac:NarrativeLayer ;
+    rdfs:range sac:VariantMeta ;
+    rdfs:comment "A variant defined in this narrative layer" .
+
+# =============================================================================
+# Properties — Lens
+# =============================================================================
+
+sac:lensType a owl:ObjectProperty ;
+    rdfs:domain sac:Lens ;
+    rdfs:range sac:TypeDefinition ;
+    rdfs:comment "The type of this lens, referencing a TypeDefinition" .
+
+sac:perspective a owl:ObjectProperty ;
+    rdfs:domain sac:Lens ;
+    rdfs:range sac:Perspective ;
+    rdfs:comment "Perspective configuration of this lens" .
+
+sac:knowledge a owl:ObjectProperty ;
+    rdfs:domain sac:Lens ;
+    rdfs:range sac:Knowledge ;
+    rdfs:comment "Knowledge configuration of this lens" .
+
+sac:temporalPosition a owl:ObjectProperty ;
+    rdfs:domain sac:Lens ;
+    rdfs:range sac:TemporalPosition ;
+    rdfs:comment "Temporal position of the narrator" .
+
+sac:emotional a owl:ObjectProperty ;
+    rdfs:domain sac:Lens ;
+    rdfs:range sac:Emotional ;
+    rdfs:comment "Emotional coloring of this lens" .
+
+sac:voice a owl:ObjectProperty ;
+    rdfs:domain sac:Lens ;
+    rdfs:range sac:Voice ;
+    rdfs:comment "Voice characteristics of this lens" .
+
+sac:reliability a owl:ObjectProperty ;
+    rdfs:domain sac:Lens ;
+    rdfs:range sac:Reliability ;
+    rdfs:comment "Reliability configuration of this lens" .
+
+sac:hasLayer a owl:ObjectProperty ;
+    rdfs:domain sac:Lens ;
+    rdfs:range sac:LensLayer ;
+    rdfs:comment "A sub-layer in a composite lens" .
+
+sac:alternation a owl:ObjectProperty ;
+    rdfs:domain sac:Lens ;
+    rdfs:range sac:Alternation ;
+    rdfs:comment "Alternation configuration for composite lens" .
+
+sac:composition a owl:ObjectProperty ;
+    rdfs:domain sac:Lens ;
+    rdfs:range sac:Composition ;
+    rdfs:comment "Composition configuration for composite lens" .
+
+# =============================================================================
+# Properties — Perspective
+# =============================================================================
+
+sac:perspectiveType a owl:ObjectProperty ;
+    rdfs:domain sac:Perspective ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Type of perspective, referencing a ValueDefinition" .
+
+sac:anchor a owl:ObjectProperty ;
+    rdfs:domain sac:Perspective ;
+    rdfs:comment "The node this perspective is anchored to" .
+
+sac:person a owl:ObjectProperty ;
+    rdfs:domain sac:Perspective ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Grammatical person, referencing a ValueDefinition (e.g. FIRST, THIRD)" .
+
+# =============================================================================
+# Properties — Knowledge
+# =============================================================================
+
+sac:mode a owl:ObjectProperty ;
+    rdfs:domain sac:Knowledge ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Knowledge mode, referencing a ValueDefinition" .
+
+sac:includeSubconscious a owl:DatatypeProperty ;
+    rdfs:domain sac:Knowledge ;
+    rdfs:range xsd:boolean ;
+    rdfs:comment "Whether the narrator has access to subconscious thoughts" .
+
+sac:includeWrongBeliefs a owl:DatatypeProperty ;
+    rdfs:domain sac:Knowledge ;
+    rdfs:range xsd:boolean ;
+    rdfs:comment "Whether the narrator includes wrong beliefs" .
+
+# =============================================================================
+# Properties — TemporalPosition
+# =============================================================================
+
+sac:temporalType a owl:ObjectProperty ;
+    rdfs:domain sac:TemporalPosition ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Type of temporal position, referencing a ValueDefinition" .
+
+sac:narratingFrom a owl:DatatypeProperty ;
+    rdfs:domain sac:TemporalPosition ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The point in time from which the narrator speaks" .
+
+sac:knowsFutureUntil a owl:DatatypeProperty ;
+    rdfs:domain sac:TemporalPosition ;
+    rdfs:range xsd:string ;
+    rdfs:comment "How far into the future the narrator knows" .
+
+# =============================================================================
+# Properties — Emotional
+# =============================================================================
+
+sac:emotionalSource a owl:ObjectProperty ;
+    rdfs:domain sac:Emotional ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Source of emotional coloring, referencing a ValueDefinition" .
+
+sac:bias a owl:ObjectProperty ;
+    rdfs:domain sac:Emotional ;
+    rdfs:range sac:EmotionalBias ;
+    rdfs:comment "Emotional bias toward specific nodes" .
+
+# =============================================================================
+# Properties — EmotionalBias
+# =============================================================================
+
+sac:toward a owl:ObjectProperty ;
+    rdfs:domain sac:EmotionalBias ;
+    rdfs:comment "The node this bias is directed toward" .
+
+sac:biasStrength a owl:DatatypeProperty ;
+    rdfs:domain sac:EmotionalBias ;
+    rdfs:range xsd:decimal ;
+    rdfs:comment "Strength of the emotional bias" .
+
+# =============================================================================
+# Properties — Voice
+# =============================================================================
+
+sac:vocabularyLevel a owl:ObjectProperty ;
+    rdfs:domain sac:Voice ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Level of vocabulary sophistication, referencing a ValueDefinition" .
+
+sac:sentenceTendency a owl:ObjectProperty ;
+    rdfs:domain sac:Voice ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Tendency in sentence structure, referencing a ValueDefinition" .
+
+sac:innerMonologue a owl:DatatypeProperty ;
+    rdfs:domain sac:Voice ;
+    rdfs:range xsd:boolean ;
+    rdfs:comment "Whether inner monologue is used" .
+
+sac:metaphorDensity a owl:ObjectProperty ;
+    rdfs:domain sac:Voice ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Density of metaphor usage, referencing a ValueDefinition" .
+
+sac:verbalTics a owl:DatatypeProperty ;
+    rdfs:domain sac:Voice ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Characteristic verbal tics of the narrator" .
+
+sac:languageRendering a owl:ObjectProperty ;
+    rdfs:domain sac:Voice ;
+    rdfs:range sac:LanguageRendering ;
+    rdfs:comment "Language rendering configuration" .
+
+# =============================================================================
+# Properties — LanguageRendering
+# =============================================================================
+
+sac:renderingMode a owl:ObjectProperty ;
+    rdfs:domain sac:LanguageRendering ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Mode of language rendering, referencing a ValueDefinition" .
+
+# =============================================================================
+# Properties — Reliability
+# =============================================================================
+
+sac:level a owl:ObjectProperty ;
+    rdfs:domain sac:Reliability ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Reliability level of the narrator, referencing a ValueDefinition" .
+
+sac:omits a owl:ObjectProperty ;
+    rdfs:domain sac:Reliability ;
+    rdfs:comment "Event nodes the narrator omits" .
+
+sac:hasDistortion a owl:ObjectProperty ;
+    rdfs:domain sac:Reliability ;
+    rdfs:range sac:Distortion ;
+    rdfs:comment "Distortions applied by the narrator" .
+
+# =============================================================================
+# Properties — Distortion
+# =============================================================================
+
+sac:distortedNode a owl:ObjectProperty ;
+    rdfs:domain sac:Distortion ;
+    rdfs:comment "The node being distorted" .
+
+sac:direction a owl:ObjectProperty ;
+    rdfs:domain sac:Distortion ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Direction of the distortion, referencing a ValueDefinition" .
+
+# =============================================================================
+# Properties — LensLayer
+# =============================================================================
+
+sac:layerLens a owl:ObjectProperty ;
+    rdfs:domain sac:LensLayer ;
+    rdfs:range sac:Lens ;
+    rdfs:comment "The lens used in this layer" .
+
+sac:role a owl:DatatypeProperty ;
+    rdfs:domain sac:LensLayer ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Role of this layer in the composite lens" .
+
+sac:priority a owl:DatatypeProperty ;
+    rdfs:domain sac:LensLayer ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Priority of this layer" .
+
+sac:trigger a owl:DatatypeProperty ;
+    rdfs:domain sac:LensLayer ;
+    rdfs:range rdf:JSON ;
+    rdfs:comment "Trigger condition for this layer" .
+
+# =============================================================================
+# Properties — Alternation
+# =============================================================================
+
+sac:alternationMode a owl:ObjectProperty ;
+    rdfs:domain sac:Alternation ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Mode of alternation between sub-lenses, referencing a ValueDefinition" .
+
+sac:sequence a owl:ObjectProperty ;
+    rdfs:domain sac:Alternation ;
+    rdfs:comment "Ordered sequence of lens references" .
+
+sac:alternationTrigger a owl:ObjectProperty ;
+    rdfs:domain sac:Alternation ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Trigger for alternation switches, referencing a ValueDefinition" .
+
+# =============================================================================
+# Properties — Composition
+# =============================================================================
+
+sac:compositionMode a owl:ObjectProperty ;
+    rdfs:domain sac:Composition ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Mode of composition between sub-lenses, referencing a ValueDefinition" .
+
+sac:conflictResolution a owl:ObjectProperty ;
+    rdfs:domain sac:Composition ;
+    rdfs:range sac:ConflictResolution ;
+    rdfs:comment "How conflicts between sub-lenses are resolved" .
+
+# =============================================================================
+# Properties — ConflictResolution
+# =============================================================================
+
+sac:knowledgeResolution a owl:ObjectProperty ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "How knowledge conflicts are resolved, referencing a ValueDefinition" .
+
+sac:emotionResolution a owl:ObjectProperty ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "How emotion conflicts are resolved, referencing a ValueDefinition" .
+
+sac:voiceResolution a owl:ObjectProperty ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "How voice conflicts are resolved, referencing a ValueDefinition" .
+
+sac:reliabilityResolution a owl:ObjectProperty ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "How reliability conflicts are resolved, referencing a ValueDefinition" .
+
+# =============================================================================
+# Properties — Beat
+# =============================================================================
+
+sac:referencesNode a owl:ObjectProperty ;
+    rdfs:domain sac:Beat ;
+    rdfs:range sac:Node ;
+    rdfs:comment "A world node referenced by this beat" .
+
+sac:referencesEdge a owl:ObjectProperty ;
+    rdfs:domain sac:Beat ;
+    rdfs:range sac:Edge ;
+    rdfs:comment "A world edge referenced by this beat" .
+
+sac:function a owl:ObjectProperty ;
+    rdfs:domain sac:Beat ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Dramaturgical function of this beat, referencing a ValueDefinition" .
+
+sac:hasReveal a owl:ObjectProperty ;
+    rdfs:domain sac:Beat ;
+    rdfs:range sac:Reveal ;
+    rdfs:comment "Information revealed at this beat" .
+
+sac:tension a owl:DatatypeProperty ;
+    rdfs:domain sac:Beat ;
+    rdfs:range xsd:decimal ;
+    rdfs:comment "Tension level at this beat" .
+
+sac:emotionalTarget a owl:DatatypeProperty ;
+    rdfs:domain sac:Beat ;
+    rdfs:range xsd:decimal ;
+    rdfs:comment "Target emotional intensity at this beat" .
+
+sac:hasTransition a owl:ObjectProperty ;
+    rdfs:domain sac:Beat ;
+    rdfs:range sac:Transition ;
+    rdfs:comment "Transition from this beat to the next" .
+
+# =============================================================================
+# Properties — Reveal
+# =============================================================================
+
+sac:revealTarget a owl:ObjectProperty ;
+    rdfs:domain sac:Reveal ;
+    rdfs:comment "The entity being revealed" .
+
+sac:degree a owl:ObjectProperty ;
+    rdfs:domain sac:Reveal ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Degree of the reveal, referencing a ValueDefinition" .
+
+# =============================================================================
+# Properties — Transition
+# =============================================================================
+
+sac:transitionType a owl:ObjectProperty ;
+    rdfs:domain sac:Transition ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Type of transition, referencing a ValueDefinition" .
+
+sac:toBeat a owl:ObjectProperty ;
+    rdfs:domain sac:Transition ;
+    rdfs:range sac:Beat ;
+    rdfs:comment "The beat this transition leads to" .
+
+# =============================================================================
+# Properties — Device
+# =============================================================================
+
+sac:deviceType a owl:ObjectProperty ;
+    rdfs:domain sac:Device ;
+    rdfs:range sac:TypeDefinition ;
+    rdfs:comment "The type of this device, referencing a TypeDefinition" .
+
+sac:setupBeats a owl:ObjectProperty ;
+    rdfs:domain sac:Device ;
+    rdfs:range sac:Beat ;
+    rdfs:comment "Beats where this device is set up" .
+
+sac:payoffBeats a owl:ObjectProperty ;
+    rdfs:domain sac:Device ;
+    rdfs:range sac:Beat ;
+    rdfs:comment "Beats where this device pays off" .
+
+# =============================================================================
+# Properties — Thread
+# =============================================================================
+
+sac:threadType a owl:ObjectProperty ;
+    rdfs:domain sac:Thread ;
+    rdfs:range sac:TypeDefinition ;
+    rdfs:comment "The type of this thread, referencing a TypeDefinition" .
+
+sac:hasAppearance a owl:ObjectProperty ;
+    rdfs:domain sac:Thread ;
+    rdfs:range sac:ThreadAppearance ;
+    rdfs:comment "An appearance of this thread in a beat" .
+
+# =============================================================================
+# Properties — ThreadAppearance
+# =============================================================================
+
+sac:atBeat a owl:ObjectProperty ;
+    rdfs:domain sac:ThreadAppearance ;
+    rdfs:range sac:Beat ;
+    rdfs:comment "The beat where this thread appears" .
+
+# =============================================================================
+# Properties — Format
+# =============================================================================
+
+sac:formatType a owl:ObjectProperty ;
+    rdfs:domain sac:Format ;
+    rdfs:range sac:TypeDefinition ;
+    rdfs:comment "The type of this format, referencing a TypeDefinition" .
+
+sac:structure a owl:ObjectProperty ;
+    rdfs:domain sac:Format ;
+    rdfs:range sac:Structure ;
+    rdfs:comment "Structural definition for this format" .
+
+sac:formatSettings a owl:DatatypeProperty ;
+    rdfs:domain sac:Format ;
+    rdfs:range rdf:JSON ;
+    rdfs:comment "Format-specific settings" .
+
+# =============================================================================
+# Properties — Structure
+# =============================================================================
+
+sac:structureType a owl:ObjectProperty ;
+    rdfs:domain sac:Structure ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Type of structural element, referencing a ValueDefinition" .
+
+sac:constraints a owl:DatatypeProperty ;
+    rdfs:domain sac:Structure ;
+    rdfs:range rdf:JSON ;
+    rdfs:comment "Constraints on this structural level" .
+
+sac:children a owl:ObjectProperty ;
+    rdfs:domain sac:Structure ;
+    rdfs:range sac:Structure ;
+    rdfs:comment "Child structural levels" .
+
+# =============================================================================
+# Properties — VariantMeta
+# =============================================================================
+
+sac:variantType a owl:ObjectProperty ;
+    rdfs:domain sac:VariantMeta ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Type of variant, referencing a ValueDefinition" .
+
+sac:parentVariant a owl:ObjectProperty ;
+    rdfs:domain sac:VariantMeta ;
+    rdfs:comment "Parent variant this variant derives from" .
+
+sac:affectsFrames a owl:ObjectProperty ;
+    rdfs:domain sac:VariantMeta ;
+    rdfs:range sac:Frame ;
+    rdfs:comment "Frames affected by this variant" .
+
+sac:mergeStrategy a owl:ObjectProperty ;
+    rdfs:domain sac:VariantMeta ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Strategy for merging this variant, referencing a ValueDefinition" .
+
+# =============================================================================
+# Properties — DerivationMeta
+# =============================================================================
+
+sac:sourceVersion a owl:DatatypeProperty ;
+    rdfs:domain sac:DerivationMeta ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Source version this derivation was compiled from" .
+
+sac:derivationLens a owl:ObjectProperty ;
+    rdfs:domain sac:DerivationMeta ;
+    rdfs:range sac:Lens ;
+    rdfs:comment "Lens used in this derivation" .
+
+sac:derivationFormat a owl:ObjectProperty ;
+    rdfs:domain sac:DerivationMeta ;
+    rdfs:range sac:Format ;
+    rdfs:comment "Format used in this derivation" .
+
+sac:beatPosition a owl:ObjectProperty ;
+    rdfs:domain sac:DerivationMeta ;
+    rdfs:range sac:BeatPosition ;
+    rdfs:comment "Beat positions in this derivation" .
+
+sac:dependencies a owl:ObjectProperty ;
+    rdfs:domain sac:DerivationMeta ;
+    rdfs:range sac:Dependencies ;
+    rdfs:comment "Dependencies of this derivation" .
+
+# =============================================================================
+# Properties — BeatPosition
+# =============================================================================
+
+sac:beat a owl:ObjectProperty ;
+    rdfs:domain sac:BeatPosition ;
+    rdfs:range sac:Beat ;
+    rdfs:comment "The beat referenced by this position" .
+
+# =============================================================================
+# Properties — Dependencies
+# =============================================================================
+
+sac:nodeDependencies a owl:ObjectProperty ;
+    rdfs:domain sac:Dependencies ;
+    rdfs:range sac:NodeDependency ;
+    rdfs:comment "Node dependencies in this derivation" .
+
+sac:edgeDependencies a owl:ObjectProperty ;
+    rdfs:domain sac:Dependencies ;
+    rdfs:range sac:EdgeDependency ;
+    rdfs:comment "Edge dependencies in this derivation" .
+
+sac:revealDependencies a owl:ObjectProperty ;
+    rdfs:domain sac:Dependencies ;
+    rdfs:range sac:RevealDependency ;
+    rdfs:comment "Reveal dependencies in this derivation" .
+
+# =============================================================================
+# Properties — NodeDependency
+# =============================================================================
+
+sac:dependencyId a owl:ObjectProperty ;
+    rdfs:domain sac:NodeDependency ;
+    rdfs:comment "The resource this dependency refers to" .
+
+sac:mustExist a owl:DatatypeProperty ;
+    rdfs:range xsd:boolean ;
+    rdfs:comment "Whether the dependency must exist (shared)" .
+
+# =============================================================================
+# Properties — EdgeDependency
+# =============================================================================
+
+# EdgeDependency reuses sac:dependencyId and sac:mustExist from above.
+
+sac:requiredProperties a owl:DatatypeProperty ;
+    rdfs:domain sac:EdgeDependency ;
+    rdfs:range rdf:JSON ;
+    rdfs:comment "Properties required on the edge for this dependency" .
+
+# =============================================================================
+# Properties — RevealDependency
+# =============================================================================
+
+sac:revealNode a owl:ObjectProperty ;
+    rdfs:domain sac:RevealDependency ;
+    rdfs:comment "The node whose information is revealed" .
+
+sac:revealedTo a owl:ObjectProperty ;
+    rdfs:domain sac:RevealDependency ;
+    rdfs:comment "The entity to whom information is revealed" .
+
+sac:revealAt a owl:DatatypeProperty ;
+    rdfs:domain sac:RevealDependency ;
+    rdfs:range xsd:string ;
+    rdfs:comment "When the reveal must have occurred" .

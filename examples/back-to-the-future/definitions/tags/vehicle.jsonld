@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "vehicle",
+  "name": "Vehicle",
+  "description": "A mode of transportation."
+}

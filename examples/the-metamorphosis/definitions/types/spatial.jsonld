@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "SPATIAL",
+  "name": "Spatial Relationship",
+  "appliesTo": "sacsh:EdgeShape",
+  "description": "A spatial or containment relationship (located-in, part-of, confined-to, embedded-in)."
+}

@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "confinement",
+  "name": "Confinement",
+  "description": "Restriction of movement or freedom."
+}

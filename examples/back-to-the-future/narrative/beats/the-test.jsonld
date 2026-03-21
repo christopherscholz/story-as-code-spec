@@ -1,0 +1,21 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Beat",
+  "id": "the-test",
+  "name": "Twin Pines Mall",
+  "description": "Doc demonstrates the time machine. Libyans attack. Marty flees in the DeLorean and hits 88 mph.",
+  "parent": "main-storyline",
+  "order": 2,
+  "nodeIds": ["marty", "doc-brown", "delorean", "flux-capacitor", "twin-pines-mall", "time-machine-test", "libyan-attack"],
+  "edgeIds": ["doc-owns-delorean", "doc-invented-flux", "flux-in-delorean", "marty-in-time-machine-test", "doc-brown-in-libyan-attack", "marty-in-libyan-attack"],
+  "function": "INCITING_INCIDENT",
+  "tension": 0.7,
+  "emotionalTarget": -0.6,
+  "reveals": [
+    { "revealTarget": "delorean", "degree": "FULL" },
+    { "revealTarget": "flux-capacitor", "degree": "FULL" }
+  ],
+  "transition": {
+    "transitionType": "CUT"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Beat",
+  "id": "the-attack",
+  "name": "The Apple",
+  "description": "Gregor escapes his room during the furniture removal, terrifying his mother. Father bombards him with apples; one lodges in his back, a wound that will never heal.",
+  "parent": "main-storyline",
+  "order": 4,
+  "nodeIds": [
+    "gregor",
+    "father",
+    "mother",
+    "apple",
+    "apple-attack",
+    "apartment"
+  ],
+  "edgeIds": [
+    "father-hostile-to-gregor",
+    "apple-embedded-in-gregor"
+  ],
+  "function": "CRISIS",
+  "tension": 0.8,
+  "emotionalTarget": -0.6,
+  "reveals": [
+    {
+      "revealTarget": "apple-attack",
+      "degree": "FULL"
+    }
+  ],
+  "transition": {
+    "transitionType": "TIME_SKIP"
+  }
+}

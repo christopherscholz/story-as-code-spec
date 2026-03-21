@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/world/edge.schema.json
-id: gregor-in-furniture-removal
-type: PARTICIPATION
-name: resists-during
-source: gregor
-target: furniture-removal

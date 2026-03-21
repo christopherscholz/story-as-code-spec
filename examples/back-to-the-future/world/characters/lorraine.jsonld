@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "lorraine",
+  "name": "Lorraine Baines",
+  "nodeType": "CHARACTER",
+  "description": "Marty's mother — in 1985, a disillusioned, overweight woman who drinks too much. In 1955, a lively teenager who falls for the boy her father hit with his car — originally George, but now Marty. Her misplaced infatuation with her own future son creates the story's central paradox: Marty must redirect her affection to George or he will never be born.",
+  "properties": {
+    "age_1955": 17,
+    "age_1985": 47,
+    "name_variants": ["Lorraine", "Lorraine Baines McFly"]
+  },
+  "hasTag": ["family", "love-interest"]
+}

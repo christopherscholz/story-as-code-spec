@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "OCCURRENCE",
+  "name": "Occurrence",
+  "appliesTo": "sacsh:EdgeShape",
+  "description": "Where an event takes place."
+}

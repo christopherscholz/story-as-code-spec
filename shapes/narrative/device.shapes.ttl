@@ -1,0 +1,43 @@
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix sac:   <https://story-as-code.dev/ontology#> .
+@prefix sacsh: <https://story-as-code.dev/shapes/> .
+@prefix sacex: <https://story-as-code.dev/expr/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+sacsh:DeviceShape
+    a sh:NodeShape ;
+    sh:targetClass sac:Device ;
+    sh:property [
+        sh:path sac:entityName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:deviceType ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:setupBeats ;
+        sh:nodeKind sh:IRI ;
+        sh:node sacsh:BeatShape ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:payoffBeats ;
+        sh:nodeKind sh:IRI ;
+        sh:node sacsh:BeatShape ;
+    ] ;
+    sh:property [
+        sh:path sac:hasTag ;
+        sh:nodeKind sh:IRI ;
+        sh:node sacsh:TagShape ;
+    ] .

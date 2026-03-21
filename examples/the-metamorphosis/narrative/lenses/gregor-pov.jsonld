@@ -1,0 +1,53 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Lens",
+  "id": "gregor-pov",
+  "lensType": "SIMPLE",
+  "perspective": {
+    "perspectiveType": "CHARACTER_BOUND",
+    "anchor": "gregor",
+    "person": "THIRD"
+  },
+  "knowledge": {
+    "mode": "CHARACTER_KNOWLEDGE",
+    "includeSubconscious": true,
+    "includeWrongBeliefs": true
+  },
+  "temporalPosition": {
+    "temporalType": "IN_MOMENT"
+  },
+  "emotional": {
+    "emotionalSource": "CHARACTER_STATE",
+    "bias": {
+      "toward": [
+        "grete",
+        "father"
+      ],
+      "biasStrength": 0.7
+    }
+  },
+  "voice": {
+    "vocabularyLevel": "FORMAL",
+    "sentenceTendency": "COMPLEX_NESTED",
+    "innerMonologue": true,
+    "metaphorDensity": "LOW",
+    "verbalTics": [
+      "he thought",
+      "it occurred to him"
+    ]
+  },
+  "reliability": {
+    "level": "SELECTIVE",
+    "omits": [],
+    "distorts": [
+      {
+        "node": "father",
+        "direction": "NEGATIVE"
+      },
+      {
+        "node": "grete",
+        "direction": "POSITIVE"
+      }
+    ]
+  }
+}

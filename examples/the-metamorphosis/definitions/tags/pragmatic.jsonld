@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "pragmatic",
+  "name": "Pragmatic",
+  "description": "A character defined by practical, unsentimental action."
+}

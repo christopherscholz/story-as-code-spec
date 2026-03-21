@@ -1,5 +1,0 @@
-# yaml-language-server: $schema=../../../../schemas/definitions/type.schema.json
-id: CHEKHOV_GUN
-name: "Chekhov's Gun"
-applies_to: DEVICE
-description: "An element introduced early that must become significant later."

@@ -1,0 +1,20 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "mother",
+  "nodeType": "CHARACTER",
+  "name": "Mrs. Samsa",
+  "description": "Gregor's asthmatic mother who is torn between maternal love and visceral horror at his new form. She wants to help but faints at the sight of him, and her husband and daughter increasingly shield her from contact with Gregor. She represents the family's passive grief \u2014 neither actively cruel nor able to intervene on Gregor's behalf.",
+  "properties": {
+    "name_variants": [
+      "the mother",
+      "Mother"
+    ],
+    "age": 50,
+    "health": "asthmatic"
+  },
+  "hasTag": [
+    "family",
+    "sympathetic"
+  ]
+}
