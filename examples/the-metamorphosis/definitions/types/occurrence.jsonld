@@ -3,6 +3,6 @@
   "type": "TypeDefinition",
   "id": "OCCURRENCE",
   "name": "Occurrence",
-  "appliesTo": "EDGE",
+  "appliesTo": "sacsh:EdgeShape",
   "description": "Where an event takes place (occurs-at, set-in)."
 }

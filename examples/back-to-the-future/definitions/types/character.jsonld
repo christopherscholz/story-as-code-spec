@@ -3,6 +3,6 @@
   "type": "TypeDefinition",
   "id": "CHARACTER",
   "name": "Character",
-  "appliesTo": "NODE",
+  "appliesTo": "sacsh:NodeShape",
   "description": "A sentient being who acts, speaks, or is acted upon."
 }

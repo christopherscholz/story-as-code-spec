@@ -3,6 +3,6 @@
   "type": "TypeDefinition",
   "id": "LOCATION",
   "name": "Location",
-  "appliesTo": "NODE",
+  "appliesTo": "sacsh:NodeShape",
   "description": "A physical space where events unfold and characters exist."
 }

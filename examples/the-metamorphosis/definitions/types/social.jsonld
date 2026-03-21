@@ -3,6 +3,6 @@
   "type": "TypeDefinition",
   "id": "SOCIAL",
   "name": "Social Relationship",
-  "appliesTo": "EDGE",
+  "appliesTo": "sacsh:EdgeShape",
   "description": "A professional or institutional relationship (employed-by, supervised-by)."
 }

@@ -3,6 +3,6 @@
   "type": "TypeDefinition",
   "id": "RELATIONSHIP",
   "name": "Interpersonal Relationship",
-  "appliesTo": "EDGE",
+  "appliesTo": "sacsh:EdgeShape",
   "description": "An emotional or social bond between characters."
 }

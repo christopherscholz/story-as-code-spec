@@ -3,6 +3,6 @@
   "type": "TypeDefinition",
   "id": "KINSHIP",
   "name": "Kinship",
-  "appliesTo": "EDGE",
+  "appliesTo": "sacsh:EdgeShape",
   "description": "A family relationship."
 }

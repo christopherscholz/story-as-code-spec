@@ -4,6 +4,7 @@
     "@base": "https://story-as-code.dev/entity/",
     "@vocab": "https://story-as-code.dev/ontology#",
     "sac": "https://story-as-code.dev/ontology#",
+    "sacsh": "https://story-as-code.dev/shapes/",
     "sacex": "https://story-as-code.dev/expr/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
@@ -60,7 +61,7 @@
 
     "tags": { "@id": "sac:hasTags", "@type": "@id", "@container": "@set" },
     "types": { "@id": "sac:hasTypes", "@type": "@id", "@container": "@set" },
-    "appliesTo": "sac:appliesTo",
+    "appliesTo": { "@id": "sac:appliesTo", "@type": "@id" },
     "defaults": { "@id": "sac:defaults", "@type": "@json" },
     "requiredProperties": { "@id": "sac:requiredProperties", "@container": "@set" },
 

@@ -3,6 +3,6 @@
   "type": "TypeDefinition",
   "id": "SCREENPLAY",
   "name": "Screenplay",
-  "appliesTo": "FORMAT",
+  "appliesTo": "sacsh:FormatShape",
   "description": "A film script structured in acts and scenes."
 }

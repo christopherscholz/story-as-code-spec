@@ -3,6 +3,6 @@
   "type": "TypeDefinition",
   "id": "OBJECT",
   "name": "Object",
-  "appliesTo": "NODE",
+  "appliesTo": "sacsh:NodeShape",
   "description": "A physical thing with symbolic or narrative significance."
 }

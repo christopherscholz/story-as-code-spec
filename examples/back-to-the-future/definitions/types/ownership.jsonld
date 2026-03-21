@@ -3,6 +3,6 @@
   "type": "TypeDefinition",
   "id": "OWNERSHIP",
   "name": "Ownership",
-  "appliesTo": "EDGE",
+  "appliesTo": "sacsh:EdgeShape",
   "description": "A possession or creation relationship."
 }

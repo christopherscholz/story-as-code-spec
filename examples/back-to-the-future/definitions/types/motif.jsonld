@@ -3,6 +3,6 @@
   "type": "TypeDefinition",
   "id": "MOTIF",
   "name": "Motif",
-  "appliesTo": "THREAD",
+  "appliesTo": "sacsh:ThreadShape",
   "description": "A recurring symbolic element."
 }

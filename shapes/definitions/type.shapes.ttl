@@ -17,7 +17,7 @@ sacsh:TypeDefinitionShape
     ] ;
     sh:property [
         sh:path sac:appliesTo ;
-        sh:datatype xsd:string ;
+        sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
     sh:property [

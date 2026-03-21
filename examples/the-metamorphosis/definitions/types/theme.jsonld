@@ -3,6 +3,6 @@
   "type": "TypeDefinition",
   "id": "THEME",
   "name": "Theme",
-  "appliesTo": "THREAD",
+  "appliesTo": "sacsh:ThreadShape",
   "description": "An abstract idea that recurs across the narrative (e.g. alienation, duty, identity)."
 }

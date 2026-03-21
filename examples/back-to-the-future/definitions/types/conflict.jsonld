@@ -3,6 +3,6 @@
   "type": "TypeDefinition",
   "id": "CONFLICT",
   "name": "Conflict",
-  "appliesTo": "EDGE",
+  "appliesTo": "sacsh:EdgeShape",
   "description": "An opposition or antagonistic relationship."
 }

@@ -3,6 +3,6 @@
   "type": "TypeDefinition",
   "id": "NOVEL",
   "name": "Novel",
-  "appliesTo": "FORMAT",
+  "appliesTo": "sacsh:FormatShape",
   "description": "Long-form prose fiction structured in chapters and scenes."
 }

@@ -3,6 +3,6 @@
   "type": "TypeDefinition",
   "id": "KNOWLEDGE",
   "name": "Knowledge",
-  "appliesTo": "EDGE",
+  "appliesTo": "sacsh:EdgeShape",
   "description": "An information relationship \u2014 what one entity knows about another."
 }

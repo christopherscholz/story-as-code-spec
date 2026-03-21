@@ -3,6 +3,6 @@
   "type": "TypeDefinition",
   "id": "SPATIAL",
   "name": "Spatial Relationship",
-  "appliesTo": "EDGE",
+  "appliesTo": "sacsh:EdgeShape",
   "description": "A spatial or containment relationship."
 }

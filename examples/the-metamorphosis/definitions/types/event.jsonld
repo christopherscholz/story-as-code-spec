@@ -3,6 +3,6 @@
   "type": "TypeDefinition",
   "id": "EVENT",
   "name": "Event",
-  "appliesTo": "NODE",
+  "appliesTo": "sacsh:NodeShape",
   "description": "A discrete occurrence that changes the state of the world."
 }
