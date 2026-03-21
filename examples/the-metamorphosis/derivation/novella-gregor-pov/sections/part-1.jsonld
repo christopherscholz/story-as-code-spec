@@ -1,0 +1,57 @@
+{
+  "@context": "../../../../../context/sac.context.jsonld",
+  "type": "Section",
+  "id": "part-1",
+  "sectionType": "PART",
+  "title": "Part I",
+  "order": 1,
+  "passages": [
+    {
+      "type": "Passage",
+      "id": "part-1-opening",
+      "beat": "awakening",
+      "order": 1,
+      "content": "Als Gregor Samsa eines Morgens aus unruhigen Traeumen erwachte, fand er sich in seinem Bett zu einem ungeheueren Ungeziefer verwandelt.",
+      "annotations": [
+        {
+          "ref": "gregor",
+          "start": 4,
+          "end": 16,
+          "exact": "Gregor Samsa"
+        },
+        {
+          "ref": "gregors-room",
+          "start": 80,
+          "end": 84,
+          "exact": "Bett"
+        },
+        {
+          "ref": "transformation",
+          "start": 95,
+          "end": 131,
+          "exact": "ungeheueren Ungeziefer verwandelt"
+        }
+      ],
+      "edgeIds": ["gregor-confined-to-room"],
+      "passageStatus": "FINAL"
+    },
+    {
+      "type": "Passage",
+      "id": "part-1-room-description",
+      "beat": "awakening",
+      "order": 2,
+      "content": "Er lag auf seinem panzerartig harten Ruecken und sah, wenn er den Kopf ein wenig hob, seinen gewoelbten, braunen, von bogenfoermigen Versteifungen geteilten Bauch, auf dessen Hoehe sich die Bettdecke, zum gaenzlichen Niedergleiten bereit, kaum noch erhalten konnte.",
+      "annotations": [
+        {
+          "ref": "gregor",
+          "start": 0,
+          "end": 2,
+          "exact": "Er"
+        }
+      ],
+      "nodeIds": ["gregors-room", "picture-frame"],
+      "edgeIds": ["picture-in-room"],
+      "passageStatus": "FINAL"
+    }
+  ]
+}

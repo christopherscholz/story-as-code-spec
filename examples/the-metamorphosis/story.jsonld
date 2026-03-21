@@ -10,5 +10,6 @@
   },
   "definitions": "definitions-layer",
   "world": "world-layer",
-  "narrative": "narrative-layer"
+  "narrative": "narrative-layer",
+  "derivation": "derivation-layer"
 }

@@ -1,0 +1,44 @@
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix sac:   <https://story-as-code.dev/ontology#> .
+@prefix sacsh: <https://story-as-code.dev/shapes/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+sacsh:SectionShape
+    a sh:NodeShape ;
+    rdfs:comment "A structural unit of derived text — recursive hierarchy mirroring the Format structure." ;
+    sh:targetClass sac:Section ;
+    sh:property [
+        sh:path sac:sectionType ;
+        sh:description "Structural level (e.g. part, chapter, scene)." ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:title ;
+        sh:description "Display heading for this section." ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:order ;
+        sh:description "Position within sibling sections." ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:hasSection ;
+        sh:description "Child sections (e.g. chapters within a part)." ;
+        sh:node sacsh:SectionShape ;
+    ] ;
+    sh:property [
+        sh:path sac:hasPassage ;
+        sh:description "Text passages within this section." ;
+        sh:node sacsh:PassageShape ;
+    ] .

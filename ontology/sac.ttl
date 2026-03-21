@@ -30,6 +30,9 @@ sac:WorldLayer a owl:Class ;
 sac:NarrativeLayer a owl:Class ;
     rdfs:comment "Container for narrative structures" .
 
+sac:DerivationLayer a owl:Class ;
+    rdfs:comment "Container for derived outputs — rendered text linked back to the world and narrative" .
+
 # =============================================================================
 # Classes — Definitions
 # =============================================================================
@@ -148,6 +151,18 @@ sac:ConflictResolution a owl:Class ;
 sac:Settings a owl:Class ;
     rdfs:comment "Project settings" .
 
+sac:Rendering a owl:Class ;
+    rdfs:comment "A specific text output — one lens, one format, structured content" .
+
+sac:Section a owl:Class ;
+    rdfs:comment "A structural unit of derived text (recursive: part, chapter, scene)" .
+
+sac:Passage a owl:Class ;
+    rdfs:comment "A unit of prose text within a section" .
+
+sac:TextAnnotation a owl:Class ;
+    rdfs:comment "Inline tag linking a text span to a world element" .
+
 # =============================================================================
 # Properties — Story
 # =============================================================================
@@ -181,6 +196,11 @@ sac:narrative a owl:ObjectProperty ;
     rdfs:domain sac:Story ;
     rdfs:range sac:NarrativeLayer ;
     rdfs:comment "Link to the narrative layer" .
+
+sac:derivation a owl:ObjectProperty ;
+    rdfs:domain sac:Story ;
+    rdfs:range sac:DerivationLayer ;
+    rdfs:comment "Link to the derivation layer" .
 
 sac:defaultLanguage a owl:DatatypeProperty ;
     rdfs:domain sac:Settings ;
@@ -698,14 +718,12 @@ sac:reliabilityResolution a owl:ObjectProperty ;
 # =============================================================================
 
 sac:referencesNode a owl:ObjectProperty ;
-    rdfs:domain sac:Beat ;
     rdfs:range sac:Node ;
-    rdfs:comment "A world node referenced by this beat" .
+    rdfs:comment "A world node referenced by this element (shared — used by Beat and Passage)" .
 
 sac:referencesEdge a owl:ObjectProperty ;
-    rdfs:domain sac:Beat ;
     rdfs:range sac:Edge ;
-    rdfs:comment "A world edge referenced by this beat" .
+    rdfs:comment "A world edge referenced by this element (shared — used by Beat and Passage)" .
 
 sac:function a owl:ObjectProperty ;
     rdfs:domain sac:Beat ;
@@ -862,3 +880,104 @@ sac:mergeStrategy a owl:ObjectProperty ;
     rdfs:domain sac:VariantMeta ;
     rdfs:range sac:ValueDefinition ;
     rdfs:comment "Strategy for merging this variant, referencing a ValueDefinition" .
+
+# =============================================================================
+# Properties — Shared
+# =============================================================================
+
+sac:order a owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Ordering index within a parent container (shared — used by Beat, Section, Passage)" .
+
+# =============================================================================
+# Properties — DerivationLayer
+# =============================================================================
+
+sac:hasRendering a owl:ObjectProperty ;
+    rdfs:domain sac:DerivationLayer ;
+    rdfs:range sac:Rendering ;
+    rdfs:comment "A rendering in this derivation layer" .
+
+# =============================================================================
+# Properties — Rendering
+# =============================================================================
+
+sac:renderingLens a owl:ObjectProperty ;
+    rdfs:domain sac:Rendering ;
+    rdfs:range sac:Lens ;
+    rdfs:comment "The narrative lens used for this rendering" .
+
+sac:renderingFormat a owl:ObjectProperty ;
+    rdfs:domain sac:Rendering ;
+    rdfs:range sac:Format ;
+    rdfs:comment "The output format this rendering follows" .
+
+sac:hasSection a owl:ObjectProperty ;
+    rdfs:range sac:Section ;
+    rdfs:comment "A section within this rendering or parent section (shared — used by Rendering and Section)" .
+
+# =============================================================================
+# Properties — Section
+# =============================================================================
+
+sac:sectionType a owl:ObjectProperty ;
+    rdfs:domain sac:Section ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Structural level of this section (e.g. part, chapter, scene), referencing a ValueDefinition" .
+
+sac:title a owl:DatatypeProperty ;
+    rdfs:domain sac:Section ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Display heading for this section" .
+
+sac:hasPassage a owl:ObjectProperty ;
+    rdfs:domain sac:Section ;
+    rdfs:range sac:Passage ;
+    rdfs:comment "A passage of text within this section" .
+
+# =============================================================================
+# Properties — Passage
+# =============================================================================
+
+sac:content a owl:DatatypeProperty ;
+    rdfs:domain sac:Passage ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The actual prose text of this passage" .
+
+sac:passageBeat a owl:ObjectProperty ;
+    rdfs:domain sac:Passage ;
+    rdfs:range sac:Beat ;
+    rdfs:comment "The narrative beat this passage implements" .
+
+sac:passageStatus a owl:ObjectProperty ;
+    rdfs:domain sac:Passage ;
+    rdfs:range sac:ValueDefinition ;
+    rdfs:comment "Editorial status of this passage (e.g. DRAFT, REVIEW, FINAL), referencing a ValueDefinition" .
+
+sac:hasAnnotation a owl:ObjectProperty ;
+    rdfs:domain sac:Passage ;
+    rdfs:range sac:TextAnnotation ;
+    rdfs:comment "Inline text annotations linking spans to world elements" .
+
+# =============================================================================
+# Properties — TextAnnotation
+# =============================================================================
+
+sac:annotationRef a owl:ObjectProperty ;
+    rdfs:domain sac:TextAnnotation ;
+    rdfs:comment "The world element (node or edge) this text span references" .
+
+sac:startOffset a owl:DatatypeProperty ;
+    rdfs:domain sac:TextAnnotation ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Start character position in the passage content (0-based)" .
+
+sac:endOffset a owl:DatatypeProperty ;
+    rdfs:domain sac:TextAnnotation ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "End character position in the passage content (exclusive)" .
+
+sac:exactText a owl:DatatypeProperty ;
+    rdfs:domain sac:TextAnnotation ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The exact text that this annotation covers (for verification)" .

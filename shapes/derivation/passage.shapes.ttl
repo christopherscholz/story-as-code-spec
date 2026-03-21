@@ -1,0 +1,82 @@
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix sac:   <https://story-as-code.dev/ontology#> .
+@prefix sacsh: <https://story-as-code.dev/shapes/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+sacsh:PassageShape
+    a sh:NodeShape ;
+    rdfs:comment "A unit of prose text within a section — the leaf content of a rendering." ;
+    sh:targetClass sac:Passage ;
+    sh:property [
+        sh:path sac:content ;
+        sh:description "The actual prose text." ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:passageBeat ;
+        sh:description "The narrative beat this passage implements." ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:order ;
+        sh:description "Position within the parent section." ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:passageStatus ;
+        sh:description "Editorial status (e.g. DRAFT, REVIEW, FINAL)." ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:referencesNode ;
+        sh:description "World nodes this text depends on (implicit references not covered by annotations)." ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+    sh:property [
+        sh:path sac:referencesEdge ;
+        sh:description "World edges this text depends on (implicit references not covered by annotations)." ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+    sh:property [
+        sh:path sac:hasAnnotation ;
+        sh:description "Inline text annotations linking spans to world elements." ;
+        sh:node sacsh:TextAnnotationShape ;
+    ] .
+
+sacsh:TextAnnotationShape
+    a sh:NodeShape ;
+    rdfs:comment "Inline tag linking a text span to a world element (node or edge)." ;
+    sh:property [
+        sh:path sac:annotationRef ;
+        sh:description "The world element this text span references." ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:startOffset ;
+        sh:description "Start character position in the passage content (0-based)." ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:endOffset ;
+        sh:description "End character position (exclusive)." ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:exactText ;
+        sh:description "The exact text covered by this annotation (for verification)." ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] .
