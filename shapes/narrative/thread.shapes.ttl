@@ -35,7 +35,7 @@ sacsh:ThreadShape
     sh:property [
         sh:path sac:hasTag ;
         sh:nodeKind sh:IRI ;
-        sh:node sacsh:TagShape ;
+        sh:class sac:Tag ;
     ] .
 
 sacsh:ThreadAppearanceShape
@@ -43,7 +43,7 @@ sacsh:ThreadAppearanceShape
     sh:property [
         sh:path sac:atBeat ;
         sh:nodeKind sh:IRI ;
-        sh:node sacsh:BeatShape ;
+        sh:class sac:Beat ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;

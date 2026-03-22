@@ -35,7 +35,7 @@ sacsh:SectionShape
     sh:property [
         sh:path sac:hasSection ;
         sh:description "Child sections (e.g. chapters within a part)." ;
-        sh:node sacsh:SectionShape ;
+        sh:class sac:Section ;
     ] ;
     sh:property [
         sh:path sac:hasPassage ;

@@ -157,7 +157,6 @@ def validate_example(
         ont_graph=shapes_graph,
         inference="none",
         abort_on_first=False,
-        max_validation_depth=30,
     )
 
     if conforms:

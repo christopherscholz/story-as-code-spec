@@ -36,5 +36,5 @@ sacsh:NodeShape
     sh:property [
         sh:path sac:hasTag ;
         sh:nodeKind sh:IRI ;
-        sh:node sacsh:TagShape ;
+        sh:class sac:Tag ;
     ] .
