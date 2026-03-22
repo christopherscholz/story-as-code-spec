@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "LANGUAGE",
+  "name": "Language",
+  "appliesTo": "sacsh:NodeShape",
+  "description": "A linguistic system with phonology, morphology, syntax, and writing system. Properties follow a defined structure.",
+  "requiredProperties": ["phonology", "morphology", "syntax"]
+}

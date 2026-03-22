@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "CHEKHOV_GUN",
+  "name": "Chekhov's Gun",
+  "description": "An element introduced early that becomes significant later."
+}

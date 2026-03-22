@@ -1,0 +1,17 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Beat",
+  "id": "prologue-spocks-death",
+  "name": "Remembering Spock",
+  "description": "The film opens with a replay of Spock's death from Wrath of Khan. The Enterprise limps home. McCoy begins acting strangely.",
+  "parent": "main-storyline",
+  "order": 1,
+  "nodeIds": ["kirk", "spock", "mccoy", "uss-enterprise"],
+  "edgeIds": ["kirk-friends-with-spock", "mccoy-carries-katra"],
+  "function": "HOOK",
+  "tension": 0.4,
+  "emotionalTarget": -0.6,
+  "transition": {
+    "transitionType": "CUT"
+  }
+}

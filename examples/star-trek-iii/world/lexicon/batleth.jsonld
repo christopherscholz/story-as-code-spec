@@ -1,0 +1,16 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "batleth",
+  "name": "bat'leth",
+  "nodeType": "LEXICON_ENTRY",
+  "description": "The Klingon sword of honor. A crescent-shaped blade forged by Kahless the Unforgettable. The most iconic Klingon weapon.",
+  "properties": {
+    "word": "betleH",
+    "pos": "noun",
+    "definition": "Sword of honor — crescent-shaped bladed weapon",
+    "etymology": "batlh (honor) + 'etlh (blade/sword)",
+    "cultural_significance": "Primary melee weapon used in ritual combat and ceremonies"
+  },
+  "hasTag": ["klingon", "cultural-artifact"]
+}

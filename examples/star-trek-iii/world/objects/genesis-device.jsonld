@@ -1,0 +1,13 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "genesis-device",
+  "name": "Genesis Device",
+  "nodeType": "OBJECT",
+  "description": "A terraforming technology that reorganizes matter at the subatomic level. Created by David Marcus and Carol Marcus. Its flawed protomatter matrix causes the Genesis Planet's instability.",
+  "properties": {
+    "creator": "Carol Marcus, David Marcus",
+    "flaw": "protomatter matrix"
+  },
+  "hasTag": ["sci-fi"]
+}

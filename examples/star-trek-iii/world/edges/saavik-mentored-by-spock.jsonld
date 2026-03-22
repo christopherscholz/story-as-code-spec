@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "saavik-mentored-by-spock",
+  "edgeType": "RELATIONSHIP",
+  "name": "mentored-by",
+  "source": "saavik",
+  "target": "spock"
+}

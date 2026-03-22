@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "KINSHIP",
+  "name": "Kinship",
+  "appliesTo": "sacsh:EdgeShape",
+  "description": "A familial relationship between characters."
+}

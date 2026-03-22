@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "antagonist",
+  "name": "Antagonist",
+  "description": "A character opposing the protagonist."
+}

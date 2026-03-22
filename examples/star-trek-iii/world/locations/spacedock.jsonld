@@ -1,0 +1,13 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "spacedock",
+  "name": "Earth Spacedock",
+  "nodeType": "LOCATION",
+  "description": "Massive orbital facility where the Enterprise is docked. Kirk and crew must escape from here after stealing the ship.",
+  "properties": {
+    "type": "orbital facility",
+    "location": "Earth orbit"
+  },
+  "hasTag": ["starfleet"]
+}

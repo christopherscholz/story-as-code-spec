@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "NAMES",
+  "name": "Names",
+  "description": "A text span that names or identifies a world element."
+}

@@ -1,0 +1,10 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "kirk-friends-with-mccoy",
+  "edgeType": "RELATIONSHIP",
+  "name": "friends-with",
+  "source": "kirk",
+  "target": "mccoy",
+  "directed": false
+}

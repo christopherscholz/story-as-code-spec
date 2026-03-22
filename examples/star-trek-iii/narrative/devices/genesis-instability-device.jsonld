@@ -1,0 +1,10 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Device",
+  "id": "genesis-instability-device",
+  "name": "Genesis Instability",
+  "deviceType": "SETUP_PAYOFF",
+  "description": "David's use of protomatter is revealed as the cause of Genesis Planet's rapid aging. The planet's disintegration creates the ticking clock for the climax.",
+  "setup": ["genesis-planet-beat"],
+  "payoff": ["sacrifice-beat"]
+}

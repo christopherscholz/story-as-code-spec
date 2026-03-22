@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "enterprise-destruction",
+  "name": "Destruction of the Enterprise",
+  "nodeType": "EVENT",
+  "description": "Kirk activates the self-destruct sequence, destroying the Enterprise and the Klingon boarding party. The crew watches from the Genesis Planet surface as their ship burns across the sky.",
+  "properties": {
+    "participants": ["kirk", "mccoy"],
+    "location": "uss-enterprise",
+    "method": "self-destruct"
+  },
+  "hasTag": ["sacrifice", "starfleet"]
+}

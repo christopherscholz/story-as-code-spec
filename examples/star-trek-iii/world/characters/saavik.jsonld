@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "saavik",
+  "name": "Saavik",
+  "nodeType": "CHARACTER",
+  "description": "Vulcan Starfleet officer stationed on the USS Grissom studying the Genesis Planet. Witnesses Spock's regeneration.",
+  "properties": {
+    "rank": "Lieutenant",
+    "species": "Vulcan",
+    "name_variants": ["Saavik", "Lt. Saavik"]
+  },
+  "hasTag": ["starfleet", "vulcan"]
+}

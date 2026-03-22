@@ -1,0 +1,36 @@
+{
+  "@context": "../../../context/sac.context.jsonld",
+  "type": "Narrative",
+  "id": "narrative-layer",
+  "lenses": [
+    { "@id": "kirk-pov" },
+    { "@id": "kruge-pov" }
+  ],
+  "beats": [
+    { "@id": "main-storyline" },
+    { "@id": "prologue-spocks-death" },
+    { "@id": "theft-of-enterprise" },
+    { "@id": "genesis-planet-beat" },
+    { "@id": "kruge-pursuit" },
+    { "@id": "sacrifice-beat" },
+    { "@id": "rebirth" }
+  ],
+  "devices": [
+    { "@id": "mccoy-carries-katra-device" },
+    { "@id": "genesis-instability-device" }
+  ],
+  "threads": [
+    { "@id": "needs-of-the-few" },
+    { "@id": "death-and-rebirth" }
+  ],
+  "formats": [
+    { "@id": "screenplay" }
+  ],
+  "variants": [
+    {
+      "type": "VariantMeta",
+      "variantType": "CANON",
+      "description": "The canonical story — Kirk defies Starfleet to save Spock, sacrificing his ship and his son in the process."
+    }
+  ]
+}

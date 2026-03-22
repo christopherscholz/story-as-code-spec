@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "HAS_TERM",
+  "name": "Has Term",
+  "appliesTo": "sacsh:EdgeShape",
+  "description": "Links a language to a lexicon entry."
+}

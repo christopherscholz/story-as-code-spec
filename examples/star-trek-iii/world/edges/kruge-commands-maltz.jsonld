@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "kruge-commands-maltz",
+  "edgeType": "RELATIONSHIP",
+  "name": "commands",
+  "source": "kruge",
+  "target": "maltz"
+}

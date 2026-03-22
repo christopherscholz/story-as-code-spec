@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "david-in-david-death",
+  "edgeType": "PARTICIPATION",
+  "name": "killed-in",
+  "source": "david-marcus",
+  "target": "david-death"
+}

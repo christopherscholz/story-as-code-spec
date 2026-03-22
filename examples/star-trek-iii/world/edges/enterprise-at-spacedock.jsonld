@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "enterprise-at-spacedock",
+  "edgeType": "SPATIAL",
+  "name": "docked-at",
+  "source": "uss-enterprise",
+  "target": "spacedock"
+}

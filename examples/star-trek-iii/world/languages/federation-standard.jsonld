@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "federation-standard",
+  "name": "Federation Standard",
+  "nodeType": "LANGUAGE",
+  "description": "The common language of the United Federation of Planets. Functionally equivalent to English in the Star Trek universe.",
+  "properties": {
+    "phonology": {"note": "Equivalent to Standard American English"},
+    "morphology": {"note": "English morphology"},
+    "syntax": {"basic_word_order": "SVO"}
+  },
+  "hasTag": ["starfleet"]
+}

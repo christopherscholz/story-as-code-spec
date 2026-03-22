@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "bird-of-prey-at-genesis",
+  "edgeType": "SPATIAL",
+  "name": "orbiting",
+  "source": "klingon-bird-of-prey",
+  "target": "genesis-planet"
+}

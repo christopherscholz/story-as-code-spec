@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "FOREIGN_TEXT",
+  "name": "Foreign Text",
+  "description": "A text span in a language other than the passage's primary language."
+}

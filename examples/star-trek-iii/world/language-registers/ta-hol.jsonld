@@ -1,0 +1,18 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "ta-hol",
+  "name": "ta' Hol",
+  "nodeType": "LANGUAGE_REGISTER",
+  "description": "Formal, ceremonial Klingon. Used in High Council sessions, rituals, official declarations, and diplomatic communication.",
+  "properties": {
+    "characteristics": {
+      "full_prefixes": true,
+      "no_clipping": true,
+      "honorific_suffix": true,
+      "archaic_vocabulary": true
+    },
+    "usage_context": ["High Council", "honor ceremonies", "diplomatic communication", "formal declarations"]
+  },
+  "hasTag": ["klingon"]
+}

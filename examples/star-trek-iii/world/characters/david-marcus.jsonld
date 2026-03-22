@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "david-marcus",
+  "name": "David Marcus",
+  "nodeType": "CHARACTER",
+  "description": "Kirk's son and co-creator of the Genesis Device. His use of unstable protomatter in the Genesis matrix is the planet's fatal flaw. Killed by Klingons.",
+  "properties": {
+    "name_variants": ["David", "Dr. Marcus"],
+    "occupation": "scientist",
+    "fatal_secret": "used protomatter in Genesis matrix"
+  },
+  "hasTag": ["starfleet", "sacrifice"]
+}

@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "fal-tor-pan",
+  "name": "Fal-tor-pan",
+  "nodeType": "EVENT",
+  "description": "The ancient Vulcan refusion ceremony performed at Mount Seleya. Spock's katra is transferred from McCoy's mind back into Spock's regenerated body. Spock is reborn.",
+  "properties": {
+    "participants": ["spock", "mccoy", "sarek", "kirk"],
+    "location": "mount-seleya",
+    "ceremony": "fal-tor-pan (refusion)"
+  },
+  "hasTag": ["vulcan"]
+}

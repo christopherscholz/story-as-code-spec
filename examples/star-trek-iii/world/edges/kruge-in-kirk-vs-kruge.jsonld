@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "kruge-in-kirk-vs-kruge",
+  "edgeType": "PARTICIPATION",
+  "name": "fights-in",
+  "source": "kruge",
+  "target": "kirk-vs-kruge"
+}

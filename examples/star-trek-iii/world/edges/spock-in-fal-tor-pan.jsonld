@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "spock-in-fal-tor-pan",
+  "edgeType": "PARTICIPATION",
+  "name": "reborn-in",
+  "source": "spock",
+  "target": "fal-tor-pan"
+}

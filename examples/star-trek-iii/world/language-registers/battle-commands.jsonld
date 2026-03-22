@@ -1,0 +1,18 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "battle-commands",
+  "name": "Battle Commands",
+  "nodeType": "LANGUAGE_REGISTER",
+  "description": "Terse command register used on Klingon warship bridges and in combat. Imperative prefixes (HI-, yI-, pe-), minimal suffixes, maximum information density.",
+  "properties": {
+    "characteristics": {
+      "imperative_prefixes": true,
+      "minimal_suffixes": true,
+      "maximum_brevity": true,
+      "standard_phrases": ["HIja' (yes/affirmative)", "ghobe' (no)", "baH (fire!)", "yIDoghQo' (don't be silly!)"]
+    },
+    "usage_context": ["bridge commands", "combat", "tactical situations"]
+  },
+  "hasTag": ["klingon"]
+}

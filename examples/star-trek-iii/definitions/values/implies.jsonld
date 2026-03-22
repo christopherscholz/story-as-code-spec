@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "IMPLIES",
+  "name": "Implies",
+  "description": "A text span that implies or references a world relationship."
+}

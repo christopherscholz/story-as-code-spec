@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "sarek",
+  "name": "Sarek",
+  "nodeType": "CHARACTER",
+  "description": "Spock's father, Vulcan ambassador. Initiates the quest to recover Spock by revealing to Kirk that Spock's katra was transferred to McCoy.",
+  "properties": {
+    "species": "Vulcan",
+    "title": "Ambassador",
+    "name_variants": ["Sarek", "Ambassador Sarek"]
+  },
+  "hasTag": ["vulcan"]
+}

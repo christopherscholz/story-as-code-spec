@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "SCREENPLAY",
+  "name": "Screenplay",
+  "description": "A written work for film or television."
+}

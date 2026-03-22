@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "RELATIONSHIP",
+  "name": "Relationship",
+  "appliesTo": "sacsh:EdgeShape",
+  "description": "A non-familial social bond between characters."
+}

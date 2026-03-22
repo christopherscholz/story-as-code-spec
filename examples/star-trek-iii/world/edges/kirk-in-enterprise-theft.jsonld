@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "kirk-in-enterprise-theft",
+  "edgeType": "PARTICIPATION",
+  "name": "leads",
+  "source": "kirk",
+  "target": "enterprise-theft"
+}

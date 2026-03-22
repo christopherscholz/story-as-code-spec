@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "LEXICON_ENTRY",
+  "name": "Lexicon Entry",
+  "appliesTo": "sacsh:NodeShape",
+  "description": "A word or phrase from a language. Modeled as a separate node because lexicon entries are referenced from passages, annotated, and culturally contextualized.",
+  "requiredProperties": ["word", "pos", "definition"]
+}

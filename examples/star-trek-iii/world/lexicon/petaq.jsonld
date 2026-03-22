@@ -1,0 +1,16 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "petaq",
+  "name": "petaQ",
+  "nodeType": "LEXICON_ENTRY",
+  "description": "Klingon insult of extreme severity. Roughly equivalent to a grave personal insult questioning one's honor.",
+  "properties": {
+    "word": "petaQ",
+    "pos": "noun (insult)",
+    "definition": "A grave insult implying cowardice and dishonor.",
+    "register": "all registers — insults transcend formality",
+    "cultural_significance": "Klingon culture has an elaborate system of insults; petaQ is among the most severe"
+  },
+  "hasTag": ["klingon"]
+}

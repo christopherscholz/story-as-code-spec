@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "mccoy",
+  "name": "Leonard McCoy",
+  "nodeType": "CHARACTER",
+  "description": "Ship's doctor carrying Spock's katra (living spirit). Increasingly erratic as Spock's consciousness conflicts with his own.",
+  "properties": {
+    "rank": "Admiral",
+    "name_variants": ["McCoy", "Bones", "Dr. McCoy"],
+    "condition": "carrying Spock's katra"
+  },
+  "hasTag": ["starfleet"]
+}

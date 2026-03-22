@@ -1,0 +1,16 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "toh",
+  "name": "toH",
+  "nodeType": "LEXICON_ENTRY",
+  "description": "Klingon exclamation meaning 'So!' or 'Well!' Used by commanders to signal a decision or new phase of action.",
+  "properties": {
+    "word": "toH",
+    "pos": "exclamation",
+    "definition": "So! Well! — Signals a decision or transition.",
+    "register": "battle-commands, clipped",
+    "film_usage": "Used by Kruge on the Bird of Prey bridge"
+  },
+  "hasTag": ["klingon"]
+}

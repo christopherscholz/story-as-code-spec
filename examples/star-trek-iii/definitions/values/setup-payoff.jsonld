@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "SETUP_PAYOFF",
+  "name": "Setup-Payoff",
+  "description": "A narrative device where an early setup leads to a later payoff."
+}

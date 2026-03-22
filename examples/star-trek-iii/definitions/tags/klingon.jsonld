@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "klingon",
+  "name": "Klingon",
+  "description": "A member of the Klingon species or related to Klingon culture."
+}

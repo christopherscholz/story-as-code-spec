@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "WARRIOR_TERSE",
+  "name": "Warrior Terse",
+  "description": "Short imperative constructions typical of Klingon battle speech. OVS with minimal suffixes."
+}

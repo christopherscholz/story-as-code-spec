@@ -1,0 +1,12 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "kirk-speaks-fed-standard",
+  "edgeType": "SPEAKS",
+  "name": "speaks",
+  "source": "kirk",
+  "target": "federation-standard",
+  "properties": {
+    "fluency": "native"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "kirk-father-of-david",
+  "edgeType": "KINSHIP",
+  "name": "father-of",
+  "source": "kirk",
+  "target": "david-marcus"
+}

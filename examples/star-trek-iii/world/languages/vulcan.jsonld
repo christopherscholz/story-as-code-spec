@@ -1,0 +1,15 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "vulcan-language",
+  "name": "Vulcan",
+  "nodeType": "LANGUAGE",
+  "description": "The language of the planet Vulcan. Characterized by precise, logical sentence construction. Used in the fal-tor-pan ceremony.",
+  "properties": {
+    "phonology": {"note": "Precise articulation, few fricatives"},
+    "morphology": {"note": "Agglutinative with logical compounding"},
+    "syntax": {"basic_word_order": "SOV", "characteristics": "Highly regular, logic-based grammar"},
+    "ceremonial_vocabulary": ["fal-tor-pan", "katra", "pon farr", "IDIC"]
+  },
+  "hasTag": ["vulcan"]
+}

@@ -1,0 +1,15 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "spock",
+  "name": "Spock",
+  "nodeType": "CHARACTER",
+  "description": "Half-Vulcan, half-human Starfleet officer. Dead at the start of the film, his body regenerates on the Genesis Planet while his katra lives in McCoy's mind.",
+  "properties": {
+    "rank": "Captain",
+    "species": "Vulcan/Human hybrid",
+    "name_variants": ["Spock", "Mr. Spock"],
+    "status": "deceased/regenerating"
+  },
+  "hasTag": ["starfleet", "vulcan"]
+}

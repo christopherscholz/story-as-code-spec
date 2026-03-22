@@ -1,0 +1,15 @@
+{
+  "@context": "../../context/sac.context.jsonld",
+  "type": "Story",
+  "id": "star-trek-iii",
+  "specVersion": "dev",
+  "name": "Star Trek III: The Search for Spock",
+  "settings": {
+    "type": "Settings",
+    "defaultLanguage": "en"
+  },
+  "definitions": "definitions-layer",
+  "world": "world-layer",
+  "narrative": "narrative-layer",
+  "derivation": "derivation-layer"
+}

@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "kirk",
+  "name": "James T. Kirk",
+  "nodeType": "CHARACTER",
+  "description": "Admiral Kirk, commanding officer who risks everything to save his friend Spock. Grief-stricken after Spock's death, he defies Starfleet orders to return to Genesis.",
+  "properties": {
+    "rank": "Admiral",
+    "age": 52,
+    "name_variants": ["Kirk", "Jim", "Admiral Kirk"]
+  },
+  "hasTag": ["protagonist", "starfleet", "sacrifice"]
+}

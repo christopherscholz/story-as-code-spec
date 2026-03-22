@@ -1,0 +1,12 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "saavik-speaks-vulcan",
+  "edgeType": "SPEAKS",
+  "name": "speaks",
+  "source": "saavik",
+  "target": "vulcan-language",
+  "properties": {
+    "fluency": "native"
+  }
+}

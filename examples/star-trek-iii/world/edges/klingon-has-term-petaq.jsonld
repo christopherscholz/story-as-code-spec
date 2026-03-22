@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "klingon-has-term-petaq",
+  "edgeType": "HAS_TERM",
+  "name": "has term",
+  "source": "klingon-language",
+  "target": "petaq"
+}

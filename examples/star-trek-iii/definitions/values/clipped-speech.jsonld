@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "CLIPPED_SPEECH",
+  "name": "Clipped Speech",
+  "description": "Abbreviated speech with dropped prefixes and reduced suffixes. Typical of informal Klingon."
+}

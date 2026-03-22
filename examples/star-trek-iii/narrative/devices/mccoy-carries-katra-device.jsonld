@@ -1,0 +1,10 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Device",
+  "id": "mccoy-carries-katra-device",
+  "name": "McCoy's Katra Burden",
+  "deviceType": "CHEKHOV_GUN",
+  "description": "McCoy's increasingly erratic behavior is revealed to be caused by carrying Spock's katra. Setup in the prologue, payoff at the fal-tor-pan.",
+  "setup": ["prologue-spocks-death"],
+  "payoff": ["rebirth"]
+}

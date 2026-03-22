@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "DRAMATIC_IRONY",
+  "name": "Dramatic Irony",
+  "description": "The audience knows something the characters do not."
+}

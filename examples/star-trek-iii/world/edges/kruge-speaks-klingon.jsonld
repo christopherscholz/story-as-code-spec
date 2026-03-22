@@ -1,0 +1,13 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "kruge-speaks-klingon",
+  "edgeType": "SPEAKS",
+  "name": "speaks",
+  "source": "kruge",
+  "target": "klingon-language",
+  "properties": {
+    "fluency": "native",
+    "primary_register": "battle-commands"
+  }
+}

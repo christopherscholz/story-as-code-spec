@@ -1,0 +1,17 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Beat",
+  "id": "theft-of-enterprise",
+  "name": "Stealing the Enterprise",
+  "description": "After Sarek reveals Spock's katra is in McCoy, and Starfleet refuses to help, Kirk and crew steal the Enterprise from Spacedock.",
+  "parent": "main-storyline",
+  "order": 2,
+  "nodeIds": ["kirk", "mccoy", "sarek", "uss-enterprise", "spacedock", "enterprise-theft"],
+  "edgeIds": ["kirk-in-enterprise-theft", "enterprise-at-spacedock"],
+  "function": "INCITING_INCIDENT",
+  "tension": 0.5,
+  "emotionalTarget": 0.2,
+  "transition": {
+    "transitionType": "CUT"
+  }
+}

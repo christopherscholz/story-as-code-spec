@@ -1,0 +1,36 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Lens",
+  "id": "kirk-pov",
+  "lensType": "SIMPLE",
+  "perspective": {
+    "perspectiveType": "CHARACTER_BOUND",
+    "anchor": "kirk",
+    "person": "THIRD"
+  },
+  "knowledge": {
+    "mode": "CHARACTER_KNOWLEDGE",
+    "includeSubconscious": false,
+    "includeWrongBeliefs": true
+  },
+  "temporalPosition": {
+    "temporalType": "IN_MOMENT"
+  },
+  "emotional": {
+    "emotionalSource": "CHARACTER_STATE",
+    "bias": {
+      "toward": ["spock", "mccoy", "david-marcus"],
+      "biasStrength": 0.8
+    }
+  },
+  "voice": {
+    "vocabularyLevel": "FORMAL",
+    "sentenceTendency": "SHORT_STACCATO",
+    "innerMonologue": true,
+    "metaphorDensity": "LOW",
+    "verbalTics": ["the needs of the many", "my friend"]
+  },
+  "reliability": {
+    "level": "RELIABLE"
+  }
+}

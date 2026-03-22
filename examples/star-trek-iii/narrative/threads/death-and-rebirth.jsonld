@@ -1,0 +1,26 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Thread",
+  "id": "death-and-rebirth",
+  "threadType": "THEME",
+  "name": "Death and Rebirth",
+  "description": "Everything in the film undergoes death and rebirth: Spock dies and is reborn, the Enterprise is destroyed, David dies, Genesis creates and destroys, Kirk's career ends and begins anew.",
+  "appearances": [
+    {
+      "beatId": "prologue-spocks-death",
+      "description": "Spock is dead. The Enterprise is dying."
+    },
+    {
+      "beatId": "genesis-planet-beat",
+      "description": "Genesis creates life but is itself dying. Spock's body regenerates."
+    },
+    {
+      "beatId": "kruge-pursuit",
+      "description": "David dies. The Enterprise dies. Genesis dies."
+    },
+    {
+      "beatId": "rebirth",
+      "description": "Spock is reborn through the fal-tor-pan."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "kirk-vs-kruge",
+  "name": "Kirk vs. Kruge",
+  "nodeType": "EVENT",
+  "description": "Kirk and Kruge fight hand-to-hand on the disintegrating Genesis Planet surface. Kirk defeats Kruge, kicking him into a lava flow.",
+  "properties": {
+    "participants": ["kirk", "kruge"],
+    "location": "genesis-planet",
+    "outcome": "Kirk defeats Kruge"
+  },
+  "hasTag": []
+}

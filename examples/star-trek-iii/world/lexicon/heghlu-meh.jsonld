@@ -1,0 +1,16 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "heghlu-meh",
+  "name": "Heghlu'meH QaQ jajvam",
+  "nodeType": "LEXICON_ENTRY",
+  "description": "Famous Klingon proverb meaning 'Today is a good day to die.' Expresses the warrior ideal of meeting death with honor.",
+  "properties": {
+    "word": "Heghlu'meH QaQ jajvam",
+    "pos": "proverb",
+    "definition": "Today is a good day to die.",
+    "morphological_analysis": "Hegh (die) + -lu' (indefinite subject) + -meH (purpose) QaQ (be good) jajvam (today)",
+    "cultural_significance": "Core expression of Klingon warrior philosophy"
+  },
+  "hasTag": ["klingon", "cultural-artifact"]
+}
