@@ -981,3 +981,12 @@ sac:exactText a owl:DatatypeProperty ;
     rdfs:domain sac:TextAnnotation ;
     rdfs:range xsd:string ;
     rdfs:comment "The exact text that this annotation covers (for verification)" .
+
+sac:annotationType a owl:ObjectProperty ;
+    rdfs:domain sac:TextAnnotation ;
+    rdfs:comment "How this text span references the world element (e.g. NAMES, DESCRIBES, IMPLIES)" .
+
+sac:propertyPath a owl:DatatypeProperty ;
+    rdfs:domain sac:TextAnnotation ;
+    rdfs:range xsd:string ;
+    rdfs:comment "JSON Pointer (RFC 6901) to the specific property this annotation reflects" .

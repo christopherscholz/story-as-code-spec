@@ -207,6 +207,8 @@
     "start": { "@id": "sac:startOffset", "@type": "xsd:integer" },
     "end": { "@id": "sac:endOffset", "@type": "xsd:integer" },
     "exact": "sac:exactText",
+    "annotationType": { "@id": "sac:annotationType", "@type": "@id" },
+    "propertyPath": "sac:propertyPath",
 
     "and": { "@id": "sacex:andOperands", "@container": "@list" },
     "or": { "@id": "sacex:orOperands", "@container": "@list" },

@@ -79,4 +79,16 @@ sacsh:TextAnnotationShape
         sh:description "The exact text covered by this annotation (for verification)." ;
         sh:datatype xsd:string ;
         sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:annotationType ;
+        sh:description "How this text span references the world element (default NAMES if omitted)." ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sac:propertyPath ;
+        sh:description "JSON Pointer (RFC 6901) to the specific property this annotation reflects." ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
     ] .

@@ -53,6 +53,13 @@
           "exact": "Er"
         },
         {
+          "ref": "transformation",
+          "start": 18,
+          "end": 44,
+          "exact": "panzerartig harten Ruecken",
+          "annotationType": "DESCRIBES"
+        },
+        {
           "ref": "gregors-room",
           "start": 190,
           "end": 199,
