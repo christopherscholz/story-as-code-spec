@@ -33,7 +33,9 @@
         }
       ],
       "edgeIds": [
-        "gregor-confined-to-room"
+        "gregor-confined-to-room",
+        "gregor-in-transformation",
+        "transformation-at-gregors-room"
       ],
       "passageStatus": "FINAL"
     },
@@ -49,6 +51,12 @@
           "start": 0,
           "end": 2,
           "exact": "Er"
+        },
+        {
+          "ref": "gregors-room",
+          "start": 190,
+          "end": 199,
+          "exact": "Bettdecke"
         }
       ],
       "nodeIds": [
@@ -56,7 +64,8 @@
         "picture-frame"
       ],
       "edgeIds": [
-        "picture-in-room"
+        "picture-in-room",
+        "gregor-confined-to-room"
       ],
       "passageStatus": "FINAL"
     }
