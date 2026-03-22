@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "OWNERSHIP",
+  "name": "Ownership",
+  "appliesTo": "sacsh:EdgeShape",
+  "description": "Possession or control of an entity by another."
+}

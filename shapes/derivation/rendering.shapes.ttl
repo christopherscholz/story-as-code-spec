@@ -36,5 +36,5 @@ sacsh:RenderingShape
     sh:property [
         sh:path sac:hasSection ;
         sh:description "Top-level structural sections." ;
-        sh:node sacsh:SectionShape ;
+        sh:class sac:Section ;
     ] .

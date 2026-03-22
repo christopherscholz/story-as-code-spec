@@ -1,0 +1,16 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Beat",
+  "id": "main-storyline",
+  "name": "The Search for Spock",
+  "description": "Kirk risks everything to recover Spock's body from Genesis and reunite it with his katra, carried unknowingly by McCoy.",
+  "order": 1,
+  "nodeIds": ["kirk", "spock", "mccoy", "kruge"],
+  "edgeIds": ["kirk-friends-with-spock", "mccoy-carries-katra"],
+  "function": "HOOK",
+  "tension": 0.3,
+  "emotionalTarget": -0.3,
+  "transition": {
+    "transitionType": "CONTINUATION"
+  }
+}

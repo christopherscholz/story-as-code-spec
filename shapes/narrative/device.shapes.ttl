@@ -26,7 +26,7 @@ sacsh:DeviceShape
         sh:path sac:setupBeats ;
         sh:description "Beat IDs where the device is planted." ;
         sh:nodeKind sh:IRI ;
-        sh:node sacsh:BeatShape ;
+        sh:class sac:Beat ;
         sh:minCount 1 ;
     ] ;
     sh:property [
@@ -38,10 +38,10 @@ sacsh:DeviceShape
         sh:path sac:payoffBeats ;
         sh:description "Beat IDs where it resolves." ;
         sh:nodeKind sh:IRI ;
-        sh:node sacsh:BeatShape ;
+        sh:class sac:Beat ;
     ] ;
     sh:property [
         sh:path sac:hasTag ;
         sh:nodeKind sh:IRI ;
-        sh:node sacsh:TagShape ;
+        sh:class sac:Tag ;
     ] .

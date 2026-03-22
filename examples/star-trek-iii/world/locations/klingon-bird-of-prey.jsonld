@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "klingon-bird-of-prey",
+  "name": "Klingon Bird of Prey",
+  "nodeType": "LOCATION",
+  "description": "Kruge's warship. A cloakable vessel that pursues the Enterprise to Genesis. Eventually captured by Kirk's crew.",
+  "properties": {
+    "class": "B'rel-class",
+    "capability": "cloaking device",
+    "later_name": "HMS Bounty"
+  },
+  "hasTag": ["klingon"]
+}

@@ -1,0 +1,105 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "klingon-language",
+  "name": "tlhIngan Hol",
+  "nodeType": "LANGUAGE",
+  "description": "The warrior language of the Klingon Empire, created by linguist Marc Okrand for Star Trek III. Agglutinative, OVS word order, no adjectives. The first constructed language designed for a major motion picture.",
+  "properties": {
+    "phonology": {
+      "consonants": [
+        {"symbol": "b", "ipa": "b", "place": "bilabial", "manner": "stop"},
+        {"symbol": "ch", "ipa": "tʃ", "place": "postalveolar", "manner": "affricate"},
+        {"symbol": "D", "ipa": "ɖ", "place": "retroflex", "manner": "stop"},
+        {"symbol": "gh", "ipa": "ɣ", "place": "velar", "manner": "fricative"},
+        {"symbol": "H", "ipa": "x", "place": "velar", "manner": "fricative"},
+        {"symbol": "j", "ipa": "dʒ", "place": "postalveolar", "manner": "affricate"},
+        {"symbol": "l", "ipa": "l", "place": "alveolar", "manner": "lateral"},
+        {"symbol": "m", "ipa": "m", "place": "bilabial", "manner": "nasal"},
+        {"symbol": "n", "ipa": "n", "place": "alveolar", "manner": "nasal"},
+        {"symbol": "ng", "ipa": "ŋ", "place": "velar", "manner": "nasal"},
+        {"symbol": "p", "ipa": "pʰ", "place": "bilabial", "manner": "stop"},
+        {"symbol": "q", "ipa": "qʰ", "place": "uvular", "manner": "stop"},
+        {"symbol": "Q", "ipa": "qχ", "place": "uvular", "manner": "affricate"},
+        {"symbol": "r", "ipa": "r", "place": "alveolar", "manner": "trill"},
+        {"symbol": "S", "ipa": "ʂ", "place": "retroflex", "manner": "fricative"},
+        {"symbol": "t", "ipa": "tʰ", "place": "alveolar", "manner": "stop"},
+        {"symbol": "tlh", "ipa": "tɬ", "place": "alveolar", "manner": "lateral_affricate"},
+        {"symbol": "v", "ipa": "v", "place": "labiodental", "manner": "fricative"},
+        {"symbol": "w", "ipa": "w", "place": "labial-velar", "manner": "approximant"},
+        {"symbol": "y", "ipa": "j", "place": "palatal", "manner": "approximant"},
+        {"symbol": "'", "ipa": "ʔ", "place": "glottal", "manner": "stop"}
+      ],
+      "vowels": [
+        {"symbol": "a", "ipa": "ɑ", "height": "open", "backness": "back"},
+        {"symbol": "e", "ipa": "ɛ", "height": "open-mid", "backness": "front"},
+        {"symbol": "I", "ipa": "ɪ", "height": "near-close", "backness": "front"},
+        {"symbol": "o", "ipa": "o", "height": "close-mid", "backness": "back"},
+        {"symbol": "u", "ipa": "u", "height": "close", "backness": "back"}
+      ],
+      "stress": "penultimate_syllable",
+      "syllable_structure": "CVC_preferred"
+    },
+    "morphology": {
+      "typology": "agglutinative",
+      "verb_prefix_chart": [
+        {"subject": "1sg", "object": "none", "prefix": "jI-"},
+        {"subject": "1sg", "object": "3sg", "prefix": "vI-"},
+        {"subject": "2sg", "object": "none", "prefix": "bI-"},
+        {"subject": "2sg", "object": "3sg", "prefix": "Da-"},
+        {"subject": "3sg", "object": "none", "prefix": "0"},
+        {"subject": "3sg", "object": "1sg", "prefix": "mu-"},
+        {"subject": "3sg", "object": "2sg", "prefix": "Du-"},
+        {"subject": "1pl", "object": "none", "prefix": "ma-"},
+        {"subject": "1pl", "object": "3sg", "prefix": "wI-"},
+        {"subject": "2pl", "object": "none", "prefix": "Su-"},
+        {"subject": "2pl", "object": "3sg", "prefix": "bo-"},
+        {"subject": "3pl", "object": "none", "prefix": "0"},
+        {"subject": "3pl", "object": "3sg", "prefix": "lu-"},
+        {"subject": "3pl", "object": "1sg", "prefix": "mu-"}
+      ],
+      "verb_suffix_types": [
+        {"type": 1, "name": "oneself/each other", "examples": ["-'egh", "-chuq"]},
+        {"type": 2, "name": "volition/predisposition", "examples": ["-nIS", "-qang", "-rup", "-beH", "-vIp"]},
+        {"type": 3, "name": "change", "examples": ["-choH", "-qa'"]},
+        {"type": 4, "name": "cause", "examples": ["-moH"]},
+        {"type": 5, "name": "indefinite subject/ability", "examples": ["-lu'", "-laH"]},
+        {"type": 6, "name": "qualification", "examples": ["-chu'", "-bej", "-ba'", "-law'"]},
+        {"type": 7, "name": "aspect", "examples": ["-pu'", "-ta'", "-taH", "-lI'"]},
+        {"type": 8, "name": "honorific", "examples": ["-neS"]},
+        {"type": 9, "name": "syntactic markers", "examples": ["-DI'", "-chugh", "-pa'", "-vIS", "-bogh", "-meH", "-mo'", "-'a'", "-wI'", "-ghach"]},
+        {"type": "rover", "name": "negation/emphasis", "examples": ["-be'", "-Qo'", "-Ha'", "-qu'"]}
+      ],
+      "noun_suffix_types": [
+        {"type": 1, "name": "size/importance", "examples": ["-'a'", "-Hom", "-oy"]},
+        {"type": 2, "name": "number", "examples": ["-pu'", "-Du'", "-mey"]},
+        {"type": 3, "name": "qualification", "examples": ["-Hey", "-na'", "-qoq"]},
+        {"type": 4, "name": "possession", "examples": ["-wIj", "-lIj", "-Daj", "-maj", "-raj", "-chaj"]},
+        {"type": 5, "name": "syntactic", "examples": ["-Daq", "-vo'", "-mo'", "-vaD", "-'e'"]}
+      ]
+    },
+    "syntax": {
+      "basic_word_order": "OVS",
+      "no_adjectives": true,
+      "adjective_equivalent": "Stative verbs follow the noun they modify",
+      "comparison": "A Q law' B Q puS",
+      "questions": "Suffix -'a' on verb, or question words (nuq, 'Iv, ghorgh, nuqDaq)",
+      "relative_clauses": "-bogh on verb, head noun marked with -'e'",
+      "subordination": "Verb suffixes type 9: -DI' (when), -chugh (if), -meH (purpose), -mo' (because)"
+    },
+    "writing_system": {
+      "name": "pIqaD",
+      "type": "alphabet",
+      "direction": "left_to_right",
+      "glyph_count": 26,
+      "romanization_standard": "Okrand (The Klingon Dictionary, 1985)",
+      "case_sensitivity": "Romanization is case-sensitive: D/S are retroflex, H is velar fricative, I is near-close front, Q is uvular affricate"
+    },
+    "pragmatics": {
+      "greetings": "nuqneH (What do you want?) — the only greeting",
+      "politeness": "Rudeness is default. Politeness marked by rare -neS suffix.",
+      "toasts": "Qapla'! (Success!)"
+    }
+  },
+  "hasTag": ["klingon", "cultural-artifact"]
+}

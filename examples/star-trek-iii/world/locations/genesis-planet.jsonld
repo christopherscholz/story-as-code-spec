@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "genesis-planet",
+  "name": "Genesis Planet",
+  "nodeType": "LOCATION",
+  "description": "A newly formed planet created by the Genesis Device. Unstable due to David's use of protomatter, the planet ages rapidly and ultimately destroys itself.",
+  "properties": {
+    "age": "days",
+    "stability": "unstable",
+    "cause_of_instability": "protomatter in Genesis matrix"
+  },
+  "hasTag": ["sci-fi"]
+}

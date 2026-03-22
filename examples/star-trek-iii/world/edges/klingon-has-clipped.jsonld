@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "klingon-has-clipped",
+  "edgeType": "HAS_REGISTER",
+  "name": "has register",
+  "source": "klingon-language",
+  "target": "clipped-klingon"
+}

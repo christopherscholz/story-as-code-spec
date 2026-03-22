@@ -1,0 +1,13 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "mount-seleya",
+  "name": "Mount Seleya",
+  "nodeType": "LOCATION",
+  "description": "Sacred Vulcan temple where the fal-tor-pan ceremony is performed to reunite Spock's katra with his regenerated body.",
+  "properties": {
+    "planet": "Vulcan",
+    "significance": "sacred temple"
+  },
+  "hasTag": ["vulcan"]
+}

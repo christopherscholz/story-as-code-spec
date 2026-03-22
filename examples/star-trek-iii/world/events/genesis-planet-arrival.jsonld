@@ -1,0 +1,13 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "genesis-planet-arrival",
+  "name": "Arrival at Genesis",
+  "nodeType": "EVENT",
+  "description": "The Enterprise arrives at the Genesis Planet to find Spock's regenerated body and the planet rapidly aging and becoming unstable.",
+  "properties": {
+    "participants": ["kirk", "saavik", "david-marcus", "spock"],
+    "location": "genesis-planet"
+  },
+  "hasTag": ["sci-fi"]
+}

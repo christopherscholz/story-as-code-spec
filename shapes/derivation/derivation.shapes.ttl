@@ -11,5 +11,5 @@ sacsh:DerivationLayerShape
     sh:property [
         sh:path sac:hasRendering ;
         sh:description "Rendered text outputs." ;
-        sh:node sacsh:RenderingShape ;
+        sh:class sac:Rendering ;
     ] .

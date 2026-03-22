@@ -1,0 +1,103 @@
+{
+  "@context": "../../../context/sac.context.jsonld",
+  "type": "World",
+  "id": "world-layer",
+  "timeSystem": {
+    "type": "TimeSystem",
+    "id": "stardate-calendar",
+    "name": "Stardate Calendar",
+    "timeSystemType": "LINEAR"
+  },
+  "nodes": [
+    { "@id": "kirk" },
+    { "@id": "spock" },
+    { "@id": "mccoy" },
+    { "@id": "saavik" },
+    { "@id": "david-marcus" },
+    { "@id": "kruge" },
+    { "@id": "maltz" },
+    { "@id": "sarek" },
+    { "@id": "uss-enterprise" },
+    { "@id": "genesis-planet" },
+    { "@id": "spacedock" },
+    { "@id": "klingon-bird-of-prey" },
+    { "@id": "mount-seleya" },
+    { "@id": "genesis-device" },
+    { "@id": "self-destruct-sequence" },
+    { "@id": "enterprise-theft" },
+    { "@id": "genesis-planet-arrival" },
+    { "@id": "david-death" },
+    { "@id": "enterprise-destruction" },
+    { "@id": "kirk-vs-kruge" },
+    { "@id": "fal-tor-pan" },
+    { "@id": "klingon-language" },
+    { "@id": "federation-standard" },
+    { "@id": "vulcan-language" },
+    { "@id": "ta-hol" },
+    { "@id": "clipped-klingon" },
+    { "@id": "battle-commands" },
+    { "@id": "qapla" },
+    { "@id": "heghlu-meh" },
+    { "@id": "petaq" },
+    { "@id": "batleth" },
+    { "@id": "toh" }
+  ],
+  "edges": [
+    { "@id": "kirk-father-of-david" },
+    { "@id": "kirk-friends-with-spock" },
+    { "@id": "kirk-friends-with-mccoy" },
+    { "@id": "kruge-commands-maltz" },
+    { "@id": "kruge-enemy-of-kirk" },
+    { "@id": "saavik-mentored-by-spock" },
+    { "@id": "david-created-genesis" },
+    { "@id": "sarek-father-of-spock" },
+    { "@id": "mccoy-carries-katra" },
+    { "@id": "kirk-in-enterprise-theft" },
+    { "@id": "kirk-in-enterprise-destruction" },
+    { "@id": "david-in-david-death" },
+    { "@id": "kirk-in-kirk-vs-kruge" },
+    { "@id": "kruge-in-kirk-vs-kruge" },
+    { "@id": "spock-in-fal-tor-pan" },
+    { "@id": "enterprise-at-spacedock" },
+    { "@id": "bird-of-prey-at-genesis" },
+    { "@id": "kruge-speaks-klingon" },
+    { "@id": "maltz-speaks-klingon" },
+    { "@id": "kirk-speaks-fed-standard" },
+    { "@id": "saavik-speaks-vulcan" },
+    { "@id": "saavik-speaks-fed-standard" },
+    { "@id": "kruge-uses-battle-commands" },
+    { "@id": "klingon-has-ta-hol" },
+    { "@id": "klingon-has-clipped" },
+    { "@id": "klingon-has-battle-cmds" },
+    { "@id": "klingon-has-term-qapla" },
+    { "@id": "klingon-has-term-heghlu-meh" },
+    { "@id": "klingon-has-term-petaq" },
+    { "@id": "klingon-has-term-batleth" },
+    { "@id": "klingon-has-term-toh" }
+  ],
+  "frames": [
+    {
+      "type": "Frame",
+      "id": "main-timeline",
+      "name": "Main Timeline",
+      "description": "The primary timeline of Star Trek III, following the events after the Battle of the Mutara Nebula."
+    }
+  ],
+  "constraints": [
+    {
+      "type": "Constraint",
+      "id": "genesis-instability",
+      "name": "Genesis Planet is unstable",
+      "description": "The Genesis Planet ages and disintegrates rapidly due to David's use of protomatter. All events on the planet surface are under increasing time pressure.",
+      "severity": "ERROR",
+      "scope": { "@id": "genesis-planet" }
+    },
+    {
+      "type": "Constraint",
+      "id": "katra-transfer-requirement",
+      "name": "Katra must be reunited",
+      "description": "Spock's katra in McCoy's mind must be brought to Vulcan and reunited with Spock's body via fal-tor-pan, or both McCoy and Spock's essence will be lost.",
+      "severity": "ERROR"
+    }
+  ]
+}

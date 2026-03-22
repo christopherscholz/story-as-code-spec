@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "sacrifice",
+  "name": "Sacrifice",
+  "description": "Involves personal sacrifice or loss for a greater purpose."
+}

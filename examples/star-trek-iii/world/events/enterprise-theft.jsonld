@@ -1,0 +1,13 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "enterprise-theft",
+  "name": "Theft of the Enterprise",
+  "nodeType": "EVENT",
+  "description": "Kirk, McCoy, Sulu, Scotty, Chekov, and Uhura steal the Enterprise from Spacedock, defying Starfleet orders to return to the Genesis Planet.",
+  "properties": {
+    "participants": ["kirk", "mccoy"],
+    "location": "spacedock"
+  },
+  "hasTag": ["sacrifice", "starfleet"]
+}

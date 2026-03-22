@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "INCITING_INCIDENT",
+  "name": "Inciting Incident",
+  "description": "The event that sets the main conflict in motion."
+}

@@ -1,0 +1,17 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Beat",
+  "id": "genesis-planet-beat",
+  "name": "Genesis Planet",
+  "description": "On Genesis, Saavik and David find Spock's regenerated body aging rapidly with the planet. Kruge's Bird of Prey arrives and captures them.",
+  "parent": "main-storyline",
+  "order": 3,
+  "nodeIds": ["saavik", "david-marcus", "spock", "genesis-planet", "kruge", "klingon-bird-of-prey", "genesis-planet-arrival"],
+  "edgeIds": ["bird-of-prey-at-genesis", "saavik-mentored-by-spock"],
+  "function": "RISING_ACTION",
+  "tension": 0.6,
+  "emotionalTarget": -0.2,
+  "transition": {
+    "transitionType": "CONTINUATION"
+  }
+}

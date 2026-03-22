@@ -1,0 +1,17 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Beat",
+  "id": "sacrifice-beat",
+  "name": "Kirk vs. Kruge",
+  "description": "Kirk and Kruge fight on the disintegrating Genesis Planet. Kirk defeats Kruge and beams up to the captured Bird of Prey with Spock's body.",
+  "parent": "main-storyline",
+  "order": 5,
+  "nodeIds": ["kirk", "kruge", "genesis-planet", "kirk-vs-kruge"],
+  "edgeIds": ["kirk-in-kirk-vs-kruge", "kruge-in-kirk-vs-kruge"],
+  "function": "CLIMAX",
+  "tension": 1.0,
+  "emotionalTarget": -0.5,
+  "transition": {
+    "transitionType": "CUT"
+  }
+}

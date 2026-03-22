@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "LANGUAGE_REGISTER",
+  "name": "Language Register",
+  "appliesTo": "sacsh:NodeShape",
+  "description": "A speech register or dialect of a language. Modeled as a separate node because voice configurations reference registers.",
+  "requiredProperties": ["characteristics", "usage_context"]
+}

@@ -1,0 +1,8 @@
+{
+  "@context": "../../../context/sac.context.jsonld",
+  "type": "Derivation",
+  "id": "derivation-layer",
+  "renderings": [
+    { "@id": "screenplay-kirk-pov" }
+  ]
+}

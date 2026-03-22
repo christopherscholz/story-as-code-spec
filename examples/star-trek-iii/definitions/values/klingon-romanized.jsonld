@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "ValueDefinition",
+  "id": "KLINGON_ROMANIZED",
+  "name": "Klingon Romanized",
+  "description": "Klingon language rendered in standard Okrand romanization."
+}

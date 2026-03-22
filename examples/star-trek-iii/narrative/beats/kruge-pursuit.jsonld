@@ -1,0 +1,17 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Beat",
+  "id": "kruge-pursuit",
+  "name": "Kruge's Pursuit",
+  "description": "Kruge demands Genesis secrets. David is killed. Kirk, devastated, surrenders the Enterprise — then triggers self-destruct, destroying the ship and the Klingon boarding party.",
+  "parent": "main-storyline",
+  "order": 4,
+  "nodeIds": ["kirk", "kruge", "david-marcus", "uss-enterprise", "self-destruct-sequence", "david-death", "enterprise-destruction"],
+  "edgeIds": ["kruge-enemy-of-kirk", "kirk-in-enterprise-destruction", "david-in-david-death"],
+  "function": "CLIMAX",
+  "tension": 0.9,
+  "emotionalTarget": -0.8,
+  "transition": {
+    "transitionType": "CUT"
+  }
+}

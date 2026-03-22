@@ -1,0 +1,13 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "maltz-speaks-klingon",
+  "edgeType": "SPEAKS",
+  "name": "speaks",
+  "source": "maltz",
+  "target": "klingon-language",
+  "properties": {
+    "fluency": "native",
+    "primary_register": "clipped-klingon"
+  }
+}

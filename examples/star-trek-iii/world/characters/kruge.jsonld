@@ -1,0 +1,15 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "kruge",
+  "name": "Kruge",
+  "nodeType": "CHARACTER",
+  "description": "Klingon commander obsessed with obtaining the Genesis secret as a weapon. Ruthless, cunning, and speaks exclusively in Klingon with his crew. Commands a Bird of Prey.",
+  "properties": {
+    "rank": "Commander",
+    "species": "Klingon",
+    "name_variants": ["Kruge", "Commander Kruge"],
+    "motivation": "acquire Genesis as weapon"
+  },
+  "hasTag": ["antagonist", "klingon"]
+}

@@ -1,0 +1,11 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "kirk-friends-with-spock",
+  "edgeType": "RELATIONSHIP",
+  "name": "friends-with",
+  "source": "kirk",
+  "target": "spock",
+  "directed": false,
+  "description": "The deepest friendship in the film — Kirk sacrifices his career and his ship to save Spock."
+}

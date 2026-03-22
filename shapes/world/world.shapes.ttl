@@ -17,18 +17,18 @@ sacsh:WorldLayerShape
     ] ;
     sh:property [
         sh:path sac:hasNode ;
-        sh:node sacsh:NodeShape ;
+        sh:class sac:Node ;
     ] ;
     sh:property [
         sh:path sac:hasEdge ;
-        sh:node sacsh:EdgeShape ;
+        sh:class sac:Edge ;
     ] ;
     sh:property [
         sh:path sac:hasFrame ;
         sh:description "Alternative timelines and branches." ;
-        sh:node sacsh:FrameShape ;
+        sh:class sac:Frame ;
     ] ;
     sh:property [
         sh:path sac:hasConstraint ;
-        sh:node sacsh:ConstraintShape ;
+        sh:class sac:Constraint ;
     ] .

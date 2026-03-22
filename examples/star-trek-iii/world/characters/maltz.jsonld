@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "maltz",
+  "name": "Maltz",
+  "nodeType": "CHARACTER",
+  "description": "Klingon officer serving under Kruge aboard the Bird of Prey. The sole surviving Klingon crew member, captured by Kirk.",
+  "properties": {
+    "rank": "Officer",
+    "species": "Klingon",
+    "name_variants": ["Maltz"]
+  },
+  "hasTag": ["klingon"]
+}

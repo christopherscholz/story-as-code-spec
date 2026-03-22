@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "david-death",
+  "name": "David's Death",
+  "nodeType": "EVENT",
+  "description": "David Marcus is killed by a Klingon officer to force Kirk's surrender. Kirk's anguished reaction — stumbling back in his chair — is a defining moment of the film.",
+  "properties": {
+    "participants": ["david-marcus", "kruge", "kirk"],
+    "location": "genesis-planet",
+    "killed_by": "Klingon officer"
+  },
+  "hasTag": ["sacrifice"]
+}

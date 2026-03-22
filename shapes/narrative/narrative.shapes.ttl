@@ -13,30 +13,30 @@ sacsh:NarrativeLayerShape
     sh:property [
         sh:path sac:hasLens ;
         sh:description "Narrative perspectives." ;
-        sh:node sacsh:LensShape ;
+        sh:class sac:Lens ;
     ] ;
     sh:property [
         sh:path sac:hasBeat ;
         sh:description "Hierarchical narrative building blocks." ;
-        sh:node sacsh:BeatShape ;
+        sh:class sac:Beat ;
     ] ;
     sh:property [
         sh:path sac:hasDevice ;
         sh:description "Rhetorical techniques connecting beats (foreshadowing, red herrings, etc.)." ;
-        sh:node sacsh:DeviceShape ;
+        sh:class sac:Device ;
     ] ;
     sh:property [
         sh:path sac:hasThread ;
         sh:description "Thematic threads and motifs connecting beats across storylines." ;
-        sh:node sacsh:ThreadShape ;
+        sh:class sac:Thread ;
     ] ;
     sh:property [
         sh:path sac:hasFormat ;
         sh:description "Output format definitions." ;
-        sh:node sacsh:FormatShape ;
+        sh:class sac:Format ;
     ] ;
     sh:property [
         sh:path sac:hasVariant ;
         sh:description "Parallel world version metadata." ;
-        sh:node sacsh:VariantMetaShape ;
+        sh:class sac:VariantMeta ;
     ] .

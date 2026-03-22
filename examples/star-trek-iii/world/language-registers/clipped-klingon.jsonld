@@ -1,0 +1,18 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "clipped-klingon",
+  "name": "Clipped Klingon",
+  "nodeType": "LANGUAGE_REGISTER",
+  "description": "Abbreviated everyday Klingon. Prefixes dropped, suffixes reduced. Used among warriors in informal settings.",
+  "properties": {
+    "characteristics": {
+      "prefix_dropping": true,
+      "suffix_reduction": true,
+      "rapid_speech": true,
+      "incomplete_sentences": true
+    },
+    "usage_context": ["barracks", "bars", "among friends", "casual orders"]
+  },
+  "hasTag": ["klingon"]
+}

@@ -1,0 +1,17 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Beat",
+  "id": "rebirth",
+  "name": "Rebirth",
+  "description": "On Vulcan, the fal-tor-pan ceremony reunites Spock's katra with his body. Spock recognizes Kirk. 'Jim. Your name is Jim.'",
+  "parent": "main-storyline",
+  "order": 6,
+  "nodeIds": ["kirk", "spock", "mccoy", "sarek", "mount-seleya", "fal-tor-pan"],
+  "edgeIds": ["spock-in-fal-tor-pan", "kirk-friends-with-spock"],
+  "function": "RESOLUTION",
+  "tension": 0.2,
+  "emotionalTarget": 0.8,
+  "transition": {
+    "transitionType": "CONTINUATION"
+  }
+}

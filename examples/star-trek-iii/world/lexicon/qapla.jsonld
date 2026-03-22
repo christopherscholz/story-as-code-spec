@@ -1,0 +1,17 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "qapla",
+  "name": "Qapla'",
+  "nodeType": "LEXICON_ENTRY",
+  "description": "Universal Klingon greeting and farewell meaning 'Success!' Used as toast, encouragement, and parting word.",
+  "properties": {
+    "word": "Qapla'",
+    "pos": "exclamation",
+    "definition": "Success! — Universal Klingon greeting, farewell, and toast.",
+    "etymology": "From Qap (to function, succeed)",
+    "register": "all registers",
+    "film_usage": "Kruge uses this throughout Star Trek III"
+  },
+  "hasTag": ["klingon", "cultural-artifact"]
+}

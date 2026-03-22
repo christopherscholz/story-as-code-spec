@@ -1,0 +1,13 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "self-destruct-sequence",
+  "name": "Enterprise Self-Destruct Sequence",
+  "nodeType": "OBJECT",
+  "description": "The destruct mechanism Kirk activates to destroy the Enterprise, killing the Klingon boarding party and denying Kruge the ship.",
+  "properties": {
+    "code": "zero-zero-zero destruct zero",
+    "countdown": "30 seconds"
+  },
+  "hasTag": ["sacrifice", "starfleet"]
+}

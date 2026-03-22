@@ -1,0 +1,14 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Node",
+  "id": "uss-enterprise",
+  "name": "USS Enterprise NCC-1701",
+  "nodeType": "LOCATION",
+  "description": "The legendary starship, damaged in the battle with Khan. Scheduled for decommissioning. Kirk steals it from Spacedock for the mission to Genesis.",
+  "properties": {
+    "registry": "NCC-1701",
+    "class": "Constitution",
+    "status": "damaged, scheduled for decommission"
+  },
+  "hasTag": ["starfleet", "sacrifice"]
+}

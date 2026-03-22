@@ -25,20 +25,20 @@ sacsh:BeatShape
         sh:path sac:parent ;
         sh:description "Parent beat ID." ;
         sh:nodeKind sh:IRI ;
-        sh:node sacsh:BeatShape ;
+        sh:class sac:Beat ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:referencesNode ;
         sh:description "World node IDs relevant to this beat." ;
         sh:nodeKind sh:IRI ;
-        sh:node sacsh:NodeShape ;
+        sh:class sac:Node ;
     ] ;
     sh:property [
         sh:path sac:referencesEdge ;
         sh:description "World edge IDs relevant to this beat." ;
         sh:nodeKind sh:IRI ;
-        sh:node sacsh:EdgeShape ;
+        sh:class sac:Edge ;
     ] ;
     sh:property [
         sh:path sac:function ;
@@ -102,6 +102,6 @@ sacsh:TransitionShape
         sh:path sac:toBeat ;
         sh:description "Beat ID this transitions to (if cross-hierarchy)." ;
         sh:nodeKind sh:IRI ;
-        sh:node sacsh:BeatShape ;
+        sh:class sac:Beat ;
         sh:maxCount 1 ;
     ] .

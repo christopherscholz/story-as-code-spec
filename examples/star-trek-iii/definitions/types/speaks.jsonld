@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "SPEAKS",
+  "name": "Speaks",
+  "appliesTo": "sacsh:EdgeShape",
+  "description": "Language capability — source character speaks target language."
+}

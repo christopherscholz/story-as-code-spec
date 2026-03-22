@@ -1,0 +1,12 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "saavik-speaks-fed-standard",
+  "edgeType": "SPEAKS",
+  "name": "speaks",
+  "source": "saavik",
+  "target": "federation-standard",
+  "properties": {
+    "fluency": "fluent"
+  }
+}

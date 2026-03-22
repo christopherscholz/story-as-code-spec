@@ -1,0 +1,9 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "david-created-genesis",
+  "edgeType": "SIMPLE",
+  "name": "co-created",
+  "source": "david-marcus",
+  "target": "genesis-device"
+}

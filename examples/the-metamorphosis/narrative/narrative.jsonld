@@ -62,6 +62,7 @@
   ],
   "variants": [
     {
+      "type": "VariantMeta",
       "variantType": "CANON",
       "description": "The canonical story \u2014 Gregor transforms, declines, and dies; the family is liberated"
     }

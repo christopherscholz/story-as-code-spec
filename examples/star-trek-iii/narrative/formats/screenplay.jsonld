@@ -1,0 +1,43 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Format",
+  "id": "screenplay",
+  "name": "Feature Film Screenplay",
+  "formatType": "SCREENPLAY",
+  "structure": {
+    "structureType": "film",
+    "structureConstraints": {
+      "count": 1,
+      "target_runtime": "105 minutes"
+    },
+    "children": {
+      "structureType": "act",
+      "structureConstraints": {
+        "count": 3
+      },
+      "children": {
+        "structureType": "sequence",
+        "structureConstraints": {
+          "count": "2-4"
+        },
+        "children": {
+          "structureType": "scene",
+          "structureConstraints": {
+            "target_runtime": "2-5 minutes"
+          }
+        }
+      }
+    }
+  },
+  "formatSettings": {
+    "pacing": {
+      "act": {
+        "tension_shape": "THREE_ACT"
+      },
+      "sequence": {
+        "tension_shape": "MINI_ARC",
+        "end_hook": "USUALLY"
+      }
+    }
+  }
+}

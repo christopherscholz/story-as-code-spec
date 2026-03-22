@@ -26,14 +26,14 @@ sacsh:EdgeShape
     sh:property [
         sh:path sac:source ;
         sh:nodeKind sh:IRI ;
-        sh:node sacsh:NodeShape ;
+        sh:class sac:Node ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:path sac:target ;
         sh:nodeKind sh:IRI ;
-        sh:node sacsh:NodeShape ;
+        sh:class sac:Node ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;

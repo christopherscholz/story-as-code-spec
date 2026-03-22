@@ -1,0 +1,64 @@
+{
+  "@context": "../../../../../context/sac.context.jsonld",
+  "type": "Section",
+  "id": "act-1",
+  "sectionType": "ACT",
+  "title": "Act I",
+  "order": 1,
+  "passages": [
+    {
+      "type": "Passage",
+      "id": "kruge-bridge-scene",
+      "beat": "kruge-pursuit",
+      "order": 1,
+      "content": "INT. KLINGON BIRD OF PREY - BRIDGE\n\nKRUGE stands at the command chair. The Genesis Planet fills the viewscreen.\n\nMALTZ\n(in Klingon, subtitled)\njoH, Daq Samlu'.\n\nKRUGE\n(in Klingon, subtitled)\nQaQ. Genesis vIghaj vIneH. Qapla'!",
+      "annotations": [
+        {
+          "ref": "klingon-bird-of-prey",
+          "start": 5,
+          "end": 25,
+          "exact": "KLINGON BIRD OF PREY",
+          "annotationType": "NAMES"
+        },
+        {
+          "ref": "kruge",
+          "start": 36,
+          "end": 41,
+          "exact": "KRUGE",
+          "annotationType": "NAMES"
+        },
+        {
+          "ref": "genesis-planet",
+          "start": 75,
+          "end": 89,
+          "exact": "Genesis Planet",
+          "annotationType": "NAMES"
+        },
+        {
+          "ref": "maltz",
+          "start": 113,
+          "end": 118,
+          "exact": "MALTZ",
+          "annotationType": "NAMES"
+        },
+        {
+          "ref": "klingon-language",
+          "start": 143,
+          "end": 159,
+          "exact": "joH, Daq Samlu'.",
+          "annotationType": "FOREIGN_TEXT"
+        },
+        {
+          "ref": "qapla",
+          "start": 218,
+          "end": 224,
+          "exact": "Qapla'",
+          "annotationType": "FOREIGN_TEXT"
+        }
+      ],
+      "nodeIds": ["kruge", "maltz", "klingon-bird-of-prey", "genesis-planet", "klingon-language", "qapla"],
+      "edgeIds": ["kruge-commands-maltz", "kruge-speaks-klingon", "bird-of-prey-at-genesis"],
+      "passageStatus": "FINAL"
+    }
+  ]
+}

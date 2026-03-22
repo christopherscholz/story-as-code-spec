@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "cultural-artifact",
+  "name": "Cultural Artifact",
+  "description": "An object or concept with deep cultural significance."
+}

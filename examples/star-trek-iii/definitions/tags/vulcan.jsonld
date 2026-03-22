@@ -1,0 +1,7 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Tag",
+  "id": "vulcan",
+  "name": "Vulcan",
+  "description": "Associated with Vulcan species or culture."
+}

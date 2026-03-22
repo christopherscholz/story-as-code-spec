@@ -1,0 +1,8 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "TypeDefinition",
+  "id": "HAS_REGISTER",
+  "name": "Has Register",
+  "appliesTo": "sacsh:EdgeShape",
+  "description": "Links a language to one of its registers or dialects."
+}

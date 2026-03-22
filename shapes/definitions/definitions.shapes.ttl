@@ -12,13 +12,13 @@ sacsh:DefinitionsLayerShape
     sh:targetClass sac:DefinitionsLayer ;
     sh:property [
         sh:path sac:hasTags ;
-        sh:node sacsh:TagShape ;
+        sh:class sac:Tag ;
     ] ;
     sh:property [
         sh:path sac:hasTypes ;
-        sh:node sacsh:TypeDefinitionShape ;
+        sh:class sac:TypeDefinition ;
     ] ;
     sh:property [
         sh:path sac:hasValueDefs ;
-        sh:node sacsh:ValueDefinitionShape ;
+        sh:class sac:ValueDefinition ;
     ] .

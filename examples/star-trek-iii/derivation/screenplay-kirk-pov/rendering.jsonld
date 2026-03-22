@@ -1,0 +1,12 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Rendering",
+  "id": "screenplay-kirk-pov",
+  "name": "Star Trek III - Screenplay (Kirk POV)",
+  "description": "Feature film screenplay rendered through Kirk's third-person perspective. Klingon dialogue appears in romanized Klingon with subtitles noted in parentheticals.",
+  "renderingLens": "kirk-pov",
+  "renderingFormat": "screenplay",
+  "sections": [
+    { "@id": "act-1" }
+  ]
+}

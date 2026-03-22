@@ -1,0 +1,26 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Thread",
+  "id": "needs-of-the-few",
+  "threadType": "THEME",
+  "name": "The Needs of the Few",
+  "description": "Inverts Spock's 'the needs of the many outweigh the needs of the few' from Wrath of Khan. Kirk argues the needs of the one — Spock — justify any sacrifice.",
+  "appearances": [
+    {
+      "beatId": "prologue-spocks-death",
+      "description": "Spock's death and his final words echo through Kirk's grief."
+    },
+    {
+      "beatId": "theft-of-enterprise",
+      "description": "Kirk defies Starfleet orders for one friend — the needs of the one."
+    },
+    {
+      "beatId": "kruge-pursuit",
+      "description": "Kirk sacrifices his ship and witnesses his son's death — the cost of the one."
+    },
+    {
+      "beatId": "rebirth",
+      "description": "Spock lives again. Kirk's sacrifice was worth it."
+    }
+  ]
+}

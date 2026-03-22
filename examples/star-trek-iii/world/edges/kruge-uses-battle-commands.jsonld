@@ -1,0 +1,12 @@
+{
+  "@context": "../../../../context/sac.context.jsonld",
+  "type": "Edge",
+  "id": "kruge-uses-battle-commands",
+  "edgeType": "SPEAKS",
+  "name": "uses register",
+  "source": "kruge",
+  "target": "battle-commands",
+  "properties": {
+    "context": "bridge commands on Bird of Prey"
+  }
+}
